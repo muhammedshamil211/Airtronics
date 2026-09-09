@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, ChevronRight } from 'lucide-react';
@@ -8,100 +7,133 @@ import { motion } from 'framer-motion';
 import { services } from '@/data/services';
 
 export default function Hero() {
-  // We'll show first 5 services to match the reference layout's 5 cards
   const displayServices = services.slice(0, 5);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#fcfcfc] flex flex-col font-sans overflow-hidden">
-      
-      {/* Decorative Wave Background */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden pointer-events-none z-0">
-        <svg viewBox="0 0 1440 600" className="w-full h-auto min-w-[1440px] opacity-60" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,0 L1440,0 L1440,200 C1120,450 480,10 0,300 Z" fill="var(--color-brand-light)" />
+    <section className="relative overflow-hidden bg-[#fcfcfc]">
+      {/* Background Wave */}
+      <div className="absolute inset-x-0 top-0 z-0 overflow-hidden pointer-events-none">
+        <svg
+          viewBox="0 0 1440 600"
+          preserveAspectRatio="none"
+          className="w-full h-[260px] md:h-[320px] lg:h-[380px]"
+        >
+          <path
+            d="M0,0 L1440,0 L1440,200 C1120,450 480,10 0,300 Z"
+            fill="var(--color-brand-light)"
+            opacity="0.55"
+          />
         </svg>
       </div>
 
-      {/* Hero / Showcase Section */}
-      <main className="relative z-10 flex-1 px-8 lg:px-16 xl:px-24 pt-12 pb-24 flex flex-col max-w-[1600px] mx-auto w-full">
-        
-        {/* Top Label */}
-        <div className="mb-6 flex items-center text-sm font-semibold tracking-wide">
-          <span className="text-brand mr-2">/</span>
-          <span className="text-gray-800">Dubai HVAC Specialists</span>
+      <main className="relative z-10 max-w-[1500px] mx-auto px-5 md:px-8 lg:px-12 xl:px-20 pt-10 lg:pt-14 pb-12">
+
+        {/* Label */}
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-brand font-semibold">/</span>
+          <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 ">
+            Dubai HVAC Specialists
+          </span>
         </div>
 
-        {/* Headline & Description Row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div className="md:w-1/2">
-            <h1 className="text-4xl md:text-5xl leading-tight font-semibold text-[#221f1f] tracking-tight">
-              Premium HVAC<br/>Services In Dubai
+        {/* Hero Content */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12 mb-16">
+
+          {/* Left: Headline */}
+          <div className="lg:w-3/5">
+            <h1 className="text-[36px] sm:text-[46px] md:text-[54px] lg:text-[64px] xl:text-[72px] font-medium tracking-tight leading-[1.05] text-[#111111]">
+              Premium HVAC<br className="hidden sm:block" /> Services In Dubai
             </h1>
           </div>
-          
-          <div className="md:w-1/3 flex flex-col justify-end">
-            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-              Airtronics delivers expert HVAC installation, AC repair, preventive maintenance, duct cleaning, and commercial climate control solutions across Dubai. Trusted by residential, commercial, hospitality, and industrial clients.
+
+          {/* Right: Text & Links */}
+          <div className="lg:w-2/5 flex flex-col justify-end">
+            <p className="text-[#666666] text-sm md:text-[15px] leading-relaxed mb-6 max-w-[400px]">
+              Airtronics delivers expert HVAC installation, AC repair,
+              preventive maintenance, duct cleaning and commercial climate
+              control solutions across Dubai. Trusted by residential,
+              commercial, hospitality and industrial clients.
             </p>
-            <div className="flex items-center space-x-6 text-sm font-semibold">
-              <Link href="#" className="text-brand flex items-center hover:text-brand-hover transition group">
-                View All Services
-                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link href="#" className="text-brand flex items-center hover:text-brand-hover transition group">
+
+            <div className="flex flex-wrap items-center gap-4 md:gap-5 text-sm md:text-[15px]">
+              <Link
+                href="/contact"
+                className="flex items-center gap-2 bg-brand text-white font-semibold px-7 py-3.5 rounded-full hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/30 transition-all group"
+              >
                 Call For Booking
-                <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                href="/services"
+                className="flex items-center gap-2 bg-white text-[#111] border border-gray-200 font-semibold px-7 py-3.5 rounded-full hover:border-gray-300 hover:bg-gray-50 transition-all shadow-sm group"
+              >
+                View All Services
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
         </div>
 
-        {/* Cards Row */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory lg:grid lg:grid-cols-5 h-[280px] lg:h-[340px] hide-scrollbar pb-4">
+        {/* Service Cards */}
+        <div className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 xl:grid xl:grid-cols-5 xl:overflow-visible">
           {displayServices.map((service, index) => (
             <motion.div
+              key={service.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              key={service.id}
-              className="relative rounded-[24px] overflow-hidden group cursor-pointer shrink-0 w-[45vw] sm:w-[35vw] lg:w-auto snap-center"
+              transition={{
+                duration: 0.45,
+                delay: index * 0.08,
+              }}
+              className="relative overflow-hidden rounded-[20px] w-[65vw] sm:w-[40vw] md:w-[30vw] lg:w-[22vw] xl:w-auto h-[220px] sm:h-[240px] lg:h-[260px] shrink-0 snap-center group"
             >
-              {/* Background Image with Grayscale */}
+              {/* Image */}
               <Image
                 src={service.image}
                 alt={service.title}
                 fill
-                className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                sizes="(max-width: 768px) 45vw, (max-width: 1024px) 35vw, 20vw"
+                priority={index < 2}
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                sizes="(max-width:640px) 65vw, (max-width:768px) 40vw, (max-width:1024px) 30vw, 20vw"
               />
-              
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/90 pointer-events-none" />
 
-              {/* Card Content */}
-              <div className="absolute inset-0 p-4 lg:p-5 flex flex-col justify-end pointer-events-none">
-                <div className="flex items-end justify-between pr-12">
-                  {/* Title */}
-                  <h3 className="text-white font-medium text-xs lg:text-sm leading-tight">
-                    {service.title.replace(' Dubai', '')}
-                  </h3>
-                </div>
-              </div>
-              
-              {/* Arrow Button (Transparent background overlay) */}
-              <div className="absolute bottom-3 right-3 z-20 pointer-events-auto">
-                <Link href={service.link} className={`w-10 h-10 lg:w-11 lg:h-11 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 bg-black/50 backdrop-blur-sm text-white group-hover:bg-brand group-hover:text-white`}>
-                  <ArrowUpRight className="w-5 h-5 lg:w-6 lg:h-6" />
-                </Link>
+              {/* Gradient */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: 'linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 35%, rgba(0,0,0,0) 70%)',
+                }}
+              />
+
+              {/* Content */}
+              <div className="absolute bottom-4 left-4 right-14 z-10 pointer-events-none">
+                <h3 className="text-white text-sm md:text-base font-medium leading-tight">
+                  {service.title.replace(' Dubai', '')}
+                </h3>
               </div>
 
-              <Link href={service.link} className="absolute inset-0 z-10">
-                <span className="sr-only">View {service.title}</span>
+              {/* Arrow */}
+              <Link
+                href={service.link}
+                className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-brand text-white shadow-lg shadow-brand/40 transition-all duration-300 hover:scale-110 hover:bg-brand-hover"
+              >
+                <ArrowUpRight className="w-4 h-4 lg:w-5 lg:h-5" />
+              </Link>
+
+              {/* Full Card Link */}
+              <Link
+                href={service.link}
+                className="absolute inset-0 z-[5]"
+              >
+                <span className="sr-only">
+                  View {service.title}
+                </span>
               </Link>
             </motion.div>
           ))}
         </div>
-
       </main>
-    </div>
+    </section>
   );
 }

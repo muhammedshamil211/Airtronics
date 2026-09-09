@@ -48,11 +48,11 @@ export default function Navbar() {
       <div className="flex items-center space-x-2 md:space-x-3">
         <Link 
           href="/contact" 
-          className="hidden sm:flex px-5 py-2.5 rounded-full bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors"
+          className="hidden sm:flex px-6 py-3 rounded-full bg-brand text-white text-sm font-semibold shadow-md shadow-brand/30 hover:shadow-lg hover:shadow-brand/40 hover:-translate-y-0.5 hover:bg-brand-hover transition-all"
         >
           BOOK A SERVICE
         </Link>
-        <button className="hidden sm:flex w-10 h-10 rounded-full bg-brand-dark items-center justify-center text-white hover:bg-black transition-colors">
+        <button className="hidden sm:flex w-11 h-11 rounded-full bg-[#111111] items-center justify-center text-white shadow-md hover:bg-black hover:-translate-y-0.5 transition-all">
           <ArrowUpRight className="w-5 h-5" />
         </button>
         
@@ -67,7 +67,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-lg border-t border-gray-100 p-4 flex flex-col space-y-3 lg:hidden">
+        <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col space-y-3 lg:hidden">
           {navLinks.map((item) => (
             <Link 
               key={item.name} 
@@ -80,7 +80,7 @@ export default function Navbar() {
           ))}
           <Link 
             href="/contact" 
-            className="sm:hidden px-4 py-3 text-center rounded-lg bg-brand text-white text-sm font-semibold hover:bg-brand-hover transition-colors mt-2"
+            className="sm:hidden px-4 py-3.5 text-center rounded-lg bg-brand text-white text-sm font-semibold shadow-md hover:bg-brand-hover transition-colors mt-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             BOOK A SERVICE
