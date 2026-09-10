@@ -1,4 +1,11 @@
 import Hero from '@/components/home/Hero';
+import ContactTicker from '@/components/home/ContactTicker';
+import AboutSection from '@/components/home/AboutSection';
+import ServicesShowcase from '@/components/home/ServicesShowcase';
+import ProcessSection from '@/components/home/ProcessSection';
+import TeamSection from '@/components/home/TeamSection';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
+import CtaSection from '@/components/home/CtaSection';
 
 export const metadata = {
   title: 'Airtronics Fixcare Technical Services LLC | Premium HVAC Services In Dubai',
@@ -10,6 +17,13 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#c1121f] selection:text-white">
       <Hero />
+      <ContactTicker />
+      <AboutSection />
+      <ServicesShowcase />
+      <ProcessSection />
+      <TeamSection />
+      <TestimonialsSection />
+      <CtaSection />
     </main>
   );
 }
