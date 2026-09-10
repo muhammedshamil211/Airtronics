@@ -1,5 +1,6 @@
 import Hero from '@/components/home/Hero';
 import ContactTicker from '@/components/home/ContactTicker';
+import MoneySavingCTA from '@/components/home/MoneySavingCTA';
 import AboutSection from '@/components/home/AboutSection';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
 import ProcessSection from '@/components/home/ProcessSection';
@@ -18,6 +19,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#c1121f] selection:text-white">
       <Hero />
       <ContactTicker />
+      <MoneySavingCTA />
       <AboutSection />
       <ServicesShowcase />
       <ProcessSection />

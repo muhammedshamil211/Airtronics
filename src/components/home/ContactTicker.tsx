@@ -12,13 +12,13 @@ const tickerItems = [
   },
   {
     icon: <Phone className="w-4 h-4 text-white" />,
-    text: 'CALL NOW: 050 123 4567',
-    link: 'tel:+971501234567'
+    text: 'CALL NOW: +971 58 659 6321',
+    link: 'tel:+971586596321'
   },
   {
     icon: <MessageCircle className="w-4 h-4 text-[#25D366]" />,
-    text: 'WHATSAPP: +971 50 123 4567',
-    link: 'https://wa.me/971501234567'
+    text: 'WHATSAPP: +971 58 659 6321',
+    link: 'https://wa.me/971586596321'
   },
   {
     icon: <Mail className="w-4 h-4 text-white" />,

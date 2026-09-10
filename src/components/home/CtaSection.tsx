@@ -39,11 +39,11 @@ export default function CtaSection() {
             </Link>
             
             <Link 
-              href="tel:+971501234567" 
+              href="tel:+971586596321" 
               className="w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-[#005eb8] hover:scale-105 transition-all duration-300"
             >
               <PhoneCall className="w-5 h-5" />
-              050 123 4567
+              +971 58 659 6321
             </Link>
           </div>
 

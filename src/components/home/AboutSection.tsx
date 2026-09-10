@@ -33,7 +33,7 @@ const features = [
 export default function AboutSection() {
   return (
     <section className="bg-white pb-12 md:pb-16 pt-2">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1200px] w-full mx-auto px-1 md:px-8">
         
         {/* Top Banner */}
         <div className="bg-brand py-16 text-center w-full">
