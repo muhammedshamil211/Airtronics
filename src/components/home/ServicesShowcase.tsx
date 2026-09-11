@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { services } from '@/data/services';
@@ -10,57 +11,77 @@ import { services } from '@/data/services';
 export default function ServicesShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Generate Service Schema for SEO
+  const serviceSchemas = services.map(service => ({
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.title,
+    "provider": {
+      "@type": "HVACBusiness",
+      "name": "Airtronics Fixcare Technical Services LLC"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Dubai"
+    },
+    "description": service.description,
+    "url": `https://airtronicsfixcare.com${service.link}`
+  }));
+
   return (
-    <section className="w-full bg-slate-50 py-24 overflow-hidden relative">
+    <section className="w-full bg-slate-50 py-24 overflow-hidden relative" aria-labelledby="services-heading">
+      <Script id="service-schemas" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemas) }} />
       <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <header className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="max-w-2xl">
-            <h2 className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-medium tracking-tight text-[#111111] leading-[1.2] mb-4">
+            <h2 id="services-heading" className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-medium tracking-tight text-[#111111] leading-[1.2] mb-4">
               Professional HVAC Services & AC Repair in Dubai
             </h2>
             <p className="text-[15px] leading-relaxed text-[#666666]">
               Airtronics provides comprehensive air conditioning solutions across Dubai. From expert AC installation and emergency repairs to professional duct cleaning and preventive HVAC maintenance, our certified technicians ensure reliable climate control for residential and commercial properties.
             </p>
           </div>
-          <div className="mt-8 md:mt-0 flex items-center space-x-6">
-            <Link href="/services" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group">
+          <nav className="mt-8 md:mt-0 flex items-center space-x-6" aria-label="Services Links">
+            <Link href="/services" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group" aria-label="View All AC Services">
               View All Services
-              <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
             </Link>
-            <Link href="/contact" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group">
+            <Link href="/contact" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group" aria-label="Call for Booking AC Service">
               Call For Booking
-              <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
             </Link>
-          </div>
-        </div>
+          </nav>
+        </header>
 
         {/* Horizontal Scroll / Grid Showcase */}
         <div
           ref={containerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          role="list"
         >
           {services.map((service, index) => (
-            <motion.div
+            <motion.article
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               key={service.id}
+              role="listitem"
               className="group relative h-[420px] rounded-2xl overflow-hidden bg-slate-900 shadow-xl cursor-pointer"
             >
               <Image
                 src={service.image}
-                alt={service.title}
+                alt={`${service.title} Service - Dubai`}
                 fill
                 className="object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700 ease-in-out"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" aria-hidden="true" />
 
               <div className="absolute bottom-0 left-0 w-full p-6 flex items-end justify-between">
                 <div className="pr-4">
-                  <span className="text-[#005eb8] font-bold text-sm mb-2 block">{service.id}.</span>
+                  <span className="text-[#005eb8] font-bold text-sm mb-2 block" aria-hidden="true">{service.id}.</span>
                   <h3 className="text-xl md:text-2xl font-medium tracking-tight text-white mb-2 group-hover:text-white/90 transition-colors">
                     {service.title}
                   </h3>
@@ -70,13 +91,13 @@ export default function ServicesShowcase() {
                 </div>
 
                 <div className="bg-white group-hover:bg-[#005eb8] rounded-full p-3 transition-colors duration-300 shrink-0">
-                  <ArrowUpRight className="w-5 h-5 text-[#005eb8] group-hover:text-white transition-colors duration-300" />
+                  <ArrowUpRight className="w-5 h-5 text-[#005eb8] group-hover:text-white transition-colors duration-300" aria-hidden="true" />
                 </div>
               </div>
-              <Link href={service.link} className="absolute inset-0 z-10">
-                <span className="sr-only">View {service.title}</span>
+              <Link href={service.link} className="absolute inset-0 z-10" aria-label={`View ${service.title} Details`}>
+                <span className="sr-only">View {service.title} details</span>
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

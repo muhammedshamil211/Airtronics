@@ -13,7 +13,7 @@ export default function Hero() {
   const [showMoreDetails, setShowMoreDetails] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
-    service: 'AC Repair',
+    service: 'AC Repair Dubai',
     address: '',
     date: '',
     details: ''
@@ -47,9 +47,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#fcfcfc]">
+    <section aria-label="HVAC and AC Repair Services Hero" className="relative overflow-hidden bg-[#fcfcfc]">
       {/* Background Wave */}
-      <div className="absolute inset-x-0 top-0 z-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-x-0 top-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <svg
           viewBox="0 0 1440 600"
           preserveAspectRatio="none"
@@ -63,57 +63,61 @@ export default function Hero() {
         </svg>
       </div>
 
-      <main className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 pt-10 lg:pt-14  pb-2">
+      {/* Changed <main> to <div> because <main> should only be used once per page at the root layout level for SEO */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-5 md:px-8 pt-10 lg:pt-14 pb-2">
 
-        {/* Label */}
-        <div className="flex items-center gap-2 mb-2">
-          <span className="text-brand font-semibold">/</span>
-          <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 ">
-            Dubai HVAC Specialists
+        {/* SEO Optimized Label */}
+        <header className="flex items-center gap-2 mb-2">
+          <span className="text-brand font-semibold" aria-hidden="true">/</span>
+          <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800">
+            Top-Rated AC & HVAC Company in Dubai
           </span>
-        </div>
+        </header>
 
         {/* Hero Content */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12 mb-16">
 
-          {/* Left: Headline */}
+          {/* Left: SEO Optimized Headline (H1) */}
           <div className="lg:w-3/5">
-            <h1 className="text-[36px] sm:text-[46px] md:text-[54px] lg:text-[64px]  font-medium tracking-tight leading-[1.05] text-[#111111]">
-              Premium HVAC<br className="hidden sm:block" /> Services In Dubai
+            <h1 className="text-[36px] sm:text-[46px] md:text-[54px] lg:text-[64px] font-medium tracking-tight leading-[1.05] text-[#111111]">
+              Expert AC Repair &<br className="hidden sm:block" /> HVAC Services in Dubai
             </h1>
           </div>
 
-          {/* Right: Text & Links */}
+          {/* Right: Keyword-Rich Text & Links */}
           <div className="lg:w-2/5 flex flex-col justify-end">
             <p className="text-[#666666] text-sm md:text-[15px] leading-relaxed mb-6 max-w-[400px]">
-              Airtronics delivers expert HVAC installation, AC repair,
-              preventive maintenance, duct cleaning and commercial climate
-              control solutions across Dubai. Trusted by residential,
-              commercial, hospitality and industrial clients.
+              Airtronics is Dubai's trusted partner for fast AC repair, professional HVAC installation, 
+              preventive maintenance, and deep duct cleaning. Our certified technicians deliver 
+              energy-efficient cooling solutions for residential and commercial properties.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 md:gap-5 text-sm md:text-[15px]">
+            <nav className="flex flex-wrap items-center gap-4 md:gap-5 text-sm md:text-[15px]" aria-label="Hero Call to Actions">
               <Link
                 href="/contact"
+                title="Contact us for AC Repair in Dubai"
                 className="flex items-center gap-2 bg-brand text-white font-semibold px-7 py-3.5 rounded-full hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/30 transition-all group"
+                aria-label="Call for Booking AC Repair"
               >
                 Call For Booking
-                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
 
               <Link
                 href="/services"
+                title="View all our HVAC and AC services"
                 className="flex items-center gap-2 bg-white text-[#111] border border-gray-200 font-semibold px-7 py-3.5 rounded-full hover:border-gray-300 hover:bg-gray-50 transition-all shadow-sm group"
+                aria-label="View All Services"
               >
                 View All Services
-                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Link>
-            </div>
+            </nav>
           </div>
         </div>
 
         {/* Service Cards */}
-        <div className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 xl:grid xl:grid-cols-5 xl:overflow-visible">
+        <section className="flex gap-4 lg:gap-5 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-4 xl:grid xl:grid-cols-5 xl:overflow-visible" aria-label="Our Top Services">
           {displayServices.map((service, index) => (
             <motion.div
               key={service.id}
@@ -125,65 +129,71 @@ export default function Hero() {
               }}
               className="relative overflow-hidden rounded-[20px] w-[65vw] sm:w-[40vw] md:w-[30vw] lg:w-[22vw] xl:w-auto h-[220px] sm:h-[240px] lg:h-[260px] shrink-0 snap-center group"
             >
-              {/* Image */}
+              {/* Image with Descriptive Alt Tag */}
               <Image
                 src={service.image}
-                alt={service.title}
+                alt={`${service.title} - Professional HVAC Service in Dubai`}
                 fill
                 priority={index < 2}
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width:640px) 65vw, (max-width:768px) 40vw, (max-width:1024px) 30vw, 20vw"
               />
 
-              {/* Gradient */}
               <div
                 className="absolute inset-0"
                 style={{
                   background: 'linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.35) 35%, rgba(0,0,0,0) 70%)',
                 }}
+                aria-hidden="true"
               />
 
-              {/* Content */}
+              {/* H3 tags for SEO structure within cards */}
               <div className="absolute bottom-4 left-4 right-14 z-10 pointer-events-none">
                 <h3 className="text-white text-sm md:text-base font-medium leading-tight">
                   {service.title.replace(' Dubai', '')}
                 </h3>
               </div>
 
-              {/* Arrow */}
               <Link
                 href={service.link}
+                aria-label={`Learn more about our ${service.title} services`}
                 className="absolute bottom-3 right-3 z-20 flex items-center justify-center w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-white text-brand shadow-lg shadow-brand/40 transition-all duration-300 hover:scale-110 group-hover:bg-brand group-hover:text-white"
               >
-                <ArrowUpRight className="w-4 h-4 lg:w-5 lg:h-5" />
+                <ArrowUpRight className="w-4 h-4 lg:w-5 lg:h-5" aria-hidden="true" />
               </Link>
 
-              {/* Full Card Link */}
               <Link
                 href={service.link}
                 className="absolute inset-0 z-[5]"
+                aria-label={`View details for ${service.title}`}
               >
                 <span className="sr-only">
-                  View {service.title}
+                  View {service.title} Services in Dubai
                 </span>
               </Link>
             </motion.div>
           ))}
-        </div>
+        </section>
 
-        {/* Long Book Now Button */}
+        {/* WhatsApp Button */}
         <div className="mt-2 w-full">
           <button
             onClick={() => setIsModalOpen(true)}
+            aria-haspopup="dialog"
+            aria-expanded={isModalOpen}
+            aria-label="Book AC Service on WhatsApp"
             className="flex items-center justify-center w-full bg-[#25D366] text-white font-medium text-[15px] md:text-base py-4 rounded-xl hover:bg-[#1ebd5a] transition-colors shadow-lg shadow-[#25D366]/20"
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5 mr-2 fill-current" aria-hidden="true">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
             </svg>
-            Book Now on WhatsApp
+            Book AC Service on WhatsApp
           </button>
         </div>
-      </main>
+      </div>
+
+      {/* WhatsApp Booking Modal - Kept the same but ensured proper form semantics */}
+      {/* ... (Keep your existing AnimatePresence modal code here, no SEO changes needed for hidden modals) ... */}
 
       {/* WhatsApp Booking Modal */}
       <AnimatePresence>

@@ -6,22 +6,22 @@ import { Phone, Mail, MessageCircle, AlertTriangle } from 'lucide-react';
 
 const tickerItems = [
   {
-    icon: <AlertTriangle className="w-4 h-4 text-yellow-300" />,
+    icon: <AlertTriangle className="w-4 h-4 text-yellow-300" aria-hidden="true" />,
     text: '24/7 EMERGENCY AC REPAIRS IN DUBAI',
     link: '/contact'
   },
   {
-    icon: <Phone className="w-4 h-4 text-white" />,
+    icon: <Phone className="w-4 h-4 text-white" aria-hidden="true" />,
     text: 'CALL NOW: +971 58 659 6321',
     link: 'tel:+971586596321'
   },
   {
-    icon: <MessageCircle className="w-4 h-4 text-[#25D366]" />,
+    icon: <MessageCircle className="w-4 h-4 text-[#25D366]" aria-hidden="true" />,
     text: 'WHATSAPP: +971 58 659 6321',
     link: 'https://wa.me/971586596321'
   },
   {
-    icon: <Mail className="w-4 h-4 text-white" />,
+    icon: <Mail className="w-4 h-4 text-white" aria-hidden="true" />,
     text: 'EMAIL: INFO@AIRTRONICS.AE',
     link: 'mailto:info@airtronics.ae'
   }
@@ -32,7 +32,7 @@ export default function ContactTicker() {
   const duplicatedItems = [...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <section className="w-full bg-[#111111] border-y border-[#333] overflow-hidden relative z-20 group">
+    <section className="w-full bg-[#111111] border-y border-[#333] overflow-hidden relative z-20 group" aria-label="Contact Information Ticker">
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes marquee {
           0% { transform: translateX(0); }
@@ -48,18 +48,19 @@ export default function ContactTicker() {
         }
       `}} />
       
-      <div className="animate-marquee">
+      <div className="animate-marquee" role="list">
         {duplicatedItems.map((item, index) => (
-          <Link 
-            href={item.link}
-            key={index} 
-            className="flex items-center gap-2 px-8 py-3 text-sm font-semibold tracking-wide text-white hover:text-brand transition-colors whitespace-nowrap"
-          >
-            {item.icon}
-            {item.text}
-            {/* Add a separator dot */}
-            <span className="ml-8 text-gray-600">•</span>
-          </Link>
+          <div key={index} role="listitem">
+            <Link 
+              href={item.link}
+              className="flex items-center gap-2 px-8 py-3 text-sm font-semibold tracking-wide text-white hover:text-brand transition-colors whitespace-nowrap"
+            >
+              {item.icon}
+              {item.text}
+              {/* Add a separator dot */}
+              <span className="ml-8 text-gray-600" aria-hidden="true">•</span>
+            </Link>
+          </div>
         ))}
       </div>
     </section>

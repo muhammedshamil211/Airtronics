@@ -40,33 +40,37 @@ export default function TeamSection() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#fcfcfc] py-16 md:py-24">
+    <section className="bg-[#fcfcfc] py-16 md:py-24" aria-labelledby="team-heading">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8">
         
         {/* Top Header Section */}
-        <div className="text-center mb-16">
+        <header className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-brand font-semibold">/</span>
+            <span className="text-brand font-semibold" aria-hidden="true">/</span>
             <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-              Our Experts
+              Dubai Municipality Certified Experts
             </span>
           </div>
-          <h2 className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-3xl mx-auto leading-[1.1]">
-            Meet Our Team Members
+          <h2 id="team-heading" className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-3xl mx-auto leading-[1.1]">
+            Meet Our AC Repair Specialists
           </h2>
-        </div>
+          <p className="mt-4 text-[#666666] text-[15px] leading-relaxed max-w-2xl mx-auto">
+            Our team consists of highly trained and certified professionals, ensuring your HVAC systems are handled according to the highest UAE standards.
+          </p>
+        </header>
 
         {/* Grid Section */}
-        <div className="flex flex-col md:flex-row gap-4 lg:gap-6 justify-center">
+        <div className="flex flex-col md:flex-row gap-4 lg:gap-6 justify-center" role="list">
           {team.map((member, index) => {
             const isHovered = hoveredIndex === index;
             
             return (
-              <div 
+              <article 
                 key={member.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className="flex flex-col items-center flex-1 cursor-pointer group"
+                role="listitem"
               >
                 {/* Names & Roles */}
                 <div className="text-center mb-6">
@@ -82,16 +86,17 @@ export default function TeamSection() {
                 <div 
                   className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2"
                 >
-                  <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'opacity-100 mix-blend-normal' : 'opacity-80 grayscale mix-blend-luminosity group-hover:opacity-100'}`}>
+                  <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'opacity-100 mix-blend-normal' : 'opacity-80 grayscale mix-blend-luminosity group-hover:opacity-100'}`} aria-hidden="true">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={`${member.name} - ${member.role} in Dubai`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 20vw"
                       className="object-cover object-top"
                     />
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

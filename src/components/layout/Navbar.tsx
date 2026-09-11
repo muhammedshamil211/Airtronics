@@ -17,12 +17,12 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="w-full px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100/50">
+    <header className="w-full px-4 md:px-8 py-4 flex items-center justify-between sticky top-0 z-50 bg-[#fcfcfc]/90 backdrop-blur-md border-b border-gray-100/50" aria-label="Main Header">
       <div className="flex items-center">
-        <Link href="/">
+        <Link href="/" aria-label="Airtronics Fixcare Home">
           <Image 
             src="/image/logo.png" 
-            alt="Airtronics Fixcare" 
+            alt="Airtronics Fixcare - Top HVAC and AC Repair Company in Dubai" 
             width={160} 
             height={50} 
             className="object-contain h-10 w-auto"
@@ -32,7 +32,7 @@ export default function Navbar() {
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden lg:flex items-center space-x-2">
+      <nav className="hidden lg:flex items-center space-x-2" aria-label="Desktop Navigation">
         {navLinks.map((item) => (
           <Link 
             key={item.name} 
@@ -49,25 +49,32 @@ export default function Navbar() {
         <Link 
           href="/contact" 
           className="hidden sm:flex px-6 py-3 rounded-full bg-brand text-white text-sm font-semibold shadow-md shadow-brand/30 hover:shadow-lg hover:shadow-brand/40 hover:-translate-y-0.5 hover:bg-brand-hover transition-all"
+          aria-label="Book a Service"
         >
           BOOK A SERVICE
         </Link>
-        <button className="hidden sm:flex w-11 h-11 rounded-full bg-[#111111] items-center justify-center text-white shadow-md hover:bg-black hover:-translate-y-0.5 transition-all">
-          <ArrowUpRight className="w-5 h-5" />
-        </button>
+        <Link 
+          href="/contact"
+          className="hidden sm:flex w-11 h-11 rounded-full bg-[#111111] items-center justify-center text-white shadow-md hover:bg-black hover:-translate-y-0.5 transition-all"
+          aria-label="Contact Us"
+        >
+          <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
+        </Link>
         
         {/* Mobile Menu Button */}
         <button 
           className="lg:hidden p-2 text-gray-700"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-expanded={isMobileMenuOpen}
+          aria-label="Toggle mobile menu"
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col space-y-3 lg:hidden">
+        <nav className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col space-y-3 lg:hidden" aria-label="Mobile Navigation">
           {navLinks.map((item) => (
             <Link 
               key={item.name} 
@@ -82,10 +89,11 @@ export default function Navbar() {
             href="/contact" 
             className="sm:hidden px-4 py-3.5 text-center rounded-lg bg-brand text-white text-sm font-semibold shadow-md hover:bg-brand-hover transition-colors mt-2"
             onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Book a Service Mobile"
           >
             BOOK A SERVICE
           </Link>
-        </div>
+        </nav>
       )}
     </header>
   );
