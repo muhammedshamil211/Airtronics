@@ -35,10 +35,10 @@ export default function ServicesShowcase() {
         <header className="flex flex-col md:flex-row md:items-end justify-between mb-16">
           <div className="max-w-2xl">
             <h2 id="services-heading" className="text-[28px] sm:text-[32px] md:text-[36px] lg:text-[40px] font-medium tracking-tight text-[#111111] leading-[1.2] mb-4">
-              Professional HVAC Services & AC Repair in Dubai
+              Expert AC Repair & Emergency HVAC Services in Dubai
             </h2>
             <p className="text-[15px] leading-relaxed text-[#666666]">
-              Airtronics provides comprehensive air conditioning solutions across Dubai. From expert AC installation and emergency repairs to professional duct cleaning and preventive HVAC maintenance, our certified technicians ensure reliable climate control for residential and commercial properties.
+              Airtronics provides top-rated air conditioning solutions across major communities like Downtown Dubai, Palm Jumeirah, and Dubai Marina. From 24/7 emergency AC maintenance and central AC installation to professional duct cleaning, our Dubai Municipality approved licensed technicians deliver reliable same-day repair with upfront pricing.
             </p>
           </div>
           <nav className="mt-8 md:mt-0 flex items-center space-x-6" aria-label="Services Links">
@@ -85,7 +85,7 @@ export default function ServicesShowcase() {
                   <h3 className="text-xl md:text-2xl font-medium tracking-tight text-white mb-2 group-hover:text-white/90 transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-[#cccccc] text-[15px] opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300 overflow-hidden line-clamp-3">
+                  <p className="text-[#cccccc] text-[15px] opacity-100 h-auto md:opacity-0 md:h-0 md:group-hover:h-auto md:group-hover:opacity-100 transition-all duration-300 overflow-hidden line-clamp-3">
                     {service.description}
                   </p>
                 </div>

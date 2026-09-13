@@ -5,6 +5,7 @@ import AboutSection from '@/components/home/AboutSection';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
 import ProcessSection from '@/components/home/ProcessSection';
 import TeamSection from '@/components/home/TeamSection';
+import FaqSection from '@/components/home/FaqSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import CtaSection from '@/components/home/CtaSection';
 
@@ -24,6 +25,7 @@ export default function Home() {
       <ServicesShowcase />
       <ProcessSection />
       <TeamSection />
+      <FaqSection />
       <TestimonialsSection />
       <CtaSection />
     </main>
