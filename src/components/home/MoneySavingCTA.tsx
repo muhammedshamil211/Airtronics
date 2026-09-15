@@ -41,7 +41,7 @@ export default function MoneySavingCTA() {
           {/* Image */}
           <div className="w-2/5 md:w-2/5 relative border-l border-gray-200">
             <Image
-              src="/hvac_unit.jpg"
+              src="/images/hvac-bill.png"
               alt="Technician maintaining premium HVAC Unit in Dubai"
               fill
               sizes="(max-width: 768px) 40vw, 480px"

@@ -94,7 +94,7 @@ export default function Hero() {
 
             <nav className="flex flex-wrap items-center gap-4 md:gap-5 text-sm md:text-[15px]" aria-label="Hero Call to Actions">
               <Link
-                href="/contact"
+                href="tel:+971555619369"
                 title="Contact us for AC Repair in Dubai"
                 className="flex items-center gap-2 bg-brand text-white font-semibold px-7 py-3.5 rounded-full hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/30 transition-all group"
                 aria-label="Call for Booking AC Repair"

@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="flex items-center">
         <Link href="/" aria-label="Airtronics Fixcare Home">
           <Image 
-            src="/image/logo.png" 
+            src="/images/airtronics-logo.png" 
             alt="Airtronics Fixcare - Top HVAC and AC Repair Company in Dubai" 
             width={160} 
             height={50} 

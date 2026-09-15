@@ -88,7 +88,7 @@ export default function FaqSection() {
         <header className="text-center max-w-3xl mx-auto mb-16">
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
-            <span className="text-sm md:text-sm font-semibold tracking-wide text-gray-800 uppercase text-center">
+            <span className="text-[12px] md:text-sm font-semibold tracking-wide text-gray-800 uppercase text-center">
               Got Questions? We Have Answers | Dubai Municipality Approved
             </span>
           </div>
