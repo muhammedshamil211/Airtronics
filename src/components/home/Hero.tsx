@@ -40,7 +40,7 @@ export default function Hero() {
       if (formData.details) text += `\nNotes: ${formData.details}`;
     }
     text += `\nMy client number is +971 58 659 6321`;
-    
+
     const url = `https://wa.me/971586596321?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
     setIsModalOpen(false);
@@ -87,8 +87,8 @@ export default function Hero() {
           {/* Right: Keyword-Rich Text & Links */}
           <div className="lg:w-2/5 flex flex-col justify-end">
             <p className="text-[#666666] text-sm md:text-[15px] leading-relaxed mb-6 max-w-[400px]">
-              Airtronics is Dubai's trusted partner for fast AC repair, professional HVAC installation, 
-              preventive maintenance, and deep duct cleaning. Our certified technicians deliver 
+              Airtronics is Dubai's trusted partner for fast AC repair, professional HVAC installation,
+              preventive maintenance, and deep duct cleaning. Our certified technicians deliver
               energy-efficient cooling solutions for residential and commercial properties.
             </p>
 
@@ -228,7 +228,7 @@ export default function Hero() {
               {/* Form */}
               <form onSubmit={handleWhatsAppSubmit} className="p-5 sm:p-6">
                 <div className="space-y-3">
-                  
+
                   <div>
                     <label className="block text-[13px] font-medium text-gray-600 mb-1">
                       Your Name
@@ -236,7 +236,7 @@ export default function Hero() {
                     <input
                       required
                       type="text"
-                      placeholder="John Doe"
+                      placeholder="your good name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full bg-gray-50 border border-gray-200 text-[#111111] text-[15px] rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all"

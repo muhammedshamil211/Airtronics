@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import {
     MapPin,
     Phone,
@@ -8,6 +9,37 @@ import {
 } from "lucide-react";
 
 export default function ContactSection() {
+    const [formData, setFormData] = useState({
+        name: '',
+        company: '',
+        email: '',
+        phone: '',
+        address: '',
+        service: '',
+        details: ''
+    });
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Format the message for WhatsApp
+        let text = `Hello, my name is ${formData.name}. I would like to book a service for: ${formData.service}.`;
+        if (formData.company) text += `\nCompany: ${formData.company}`;
+        if (formData.email) text += `\nEmail: ${formData.email}`;
+        if (formData.phone) text += `\nPhone: ${formData.phone}`;
+        if (formData.address) text += `\nAddress: ${formData.address}`;
+        if (formData.details) text += `\nNotes: ${formData.details}`;
+        
+        // Airtronics company WhatsApp number
+        const url = `https://wa.me/971586596321?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
+
+        // Reset form
+        setFormData({
+            name: '', company: '', email: '', phone: '', address: '', service: '', details: ''
+        });
+    };
+
     return (
         <section className="bg-[#f7f8fa] py-10">
             <div className="container mx-auto max-w-[1200px] px-6">
@@ -113,19 +145,24 @@ export default function ContactSection() {
                                 Send Us a Message
                             </h2>
 
-                            <form className="mt-8 space-y-4">
+                            <form onSubmit={handleSubmit} className="mt-8 space-y-4">
 
                                 <div className="grid md:grid-cols-2 gap-5">
 
                                     <input
+                                        required
                                         type="text"
-                                        placeholder="Name"
+                                        placeholder="Name *"
+                                        value={formData.name}
+                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
                                     <input
                                         type="text"
                                         placeholder="Company Name"
+                                        value={formData.company}
+                                        onChange={(e) => setFormData({...formData, company: e.target.value})}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
@@ -134,48 +171,62 @@ export default function ContactSection() {
                                 <div className="grid md:grid-cols-2 gap-5">
 
                                     <input
+                                        required
                                         type="email"
-                                        placeholder="Email Address"
+                                        placeholder="Email Address *"
+                                        value={formData.email}
+                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
                                     <input
+                                        required
                                         type="tel"
-                                        placeholder="Phone Number"
+                                        placeholder="Phone Number *"
+                                        value={formData.phone}
+                                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
                                 </div>
 
                                 <input
+                                    required
                                     type="text"
-                                    placeholder="Address"
+                                    placeholder="Address *"
+                                    value={formData.address}
+                                    onChange={(e) => setFormData({...formData, address: e.target.value})}
                                     className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                 />
 
                                 <select
+                                    required
+                                    value={formData.service}
+                                    onChange={(e) => setFormData({...formData, service: e.target.value})}
                                     className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                 >
-                                    <option>Select Service</option>
-                                    <option>AC Installation</option>
-                                    <option>AC Repair</option>
-                                    <option>HVAC Service</option>
-                                    <option>Duct Cleaning</option>
-                                    <option>Annual Maintenance Contract (AMC)</option>
-                                    <option>Commercial HVAC Solutions</option>
+                                    <option value="">Select Service *</option>
+                                    <option value="AC Installation">AC Installation</option>
+                                    <option value="AC Repair">AC Repair</option>
+                                    <option value="HVAC Service">HVAC Service</option>
+                                    <option value="Duct Cleaning">Duct Cleaning</option>
+                                    <option value="Annual Maintenance Contract (AMC)">Annual Maintenance Contract (AMC)</option>
+                                    <option value="Commercial HVAC Solutions">Commercial HVAC Solutions</option>
                                 </select>
 
                                 <textarea
                                     rows={6}
                                     placeholder="Tell us about your requirement..."
+                                    value={formData.details}
+                                    onChange={(e) => setFormData({...formData, details: e.target.value})}
                                     className="w-full rounded-xl border border-slate-200 p-4 outline-none focus:border-[#005eb8]"
                                 />
 
                                 <button
                                     type="submit"
-                                    className="h-14 rounded-full bg-[#005eb8] px-8 text-white font-medium transition hover:opacity-90"
+                                    className="h-14 rounded-full bg-[#25D366] px-8 text-white font-medium transition hover:opacity-90 flex items-center justify-center gap-2"
                                 >
-                                    Submit Request
+                                    Continue to WhatsApp
                                 </button>
 
                             </form>
