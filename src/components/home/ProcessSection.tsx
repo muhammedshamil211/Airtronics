@@ -68,7 +68,7 @@ export default function ProcessSection() {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-8 max-w-[1200px] relative z-10">
+      <div className="container mx-auto px-2 md:px-8 max-w-[1200px] relative z-10">
         
         {/* Header */}
         <header className="text-center max-w-2xl mx-auto mb-20">

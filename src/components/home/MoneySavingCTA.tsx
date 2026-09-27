@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function MoneySavingCTA() {
   return (
     <section className="bg-white" aria-labelledby="saving-cta-heading">
-      <div className="max-w-[1200px] w-full mx-auto px-5 md:px-8">
+      <div className="max-w-[1200px] w-full mx-auto px-2 md:px-8">
         <div className="flex flex-row items-stretch justify-between border-gray-200 bg-white hover:shadow-md transition-shadow duration-300">
           
           {/* Content */}

@@ -77,7 +77,7 @@ export default function AboutSection() {
       className="bg-white pb-12 md:pb-20 pt-2"
       aria-labelledby="about-heading"
     >
-      <div className="max-w-[1200px] w-full mx-auto px-4 md:px-8">
+      <div className="max-w-[1200px] w-full mx-auto px-2 md:px-8">
         {/* Top Banner */}
         <motion.header
           className="bg-brand py-16 text-center w-full rounded-sm"

@@ -53,22 +53,27 @@ function TeamSlide({
   const start = index / total;
   const end = (index + 1) / total;
 
+  const fadeInStart = index === 0 ? 0 : start;
+  const fadeInEnd = index === 0 ? 0 : start + 0.08;
+  const fadeOutStart = index === total - 1 ? 1 : end - 0.08;
+  const fadeOutEnd = index === total - 1 ? 1 : end;
+
   const opacity = useTransform(
     progress,
-    [start, start + 0.08, end - 0.08, end],
-    [0, 1, 1, 0]
+    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+    [index === 0 ? 1 : 0, 1, 1, index === total - 1 ? 1 : 0]
   );
 
   const imageX = useTransform(
     progress,
-    [start, start + 0.12, end - 0.08, end],
-    [120, 0, 0, -120]
+    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+    [index === 0 ? 0 : 120, 0, 0, index === total - 1 ? 0 : -120]
   );
 
   const textX = useTransform(
     progress,
-    [start, start + 0.12, end - 0.08, end],
-    [-80, 0, 0, -80]
+    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
+    [index === 0 ? 0 : -80, 0, 0, index === total - 1 ? 0 : -80]
   );
 
   const imageScale = useTransform(
@@ -82,8 +87,8 @@ function TeamSlide({
       style={{ opacity }}
       className="absolute inset-0 flex items-center"
     >
-      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div className="max-w-[1200px] mx-auto w-full px-4 sm:px-6 md:px-10 pt-10 md:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center">
 
           {/* IMAGE SIDE */}
           <motion.div
@@ -91,12 +96,12 @@ function TeamSlide({
               x: imageX,
               scale: imageScale,
             }}
-            className="relative"
+            className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:max-w-none"
           >
-            <div className="relative overflow-hidden rounded-3xl aspect-[4/5] lg:aspect-[4/4.5]">
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl h-[30vh] min-h-[240px] max-h-[350px] md:h-auto md:max-h-none md:aspect-[4/5] lg:aspect-[4/4.5]">
               <Image
                 src={member.image}
-                alt={member.name}
+                alt={`${member.name} - ${member.role} in Dubai`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
@@ -110,44 +115,44 @@ function TeamSlide({
           {/* CONTENT SIDE */}
           <motion.div
             style={{ x: textX }}
-            className="relative z-10"
+            className="relative z-10 text-center lg:text-left"
           >
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-2 md:mb-4 flex items-center justify-center lg:justify-start gap-2">
               <span className="text-brand font-semibold">/</span>
-              <span className="uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-gray-600">
+              <span className="uppercase tracking-[0.2em] text-[10px] md:text-sm font-semibold text-gray-600">
                 Airtronics Experts
               </span>
             </div>
 
-            <h3 className="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] leading-none font-medium tracking-tight text-[#111111]">
+            <h3 className="text-[28px] sm:text-[36px] md:text-[52px] lg:text-[72px] leading-tight font-medium tracking-tight text-[#111111]">
               {member.name}
             </h3>
 
-            <p className="mt-4 text-brand text-lg md:text-xl font-medium">
+            <p className="mt-2 md:mt-4 text-brand text-sm md:text-xl font-medium">
               {member.role}
             </p>
 
-            <div className="w-20 h-[2px] bg-brand my-8" />
+            <div className="w-12 md:w-20 h-[2px] bg-brand my-4 md:my-8 mx-auto lg:mx-0" />
 
-            <p className="text-[#666666] text-[16px] md:text-[18px] leading-relaxed max-w-xl">
+            <p className="text-[#666666] text-[14px] md:text-[18px] leading-relaxed max-w-xl mx-auto lg:mx-0">
               {member.description}
             </p>
 
-            <div className="mt-10 flex gap-8">
+            <div className="mt-6 md:mt-10 flex gap-6 md:gap-8 justify-center lg:justify-start">
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-[#111111]">
+                <p className="text-2xl md:text-4xl font-bold text-[#111111]">
                   4+
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs md:text-sm text-gray-500">
                   Years Experience
                 </p>
               </div>
 
               <div>
-                <p className="text-3xl md:text-4xl font-bold text-[#111111]">
+                <p className="text-2xl md:text-4xl font-bold text-[#111111]">
                   1000+
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-xs md:text-sm text-gray-500">
                   Projects
                 </p>
               </div>
@@ -206,7 +211,7 @@ export default function TeamSection() {
       <div
         className="relative"
         style={{
-          height: `${team.length * 100}vh`,
+          height: `${team.length * 90}vh`,
         }}
       >
         <div className="sticky top-0 h-screen overflow-hidden">
