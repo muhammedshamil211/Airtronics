@@ -152,7 +152,7 @@ export default function ServiceAreasSection() {
               </p>
 
               <Link
-                href="/contact"
+                href="/contact#contact-form"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#005eb8] hover:bg-[#004892] text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group"
               >
                 Check Availability

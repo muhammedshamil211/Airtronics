@@ -17,7 +17,7 @@ const team = [
     description:
       'Leading Airtronics Fixcare with expertise in HVAC design, AC repair, preventive maintenance, diagnostics, and commercial cooling solutions across Dubai.',
     image:
-      'https://images.unsplash.com/photo-1537368910025-702804a94666?q=80&w=1200&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop',
   },
   {
     id: 2,
@@ -53,28 +53,35 @@ function TeamSlide({
   const start = index / total;
   const end = (index + 1) / total;
 
-  const fadeInStart = index === 0 ? 0 : start;
-  const fadeInEnd = index === 0 ? 0 : start + 0.08;
-  const fadeOutStart = index === total - 1 ? 1 : end - 0.08;
-  const fadeOutEnd = index === total - 1 ? 1 : end;
+  let input: number[] = [];
+  let opacityOutput: number[] = [];
+  let imageXOutput: number[] = [];
+  let textXOutput: number[] = [];
 
-  const opacity = useTransform(
-    progress,
-    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-    [index === 0 ? 1 : 0, 1, 1, index === total - 1 ? 1 : 0]
-  );
+  if (index === 0) {
+    // First item: starts fully visible
+    input = [0, end - 0.08, end];
+    opacityOutput = [1, 1, 0];
+    imageXOutput = [0, 0, -120];
+    textXOutput = [0, 0, -80];
+  } else if (index === total - 1) {
+    // Last item: fades in, stays visible
+    input = [start, start + 0.08, 1];
+    opacityOutput = [0, 1, 1];
+    imageXOutput = [120, 0, 0];
+    textXOutput = [-80, 0, 0];
+  } else {
+    // Middle items
+    input = [start, start + 0.08, end - 0.08, end];
+    opacityOutput = [0, 1, 1, 0];
+    imageXOutput = [120, 0, 0, -120];
+    textXOutput = [-80, 0, 0, -80];
+  }
 
-  const imageX = useTransform(
-    progress,
-    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-    [index === 0 ? 0 : 120, 0, 0, index === total - 1 ? 0 : -120]
-  );
-
-  const textX = useTransform(
-    progress,
-    [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd],
-    [index === 0 ? 0 : -80, 0, 0, index === total - 1 ? 0 : -80]
-  );
+  const opacity = useTransform(progress, input, opacityOutput);
+  const visibility = useTransform(opacity, (val) => (val > 0 ? "visible" : "hidden"));
+  const imageX = useTransform(progress, input, imageXOutput);
+  const textX = useTransform(progress, input, textXOutput);
 
   const imageScale = useTransform(
     progress,
@@ -84,8 +91,8 @@ function TeamSlide({
 
   return (
     <motion.div
-      style={{ opacity }}
-      className="absolute inset-0 flex items-center"
+      style={{ opacity, visibility }}
+      className="absolute inset-0 flex items-center bg-[#fcfcfc]"
     >
       <div className="max-w-[1200px] mx-auto w-full px-4 sm:px-6 md:px-10 pt-10 md:pt-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 lg:gap-20 items-center">

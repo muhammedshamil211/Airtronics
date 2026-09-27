@@ -46,7 +46,7 @@ export default function ServicesShowcase() {
               View All Services
               <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
             </Link>
-            <Link href="/contact" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group" aria-label="Call for Booking AC Service">
+            <Link href="tel:+971582629760" className="text-[#005eb8] font-semibold hover:text-[#a00f1a] transition-colors flex items-center group" aria-label="Call for Booking AC Service">
               Call For Booking
               <ArrowUpRight className="w-4 h-4 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
             </Link>
