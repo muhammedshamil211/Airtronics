@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion,Variants } from 'framer-motion';
 
 // Enhanced features with stronger SEO keywords for the Dubai market
 const features = [
@@ -47,7 +47,7 @@ const stats = [
   { value: '45min', label: 'Average Response Time' },
 ];
 
-const fadeUp = {
+const fadeUp:Variants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -62,7 +62,7 @@ const fadeUp = {
   },
 };
 
-const staggerContainer = {
+const staggerContainer:Variants = {
   hidden: {},
   visible: {
     transition: {
