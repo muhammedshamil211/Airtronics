@@ -87,7 +87,7 @@ export default function ContactSection() {
                                     </div>
 
                                     <div>
-                                        <h4 className="font-medium text-black">
+                                        <h4 className="font-medium text-black" >
                                             Call Us
                                         </h4>
 
@@ -122,7 +122,7 @@ export default function ContactSection() {
                                         <Building2 size={20} />
                                     </div>
 
-                                    <div>
+                                    <div id="contact-form">
                                         <h4 className="font-medium text-black">
                                             Service Area
                                         </h4>
@@ -141,7 +141,7 @@ export default function ContactSection() {
 
                         <div className="p-10 lg:p-12">
 
-                            <h2 className="text-3xl font-medium text-black">
+                            <h2 className="text-3xl font-medium text-black" >
                                 Send Us a Message
                             </h2>
 

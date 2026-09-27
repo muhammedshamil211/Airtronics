@@ -140,7 +140,7 @@ export default function ProcessSection() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-5 text-center"
         >
-          <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#005eb8] hover:bg-[#a00f1a] rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group" aria-label="Book Your AC Repair Now">
+          <Link href="/contact#contact-form" className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#005eb8] hover:bg-[#a00f1a] rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group" aria-label="Book Your AC Repair Now">
             Book Your AC Repair Now
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>

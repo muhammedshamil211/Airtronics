@@ -1,106 +1,235 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
+import {
+  motion,
+  useScroll,
+  useTransform,
+  MotionValue,
+} from 'framer-motion';
 
 const team = [
   {
     id: 1,
-    name: 'Ahmed',
-    role: 'Senior Technician',
-    image: 'https://images.unsplash.com/photo-1537368910025-702804a94666?q=80&w=800&auto=format&fit=crop'
+    name: 'Muhammed Rafi',
+    role: 'Founder, HVAC Engineer & Master Technician',
+    description:
+      'Leading Airtronics Fixcare with expertise in HVAC design, AC repair, preventive maintenance, diagnostics, and commercial cooling solutions across Dubai.',
+    image:
+      'https://images.unsplash.com/photo-1537368910025-702804a94666?q=80&w=1200&auto=format&fit=crop',
   },
   {
     id: 2,
-    name: 'Sarah',
-    role: 'HVAC Engineer',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop'
+    name: 'Ahmed Siddiq',
+    role: 'Senior Technician',
+    description:
+      'Specialized in AC troubleshooting, emergency repair services, duct inspections, and energy-efficient cooling system maintenance.',
+    image:
+      'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1200&auto=format&fit=crop',
   },
   {
     id: 3,
-    name: 'John',
-    role: 'Installation Expert',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'
+    name: 'Jamsheer',
+    role: 'Senior Technician',
+    description:
+      'Experienced in residential and commercial HVAC systems, ensuring reliable cooling performance and long-term equipment health.',
+    image:
+      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
   },
-  {
-    id: 4,
-    name: 'Mike',
-    role: 'Maintenance Lead',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop'
-  },
-  {
-    id: 5,
-    name: 'David',
-    role: 'Duct Specialist',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop'
-  }
 ];
 
-export default function TeamSection() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+function TeamSlide({
+  member,
+  index,
+  total,
+  progress,
+}: {
+  member: (typeof team)[0];
+  index: number;
+  total: number;
+  progress: MotionValue<number>;
+}) {
+  const start = index / total;
+  const end = (index + 1) / total;
+
+  const opacity = useTransform(
+    progress,
+    [start, start + 0.08, end - 0.08, end],
+    [0, 1, 1, 0]
+  );
+
+  const imageX = useTransform(
+    progress,
+    [start, start + 0.12, end - 0.08, end],
+    [120, 0, 0, -120]
+  );
+
+  const textX = useTransform(
+    progress,
+    [start, start + 0.12, end - 0.08, end],
+    [-80, 0, 0, -80]
+  );
+
+  const imageScale = useTransform(
+    progress,
+    [start, end],
+    [1, 1.08]
+  );
 
   return (
-    <section className="bg-[#fcfcfc] py-16 md:py-24" aria-labelledby="team-heading">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8">
-        
-        {/* Top Header Section */}
-        <header className="text-center mb-16">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-brand font-semibold" aria-hidden="true">/</span>
-            <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-              Dubai Municipality Certified Experts
-            </span>
-          </div>
-          <h2 id="team-heading" className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-3xl mx-auto leading-[1.1]">
-            Meet Our AC Repair Specialists
-          </h2>
-          <p className="mt-4 text-[#666666] text-[15px] leading-relaxed max-w-2xl mx-auto">
-            Our team consists of highly trained and certified professionals, ensuring your HVAC systems are handled according to the highest UAE standards.
-          </p>
-        </header>
+    <motion.div
+      style={{ opacity }}
+      className="absolute inset-0 flex items-center"
+    >
+      <div className="max-w-[1200px] mx-auto w-full px-6 md:px-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
-        {/* Grid Section */}
-        <div className="flex flex-col md:flex-row gap-4 lg:gap-6 justify-center" role="list">
-          {team.map((member, index) => {
-            const isHovered = hoveredIndex === index;
-            
-            return (
-              <article 
-                key={member.id}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className="flex flex-col items-center flex-1 cursor-pointer group"
-                role="listitem"
-              >
-                {/* Names & Roles */}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl md:text-2xl font-medium tracking-tight text-[#111111] transition-colors duration-300 group-hover:text-brand">
-                    {member.name}
-                  </h3>
-                  <p className="text-[15px] text-[#666666] mt-1">
-                    {member.role}
-                  </p>
-                </div>
+          {/* IMAGE SIDE */}
+          <motion.div
+            style={{
+              x: imageX,
+              scale: imageScale,
+            }}
+            className="relative"
+          >
+            <div className="relative overflow-hidden rounded-3xl aspect-[4/5] lg:aspect-[4/4.5]">
+              <Image
+                src={member.image}
+                alt={member.name}
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-top"
+                priority={index === 0}
+              />
 
-                {/* Image */}
-                <div 
-                  className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100 shadow-sm transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2"
-                >
-                  <div className={`absolute inset-0 transition-all duration-500 ${isHovered ? 'opacity-100 mix-blend-normal' : 'opacity-80 grayscale mix-blend-luminosity group-hover:opacity-100'}`} aria-hidden="true">
-                    <Image
-                      src={member.image}
-                      alt={`${member.name} - ${member.role} in Dubai`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 20vw"
-                      className="object-cover object-top"
-                    />
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent" />
+            </div>
+          </motion.div>
+
+          {/* CONTENT SIDE */}
+          <motion.div
+            style={{ x: textX }}
+            className="relative z-10"
+          >
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-brand font-semibold">/</span>
+              <span className="uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-gray-600">
+                Airtronics Experts
+              </span>
+            </div>
+
+            <h3 className="text-[40px] sm:text-[52px] md:text-[64px] lg:text-[72px] leading-none font-medium tracking-tight text-[#111111]">
+              {member.name}
+            </h3>
+
+            <p className="mt-4 text-brand text-lg md:text-xl font-medium">
+              {member.role}
+            </p>
+
+            <div className="w-20 h-[2px] bg-brand my-8" />
+
+            <p className="text-[#666666] text-[16px] md:text-[18px] leading-relaxed max-w-xl">
+              {member.description}
+            </p>
+
+            <div className="mt-10 flex gap-8">
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-[#111111]">
+                  4+
+                </p>
+                <p className="text-sm text-gray-500">
+                  Years Experience
+                </p>
+              </div>
+
+              <div>
+                <p className="text-3xl md:text-4xl font-bold text-[#111111]">
+                  1000+
+                </p>
+                <p className="text-sm text-gray-500">
+                  Projects
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
-        
+      </div>
+    </motion.div>
+  );
+}
+
+export default function TeamSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative bg-[#fcfcfc]"
+      aria-labelledby="team-heading"
+    >
+      {/* Header */}
+      <div className="max-w-[1200px] mx-auto px-5 md:px-8 pt-16 md:pt-24 pb-10 text-center">
+        <div className="flex items-center justify-center gap-2 mb-3">
+          <span
+            className="text-brand font-semibold"
+            aria-hidden="true"
+          >
+            /
+          </span>
+
+          <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
+            Dubai Municipality Certified Experts
+          </span>
+        </div>
+
+        <h2
+          id="team-heading"
+          className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-4xl mx-auto leading-[1.1]"
+        >
+          Meet Our AC Repair Specialists
+        </h2>
+
+        <p className="mt-4 text-[#666666] text-[15px] leading-relaxed max-w-2xl mx-auto">
+          Meet the certified professionals behind Airtronics Fixcare. Every
+          project is handled by experienced HVAC specialists committed to
+          quality workmanship and customer satisfaction.
+        </p>
+      </div>
+
+      {/* Cinematic Scroll Area */}
+      <div
+        className="relative"
+        style={{
+          height: `${team.length * 100}vh`,
+        }}
+      >
+        <div className="sticky top-0 h-screen overflow-hidden">
+          {team.map((member, index) => (
+            <TeamSlide
+              key={member.id}
+              member={member}
+              index={index}
+              total={team.length}
+              progress={scrollYProgress}
+            />
+          ))}
+
+          {/* Progress Indicator */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
+            {team.map((_, i) => (
+              <motion.div
+                key={i}
+                className="w-2 h-2 rounded-full bg-gray-300"
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
