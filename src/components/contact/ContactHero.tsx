@@ -17,7 +17,7 @@ export default function ContactHero() {
           {/* Left Content */}
           <div>
             <h1 className="max-w-3xl text-[45px] leading-[0.95] font-normal tracking-tight text-black md:text-[55px] lg:text-[60px]">
-              Let's Talk
+              Let&apos;s Talk
               <br />
               About Your
               <br />

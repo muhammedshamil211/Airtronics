@@ -27,7 +27,7 @@ export default function CtaSection() {
             Ready to Restore Your Comfort?
           </h2>
           <p className="text-[15px] leading-relaxed text-white/90 mb-10 max-w-2xl mx-auto">
-            Don't let a faulty AC disrupt your day. Our certified HVAC experts are on standby across Downtown Dubai, Marina, Business Bay, and Jumeirah to provide rapid, reliable service.
+            Don&apos;t let a faulty AC disrupt your day. Our certified HVAC experts are on standby across Downtown Dubai, Marina, Business Bay, and Jumeirah to provide rapid, reliable service.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { PhoneCall, Search, FileText, CheckCircle, ArrowRight } from 'lucide-react';
+import { PhoneCall, Search, FileText, CheckCircle, ArrowRight, Wrench } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
@@ -29,6 +29,12 @@ const processSteps = [
     icon: <CheckCircle className="w-8 h-8 text-[#005eb8]" aria-hidden="true" />,
     title: 'Same-Day Repair',
     description: 'We fix the problem efficiently, clean up the area, and restore your indoor comfort with a satisfaction guarantee.'
+  },
+  {
+    id: '05',
+    icon: <Wrench className="w-8 h-8 text-[#005eb8]" aria-hidden="true" />,
+    title: 'Follow-up & Support',
+    description: 'We follow up after service to ensure satisfaction and offer maintenance plans.'
   }
 ];
 
@@ -71,26 +77,26 @@ export default function ProcessSection() {
       <div className="container mx-auto px-2 md:px-8 max-w-[1200px] relative z-10">
         
         {/* Header */}
-        <header className="text-center max-w-2xl mx-auto mb-20">
-          <div className="flex items-center justify-center gap-2 mb-4">
+        <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <div className="flex items-center justify-center gap-2 mb-3">
             <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
             <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
               How It Works
             </span>
           </div>
-          <h2 id="process-heading" className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-6">
-            Our 4-Step AC Repair & HVAC Service Process
+          <h2 id="process-heading" className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4">
+            Our 5-Step AC Repair &amp; HVAC Service Process
           </h2>
-          <p className="text-[#666666] text-[15px] leading-relaxed">
-            We value your time and comfort. Our streamlined 4-step approach ensures your AC repair and maintenance needs are resolved quickly and professionally by our Dubai Municipality approved experts.
+          <p className="text-[#666666] text-sm md:text-[15px] leading-relaxed">
+            We value your time and comfort. Our streamlined 5-step approach ensures your AC repair and maintenance needs are resolved quickly and professionally by our Dubai Municipality approved experts.
           </p>
         </header>
 
-        {/* Process Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative" role="list">
+        {/* Process Steps - 5 columns in a single row on lg screens */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-3 relative" role="list">
           
           {/* Connecting Line (Desktop Only) */}
-          <div className="hidden lg:block absolute top-[4rem] left-[12%] right-[12%] h-[2px] bg-gray-200 -z-10" aria-hidden="true">
+          <div className="hidden lg:block absolute top-[2.5rem] left-[8%] right-[8%] h-[2px] bg-gray-200 -z-10" aria-hidden="true">
             <motion.div 
               className="h-full bg-[#005eb8]"
               initial={{ scaleX: 0 }}
@@ -104,28 +110,28 @@ export default function ProcessSection() {
           {processSteps.map((step, index) => (
             <motion.article 
               key={step.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="relative flex flex-col items-center text-center group"
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              className="relative flex flex-col items-center text-center group bg-white lg:bg-transparent p-4 lg:p-0 rounded-2xl border lg:border-none border-gray-100 shadow-xs lg:shadow-none"
               role="listitem"
             >
-              {/* Icon Container */}
-              <div className="w-32 h-32 rounded-full bg-white shadow-xl flex items-center justify-center mb-8 relative border-4 border-[#fcfcfc] group-hover:border-[#005eb8]/10 transition-colors duration-300">
-                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-sm shadow-md" aria-hidden="true">
+              {/* Scaled-down Icon Container */}
+              <div className="w-18 h-18 md:w-20 md:h-20 lg:w-20 lg:h-20 rounded-full bg-white shadow-md lg:shadow-lg flex items-center justify-center mb-5 relative border-4 border-[#fcfcfc] group-hover:border-[#005eb8]/20 transition-all duration-300">
+                <div className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-xs" aria-hidden="true">
                   {step.id}
                 </div>
-                <div className="group-hover:scale-110 transition-transform duration-300">
-                  {step.icon}
+                <div className="group-hover:scale-110 transition-transform duration-300 text-brand">
+                  {React.cloneElement(step.icon, { className: 'w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]' })}
                 </div>
               </div>
 
               {/* Text */}
-              <h3 className="text-xl md:text-2xl font-medium tracking-tight text-[#111111] mb-3 group-hover:text-brand transition-colors">
+              <h3 className="text-base font-medium tracking-tight text-[#111111] mb-2 group-hover:text-brand transition-colors leading-snug">
                 {step.title}
               </h3>
-              <p className="text-[#666666] text-[15px] leading-relaxed max-w-[280px]">
+              <p className="text-[#666666] text-xs sm:text-[13px] leading-relaxed max-w-[210px]">
                 {step.description}
               </p>
             </motion.article>
@@ -138,13 +144,13 @@ export default function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-5 text-center"
+          className="mt-10 sm:mt-12 text-center"
         >
-          <Link href="/contact#contact-form" className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-[#005eb8] hover:bg-[#a00f1a] rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group" aria-label="Book Your AC Repair Now">
+          <Link href="/contact#contact-form" className="inline-flex items-center justify-center px-7 py-3.5 text-sm sm:text-base font-semibold text-white bg-brand hover:bg-brand-hover rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 group" aria-label="Book Your AC Repair Now">
             Book Your AC Repair Now
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
-          <p className="mt-4 text-sm text-[#666666]">
+          <p className="mt-3 text-xs sm:text-sm text-[#666666]">
             Available 24/7 for emergency HVAC services across Dubai.
           </p>
         </motion.div>

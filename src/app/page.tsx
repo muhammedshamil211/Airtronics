@@ -6,7 +6,6 @@ import ServicesShowcase from '@/components/home/ServicesShowcase';
 import ProcessSection from '@/components/home/ProcessSection';
 import TeamSection from '@/components/home/TeamSection';
 import FaqSection from '@/components/home/FaqSection';
-import TestimonialsSection from '@/components/home/TestimonialsSection';
 import CtaSection from '@/components/home/CtaSection';
 import ServiceAreasSection from '@/components/home/ServiceArea';
 
@@ -28,7 +27,7 @@ export default function Home() {
       <ServiceAreasSection/>
       <TeamSection />
       <FaqSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <CtaSection />
     </main>
   );

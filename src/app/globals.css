@@ -30,3 +30,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes marquee-row {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-33.333333%); }
+}
+
+@keyframes marquee-row-reverse {
+  0% { transform: translateX(-33.333333%); }
+  100% { transform: translateX(0%); }
+}
+
+.animate-marquee-row {
+  animation: marquee-row 35s linear infinite;
+}
+
+.animate-marquee-row-reverse {
+  animation: marquee-row-reverse 35s linear infinite;
+}
+

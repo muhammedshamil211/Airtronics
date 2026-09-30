@@ -1,15 +1,14 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Script from 'next/script';
 import { ArrowUpRight } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { services } from '@/data/services';
 
 export default function ServicesShowcase() {
-  const containerRef = useRef<HTMLDivElement>(null);
 
   // Generate Service Schema for SEO
   const serviceSchemas = services.map(service => ({
@@ -55,7 +54,6 @@ export default function ServicesShowcase() {
 
         {/* Horizontal Scroll / Grid Showcase */}
         <div
-          ref={containerRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           role="list"
         >

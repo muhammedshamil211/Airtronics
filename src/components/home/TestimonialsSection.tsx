@@ -73,7 +73,7 @@ export default function TestimonialsSection() {
               </span>
             </div>
             <h2 id="testimonials-heading" className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-white leading-[1.1]">
-              Trusted By Dubai's Finest
+              Trusted By Dubai&apos;s Finest
             </h2>
           </div>
           
@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
               </div>
               
               <p className="text-[#cccccc] text-[15px] leading-relaxed mb-8 relative z-10 flex-grow">
-                "{testimonial.content}"
+                &ldquo;{testimonial.content}&rdquo;
               </p>
               
               <footer className="mt-auto">

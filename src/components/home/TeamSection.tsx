@@ -37,6 +37,15 @@ const team = [
     image:
       'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop',
   },
+  {
+    id: 4,
+    name: 'Muhammed Rafi',
+    role: 'Founder, HVAC Engineer & Master Technician',
+    description:
+      'Leading Airtronics Fixcare with expertise in HVAC design, AC repair, preventive maintenance, diagnostics, and commercial cooling solutions across Dubai.',
+    image:
+      'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1200&auto=format&fit=crop',
+  },
 ];
 
 function TeamSlide({
@@ -52,27 +61,34 @@ function TeamSlide({
 }) {
   const start = index / total;
   const end = (index + 1) / total;
+  const transitionOffset = (1 / total) * 0.25; // 25% of the slide duration
 
   let input: number[] = [];
   let opacityOutput: number[] = [];
   let imageXOutput: number[] = [];
   let textXOutput: number[] = [];
 
-  if (index === 0) {
+  if (total === 1) {
+    // Single item: stays fully visible
+    input = [0, 1];
+    opacityOutput = [1, 1];
+    imageXOutput = [0, 0];
+    textXOutput = [0, 0];
+  } else if (index === 0) {
     // First item: starts fully visible
-    input = [0, end - 0.08, end];
+    input = [0, end - transitionOffset, end];
     opacityOutput = [1, 1, 0];
     imageXOutput = [0, 0, -120];
     textXOutput = [0, 0, -80];
   } else if (index === total - 1) {
     // Last item: fades in, stays visible
-    input = [start, start + 0.08, 1];
+    input = [start, start + transitionOffset, 1];
     opacityOutput = [0, 1, 1];
     imageXOutput = [120, 0, 0];
     textXOutput = [-80, 0, 0];
   } else {
     // Middle items
-    input = [start, start + 0.08, end - 0.08, end];
+    input = [start, start + transitionOffset, end - transitionOffset, end];
     opacityOutput = [0, 1, 1, 0];
     imageXOutput = [120, 0, 0, -120];
     textXOutput = [-80, 0, 0, -80];
