@@ -13,6 +13,7 @@ export default function Navbar() {
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Blog', href: '/blog' },
+    { name: 'Terms', href: '/terms' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -75,20 +76,49 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <nav className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col space-y-3 lg:hidden" aria-label="Mobile Navigation">
+        <nav className="absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 p-4 flex flex-col space-y-2 lg:hidden" aria-label="Mobile Navigation">
           {navLinks.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="px-4 py-3 rounded-lg text-sm font-medium text-gray-800 hover:bg-brand-light hover:text-brand-dark transition-colors"
+              className="px-4 py-2.5 rounded-lg text-sm font-medium text-gray-800 hover:bg-brand-light hover:text-brand-dark transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {item.name}
             </Link>
           ))}
+
+          {/* Legal / Policy Navigation in Mobile Menu */}
+          <div className="pt-2 mt-1 border-t border-gray-100 flex flex-col space-y-1">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-gray-400 px-4 mb-0.5">
+              Policies &amp; Legal
+            </span>
+            <Link
+              href="/terms"
+              className="px-4 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-[#005eb8] hover:bg-slate-50 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Terms &amp; Conditions
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="px-4 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-[#005eb8] hover:bg-slate-50 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/cookies-policy"
+              className="px-4 py-2 rounded-lg text-xs font-medium text-gray-600 hover:text-[#005eb8] hover:bg-slate-50 transition-colors"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Cookies Policy
+            </Link>
+          </div>
+
           <Link
             href="/contact"
-            className="sm:hidden px-4 py-3.5 text-center rounded-lg bg-brand text-white text-sm font-semibold shadow-md hover:bg-brand-hover transition-colors mt-2"
+            className="sm:hidden px-4 py-3 text-center rounded-lg bg-brand text-white text-sm font-semibold shadow-md hover:bg-brand-hover transition-colors mt-2"
             onClick={() => setIsMobileMenuOpen(false)}
             aria-label="Book a Service Mobile"
           >

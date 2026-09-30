@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -10,6 +11,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://airtronicsfixcare.com'),
   title: "Airtronics Fixcare | Premium AC Repair & HVAC Services In Dubai",
   description: "24/7 expert AC repair, HVAC maintenance, and duct cleaning across Dubai. Certified technicians serving Downtown, Marina, Jumeirah, and more.",
   keywords: "HVAC Dubai, AC Repair Dubai, HVAC Maintenance, Duct Cleaning Dubai, Emergency AC Fix, Chiller Maintenance, Airtronics",
@@ -52,7 +54,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full flex flex-col">
         <Navbar />
-        {children}
+        <div className="flex-1">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
