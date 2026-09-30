@@ -4,7 +4,7 @@ import React, { useState, memo } from 'react';
 import Script from 'next/script';
 import { ChevronDown } from 'lucide-react';
 
-const BRAND_NAME = 'Dubai HVAC Experts';
+const BRAND_NAME = 'Airtronics Fixcare';
 
 const PHONE_NUMBER = '+971 58 659 6321';
 

@@ -76,15 +76,15 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
             {service.tagline}
           </p>
 
-          {/* Highlights Checklist */}
-          <div className="space-y-2 mb-7 bg-slate-50/80 rounded-2xl p-4 border border-slate-200/80">
+          {/* Highlights Checklist (Standard Inline List, No Cards) */}
+          <ul className="space-y-2 mb-7">
             {service.heroHighlights.map((highlight, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800 font-medium">
+              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-[#005eb8] shrink-0 mt-0.5" />
                 <span>{highlight}</span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -92,7 +92,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full transition-all duration-200 shadow-md shadow-[#005eb8]/20 hover:shadow-lg whitespace-nowrap group"
+              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap group"
               aria-label={`Book ${service.shortTitle} on WhatsApp`}
             >
               <CalendarCheck className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -101,7 +101,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
 
             <Link
               href={`tel:${CALL_PHONE.replace(/\s+/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border-2 border-slate-200 hover:border-[#005eb8] text-xs sm:text-sm font-bold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-gray-300 hover:border-[#005eb8] text-xs sm:text-sm font-semibold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
               aria-label="Call Dispatch Hotline"
             >
               <Phone className="w-4 h-4 text-[#005eb8]" />

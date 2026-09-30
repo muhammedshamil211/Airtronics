@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import MobileFloatingBar from "@/components/ui/MobileFloatingBar";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </div>
         <Footer />
+        <MobileFloatingBar />
       </body>
     </html>
   );

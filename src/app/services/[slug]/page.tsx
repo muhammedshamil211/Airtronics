@@ -6,7 +6,6 @@ import Script from 'next/script';
 import { SERVICES_DATA, ServiceDetail } from '@/data/servicesData';
 import ServiceDetailHero from '@/components/services/ServiceDetailHero';
 import ServiceDetailContent from '@/components/services/ServiceDetailContent';
-import ProcessSection from '@/components/home/ProcessSection';
 import InvoiceQuoteTerms from '@/components/services/InvoiceQuoteTerms';
 import AboutCTA from '@/components/about/AboutCTA';
 
@@ -114,9 +113,6 @@ export default async function SingleServicePage({ params }: PageProps) {
 
       {/* 2. Detailed Technical Scope, Benefits, Common Issues, Locations & FAQs */}
       <ServiceDetailContent service={service} />
-
-      {/* 3. Reused 5-Step Process Section */}
-      <ProcessSection />
 
       {/* 4. Terms and Conditions for Invoices and Quotes */}
       <InvoiceQuoteTerms />

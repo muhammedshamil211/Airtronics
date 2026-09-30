@@ -66,7 +66,6 @@ export default function AboutSection() {
             src="/images/hvac_maintenance_technician.jpg"
             alt="Airtronics certified HVAC engineer inspecting rooftop AC unit in Dubai"
             fill
-            priority={false}
             sizes="1200px"
             className="object-cover object-[75%_center] xl:object-[80%_center]"
           />

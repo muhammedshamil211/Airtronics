@@ -12,7 +12,6 @@ export default function Navbar() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Terms', href: '/terms' },
     { name: 'Contact', href: '/contact' },
   ];
@@ -28,6 +27,7 @@ export default function Navbar() {
             height={50}
             priority
             sizes="(max-width: 768px) 120px, 160px"
+            style={{ width: 'auto', height: 'auto' }}
             className="h-10 md:h-11 w-auto object-contain"
           />
         </Link>

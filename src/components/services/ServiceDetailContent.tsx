@@ -10,13 +10,10 @@ import {
   CheckCircle2, 
   AlertCircle, 
   MapPin, 
-  HelpCircle, 
   ChevronDown, 
-  ChevronUp, 
   Phone, 
   CalendarCheck, 
-  FileText, 
-  Zap 
+  FileText 
 } from 'lucide-react';
 import { ServiceDetail } from '@/data/servicesData';
 
@@ -49,17 +46,17 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
   };
 
   return (
-    <div className="py-12 sm:py-16 lg:py-20 bg-[#fcfcfc]">
+    <div className="py-12 sm:py-16 bg-[#fcfcfc]">
       <Script
         id={`faq-schema-${service.slug}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 space-y-12 sm:space-y-16">
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 space-y-14 sm:space-y-18">
         
         {/* ========================================================================= */}
-        {/* 1. OVERVIEW & ENGINEERING CONTEXT                                         */}
+        {/* 1. OVERVIEW & ENGINEERING CONTEXT (Standard Layout, No Cards)            */}
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-7">
@@ -67,34 +64,37 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
               <span className="text-[#005eb8] font-black text-sm">/</span>
               <span>ENGINEERING STANDARDS</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-[#111111] leading-tight mb-4">
+            
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-4">
               Why Dubai Relies on Our {service.shortTitle}
             </h2>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+            
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
               {service.overview}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              <div className="flex items-start gap-2.5 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            {/* Seamless Inline Guarantees (No Box Containers) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="flex items-start gap-3">
                 <ShieldCheck className="w-5 h-5 text-[#005eb8] shrink-0 mt-0.5" />
-                <div className="leading-tight">
-                  <span className="block font-bold text-xs sm:text-sm text-[#111111]">100% Genuine OEM Parts</span>
-                  <span className="block text-[11px] text-gray-500">Direct factory components with warranty</span>
+                <div>
+                  <span className="block font-bold text-sm text-[#111111]">100% Genuine OEM Parts</span>
+                  <span className="block text-xs text-gray-500 mt-0.5">Direct factory parts with warranty</span>
                 </div>
               </div>
 
-              <div className="flex items-start gap-2.5 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+              <div className="flex items-start gap-3">
                 <FileText className="w-5 h-5 text-[#005eb8] shrink-0 mt-0.5" />
-                <div className="leading-tight">
-                  <span className="block font-bold text-xs sm:text-sm text-[#111111]">Fixed Binding Quotes</span>
-                  <span className="block text-[11px] text-gray-500">Zero surprise charges on completion</span>
+                <div>
+                  <span className="block font-bold text-sm text-[#111111]">Fixed Binding Quotes</span>
+                  <span className="block text-xs text-gray-500 mt-0.5">Zero surprise charges on completion</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-md border border-slate-200/80">
+            <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden">
               <Image
                 src={service.image}
                 alt={`${service.shortTitle} technicians in Dubai`}
@@ -112,48 +112,63 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. KEY BENEFITS GRID                                                      */}
+        {/* 2. KEY BENEFITS (Standard Editorial Columns, No Cards)                   */}
         {/* ========================================================================= */}
         <div>
-          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+          <div className="max-w-2xl mb-8 sm:mb-10">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">
+              <span className="text-[#005eb8] font-black text-sm">/</span>
+              <span>CLIENT VALUE</span>
+            </div>
             <h3 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-[#111111] leading-tight mb-2">
               Key Advantages &amp; Client Guarantees
             </h3>
-            <p className="text-gray-600 text-xs sm:text-sm">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               Engineered specifically to withstand 50°C summer conditions and high humidity levels in the UAE.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
-            {service.keyBenefits.map((benefit, idx) => (
-              <div 
-                key={idx}
-                className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-xs hover:border-[#005eb8]/40 hover:shadow-md transition-all duration-300 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-8 h-8 rounded-xl bg-blue-50 text-[#005eb8] flex items-center justify-center mb-3 border border-blue-100 font-bold text-xs">
-                    0{idx + 1}
+          {/* Contiguous Advantage Blocks with Different Light Backgrounds and No Gaps */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 rounded-2xl overflow-hidden border border-gray-100">
+            {service.keyBenefits.map((benefit, idx) => {
+              const lightBgColors = [
+                'bg-[#f0f6ff]', // Soft icy blue tint
+                'bg-[#f8fafc]', // Crisp clean slate tint
+                'bg-[#f0fdf4]', // Soft mint/freshness tint
+                'bg-[#f0f9ff]', // Soft sky tint
+              ];
+              const bgClass = lightBgColors[idx % lightBgColors.length];
+
+              return (
+                <div
+                  key={idx}
+                  className={`${bgClass} p-6 sm:p-7 md:p-8 flex flex-col justify-between`}
+                >
+                  <div>
+                    <span className="text-[#005eb8] font-black text-sm mb-3 block">
+                      0{idx + 1}
+                    </span>
+                    <h4 className="font-bold text-sm sm:text-base text-[#111111] mb-2 leading-snug">
+                      {benefit.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
+                      {benefit.description}
+                    </p>
                   </div>
-                  <h4 className="font-bold text-sm sm:text-base text-[#111111] mb-2 leading-snug">
-                    {benefit.title}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
-                    {benefit.description}
-                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* 3. TECHNICAL SPECIFICATIONS & COMMON ISSUES SOLVED                        */}
+        {/* 3. TECHNICAL SPECIFICATIONS & COMMON ISSUES (Standard 2-Col Layout)       */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        <div className="pt-8 border-t border-gray-200/80 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14">
           {/* Technical Specs */}
-          <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/90 shadow-xs">
+          <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0 border border-blue-100">
+              <div className="w-8 h-8 rounded-lg bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0">
                 <Wrench className="w-4 h-4" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#111111]">
@@ -171,9 +186,9 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
           </div>
 
           {/* Common Dubai Issues Solved */}
-          <div className="bg-white p-6 sm:p-7 rounded-2xl border border-slate-200/90 shadow-xs">
+          <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0 border border-amber-100">
+              <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
                 <AlertCircle className="w-4 h-4" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-[#111111]">
@@ -192,9 +207,9 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         </div>
 
         {/* ========================================================================= */}
-        {/* 4. DUBAI COMMUNITIES SERVED CLUSTER                                       */}
+        {/* 4. DUBAI COMMUNITIES SERVED (Clean Open Cluster, No Cards)                */}
         {/* ========================================================================= */}
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/90 shadow-xs">
+        <div className="pt-8 border-t border-gray-200/80">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
             <MapPin className="w-4 h-4 text-[#005eb8]" />
             <span>LOCAL SERVICE HUBS IN DUBAI</span>
@@ -202,7 +217,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
           <h3 className="text-lg sm:text-xl font-bold text-[#111111] mb-2 leading-snug">
             30–45 Minute Mobile Fleet Coverage Across Dubai
           </h3>
-          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4">
+          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4 max-w-3xl">
             Our certified mobile vans are stationed strategically near key highways (Sheikh Zayed Road, Al Khail Road, Sheikh Mohammed Bin Zayed Road) for rapid dispatch:
           </p>
 
@@ -210,7 +225,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
             {service.dubaiLocations.map((loc, lIdx) => (
               <span 
                 key={lIdx}
-                className="inline-flex items-center gap-1.5 bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-[#005eb8] border border-slate-200/80 text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
+                className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#005eb8] text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#005eb8]" />
                 <span>{loc}</span>
@@ -220,27 +235,27 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         </div>
 
         {/* ========================================================================= */}
-        {/* 5. FREQUENTLY ASKED QUESTIONS (Matching Home Page FAQ Style)             */}
+        {/* 5. FREQUENTLY ASKED QUESTIONS (Standard Accordion, No Card Containers)    */}
         {/* ========================================================================= */}
-        <div>
-          <header className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <span className="text-[#005eb8] font-semibold">/</span>
-              <span className="text-xs md:text-sm font-semibold tracking-wide uppercase text-gray-800">
+        <div className="pt-8 border-t border-gray-200/80">
+          <header className="max-w-3xl mb-8 sm:mb-10">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-[#005eb8] font-black text-sm">/</span>
+              <span className="text-xs sm:text-sm font-semibold tracking-wide uppercase text-gray-600">
                 Got Questions? We Have Answers
               </span>
             </div>
 
-            <h3 className="text-[28px] sm:text-[36px] md:text-[40px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-3">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-2">
               Frequently Asked Questions
             </h3>
 
-            <p className="text-[#666666] text-[15px] leading-relaxed">
+            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               Find answers to the most common questions about our {service.shortTitle.toLowerCase()} in Dubai.
             </p>
           </header>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
             {service.faqs.map((faq, fIdx) => {
               const isOpen = openFaq === fIdx;
               return (
@@ -249,16 +264,16 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
                     type="button"
                     aria-expanded={isOpen}
                     onClick={() => toggleFaq(fIdx)}
-                    className="w-full p-4 sm:p-5 md:p-6 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200"
+                    className="w-full py-4 sm:py-5 flex items-start justify-between text-left hover:text-[#005eb8] transition-colors"
                   >
-                    <span className="text-[15px] md:text-base font-medium text-[#111111] pr-5">
+                    <span className="text-sm sm:text-base font-semibold text-[#111111] pr-4">
                       {faq.q}
                     </span>
 
-                    <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                    <div className="shrink-0 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center mt-0.5">
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180' : ''
+                        className={`w-4 h-4 transition-transform duration-200 ${
+                          isOpen ? 'rotate-180 text-[#005eb8]' : 'text-gray-500'
                         }`}
                       />
                     </div>
@@ -269,7 +284,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
                       isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="px-4 sm:px-5 md:px-6 pb-6 text-[#666666] text-[15px] leading-relaxed">
+                    <div className="pb-5 text-gray-600 text-xs sm:text-sm leading-relaxed">
                       {faq.a}
                     </div>
                   </div>
@@ -280,27 +295,27 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         </div>
 
         {/* ========================================================================= */}
-        {/* 6. BOTTOM CALLOUT / DIRECT DISPATCH BANNER                                 */}
+        {/* 6. BOTTOM CALLOUT / DIRECT DISPATCH CTA (Gradient Blending into White)     */}
         {/* ========================================================================= */}
-        <div className="bg-[#081226] text-white rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="relative z-10 max-w-xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#00AEEF] block mb-2">
+        <div className="bg-gradient-to-r from-transparent via-[#ebf4ff] to-transparent p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="max-w-xl">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#005eb8] block mb-1">
               Ready For Immediate On-Site Dispatch?
             </span>
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-medium text-white mb-2 leading-tight">
+            <h3 className="text-xl sm:text-2xl font-medium text-[#111111] mb-1.5 leading-tight">
               Book {service.shortTitle} with Airtronics Fixcare Today
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
               Transparent upfront quote, zero hidden fees, and guaranteed 90-day parts &amp; labor warranty across all Dubai locations.
             </p>
           </div>
 
-          <div className="relative z-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#0080FF] hover:bg-[#0070E0] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full transition-all shadow-md whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap"
             >
               <CalendarCheck className="w-4 h-4" />
               <span>Book via WhatsApp</span>
@@ -308,9 +323,9 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
 
             <Link
               href={`tel:${CALL_PHONE.replace(/\s+/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 text-xs sm:text-sm font-bold px-5 py-3.5 rounded-full transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-800 text-xs sm:text-sm font-semibold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4 text-[#005eb8]" />
               <span>Call Hotline</span>
             </Link>
           </div>

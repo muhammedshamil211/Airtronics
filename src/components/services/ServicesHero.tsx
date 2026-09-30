@@ -68,30 +68,19 @@ export default function ServicesHero() {
             From 30-minute emergency AC troubleshooting and turnkey installations to hospital-grade duct sanitization and corporate AMC plans. Airtronics Fixcare keeps residential villas and commercial towers cool across Dubai with genuine OEM parts and transparent upfront pricing.
           </p>
 
-          {/* Trust Value Badges Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 mb-7">
-            <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2">
+          {/* Trust Value Strip (Standard Inline, No Cards) */}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-7 text-xs text-gray-600">
+            <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-[#005eb8] shrink-0" />
-              <div className="leading-tight">
-                <span className="block font-bold text-xs text-[#111111]">30–45 Min</span>
-                <span className="block text-[10px] text-gray-500 font-medium">Emergency Arrival</span>
-              </div>
+              <span><strong className="font-semibold text-[#111111]">30–45 Min</strong> Emergency Arrival</span>
             </div>
-
-            <div className="flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2">
+            <div className="flex items-center gap-2">
               <Settings className="w-4 h-4 text-[#005eb8] shrink-0" />
-              <div className="leading-tight">
-                <span className="block font-bold text-xs text-[#111111]">100% OEM</span>
-                <span className="block text-[10px] text-gray-500 font-medium">Genuine Parts</span>
-              </div>
+              <span><strong className="font-semibold text-[#111111]">100% OEM</strong> Genuine Parts</span>
             </div>
-
-            <div className="col-span-2 sm:col-span-1 flex items-center gap-2 bg-slate-50 border border-slate-200/80 rounded-xl px-3 py-2">
+            <div className="flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-              <div className="leading-tight">
-                <span className="block font-bold text-xs text-[#111111]">Approved</span>
-                <span className="block text-[10px] text-gray-500 font-medium">Dubai Municipality</span>
-              </div>
+              <span><strong className="font-semibold text-[#111111]">Approved</strong> Dubai Municipality</span>
             </div>
           </div>
 
@@ -101,7 +90,7 @@ export default function ServicesHero() {
               href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hello Airtronics Fixcare! I would like to book an AC / HVAC service in Dubai. Please provide your availability.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full transition-all duration-200 shadow-md shadow-[#005eb8]/20 hover:shadow-lg whitespace-nowrap group"
+              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap group"
               aria-label="Book AC Service via WhatsApp"
             >
               <CalendarCheck className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -110,7 +99,7 @@ export default function ServicesHero() {
 
             <Link
               href={`tel:${CALL_PHONE.replace(/\s+/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border-2 border-slate-200 hover:border-[#005eb8] text-xs sm:text-sm font-bold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-gray-300 hover:border-[#005eb8] text-xs sm:text-sm font-semibold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
               aria-label="Call 24/7 Dubai Dispatch Hotline"
             >
               <Phone className="w-4 h-4 text-[#005eb8]" />

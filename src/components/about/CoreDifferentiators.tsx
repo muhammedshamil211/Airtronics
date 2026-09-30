@@ -137,7 +137,6 @@ export default function CoreDifferentiators() {
                 quality={80}
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 35vw"
-                priority
               />
               <div className="absolute bottom-2.5 right-2.5 z-20">
                 <ActionArrow />

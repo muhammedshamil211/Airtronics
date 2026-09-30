@@ -128,7 +128,6 @@ function TeamSlide({
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-top"
-                priority={index === 0}
               />
 
               <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent" />

@@ -37,9 +37,9 @@ export default function ServiceAreasSection() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/service-area-bg.png"
-          alt=""
+          alt="Dubai HVAC Service Areas"
           fill
-          priority
+          sizes="100vw"
           className="object-cover object-left md:object-center"
         />
 

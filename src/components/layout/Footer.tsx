@@ -59,7 +59,7 @@ export default function Footer() {
     <footer className="bg-slate-50/90 text-gray-800 border-t border-gray-200" aria-label="Main Footer">
       
       {/* Upper Footer: Main 4-Column Layout */}
-      <div className=" w-full mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 pb-10">
+      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-14 pb-20 md:pb-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10">
           
           {/* Column 1: Brand, About & Social Media (4 Cols) */}
@@ -72,6 +72,7 @@ export default function Footer() {
                   alt="Airtronics Fixcare Technical Services LLC"
                   width={150}
                   height={45}
+                  style={{ width: 'auto', height: 'auto' }}
                   className="h-9 w-auto object-contain"
                 />
               </Link>
@@ -172,6 +173,9 @@ export default function Footer() {
                   <YouTubeIcon />
                 </a>
               </div>
+              <p className="text-[11px] text-gray-400 mt-3 font-normal">
+                © {new Date().getFullYear()} Airtronics Fixcare Technical Services LLC. All rights reserved.
+              </p>
             </div>
           </div>
 
@@ -309,40 +313,6 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Bottom Bar: Copyright, Compliance & Policy Hot Links */}
-      <div className="border-t border-gray-200 bg-white">
-        <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-gray-500">
-          
-          {/* Copyright */}
-          <div>
-            <span>© {new Date().getFullYear()} Airtronics Fixcare Technical Services LLC. All rights reserved. Dubai, UAE.</span>
-          </div>
-
-          {/* Policy Links */}
-          <div className="flex flex-wrap items-center gap-2">
-            <Link 
-              href="/terms" 
-              className="px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-[#005eb8] text-gray-700 hover:text-white transition-all text-xs font-semibold border border-gray-200 hover:border-[#005eb8]"
-            >
-              Terms &amp; Conditions
-            </Link>
-            <Link 
-              href="/privacy-policy" 
-              className="px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-[#005eb8] text-gray-700 hover:text-white transition-all text-xs font-semibold border border-gray-200 hover:border-[#005eb8]"
-            >
-              Privacy Policy
-            </Link>
-            <Link 
-              href="/cookies-policy" 
-              className="px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-[#005eb8] text-gray-700 hover:text-white transition-all text-xs font-semibold border border-gray-200 hover:border-[#005eb8]"
-            >
-              Cookies Policy
-            </Link>
           </div>
 
         </div>

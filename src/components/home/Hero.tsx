@@ -330,6 +330,7 @@ export default function Hero() {
                 src="/images/ac_repair_split_glow.jpg"
                 alt="Airtronics AC Repair"
                 fill
+                priority
                 className="object-cover object-right opacity-85 transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />

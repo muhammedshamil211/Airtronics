@@ -1,5 +1,4 @@
 import Hero from '@/components/home/Hero';
-import ContactTicker from '@/components/home/ContactTicker';
 import MoneySavingCTA from '@/components/home/MoneySavingCTA';
 import AboutSection from '@/components/home/AboutSection';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
@@ -30,7 +29,6 @@ export default function Home() {
       <ServiceAreasSection/>
       <TeamSection />
       <FaqSection />
-      {/* <TestimonialsSection /> */}
       <CtaSection />
     </main>
   );
