@@ -52,7 +52,7 @@ export default function ServiceAreasSection() {
         <header className="text-center max-w-3xl mx-auto mb-8">
           <div className="flex items-center justify-center gap-2 mb-3">
             <span className="text-[#005eb8] font-semibold">/</span>
-            <span className="text-xs md:text-sm font-semibold tracking-[0.15em] uppercase text-gray-700">
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.15em] uppercase text-gray-700">
               Service Areas
             </span>
           </div>
@@ -64,7 +64,7 @@ export default function ServiceAreasSection() {
             Proudly Serving Across Dubai
           </h2>
 
-          <p className="text-[#666666] text-[14px] md:text-[15px] leading-relaxed max-w-xl mx-auto">
+          <p className="text-[#666666] text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
             Fast, reliable AC repair, maintenance, installation and HVAC
             services for homes, apartments, offices and commercial properties
             throughout Dubai.
@@ -100,7 +100,7 @@ export default function ServiceAreasSection() {
                       />
                     </div>
 
-                    <h3 className="text-[15px] md:text-base font-medium text-[#111111] leading-snug">
+                    <h3 className="text-base font-medium text-[#111111] leading-snug">
                       {area}
                     </h3>
                   </div>
@@ -115,7 +115,7 @@ export default function ServiceAreasSection() {
           <div className="flex justify-center mt-6">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-[#005eb8]/20 text-[#005eb8] text-sm font-medium hover:bg-[#005eb8] hover:text-white transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#005eb8]/20 text-[#005eb8] text-sm sm:text-base font-medium hover:bg-[#005eb8] hover:text-white transition-all duration-300"
             >
               {showAll ? 'Show Less' : 'View All Service Areas'}
 

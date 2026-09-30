@@ -142,7 +142,7 @@ function TeamSlide({
           >
             <div className="mb-2 md:mb-4 flex items-center justify-center lg:justify-start gap-2">
               <span className="text-brand font-semibold">/</span>
-              <span className="uppercase tracking-[0.2em] text-[10px] md:text-sm font-semibold text-gray-600">
+              <span className="uppercase tracking-[0.2em] text-xs md:text-sm font-semibold text-gray-600">
                 Airtronics Experts
               </span>
             </div>
@@ -151,13 +151,13 @@ function TeamSlide({
               {member.name}
             </h3>
 
-            <p className="mt-2 md:mt-4 text-brand text-sm md:text-xl font-medium">
+            <p className="mt-2 md:mt-4 text-brand text-base md:text-xl font-medium">
               {member.role}
             </p>
 
             <div className="w-12 md:w-20 h-[2px] bg-brand my-4 md:my-8 mx-auto lg:mx-0" />
 
-            <p className="text-[#666666] text-[14px] md:text-[18px] leading-relaxed max-w-xl mx-auto lg:mx-0">
+            <p className="text-[#666666] text-base md:text-[18px] leading-relaxed max-w-xl mx-auto lg:mx-0">
               {member.description}
             </p>
 
@@ -166,7 +166,7 @@ function TeamSlide({
                 <p className="text-2xl md:text-4xl font-bold text-[#111111]">
                   4+
                 </p>
-                <p className="text-xs md:text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
                   Years Experience
                 </p>
               </div>
@@ -175,7 +175,7 @@ function TeamSlide({
                 <p className="text-2xl md:text-4xl font-bold text-[#111111]">
                   1000+
                 </p>
-                <p className="text-xs md:text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
                   Projects
                 </p>
               </div>

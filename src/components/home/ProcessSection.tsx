@@ -128,10 +128,10 @@ export default function ProcessSection() {
               </div>
 
               {/* Text */}
-              <h3 className="text-base font-medium tracking-tight text-[#111111] mb-2 group-hover:text-brand transition-colors leading-snug">
+              <h3 className="text-base sm:text-lg font-medium tracking-tight text-[#111111] mb-2 group-hover:text-brand transition-colors leading-snug">
                 {step.title}
               </h3>
-              <p className="text-[#666666] text-xs sm:text-[13px] leading-relaxed max-w-[210px]">
+              <p className="text-[#666666] text-sm leading-relaxed max-w-[220px]">
                 {step.description}
               </p>
             </motion.article>
@@ -150,7 +150,7 @@ export default function ProcessSection() {
             Book Your AC Repair Now
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
           </Link>
-          <p className="mt-3 text-xs sm:text-sm text-[#666666]">
+          <p className="mt-3 text-sm text-[#666666]">
             Available 24/7 for emergency HVAC services across Dubai.
           </p>
         </motion.div>

@@ -145,7 +145,7 @@ export default function CoreDifferentiators() {
             </div>
 
             {/* Left Content Area with Organic Curved Divider */}
-            <div className="relative z-10 p-3.5 sm:p-4 bg-white sm:bg-white/95 max-w-full sm:max-w-[63%] lg:max-w-[65%] flex flex-col justify-between h-full">
+            <div className="relative z-10 p-4 sm:p-4.5 bg-white sm:bg-white/95 max-w-full sm:max-w-[63%] lg:max-w-[65%] flex flex-col justify-between h-full">
               <svg 
                 className="absolute -right-[36px] sm:-right-[44px] top-0 bottom-0 h-full w-[36px] sm:w-[44px] text-white fill-current pointer-events-none z-10 hidden sm:block" 
                 viewBox="0 0 45 240" 
@@ -161,49 +161,49 @@ export default function CoreDifferentiators() {
                       <UserCheck className="w-4 h-4 sm:w-4.5 sm:h-4.5" />
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block leading-tight">
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block leading-tight">
                         Continuous Training
                       </span>
-                      <h3 className="text-sm sm:text-base font-bold text-[#111111] leading-tight">
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#111111] leading-tight">
                         Certified Engineers &amp; Fleet
                       </h3>
                     </div>
                   </div>
 
-                  <div className="hidden lg:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EBF8FF] text-[#008CCB] text-[11px] font-semibold shrink-0 border border-[#00AEEF]/20">
-                    <Clock className="w-3 h-3 text-[#00AEEF]" />
+                  <div className="hidden lg:inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EBF8FF] text-[#008CCB] text-xs font-semibold shrink-0 border border-[#00AEEF]/20">
+                    <Clock className="w-3.5 h-3.5 text-[#00AEEF]" />
                     <span>30–45 Min</span>
                   </div>
                 </div>
 
-                <p className="text-xs text-slate-600 leading-relaxed font-normal mt-1.5">
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-1.5">
                   Certified technicians dispatched across Dubai Marina, Palm Jumeirah, Downtown, Arabian Ranches &amp; JVC with digital diagnostic tools.
                 </p>
               </div>
 
               {/* Badges Row */}
-              <div className="mt-2.5 pt-2 border-t border-slate-100 grid grid-cols-3 gap-1.5">
-                <div className="px-2 py-1 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
+              <div className="mt-3 pt-2.5 border-t border-slate-100 grid grid-cols-3 gap-1.5">
+                <div className="px-2 py-1.5 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5 text-[#00AEEF] shrink-0" />
                   <div className="leading-none">
-                    <span className="text-[11px] font-bold text-[#00AEEF] block">30–45m</span>
-                    <span className="text-[9px] text-gray-400">Arrival</span>
+                    <span className="text-xs sm:text-sm font-bold text-[#00AEEF] block">30–45m</span>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Arrival</span>
                   </div>
                 </div>
 
-                <div className="px-2 py-1 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
+                <div className="px-2 py-1.5 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
                   <Wrench className="w-3.5 h-3.5 text-[#00AEEF] shrink-0" />
                   <div className="leading-none">
-                    <span className="text-[11px] font-bold text-[#00AEEF] block">100%</span>
-                    <span className="text-[9px] text-gray-400">Root-Fix</span>
+                    <span className="text-xs sm:text-sm font-bold text-[#00AEEF] block">100%</span>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Root-Fix</span>
                   </div>
                 </div>
 
-                <div className="px-2 py-1 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
+                <div className="px-2 py-1.5 rounded-xl bg-[#F8FAFC] border border-slate-100 flex items-center gap-1.5">
                   <Check className="w-3.5 h-3.5 text-emerald-600 stroke-[3] shrink-0" />
                   <div className="leading-none">
-                    <span className="text-[11px] font-bold text-emerald-600 block">Licensed</span>
-                    <span className="text-[9px] text-gray-400">Compliant</span>
+                    <span className="text-xs sm:text-sm font-bold text-emerald-600 block">Licensed</span>
+                    <span className="text-[10px] sm:text-xs text-gray-500">Compliant</span>
                   </div>
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function CoreDifferentiators() {
           </div>
 
           {/* Card 2 (5 Columns) - 100% Genuine OEM Parts */}
-          <div className="md:col-span-5 bg-white p-3.5 sm:p-4 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
+          <div className="md:col-span-5 bg-white p-4 sm:p-4.5 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
             {/* Right OEM Parts Image */}
             <div className="absolute right-0 bottom-1 top-4 w-[43%] h-[80%] z-0 pointer-events-none flex items-end justify-end">
               <div className="relative w-full h-full">
@@ -232,39 +232,39 @@ export default function CoreDifferentiators() {
                 <div className="w-8 h-8 rounded-xl bg-[#E8FBF1] text-[#059669] flex items-center justify-center shrink-0 border border-[#059669]/15">
                   <ShieldCheck className="w-4 h-4 stroke-[2.2]" />
                 </div>
-                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E8FBF1] text-[#059669] text-[11px] font-bold shrink-0 border border-[#059669]/20">
+                <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E8FBF1] text-[#059669] text-xs font-bold shrink-0 border border-[#059669]/20">
                   <Check className="w-3 h-3 stroke-[3]" />
                   <span>100% Factory OEM</span>
                 </div>
               </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5 mt-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5 mt-1">
                 Component Integrity
               </span>
-              <h3 className="text-sm sm:text-base font-bold text-[#111111] leading-tight mb-1">
+              <h3 className="text-base sm:text-lg font-bold text-[#111111] leading-tight mb-1">
                 Genuine OEM Spare Parts
               </h3>
 
-              <p className="text-xs text-slate-600 leading-relaxed font-normal max-w-[210px] sm:max-w-[240px]">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[210px] sm:max-w-[250px]">
                 We only install original compressors, motors, capacitors, and PCB boards with 90-day warranty.
               </p>
             </div>
 
             {/* Bottom Meta */}
-            <div className="relative z-10 mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-              <div className="flex items-center gap-1 text-[11px] font-bold text-[#059669]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#059669] stroke-[2.5]" />
+            <div className="relative z-10 mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#059669]">
+                <ShieldCheck className="w-4 h-4 text-[#059669] stroke-[2.5]" />
                 <span>Zero Counterfeits</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[11px] text-slate-500 font-medium">90-Day Warranty</span>
+                <span className="text-xs sm:text-sm text-slate-500 font-medium">90-Day Warranty</span>
                 <ActionArrow />
               </div>
             </div>
           </div>
 
           {/* Card 3 (4 Columns) - Upfront Fixed Quotes */}
-          <div className="md:col-span-4 bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
+          <div className="md:col-span-4 bg-white p-4 sm:p-4.5 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
             {/* Tilted Quote Document */}
             <div className="absolute -right-3 -bottom-5 top-4 w-[48%] h-full z-0 pointer-events-none flex items-center justify-end">
               <div className="relative w-full h-full rotate-6 scale-105 opacity-95 group-hover:scale-110 transition-transform duration-500">
@@ -280,25 +280,25 @@ export default function CoreDifferentiators() {
             </div>
 
             <div className="relative z-10">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#FFF8EB] text-[#F59E0B] flex items-center justify-center mb-1.5 border border-[#F59E0B]/15">
-                <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+              <div className="w-8 h-8 rounded-xl bg-[#FFF8EB] text-[#F59E0B] flex items-center justify-center mb-1.5 border border-[#F59E0B]/15">
+                <Receipt className="w-4 h-4 stroke-[2.2]" />
               </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                 Zero Hidden Charges
               </span>
-              <h3 className="text-xs sm:text-sm font-bold text-[#111111] mb-1 leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-[#111111] mb-1 leading-tight">
                 Upfront Fixed Quotes
               </h3>
 
-              <p className="text-xs text-slate-600 leading-relaxed font-normal max-w-[175px] sm:max-w-[195px]">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
                 Itemized quotes provided before work starts with fixed labor and OEM part pricing.
               </p>
             </div>
 
-            <div className="relative z-10 mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-              <div className="flex items-center gap-1 text-[11px] font-bold text-[#00AEEF]">
-                <CheckCircle2 className="w-3.5 h-3.5 fill-[#00AEEF] text-white" />
+            <div className="relative z-10 mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#00AEEF]">
+                <CheckCircle2 className="w-4 h-4 fill-[#00AEEF] text-white" />
                 <span>Verified Standard</span>
               </div>
               <ActionArrow />
@@ -306,7 +306,7 @@ export default function CoreDifferentiators() {
           </div>
 
           {/* Card 4 (4 Columns) - DEWA Energy Savings */}
-          <div className="md:col-span-4 bg-white p-3 sm:p-3.5 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
+          <div className="md:col-span-4 bg-white p-4 sm:p-4.5 rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
             {/* Chart & Leaf Illustration */}
             <div className="absolute right-0 bottom-1 top-4 w-[42%] h-full z-0 pointer-events-none flex items-end justify-end pr-1 pb-7">
               <div className="relative w-full h-24 flex items-end justify-end">
@@ -325,25 +325,25 @@ export default function CoreDifferentiators() {
             </div>
 
             <div className="relative z-10">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#EBF8FF] text-[#00AEEF] flex items-center justify-center mb-1.5 border border-[#00AEEF]/15">
-                <Leaf className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+              <div className="w-8 h-8 rounded-xl bg-[#EBF8FF] text-[#00AEEF] flex items-center justify-center mb-1.5 border border-[#00AEEF]/15">
+                <Leaf className="w-4 h-4 stroke-[2.2]" />
               </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                 Lower Monthly Power Costs
               </span>
-              <h3 className="text-xs sm:text-sm font-bold text-[#111111] mb-1 leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-[#111111] mb-1 leading-tight">
                 DEWA Energy Savings
               </h3>
 
-              <p className="text-xs text-slate-600 leading-relaxed font-normal max-w-[175px] sm:max-w-[195px]">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
                 Coil chemical flushes and digital gas tuning lower compressor draw, cutting bills up to 25%.
               </p>
             </div>
 
-            <div className="relative z-10 mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between">
-              <div className="flex items-center gap-1 text-[11px] font-bold text-[#00AEEF]">
-                <Zap className="w-3.5 h-3.5 text-[#00AEEF] stroke-[2.5]" />
+            <div className="relative z-10 mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#00AEEF]">
+                <Zap className="w-4 h-4 text-[#00AEEF] stroke-[2.5]" />
                 <span>Up to 25% Savings</span>
               </div>
               <ActionArrow />
@@ -351,7 +351,7 @@ export default function CoreDifferentiators() {
           </div>
 
           {/* Card 5 (4 Columns) - 24/7 Emergency Dispatch Callout */}
-          <div className="md:col-span-4 bg-[#081226] text-white p-3 sm:p-3.5 rounded-2xl shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
+          <div className="md:col-span-4 bg-[#081226] text-white p-4 sm:p-4.5 rounded-2xl shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
             {/* Technician Backdrop */}
             <div className="absolute right-0 top-0 bottom-0 w-[50%] h-full z-0 overflow-hidden pointer-events-none">
               <Image
@@ -366,26 +366,26 @@ export default function CoreDifferentiators() {
             </div>
 
             <div className="relative z-10">
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-blue-500/20 text-[#00AEEF] flex items-center justify-center mb-1.5 border border-blue-400/30">
-                <Siren className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+              <div className="w-8 h-8 rounded-xl bg-blue-500/20 text-[#00AEEF] flex items-center justify-center mb-1.5 border border-blue-400/30">
+                <Siren className="w-4 h-4 stroke-[2.2]" />
               </div>
 
-              <span className="text-[10px] font-bold uppercase tracking-widest text-amber-400 block mb-0.5">
+              <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-0.5">
                 24/7 Dubai Hotline
               </span>
-              <h3 className="text-xs sm:text-sm font-bold text-white mb-1 leading-tight">
+              <h3 className="text-base sm:text-lg font-bold text-white mb-1 leading-tight">
                 Urgent AC Breakdown?
               </h3>
 
-              <p className="text-xs text-slate-300 leading-relaxed font-normal max-w-[175px] sm:max-w-[195px]">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
                 Mobile units on standby across Dubai for immediate on-site diagnostic repair.
               </p>
             </div>
 
-            <div className="relative z-10 mt-2.5">
+            <div className="relative z-10 mt-3">
               <Link
                 href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
-                className="w-full inline-flex items-center justify-between bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold py-2 px-3 rounded-xl transition-colors text-xs shadow-xs group/btn"
+                className="w-full inline-flex items-center justify-between bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold py-2.5 px-3 rounded-xl transition-colors text-xs sm:text-sm shadow-xs group/btn"
               >
                 <div className="flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5" />

@@ -8,6 +8,8 @@ import TeamSection from '@/components/home/TeamSection';
 import FaqSection from '@/components/home/FaqSection';
 import CtaSection from '@/components/home/CtaSection';
 import ServiceAreasSection from '@/components/home/ServiceArea';
+import CoreDifferentiators from '@/components/about/CoreDifferentiators';
+import BrandsSection from '@/components/about/BrandsSection';
 
 export const metadata = {
   title: 'Airtronics Fixcare Technical Services | Top AC Repair in Dubai',
@@ -19,7 +21,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#c1121f] selection:text-white" aria-label="Main Content">
       <Hero />
-      <ContactTicker />
+      <CoreDifferentiators/>
+      <BrandsSection/>
       <MoneySavingCTA />
       <AboutSection />
       <ServicesShowcase />
