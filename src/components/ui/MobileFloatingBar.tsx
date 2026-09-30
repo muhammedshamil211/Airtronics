@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone } from 'lucide-react';
 
 const HOTLINE_NUMBER = '+971586596321';
@@ -14,6 +14,16 @@ const WhatsAppIcon = () => (
 );
 
 export default function MobileFloatingBar() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_PREFIX)}`;
 
   return (
@@ -21,6 +31,7 @@ export default function MobileFloatingBar() {
       {/* Bottom Left: Simple Standard Round "Call Now" Button */}
       <a
         href={`tel:${HOTLINE_NUMBER}`}
+        suppressHydrationWarning
         className="fixed bottom-5 left-4 z-50 flex md:hidden items-center justify-center w-12 h-12 rounded-full bg-[#005eb8] text-white shadow-md active:scale-95 transition-transform"
         aria-label="Call Now"
         title="Call Now: +971 58 659 6321"
@@ -33,6 +44,7 @@ export default function MobileFloatingBar() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
+        suppressHydrationWarning
         className="fixed bottom-5 right-4 z-50 flex md:hidden items-center justify-center w-12 h-12 rounded-full bg-[#25D366] text-white shadow-md active:scale-95 transition-transform"
         aria-label="Need Help? Chat on WhatsApp"
         title="Need Help"

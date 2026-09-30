@@ -144,13 +144,13 @@ export default function Hero() {
           </motion.div>
         ))}
 
-        {/* Floating Badge: Dubai-Wide Coverage (Bottom-Right over rooftop) */}
+        {/* Floating Badge: Dubai-Wide Coverage (Hidden on Mobile Screens, Visible on sm+) */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.45, ease: 'easeOut' }}
           whileHover={{ scale: 1.03, y: -2 }}
-          className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 lg:right-10 z-20 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 shadow-md hover:shadow-xl rounded-xl py-2 px-3.5 sm:px-4 text-white flex items-center gap-2.5 cursor-pointer transition-shadow"
+          className="hidden sm:flex absolute sm:bottom-6 sm:right-6 lg:right-10 z-20 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 shadow-md hover:shadow-xl rounded-xl py-2 px-3.5 sm:px-4 text-white items-center gap-2.5 cursor-pointer transition-shadow"
         >
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0070f3] text-white flex items-center justify-center shrink-0">
             <MapPin className="w-4 h-4 fill-white" />
