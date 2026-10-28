@@ -99,38 +99,44 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
       }}
     >
       {/* ======================================================================= */}
-      {/* 1. FULL BACKGROUND IMAGE WITH SMOOTH COME & GO ANIMATION                */}
+      {/* 1. FULL BACKGROUND IMAGE: Comes from bottom with 0 to 100% visibility   */}
       {/* ======================================================================= */}
       <motion.div
         initial={false}
         animate={{
           opacity: isImageActive ? 1 : 0,
-          scale: isImageActive ? 1.01 : 1.1,
-          filter: isImageActive ? 'blur(0px)' : 'blur(6px)',
+          y: isImageActive ? 0 : 200,
         }}
         transition={{
-          duration: 0.6,
+          duration: 0.8,
           ease: [0.16, 1, 0.3, 1],
         }}
+        style={{ willChange: 'transform, opacity' }}
         className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
       >
         <Image
           src={service.image}
           alt={`${serviceName} in Dubai - Airtronics Fixcare Technical Services`}
           fill
+          quality={95}
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
           className="object-cover object-center"
         />
 
-        {/* Dark contrast gradient over the image when active */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/92 via-slate-900/70 to-slate-900/40" />
+        {/* Dual contrast overlay: even dark tint + gradient for optimal text and icon legibility */}
+        <div className="absolute inset-0 bg-slate-950/35" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/55 to-slate-900/30" />
       </motion.div>
 
       {/* ======================================================================= */}
       {/* TOP-CORNER CROSS/GRID GRADIENT BACKGROUND PATTERN                       */}
       {/* ======================================================================= */}
-      <div className="absolute top-0 right-0 w-44 h-44 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 via-sky-50/20 to-transparent rounded-full blur-lg pointer-events-none" />
+      <div
+        className={`absolute top-0 right-0 w-44 h-44 pointer-events-none z-0 overflow-hidden transition-opacity duration-300 ${
+          isImageActive ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 via-sky-50/20 to-transparent rounded-full blur-md pointer-events-none" />
         <div
           className="w-full h-full"
           style={{
@@ -161,7 +167,7 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
         {/* Service Title */}
         <h3
           className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 leading-snug mb-3 ${isImageActive
-              ? 'text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]'
+              ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]'
               : 'text-[#111111] group-hover:text-[#005eb8]'
             }`}
         >
@@ -171,7 +177,7 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
         {/* Short Description */}
         <p
           className={`text-sm sm:text-[15px] leading-relaxed transition-colors duration-300 ${isImageActive
-              ? 'text-slate-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
+              ? 'text-slate-100 drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)]'
               : 'text-gray-500'
             }`}
         >
@@ -279,7 +285,7 @@ export default function ServicesShowcase() {
     <section
       id="services"
       aria-labelledby="services-we-provide-heading"
-      className="relative bg-[#f8fbff] py-20 sm:py-24 lg:py-28 overflow-hidden border-b border-gray-100"
+      className="relative bg-[#f8fbff] pt-20 sm:pt-24 lg:pt-28 overflow-hidden border-b border-gray-100"
     >
       {/* Section Background: Top-Right Corner Gradient Cross-Grid Pattern */}
       <div className="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 pointer-events-none z-0 overflow-hidden opacity-60">

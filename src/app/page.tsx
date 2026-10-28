@@ -1,11 +1,10 @@
 import Hero from '@/components/home/Hero';
 import QuickBookingBar from '@/components/ui/QuickBookingBar';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
-import MoneySavingCTA from '@/components/home/MoneySavingCTA';
 import AboutSection from '@/components/home/AboutSection';
+import RecentWorkGallery from '@/components/home/RecentWorkGallery';
 import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
 import ProcessSection from '@/components/home/ProcessSection';
-import TeamSection from '@/components/home/TeamSection';
 import FaqSection from '@/components/home/FaqSection';
 import CtaSection from '@/components/home/CtaSection';
 import ServiceAreasSection from '@/components/home/ServiceArea';
@@ -45,12 +44,11 @@ export default function Home() {
       <ServicesShowcase />
       <ProcessSection />
       <AboutSection />
+      <RecentWorkGallery />
       <GoogleReviewsSection />
       <CoreDifferentiators />
       <BrandsSection />
-      <MoneySavingCTA />
       <ServiceAreasSection />
-      <TeamSection />
       <FaqSection />
       <CtaSection />
     </main>

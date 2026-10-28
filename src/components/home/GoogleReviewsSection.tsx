@@ -82,7 +82,7 @@ export default function GoogleReviewsSection() {
     setReviewAges(computed);
   }, []);
 
-  // Auto-rotation timer with hover pause
+  // Auto-rotation timer with hover pause & clean reset on manual navigation
   useEffect(() => {
     if (isPaused) return;
 
@@ -92,7 +92,7 @@ export default function GoogleReviewsSection() {
     }, ROTATION_INTERVAL);
 
     return () => clearInterval(timer);
-  }, [isPaused, totalReviews]);
+  }, [activeIndex, isPaused, totalReviews]);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -154,7 +154,7 @@ export default function GoogleReviewsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative bg-[#fcfcfc] py-20 sm:py-24 lg:py-28 border-b border-gray-100 overflow-hidden"
+      className="relative bg-[#fcfcfc] py-20 sm:py-20 lg:py-20 border-b border-gray-100 overflow-hidden"
     >
       {/* Schema.org Structured Data */}
       <Script
@@ -193,10 +193,10 @@ export default function GoogleReviewsSection() {
 
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
         <motion.div
-          initial={{ opacity: 0, x: 45 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* 2-COLUMN LAYOUT */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
@@ -336,9 +336,9 @@ export default function GoogleReviewsSection() {
             {/* Auto-Rotation Progress Bar */}
             <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden mb-3">
               <motion.div
-                key={`${activeIndex}-${isPaused}`}
+                key={activeIndex}
                 initial={{ width: '0%' }}
-                animate={{ width: isPaused ? '0%' : '100%' }}
+                animate={{ width: isPaused ? undefined : '100%' }}
                 transition={{
                   duration: isPaused ? 0 : ROTATION_INTERVAL / 1000,
                   ease: 'linear',
@@ -348,16 +348,20 @@ export default function GoogleReviewsSection() {
             </div>
 
             {/* Interactive Card Container */}
-            <div className="relative min-h-[380px] sm:min-h-[340px] flex items-center">
-              <AnimatePresence mode="wait" custom={direction}>
+            <div className="relative min-h-[380px] sm:min-h-[340px] w-full overflow-hidden">
+              <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.article
                   key={activeReview.id}
                   custom={direction}
-                  initial={{ opacity: 0, y: 16, filter: 'blur(4px)' }}
-                  animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  exit={{ opacity: 0, y: -16, filter: 'blur(4px)' }}
-                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-full bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-9 shadow-sm flex flex-col justify-between relative overflow-hidden"
+                  initial={{ opacity: 0, x: direction > 0 ? 32 : -32 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direction > 0 ? -32 : 32 }}
+                  transition={{
+                    duration: 0.32,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                  style={{ willChange: 'transform, opacity' }}
+                  className="w-full bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-9 shadow-sm flex flex-col justify-between relative"
                   role="region"
                   aria-label={`Review by ${activeReview.authorName}`}
                 >
