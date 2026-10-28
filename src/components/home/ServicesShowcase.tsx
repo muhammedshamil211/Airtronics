@@ -1,225 +1,374 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Script from 'next/script';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import {
+  Wrench,
+  Snowflake,
+  Gauge,
+  Wind,
+  ShieldCheck,
+  Building2,
+  ArrowRight
+} from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { SERVICES_DATA, type ServiceDetail } from '@/data/servicesData';
 
 const WHATSAPP_PHONE = '971586596321';
 
-const getWhatsAppServiceLink = (serviceName: string) => {
-  const message = `Hello Airtronics Fixcare! I would like to book the "${serviceName}" service in Dubai. Please provide availability and pricing.`;
+const getWhatsAppDirectLink = (serviceName: string) => {
+  const message = `Hello Airtronics Fixcare! I would like to order the "${serviceName}" service in Dubai. Please provide immediate technician availability and pricing.`;
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 };
 
-interface ServiceItem {
-  id: string;
-  title: string;
-  desc: string;
-  image: string;
-  link: string;
-}
+const SERVICE_ICONS: Record<string, React.ElementType> = {
+  'ac-repair': Wrench,
+  'ac-installation': Snowflake,
+  'hvac-maintenance': Gauge,
+  'duct-cleaning': Wind,
+  'amc': ShieldCheck,
+  'commercial-hvac': Building2,
+};
 
-const ALL_SERVICES: ServiceItem[] = [
-  {
-    id: '01',
-    title: 'AC Repair & Diagnostics',
-    desc: 'Rapid 30–45 min emergency troubleshooting, leak detection, and genuine OEM compressor fixes.',
-    image: '/images/ac_repair_split_glow.jpg',
-    link: '/services/ac-repair',
-  },
-  {
-    id: '02',
-    title: 'AC Installation & Replacement',
-    desc: 'Turnkey split, ducted, and VRF installations with accurate heat-load calculations and warranty.',
-    image: '/images/ac_cassette_installation.jpg',
-    link: '/services/ac-installation',
-  },
-  {
-    id: '03',
-    title: 'HVAC Maintenance & Tuning',
-    desc: '24-point thermodynamic tuning, chemical coil cleaning, and gas top-up to lower DEWA bills.',
-    image: '/images/hvac_maintenance_technician.jpg',
-    link: '/services/hvac-maintenance',
-  },
-  {
-    id: '04',
-    title: 'AC Duct Cleaning & Sanitization',
-    desc: 'Hospital-grade robotic rotary brushing and antimicrobial misting for purified indoor air quality.',
-    image: '/images/duct_cleaning_interior_brush.jpg',
-    link: '/services/duct-cleaning',
-  },
-  {
-    id: '05',
-    title: 'Annual Maintenance Contracts (AMC)',
-    desc: 'Cost-effective residential and corporate AMC packages with unlimited emergency breakdown callouts.',
-    image: '/images/amc_plan_checklist.jpg',
-    link: '/services/amc',
-  },
-  {
-    id: '06',
-    title: 'Commercial HVAC Solutions',
-    desc: 'Heavy-duty chiller plants, FCUs, AHUs, and precision climate systems for offices and warehouses.',
-    image: '/images/technician_dark_hvac.jpg',
-    link: '/services/commercial-hvac',
-  },
-];
+// Service Card Component Matching User Reference Image Layout & Brand Design
+function ServiceCard({ service, index }: { service: ServiceDetail; index: number }) {
+  const router = useRouter();
+  const cardRef = useRef<HTMLDivElement>(null);
+  const IconComponent = SERVICE_ICONS[service.slug] || Wrench;
+  const serviceName = service.shortTitle || service.title;
+  const serviceDesc = service.tagline || service.overview;
 
-export default function ServicesShowcase() {
-  // Lightweight JSON-LD Schema for SEO
-  const serviceSchemas = ALL_SERVICES.map(service => ({
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': service.title,
-    'provider': {
-      '@type': 'HVACBusiness',
-      'name': 'Airtronics Fixcare Technical Services LLC',
-    },
-    'areaServed': {
-      '@type': 'City',
-      'name': 'Dubai',
-    },
-    'description': service.desc,
-    'url': `https://airtronicsfixcare.com${service.link}`,
-  }));
+  // Viewport detection on touch devices (triggered when completely in viewport)
+  const isCompletelyInView = useInView(cardRef, { amount: 0.8, once: false });
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    const touchQuery = window.matchMedia('(hover: none) and (pointer: coarse)');
+    setIsTouchDevice(touchQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsTouchDevice(e.matches);
+    };
+
+    touchQuery.addEventListener('change', handleChange);
+    return () => touchQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  // Visible on hover (desktop) OR when completely in viewport (touch screen)
+  const isImageActive = isTouchDevice ? isCompletelyInView : isHovered;
+
+  const handleCardClick = () => {
+    router.push(`/services/${service.slug}`);
+  };
 
   return (
-    <section 
-      className="relative bg-[#fcfcfc] py-14 sm:py-18 lg:py-20 border-b border-gray-100 overflow-hidden" 
-      aria-labelledby="services-showcase-heading"
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ duration: 0.45, delay: index * 0.05, ease: 'easeOut' }}
+      onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
+      onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
+      onClick={handleCardClick}
+      className="relative rounded-xl sm:rounded-2xl overflow-hidden min-h-[350px] sm:min-h-[370px] flex flex-col justify-between p-7 sm:p-8 border transition-all duration-300 bg-white group cursor-pointer shadow-xs hover:shadow-lg"
+      style={{
+        borderColor: isImageActive ? '#005eb8' : 'rgba(226, 232, 240, 0.95)',
+      }}
     >
-      <Script 
-        id="service-schemas" 
-        type="application/ld+json" 
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemas) }} 
+      {/* ======================================================================= */}
+      {/* 1. FULL BACKGROUND IMAGE WITH SMOOTH COME & GO ANIMATION                */}
+      {/* ======================================================================= */}
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: isImageActive ? 1 : 0,
+          scale: isImageActive ? 1.01 : 1.1,
+          filter: isImageActive ? 'blur(0px)' : 'blur(6px)',
+        }}
+        transition={{
+          duration: 0.6,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 overflow-hidden"
+      >
+        <Image
+          src={service.image}
+          alt={`${serviceName} in Dubai - Airtronics Fixcare Technical Services`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+          className="object-cover object-center"
+        />
+
+        {/* Dark contrast gradient over the image when active */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/92 via-slate-900/70 to-slate-900/40" />
+      </motion.div>
+
+      {/* ======================================================================= */}
+      {/* TOP-CORNER CROSS/GRID GRADIENT BACKGROUND PATTERN                       */}
+      {/* ======================================================================= */}
+      <div className="absolute top-0 right-0 w-44 h-44 pointer-events-none z-0 overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-100/50 via-sky-50/20 to-transparent rounded-full blur-lg pointer-events-none" />
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 94, 184, 0.16) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 94, 184, 0.16) 1px, transparent 1px)
+            `,
+            backgroundSize: '16px 16px',
+            maskImage: 'radial-gradient(circle at top right, black 35%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(circle at top right, black 35%, transparent 85%)',
+          }}
+        />
+      </div>
+
+      {/* ======================================================================= */}
+      {/* 2. CARD CONTENT: Clean Reference Layout (Icon -> Title -> Description)  */}
+      {/* ======================================================================= */}
+      <div className="relative z-10 flex flex-col">
+        {/* Service Icon in Brand Colors */}
+        <div className="mb-6">
+          <IconComponent
+            className={`w-11 h-11 transition-colors duration-300 ${
+              isImageActive ? 'text-[#00AEEF]' : 'text-[#005eb8]'
+            }`}
+            strokeWidth={1.75}
+          />
+        </div>
+
+        {/* Service Title */}
+        <h3
+          className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 leading-snug mb-3 ${
+            isImageActive
+              ? 'text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]'
+              : 'text-[#111111] group-hover:text-[#005eb8]'
+          }`}
+        >
+          {serviceName}
+        </h3>
+
+        {/* Short Description */}
+        <p
+          className={`text-sm sm:text-[15px] leading-relaxed transition-colors duration-300 ${
+            isImageActive
+              ? 'text-slate-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
+              : 'text-gray-500'
+          }`}
+        >
+          {serviceDesc}
+        </p>
+      </div>
+
+      {/* ======================================================================= */}
+      {/* 3. CARD BOTTOM: Order Service ▶ (Direct WhatsApp) + Service Page Arrow  */}
+      {/* ======================================================================= */}
+      <div className="relative z-10 flex items-center justify-between pt-8 sm:pt-10">
+        {/* "Order Service ▶" Link: Directly opens WhatsApp with service prefilled */}
+        <a
+          href={getWhatsAppDirectLink(serviceName)}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+          className={`inline-flex items-center gap-2.5 text-sm sm:text-base font-semibold transition-colors duration-300 group/btn focus:outline-none ${
+            isImageActive
+              ? 'text-[#00AEEF] hover:text-white'
+              : 'text-[#111111] hover:text-[#005eb8]'
+          }`}
+          aria-label={`Order ${serviceName} service on WhatsApp`}
+        >
+          <span>Order Service</span>
+          <svg
+            viewBox="0 0 24 24"
+            className="w-3.5 h-3.5 fill-current transition-transform group-hover/btn:translate-x-1"
+            aria-hidden="true"
+          >
+            <path d="M6 4l14 8-14 8V4z" />
+          </svg>
+        </a>
+
+        {/* Dedicated Arrow Button: Directly navigates to that service page */}
+        <Link
+          href={`/services/${service.slug}`}
+          onClick={(e) => e.stopPropagation()}
+          className={`inline-flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 shrink-0 ${
+            isImageActive
+              ? 'bg-white/15 text-white border-white/20 hover:bg-[#005eb8] hover:border-[#005eb8]'
+              : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-[#005eb8] hover:text-white hover:border-[#005eb8]'
+          }`}
+          aria-label={`View full ${serviceName} details page`}
+          title="Go to service page"
+        >
+          <ArrowRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function ServicesShowcase() {
+  // Highly enriched Schema.org structured data dynamically generated from single-source SERVICES_DATA
+  const serviceSchemas = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    'name': 'Services We Provide - Airtronics Fixcare Dubai',
+    'description': 'Certified residential and commercial HVAC services in Dubai including AC repair, installation, preventive maintenance, and deep duct cleaning.',
+    'url': 'https://airtronicsfixcare.com/#services',
+    'numberOfItems': SERVICES_DATA.length,
+    'itemListElement': SERVICES_DATA.map((srv, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'item': {
+        '@type': 'Service',
+        '@id': `https://airtronicsfixcare.com/services/${srv.slug}#service`,
+        'name': srv.title,
+        'alternateName': srv.shortTitle,
+        'serviceType': 'HVAC Repair, AC Maintenance & Installation Services',
+        'description': srv.metaDescription || srv.tagline,
+        'url': `https://airtronicsfixcare.com/services/${srv.slug}`,
+        'image': `https://airtronicsfixcare.com${srv.image}`,
+        'termsOfService': '90-Day Written Warranty on Genuine OEM Parts & Labor',
+        'provider': {
+          '@type': 'HVACBusiness',
+          'name': 'Airtronics Fixcare Technical Services LLC',
+          'telephone': '+971-58-659-6321',
+          'image': 'https://airtronicsfixcare.com/image/logo.png',
+          'priceRange': 'AED 150 - AED 1500',
+          'openingHours': 'Mo-Su 00:00-24:00',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': 'Office M-01, Commercial Bank of Dubai Building, Al Kabeesi',
+            'addressLocality': 'Dubai',
+            'addressCountry': 'AE',
+          },
+        },
+        'areaServed': srv.dubaiLocations.map((loc) => ({
+          '@type': 'AdministrativeArea',
+          'name': loc,
+        })),
+        'offers': {
+          '@type': 'Offer',
+          'priceCurrency': 'AED',
+          'price': '150.00',
+          'priceValidUntil': '2026-12-31',
+          'availability': 'https://schema.org/InStock',
+          'url': `https://airtronicsfixcare.com/services/${srv.slug}`,
+        },
+      },
+    })),
+  };
+
+  return (
+    <section
+      id="services"
+      aria-labelledby="services-we-provide-heading"
+      className="relative bg-[#f8fbff] pt-14 sm:pt-20 pb-0 overflow-hidden"
+    >
+      {/* Section Background: Top-Right Corner Gradient Cross-Grid Pattern */}
+      <div className="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 pointer-events-none z-0 overflow-hidden opacity-60">
+        <div className="absolute top-0 right-0 w-56 h-56 bg-gradient-to-bl from-blue-100/60 via-sky-50/25 to-transparent rounded-full blur-2xl pointer-events-none" />
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 94, 184, 0.14) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 94, 184, 0.14) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px',
+            maskImage: 'radial-gradient(circle at top right, black 35%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(circle at top right, black 35%, transparent 85%)',
+          }}
+        />
+      </div>
+
+      {/* Section Background: Bottom-Left Corner Gradient Cross-Grid Pattern */}
+      <div className="absolute bottom-16 sm:bottom-20 left-0 w-80 sm:w-96 h-80 sm:h-96 pointer-events-none z-0 overflow-hidden opacity-60">
+        <div className="absolute bottom-0 left-0 w-56 h-56 bg-gradient-to-tr from-blue-100/60 via-sky-50/25 to-transparent rounded-full blur-2xl pointer-events-none" />
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(0, 94, 184, 0.14) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 94, 184, 0.14) 1px, transparent 1px)
+            `,
+            backgroundSize: '20px 20px',
+            maskImage: 'radial-gradient(circle at bottom left, black 35%, transparent 85%)',
+            WebkitMaskImage: 'radial-gradient(circle at bottom left, black 35%, transparent 85%)',
+          }}
+        />
+      </div>
+
+      <Script
+        id="services-we-provide-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemas) }}
       />
 
-      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        
-        {/* ========================================================================= */}
-        {/* HEADER: Clean, concise & with prominent "View Full Services" navigation   */}
-        {/* ========================================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8 sm:mb-10">
-          <div className="max-w-2xl">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-gray-500 mb-2">
-              <span className="text-[#005eb8] font-black text-sm">/</span>
-              <span>OUR SERVICES</span>
-            </div>
+      <div className="relative z-10 max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
 
-            {/* Headline */}
-            <h2 
-              id="services-showcase-heading" 
-              className="text-2xl sm:text-3xl md:text-[36px] font-medium tracking-tight text-[#111111] leading-tight mb-2.5"
-            >
-              Certified AC Repair &amp; <span className="text-[#005eb8]">HVAC Services in Dubai</span>
-            </h2>
-
-            {/* Subtitle */}
-            <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed">
-              Fast diagnostics, certified installations, and preventive maintenance across residential and commercial properties in Dubai.
-            </p>
+        {/* ========================================================================= */}
+        {/* SECTION HEADER: Eyebrow + Heading "Services We Provide" + Subtitle       */}
+        {/* ========================================================================= */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#005eb8] mb-2.5">
+            <span className="w-5 sm:w-6 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
+            <span>Dubai Municipality Approved • 24/7 HVAC Solutions</span>
+            <span className="w-5 sm:w-6 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
           </div>
 
-          {/* Navigate to Full Service Page Button */}
-          <div className="shrink-0">
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold px-5 py-3 rounded-full transition-all shadow-md shadow-[#005eb8]/20 hover:shadow-lg whitespace-nowrap group"
-              aria-label="View Full Services Page"
-            >
-              <span>Explore Full Services</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          {/* Heading - "Services We Provide" */}
+          <h2
+            id="services-we-provide-heading"
+            className="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-[#111111] leading-tight mb-3"
+          >
+            Services We Provide
+          </h2>
+
+          {/* Subtitle with Dubai Local SEO keywords */}
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            Professional AC repair, certified installations, and preventive maintenance across residential and commercial properties in Dubai Marina, Downtown, Palm Jumeirah, Business Bay, and all UAE districts.
+          </p>
         </div>
 
         {/* ========================================================================= */}
-        {/* SERVICES GRID (All 6 Services matching Hero secondary service card style) */}
+        {/* SERVICES GRID: Content Directly From SERVICES_DATA                        */}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5" role="list">
-          {ALL_SERVICES.map((s, idx) => (
-            <motion.article 
-              key={s.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20px' }}
-              transition={{ duration: 0.45, delay: idx * 0.06, ease: 'easeOut' }}
-              whileHover={{ y: -3 }}
-              role="listitem"
-              className="bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 relative overflow-hidden flex flex-col justify-between hover:shadow-lg hover:border-[#005eb8]/40 transition-all group min-h-[175px] sm:min-h-[185px]"
-            >
-              {/* Background Image with Gradient Overlay matching Hero Cards */}
-              <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <Image
-                  src={s.image}
-                  alt={`${s.title} Dubai`}
-                  fill
-                  className="object-cover object-right opacity-70 group-hover:opacity-85 transition-all duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 sm:via-white/85 to-transparent pointer-events-none" />
-              </div>
-
-              {/* Content Header */}
-              <div className="relative z-10">
-                <span className="text-gray-400 font-bold text-xs sm:text-sm block mb-1">
-                  {s.id}
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-[#111111] group-hover:text-[#005eb8] transition-colors mb-1.5 leading-snug">
-                  {s.title}
-                </h3>
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed max-w-[240px] sm:max-w-[260px]">
-                  {s.desc}
-                </p>
-              </div>
-
-              {/* Action Buttons: Book Now + Navigate to Service Details */}
-              <div className="relative z-10 pt-4 flex items-center justify-between gap-2 border-t border-slate-100/80 mt-3">
-                {/* Book Now Button */}
-                <a
-                  href={getWhatsAppServiceLink(s.title)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold py-2 px-3.5 rounded-full transition-all shadow-xs hover:shadow-sm whitespace-nowrap group/btn"
-                  aria-label={`Book ${s.title} on WhatsApp`}
-                >
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />
-                  <span>Book Now</span>
-                </a>
-
-                {/* Service Page Link Icon */}
-                <Link
-                  href={s.link}
-                  className="w-8 h-8 rounded-full bg-white shadow-xs border border-slate-200 text-gray-500 hover:text-[#005eb8] hover:border-[#005eb8] flex items-center justify-center transition-all group-hover:scale-105 shrink-0"
-                  aria-label={`View ${s.title} details on services page`}
-                  title="View service details"
-                >
-                  <ArrowUpRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </motion.article>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 pb-10" role="list">
+          {SERVICES_DATA.map((service, idx) => (
+            <ServiceCard key={service.slug} service={service} index={idx} />
           ))}
         </div>
 
-        {/* ========================================================================= */}
-        {/* BOTTOM ACTION: Clear button leading to the dedicated services page        */}
-        {/* ========================================================================= */}
-        <div className="mt-8 sm:mt-10 text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-gray-700 hover:text-[#005eb8] transition-colors group"
-          >
-            <span>Need full specifications &amp; AMC contract breakdown?</span>
-            <span className="text-[#005eb8] inline-flex items-center underline underline-offset-4 group-hover:translate-x-0.5 transition-transform">
-              Visit Services Page
-              <ArrowRight className="w-3.5 h-3.5 ml-1" />
-            </span>
-          </Link>
-        </div>
+      </div>
 
+      {/* ========================================================================= */}
+      {/* EXACT HERO BOTTOM-SIDE DIVIDER: Seamless Paint Drip Wave Transition       */}
+      {/* ========================================================================= */}
+      <div className="relative z-20 w-full leading-none pointer-events-none -mb-[1px] overflow-hidden">
+        <svg
+          viewBox="0 0 1440 95"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-10 sm:h-14 md:h-16 lg:h-20 block scale-[1.01]"
+          preserveAspectRatio="none"
+        >
+          {/* Soft cyan liquid aura glow layer */}
+          <path
+            d="M 0,35 C 90,35 140,20 200,20 C 250,20 260,55 280,55 C 300,55 310,24 370,24 C 440,24 480,38 540,38 C 580,38 590,65 615,65 C 640,65 655,30 715,30 C 775,30 815,44 865,44 C 905,44 915,64 935,64 C 955,64 970,26 1020,26 C 1080,26 1120,44 1170,44 C 1220,44 1235,70 1260,70 C 1285,70 1300,34 1360,34 C 1405,34 1425,36 1440,36 L 1440,95 L 0,95 Z"
+            fill="rgba(0, 174, 239, 0.3)"
+          />
+
+          {/* Primary solid transition wave matching next section (#fcfcfc) */}
+          <path
+            d="M 0,50 C 80,50 120,32 180,32 C 230,32 245,68 265,68 C 285,68 295,34 350,34 C 420,34 460,48 520,48 C 560,48 575,80 600,80 C 625,80 640,40 700,40 C 760,40 800,56 850,56 C 890,56 905,78 925,78 C 945,78 960,36 1020,36 C 1080,36 1120,54 1170,54 C 1210,54 1225,84 1250,84 C 1275,84 1290,44 1350,44 C 1395,44 1420,50 1440,50 L 1440,95 L 0,95 Z"
+            fill="#fcfcfc"
+          />
+        </svg>
       </div>
     </section>
   );

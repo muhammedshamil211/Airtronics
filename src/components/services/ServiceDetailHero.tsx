@@ -3,13 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ShieldCheck, 
-  Clock, 
-  Phone, 
-  CalendarCheck, 
-  ArrowRight, 
-  CheckCircle2 
+import {
+  ShieldCheck,
+  Clock,
+  Phone,
+  CalendarCheck,
+  ArrowRight,
+  CheckCircle2
 } from 'lucide-react';
 import { ServiceDetail } from '@/data/servicesData';
 
@@ -24,7 +24,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
   return (
     <section className="relative bg-white border-b border-gray-100/90 overflow-hidden" aria-label={`${service.title} Hero`}>
       <div className="relative max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 py-10 sm:py-14 lg:py-16">
-        
+
         {/* Desktop Ambient Background Image (Right Bleed with Left Fade Mask) */}
         <div className="hidden lg:block absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
           <Image
@@ -43,7 +43,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
 
         {/* Foreground Content */}
         <div className="relative z-10 max-w-2xl lg:max-w-[620px]">
-          
+
           {/* Breadcrumb Navigation */}
           <nav className="flex items-center gap-2 text-xs font-semibold text-gray-500 mb-3" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-[#005eb8] transition-colors">Home</Link>
@@ -67,19 +67,19 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
           </div>
 
           {/* Main H1 */}
-          <h1 className="text-3xl sm:text-4xl md:text-[42px] font-medium tracking-tight text-[#111111] leading-[1.14] mb-3.5">
+          <h1 className="text-[28px] sm:text-4xl md:text-[42px] font-medium tracking-tight text-[#111111] leading-[1.14] mb-3.5">
             {service.title}
           </h1>
 
           {/* Subtitle / Tagline */}
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+          <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed mb-6 font-normal">
             {service.tagline}
           </p>
 
           {/* Highlights Checklist (Standard Inline List, No Cards) */}
           <ul className="space-y-2 mb-7">
             {service.heroHighlights.map((highlight, idx) => (
-              <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700">
+              <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-700">
                 <CheckCircle2 className="w-4 h-4 text-[#005eb8] shrink-0 mt-0.5" />
                 <span>{highlight}</span>
               </li>
@@ -92,7 +92,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap group"
+              className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-sm font-semibold px-6 py-3 rounded-full transition-colors whitespace-nowrap group"
               aria-label={`Book ${service.shortTitle} on WhatsApp`}
             >
               <CalendarCheck className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -101,7 +101,7 @@ export default function ServiceDetailHero({ service }: { service: ServiceDetail 
 
             <Link
               href={`tel:${CALL_PHONE.replace(/\s+/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-gray-300 hover:border-[#005eb8] text-xs sm:text-sm font-semibold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-gray-300 hover:border-[#005eb8] text-sm font-semibold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
               aria-label="Call Dispatch Hotline"
             >
               <Phone className="w-4 h-4 text-[#005eb8]" />

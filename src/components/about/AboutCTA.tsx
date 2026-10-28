@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { 
-  PhoneCall, 
-  MessageCircle, 
-  Clock, 
-  CreditCard, 
-  ShieldCheck, 
-  MapPin, 
-  ChevronRight 
+import {
+  PhoneCall,
+  MessageCircle,
+  Clock,
+  CreditCard,
+  ShieldCheck,
+  MapPin,
+  ChevronRight
 } from 'lucide-react';
 import WhatsAppBookingModal from '@/components/ui/WhatsAppBookingModal';
 
@@ -40,7 +40,7 @@ export default function AboutCTA({
   return (
     <section aria-label="Direct Emergency Booking CTA" className="bg-[#fcfcfc] py-4 sm:py-6 md:py-8">
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        
+
         {/* Light Highlighted CTA Container - Horizontal Gradient Blending into White on Both Sides, Zero Border & Zero Shadow */}
         <div className="relative overflow-hidden bg-gradient-to-r from-transparent via-[#ebf4ff] to-transparent p-6 sm:p-8 md:p-10 text-center rounded-2xl md:rounded-3xl">
           <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl pointer-events-none -z-0" />
@@ -54,10 +54,10 @@ export default function AboutCTA({
             </div>
 
             {/* Title & Copy */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight max-w-3xl mx-auto mb-3">
+            <h2 className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight max-w-3xl mx-auto mb-3">
               {title}
             </h2>
-            <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-6 font-normal">
+            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed max-w-2xl mx-auto mb-6 font-normal">
               {description}
             </p>
 
@@ -65,7 +65,7 @@ export default function AboutCTA({
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
               <Link
                 href={`tel:+${cleanPhone}`}
-                className="inline-flex items-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-semibold px-6 sm:px-7 py-3 rounded-full transition-colors group"
+                className="inline-flex items-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-sm font-semibold px-6 sm:px-7 py-3 rounded-full transition-colors group"
               >
                 <PhoneCall className="w-4 h-4" />
                 <span>Call Hotline: {phone}</span>

@@ -98,7 +98,7 @@ export default function WhatsAppBookingModal({
                 <h3 className="text-lg sm:text-xl font-bold tracking-tight text-[#111111]">
                   {title}
                 </h3>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs sm:text-sm text-gray-500 mt-0.5">
                   {subtitle}
                 </p>
               </div>
@@ -115,7 +115,7 @@ export default function WhatsAppBookingModal({
             <form onSubmit={handleWhatsAppSubmit} className="p-5 sm:p-6 space-y-4">
               {/* Name Input */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
                   <User className="w-3.5 h-3.5 text-[#005eb8]" />
                   Your Good Name <span className="text-red-500">*</span>
                 </label>
@@ -131,7 +131,7 @@ export default function WhatsAppBookingModal({
 
               {/* Phone Input */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
                   <Phone className="w-3.5 h-3.5 text-[#005eb8]" />
                   Mobile Number / WhatsApp <span className="text-red-500">*</span>
                 </label>
@@ -147,7 +147,7 @@ export default function WhatsAppBookingModal({
 
               {/* Service Selection */}
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1 flex items-center gap-1.5">
+                <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
                   <Wrench className="w-3.5 h-3.5 text-[#005eb8]" />
                   Service Required
                 </label>
@@ -171,7 +171,7 @@ export default function WhatsAppBookingModal({
                 <button
                   type="button"
                   onClick={() => setShowMoreDetails(!showMoreDetails)}
-                  className="text-xs text-[#005eb8] font-semibold hover:underline focus:outline-none inline-flex items-center gap-1"
+                  className="text-sm text-[#005eb8] font-semibold hover:underline focus:outline-none inline-flex items-center gap-1"
                 >
                   {showMoreDetails ? '- Hide optional details' : '+ Add location, date or notes (optional)'}
                 </button>
@@ -241,7 +241,7 @@ export default function WhatsAppBookingModal({
                   <span>Continue to WhatsApp Dispatch</span>
                   <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                 </button>
-                <p className="text-center text-[11px] text-gray-400 mt-2.5">
+                <p className="text-center text-xs text-gray-400 mt-2.5">
                   Direct redirection to Airtronics 24/7 WhatsApp dispatch desk.
                 </p>
               </div>

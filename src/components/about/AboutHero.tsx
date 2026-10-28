@@ -2,14 +2,14 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { 
-  ChevronRight, 
-  ShieldCheck, 
-  Clock, 
-  Wrench, 
-  Zap, 
-  CheckCircle2, 
-  PhoneCall, 
+import {
+  ChevronRight,
+  ShieldCheck,
+  Clock,
+  Wrench,
+  Zap,
+  CheckCircle2,
+  PhoneCall,
   MessageCircle
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -87,20 +87,20 @@ export default function AboutHero() {
             Airtronics Fixcare Technical Services LLC — Dubai, UAE
           </span>
         </div>
-    
+
         {/* Hero Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left Column: SEO Optimized Headline & Proposition */}
           <div className="lg:col-span-7">
-            <h1 className="text-[34px] sm:text-[44px] md:text-[54px]  font-medium tracking-tight leading-[1.0] text-[#111111] mb-6">
+            <h1 className="text-[32px] sm:text-[44px] md:text-[54px] font-medium tracking-tight leading-[1.05] text-[#111111] mb-6">
               Professional AC Maintenance & <span className="text-[#005eb8] italic font-normal">Technical Services</span> in Dubai
             </h1>
 
-            <p className="text-gray-600 text-base md:text-lg  mb-5 font-normal max-w-2xl">
+            <p className="text-gray-600 text-[15px] sm:text-base md:text-lg mb-5 font-normal max-w-2xl leading-relaxed">
               Airtronics Fixcare Technical Services LLC is a premier engineering partner for advanced air conditioning solutions, electromechanical works, and property care across Dubai. Established in 2022, our service model is engineered specifically for the extreme environmental demands of the UAE.
             </p>
 
-            <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-8 max-w-2xl">
+            <p className="text-gray-500 text-[15px] sm:text-base leading-relaxed mb-8 max-w-2xl">
               Where summer heatwaves consistently pass 45°C, residential villas and corporate towers require continuous cooling reliability. We resolve critical AC breakdowns, fix persistent water leaks, perform deep duct cleaning, and optimize energy efficiency to trim monthly DEWA bills.
             </p>
 

@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
-import { 
-  Eye, 
-  Target, 
-  ShieldCheck, 
-  Award, 
-  Truck, 
+import {
+  Eye,
+  Target,
+  ShieldCheck,
+  Award,
+  Truck,
   Leaf,
   CheckCircle
 } from 'lucide-react';
@@ -62,7 +62,7 @@ export default function MissionVisionValues() {
             </div>
             <h3 className="text-xs uppercase font-bold tracking-widest text-[#005eb8] mb-2">Our Mission</h3>
             <h4 className="text-2xl font-bold text-[#111111] mb-3">Uncompromising Cooling & Technical Excellence</h4>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
               To provide Dubai homeowners, commercial operators, and facility managers with transparent, high-precision HVAC and electromechanical services that guarantee indoor thermal comfort, health, and energy conservation year-round.
             </p>
           </div>
@@ -75,7 +75,7 @@ export default function MissionVisionValues() {
             </div>
             <h3 className="text-xs uppercase font-bold tracking-widest text-emerald-600 mb-2">Our Vision</h3>
             <h4 className="text-2xl font-bold text-[#111111] mb-3">Dubai&apos;s Most Trusted Technical Partner</h4>
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
               To lead the UAE maintenance sector through digital diagnostic innovation, zero-surprise pricing, rapid emergency dispatch corridors, and sustainable building engineering practices.
             </p>
           </div>
@@ -86,10 +86,10 @@ export default function MissionVisionValues() {
           <span className="text-xs uppercase font-bold tracking-widest text-[#005eb8] block mb-2">
             Institutional Pillars
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
+          <h2 className="text-[28px] sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
             Core Corporate Values & Guiding Principles
           </h2>
-          <p className="text-gray-600 text-base mt-4">
+          <p className="text-gray-600 text-[15px] sm:text-base mt-4 leading-relaxed">
             The operational framework of Airtronics Fixcare Technical Services LLC centers on four institutional pillars designed to ensure technical reliability and long-term client trust.
           </p>
         </div>

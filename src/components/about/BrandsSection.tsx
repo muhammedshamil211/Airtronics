@@ -159,21 +159,20 @@ const ALL_BRANDS: Brand[] = [
 ];
 
 // Reusable Infinite Marquee Row Component
-export const MarqueeRow = memo(({ 
-  brands, 
-  reverse = false, 
-  className = '' 
-}: { 
-  brands: Brand[]; 
-  reverse?: boolean; 
-  className?: string; 
+export const MarqueeRow = memo(({
+  brands,
+  reverse = false,
+  className = ''
+}: {
+  brands: Brand[];
+  reverse?: boolean;
+  className?: string;
 }) => {
   const triplicated = [...brands, ...brands, ...brands];
   return (
     <div
-      className={`flex w-max ${
-        reverse ? 'animate-marquee-row-reverse' : 'animate-marquee-row'
-      } hover:[animation-play-state:paused] ${className}`}
+      className={`flex w-max ${reverse ? 'animate-marquee-row-reverse' : 'animate-marquee-row'
+        } hover:[animation-play-state:paused] ${className}`}
     >
       {triplicated.map((brand, idx) => (
         <div
@@ -207,22 +206,22 @@ export default function BrandsSection({
   const row2 = ALL_BRANDS.slice(half);
 
   return (
-    <section 
+    <section
       aria-label="AC Brands We Service in Dubai"
       className={`py-10 md:py-14 bg-[#fcfcfc] border-b border-gray-100 overflow-hidden relative ${className}`}
     >
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 mb-6 sm:mb-8 text-center">
         {eyebrow && (
-          <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] uppercase font-bold tracking-widest text-[#005eb8] mb-1">
+          <div className="inline-flex items-center gap-1.5 text-xs uppercase font-bold tracking-widest text-[#005eb8] mb-1.5">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>{eyebrow}</span>
           </div>
         )}
-        <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-[#111111] leading-tight">
+        <h2 className="text-[28px] sm:text-3xl font-medium tracking-tight text-[#111111] leading-tight">
           {title}
         </h2>
         {subtitle && (
-          <p className="text-gray-500 text-xs sm:text-sm mt-1 max-w-xl mx-auto leading-relaxed">
+          <p className="text-gray-600 text-[15px] sm:text-base mt-2 max-w-xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         )}
@@ -243,7 +242,7 @@ export default function BrandsSection({
 
       {/* Verification Subtext */}
       <div className="mt-6 text-center">
-        <p className="text-[11px] text-gray-400 font-medium inline-flex items-center gap-1.5">
+        <p className="text-xs text-gray-400 font-medium inline-flex items-center gap-1.5">
           <Award className="w-3.5 h-3.5 text-[#005eb8]" />
           <span>All trademarks, brand logos, and model names belong to their respective manufacturers.</span>
         </p>

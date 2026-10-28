@@ -64,7 +64,7 @@ export default function ServiceAreasSection() {
             Proudly Serving Across Dubai
           </h2>
 
-          <p className="text-[#666666] text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
+          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed max-w-xl mx-auto">
             Fast, reliable AC repair, maintenance, installation and HVAC
             services for homes, apartments, offices and commercial properties
             throughout Dubai.

@@ -1,9 +1,9 @@
 import React from 'react';
-import { 
-  Wind, 
-  Sparkles, 
-  Zap, 
-  ShieldAlert, 
+import {
+  Wind,
+  Sparkles,
+  Zap,
+  ShieldAlert,
   CheckCircle2,
   Droplets,
   Fan
@@ -37,26 +37,26 @@ export default function AirQualityEnergy() {
   return (
     <section aria-label="Indoor Air Quality and Energy Efficiency" className="py-16 md:py-24 bg-white border-b border-gray-100">
       <div className="max-w-[1200px] mx-auto px-5 md:px-8">
-        
+
         {/* Header */}
         <div className="max-w-3xl mb-14">
           <div className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-[#005eb8] mb-3">
             <Wind className="w-4 h-4" />
             <span>Health & Efficiency</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
+          <h2 className="text-[28px] sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
             Environmental Sustainability, Indoor Air Purity, and Utility Conservation
           </h2>
-          <p className="text-gray-600 text-base mt-3">
+          <p className="text-gray-600 text-[15px] sm:text-base mt-3 leading-relaxed">
             In Dubai&apos;s demanding climate, air conditioning performance directly impacts both human respiratory wellness and household operating costs.
           </p>
         </div>
 
         {/* Narrative & Image Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16">
-          
+
           {/* Left Text */}
-          <div className="lg:col-span-7 space-y-5 text-gray-600 leading-relaxed text-base">
+          <div className="lg:col-span-7 space-y-5 text-gray-600 leading-relaxed text-[15px] sm:text-base">
             <p>
               The region&apos;s persistent desert dust storms carry fine particulates that infiltrate air handling systems. These particulates settle inside ductwork, creating conditions for the growth of mould, bacteria, and allergens within closed interior environments.
             </p>

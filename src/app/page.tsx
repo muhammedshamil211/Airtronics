@@ -1,7 +1,9 @@
 import Hero from '@/components/home/Hero';
+import QuickBookingBar from '@/components/ui/QuickBookingBar';
+import ServicesShowcase from '@/components/home/ServicesShowcase';
 import MoneySavingCTA from '@/components/home/MoneySavingCTA';
 import AboutSection from '@/components/home/AboutSection';
-import ServicesShowcase from '@/components/home/ServicesShowcase';
+import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
 import ProcessSection from '@/components/home/ProcessSection';
 import TeamSection from '@/components/home/TeamSection';
 import FaqSection from '@/components/home/FaqSection';
@@ -11,22 +13,43 @@ import CoreDifferentiators from '@/components/about/CoreDifferentiators';
 import BrandsSection from '@/components/about/BrandsSection';
 
 export const metadata = {
-  title: 'Airtronics Fixcare Technical Services | Top AC Repair in Dubai',
-  description: 'Premium HVAC Solutions For Dubai Properties. Expert HVAC installation, AC repair, preventive maintenance, duct cleaning, and commercial climate control with 24/7 response.',
-  keywords: 'HVAC Dubai, HVAC Services Dubai, AC Repair Dubai, AC Installation Dubai, HVAC Maintenance Dubai, Commercial HVAC Dubai, Duct Cleaning Dubai, AMC Services Dubai, Emergency AC Fix'
+  title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+  description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival in Downtown, Marina, Jumeirah & Business Bay. 100% OEM parts. Call 24/7.',
+  keywords: 'AC Repair Dubai, Emergency AC Repair Dubai, HVAC Maintenance Dubai, AC Cleaning Dubai, Chiller Repair Dubai, 24/7 AC Service Dubai, Airtronics Fixcare',
+  alternates: {
+    canonical: 'https://airtronicsfixcare.com',
+  },
+  openGraph: {
+    title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+    description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival with 100% genuine parts.',
+    url: 'https://airtronicsfixcare.com',
+    siteName: 'Airtronics Fixcare Technical Services LLC',
+    images: [
+      {
+        url: '/images/home.jpeg',
+        width: 1200,
+        height: 630,
+        alt: 'Airtronics certified HVAC technician performing AC repair in Dubai',
+      },
+    ],
+    locale: 'en_AE',
+    type: 'website',
+  },
 };
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#c1121f] selection:text-white" aria-label="Main Content">
       <Hero />
-      <CoreDifferentiators/>
-      <BrandsSection/>
-      <MoneySavingCTA />
-      <AboutSection />
+      <QuickBookingBar />
       <ServicesShowcase />
       <ProcessSection />
-      <ServiceAreasSection/>
+      <AboutSection />
+      <GoogleReviewsSection />
+      <CoreDifferentiators />
+      <BrandsSection />
+      <MoneySavingCTA />
+      <ServiceAreasSection />
       <TeamSection />
       <FaqSection />
       <CtaSection />

@@ -1,289 +1,262 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { 
-  ArrowRight, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Calendar, 
-  ShieldCheck, 
-  Building2, 
-  CheckCircle2 
+import Script from 'next/script';
+import {
+  ShieldCheck,
+  Wrench,
+  CheckCircle2,
+  Clock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Reusable Company Details Configuration
-interface CompanyDetailItem {
-  icon: React.ComponentType<{ className?: string }>;
-  title: string;
-  fill?: boolean;
-  content?: string;
-  phones?: string[];
-  email?: string;
-}
+const WHATSAPP_PHONE = '971586596321';
 
-const COMPANY_DETAILS: CompanyDetailItem[] = [
+// Trust Pillars (Large standalone icons, no card wrapping, no descriptions)
+const ABOUT_PILLARS = [
   {
-    icon: MapPin,
-    title: 'Office Address',
-    content: 'Commercial Bank of Dubai Building, M-01, Al Kabeesi, Dubai, UAE',
-    fill: true,
+    icon: ShieldCheck,
+    title: 'Dubai Municipality Approved',
   },
   {
-    icon: Calendar,
-    title: 'In The Field',
-    content: 'Delivering expert climate control solutions across Dubai since 2022',
+    icon: Wrench,
+    title: '100% Genuine OEM Parts',
   },
   {
-    icon: Phone,
-    title: 'Contact Numbers',
-    phones: ['+971 58 659 6321', '+971 55 561 9369', '+971 50 240 6545'],
-    fill: true,
+    icon: Clock,
+    title: 'Rapid 30–45 Min Dispatch',
   },
   {
-    icon: Mail,
-    title: 'Email Support',
-    email: 'airtronics6@gmail.com',
+    icon: CheckCircle2,
+    title: '90-Day Written Warranty',
   },
 ];
 
 export default function AboutSection() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Rich Schema.org Structured Data for SEO Authority & E-E-A-T Signals
+  const aboutSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HVACBusiness',
+    '@id': 'https://airtronicsfixcare.com/#about-business',
+    'name': 'Airtronics Fixcare Technical Services LLC',
+    'alternateName': 'Airtronics Fixcare Dubai',
+    'description': 'Certified HVAC and air conditioning repair company operating in Dubai since 2022. Delivering emergency AC maintenance, precision diagnostics, duct cleaning, and turnkey installations across Dubai.',
+    'url': 'https://airtronicsfixcare.com/about',
+    'foundingDate': '2022',
+    'priceRange': 'AED 150 - AED 1500',
+    'knowsAbout': [
+      'Emergency AC Repair Dubai',
+      'HVAC Preventive Maintenance',
+      'AC Gas Leak Detection and Top-Up',
+      'Air Duct Sanitation and Cleaning',
+      'Central AC and Chiller Maintenance',
+      'Thermostat Calibration and Smart AC Controls'
+    ],
+    'areaServed': [
+      { '@type': 'City', 'name': 'Dubai' },
+      { '@type': 'AdministrativeArea', 'name': 'Dubai Marina' },
+      { '@type': 'AdministrativeArea', 'name': 'Downtown Dubai' },
+      { '@type': 'AdministrativeArea', 'name': 'Palm Jumeirah' },
+      { '@type': 'AdministrativeArea', 'name': 'Business Bay' }
+    ],
+  };
+
   return (
-    <section className="relative bg-white border-b border-gray-100/80 overflow-hidden" aria-labelledby="about-section-heading">
-      
-      {/* Centered 1200px Container (Holds both the Desktop Background & Content) */}
-      <div className="relative max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 lg:py-20">
-        
-        {/* ========================================================================= */}
-        {/* DESKTOP FULL-SECTION BACKGROUND: Confined to 1200px & Centered (lg:+)    */}
-        {/* (Only on lg+ screens; mobile/tablet retains clean white section bg)       */}
-        {/* ========================================================================= */}
-        <div className="hidden lg:block absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none">
-          <Image
-            src="/images/hvac_maintenance_technician.jpg"
-            alt="Airtronics certified HVAC engineer inspecting rooftop AC unit in Dubai"
-            fill
-            sizes="1200px"
-            className="object-cover object-[75%_center] xl:object-[80%_center]"
+    <section
+      id="about"
+      aria-labelledby="about-section-heading"
+      className="relative bg-slate-900 border-b border-gray-100 overflow-hidden min-h-[580px] lg:min-h-[640px] xl:min-h-[680px] flex flex-col justify-between items-center pt-0 pb-0"
+    >
+      {/* Schema.org Structured Data */}
+      <Script
+        id="about-section-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
+
+      {/* ========================================================================= */}
+      {/* 1. FULL-WIDTH BACKGROUND IMAGE WITH ATMOSPHERIC OVERLAY                   */}
+      {/* ========================================================================= */}
+      <div className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+        <Image
+          src="/images/hvac_maintenance_technician.jpg"
+          alt="Airtronics certified HVAC technician performing AC maintenance and repair in Dubai"
+          fill
+          sizes="100vw"
+          priority={false}
+          className="object-cover object-center"
+        />
+
+        {/* Dark atmospheric overlay so the white shutter pops with high contrast */}
+        <div className="absolute inset-0 bg-slate-950/75 sm:bg-slate-950/65" />
+      </div>
+
+      {/* ========================================================================= */}
+      {/* 2. CENTERED SHUTTER DIV: Flush at Top (No Gap), Both Sides Slanted        */}
+      {/* Slow-speed shutter down entrance animation on view                        */}
+      {/* ========================================================================= */}
+      <div className="relative z-10 w-full max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8 flex justify-center pt-0">
+        <motion.div
+          initial={{ y: '-100%', opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{
+            duration: 1.5, // Slow, graceful shutter down motion
+            ease: [0.16, 1, 0.3, 1], // Smooth luxury ease-out
+            delay: 0.15,
+          }}
+          style={{
+            clipPath: isDesktop
+              ? 'polygon(0 0, 100% 0, calc(100% - 55px) 100%, 55px 100%)'
+              : 'none',
+          }}
+          className="w-full bg-white text-[#111111] pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12 px-6 sm:px-12 md:px-16 lg:px-20 shadow-2xl rounded-b-xl lg:rounded-none relative overflow-hidden"
+        >
+          {/* ======================================================================= */}
+          {/* BOTTOM-CENTER WAVE-SHAPED GRID PATTERN (Covers Up to Center)            */}
+          {/* ======================================================================= */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[960px] h-[55%] pointer-events-none z-0 overflow-hidden">
+            {/* Soft cooling blur aura rising to center */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[650px] h-[80%] bg-gradient-to-t from-blue-100/60 via-sky-50/25 to-transparent rounded-full blur-2xl pointer-events-none" />
+
+            {/* Same Cross-Grid Pattern masked into a smooth wave curve covering up to center */}
+            <div
+              className="w-full h-full"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to right, rgba(0, 94, 184, 0.16) 1px, transparent 1px),
+                  linear-gradient(to bottom, rgba(0, 94, 184, 0.16) 1px, transparent 1px)
+                `,
+                backgroundSize: '16px 16px',
+                maskImage: 'radial-gradient(ellipse 75% 85% at 50% 100%, black 40%, transparent 95%)',
+                WebkitMaskImage: 'radial-gradient(ellipse 75% 85% at 50% 100%, black 40%, transparent 95%)',
+              }}
+            />
+          </div>
+
+          <div className="relative z-10">
+            {/* Eyebrow */}
+            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#005eb8] mb-2.5 text-center">
+              <span className="w-5 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
+              <span>ABOUT AIRTRONICS FIXCARE</span>
+              <span className="w-5 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
+            </div>
+
+          {/* Headline - Primary & Secondary SEO Keywords */}
+          <h2
+            id="about-section-heading"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-bold tracking-tight text-[#111111] leading-[1.18] mb-3 text-center max-w-3xl mx-auto"
+          >
+            Dubai&apos;s Trusted HVAC &amp; AC Specialists <span className="text-[#005eb8]">Since 2022</span>
+          </h2>
+
+          {/* Narrative / Story */}
+          <p className="text-gray-600 text-xs sm:text-sm md:text-[15px] leading-relaxed mb-2.5 max-w-2xl mx-auto text-center">
+            Established in Dubai in 2022, <strong>Airtronics Fixcare Technical Services LLC</strong> is a premier climate control and air conditioning maintenance specialist. When summer temperatures surpass 45°C, reliable cooling is non-negotiable.
+          </p>
+
+          <p className="text-gray-600 text-xs sm:text-sm md:text-[15px] leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto text-center">
+            Our certified engineers deploy precision digital manifold gauges, laser thermometers, and direct manufacturer OEM parts for Daikin, O General, Carrier, Gree, and York to guarantee optimal indoor comfort.
+          </p>
+
+          {/* Big Standalone Icons (4-Across Row, No Card Style, No Descriptions) */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 max-w-4xl mx-auto">
+            {ABOUT_PILLARS.map((pillar, idx) => {
+              const IconComponent = pillar.icon;
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center text-center gap-2 p-1.5 group"
+                >
+                  <IconComponent
+                    className="w-8 h-8 sm:w-9 sm:h-9 text-[#005eb8] shrink-0 transition-transform group-hover:scale-110"
+                    strokeWidth={1.8}
+                    aria-hidden="true"
+                  />
+                  <h3 className="font-bold text-xs sm:text-sm text-[#111111] leading-snug">
+                    {pillar.title}
+                  </h3>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Action Buttons Matching Reference Style (Order Service + All Services) */}
+          <div className="flex flex-wrap items-center justify-center gap-3.5 pt-1">
+            {/* Primary Action Button (Green, Matching Reference Style) */}
+            <a
+              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hello Airtronics! I would like to order AC repair & service in Dubai.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-[#008f4c] hover:bg-[#007a3f] text-white text-xs sm:text-sm md:text-base font-bold px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg shadow-md shadow-[#008f4c]/20 hover:shadow-lg transition-all group"
+              aria-label="Order AC Service on WhatsApp"
+            >
+              <span>Order Service</span>
+              <svg
+                viewBox="0 0 24 24"
+                className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                <path d="M6 4l14 8-14 8V4z" />
+              </svg>
+            </a>
+
+            {/* Secondary Action Button (White with Border, Matching Reference Style) */}
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-slate-300 hover:border-[#005eb8] text-xs sm:text-sm md:text-base font-bold px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg transition-all shadow-2xs group"
+              aria-label="View All HVAC Services"
+            >
+              <span>All Services</span>
+              <svg
+                viewBox="0 0 24 24"
+                className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              >
+                <path d="M6 4l14 8-14 8V4z" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* EXACT HERO BOTTOM-SIDE DIVIDER: Liquid Wave Transition into next section */}
+      {/* ========================================================================= */}
+      <div className="relative z-20 w-full leading-none pointer-events-none -mb-[1px] overflow-hidden mt-6 sm:mt-10">
+        <svg
+          viewBox="0 0 1440 95"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-10 sm:h-14 md:h-16 lg:h-20 block scale-[1.01]"
+          preserveAspectRatio="none"
+        >
+          {/* Soft cyan liquid aura glow layer */}
+          <path
+            d="M 0,35 C 90,35 140,20 200,20 C 250,20 260,55 280,55 C 300,55 310,24 370,24 C 440,24 480,38 540,38 C 580,38 590,65 615,65 C 640,65 655,30 715,30 C 775,30 815,44 865,44 C 905,44 915,64 935,64 C 955,64 970,26 1020,26 C 1080,26 1120,44 1170,44 C 1220,44 1235,70 1260,70 C 1285,70 1300,34 1360,34 C 1405,34 1425,36 1440,36 L 1440,95 L 0,95 Z"
+            fill="rgba(0, 174, 239, 0.3)"
           />
 
-          {/* Seamless multi-stop gradient mask: 100% clean white readability for left-side text, smoothly revealing the atmospheric background photo */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white via-[48%] to-white/10 xl:to-transparent z-10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 via-[53%] to-transparent z-10" />
-
-          {/* Top & Bottom Soft Fading into section borders */}
-          <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-white via-white/80 to-transparent z-10" />
-          <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white via-white/80 to-transparent z-10" />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-          
-          {/* ========================================================================= */}
-          {/* LEFT COLUMN: Narrative, Address, Contact Info & Read More CTA             */}
-          {/* ========================================================================= */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="lg:col-span-7 flex flex-col justify-center"
-          >
-            {/* Eyebrow */}
-            <div className="flex items-center gap-2 text-xs sm:text-xs md:text-sm font-bold uppercase tracking-wider text-gray-500 mb-3">
-              <span className="text-[#005eb8] font-black text-sm">/</span>
-              <span>ABOUT AIRTRONICS FIXCARE</span>
-            </div>
-
-            {/* Headline */}
-            <h2 
-              id="about-section-heading" 
-              className="text-3xl sm:text-4xl md:text-[42px] font-medium tracking-tight text-[#111111] leading-[1.12] mb-4 sm:mb-5"
-            >
-              Dubai&apos;s Trusted HVAC &amp; AC Specialists <span className="text-[#005eb8]">Since 2022</span>
-            </h2>
-
-            {/* Subtitle / Story */}
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 max-w-2xl">
-              Operating in Dubai since 2022, Airtronics Fixcare Technical Services LLC provides certified air conditioning repair, preventive maintenance, turnkey installations, and professional duct sanitation. Backed by certified engineers, genuine OEM parts, and transparent upfront quotes, we keep homes and commercial facilities cool across the UAE.
-            </p>
-
-            {/* Reusable Company Details (Clean Minimalist List, No Card Styling) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-6 sm:mb-8">
-              {COMPANY_DETAILS.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-3 group/detail">
-                  <div className="w-8 h-8 rounded-full bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0 border border-blue-100 transition-transform group-hover/detail:scale-110 mt-0.5">
-                    <item.icon className={`w-4 h-4 ${item.fill ? 'fill-[#005eb8]' : ''}`} />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="block font-bold text-xs sm:text-sm text-[#111111] mb-1">{item.title}</span>
-                    {item.phones ? (
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-gray-600 font-medium">
-                        {item.phones.map((phone, pIdx) => (
-                          <React.Fragment key={pIdx}>
-                            {pIdx > 0 && <span className="text-gray-300">•</span>}
-                            <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-[#005eb8] transition-colors">
-                              {phone}
-                            </a>
-                          </React.Fragment>
-                        ))}
-                      </div>
-                    ) : item.email ? (
-                      <a 
-                        href={`mailto:${item.email}`} 
-                        className="block text-xs text-gray-600 font-medium hover:text-[#005eb8] transition-colors"
-                      >
-                        {item.email}
-                      </a>
-                    ) : (
-                      <span className="block text-xs text-gray-600 font-medium leading-relaxed">
-                        {item.content}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Read More & Action CTAs */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-              <Link 
-                href="/about"
-                className="inline-flex items-center justify-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold px-6 py-3.5 rounded-full transition-all duration-300 shadow-md shadow-[#005eb8]/20 hover:shadow-lg group whitespace-nowrap"
-                aria-label="Read More About Airtronics Fixcare"
-              >
-                <span>Read More About Us</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-blue-50/50 text-[#111111] border-2 border-slate-200 hover:border-[#005eb8] text-xs sm:text-sm font-bold px-5 py-3 rounded-full transition-colors whitespace-nowrap"
-              >
-                <span>Visit Our Dubai Office</span>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* ========================================================================= */}
-          {/* RIGHT COLUMN: Mobile Visual Card (< lg) & Desktop Floating Badges (lg:)    */}
-          {/* ========================================================================= */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="lg:col-span-5 relative"
-          >
-            {/* 1. MOBILE ONLY VISUAL CARD (Self-contained, not acting as full section bg on small screens) */}
-            <div className="lg:hidden relative w-full aspect-[4/3] sm:aspect-[4/3.5] rounded-2xl overflow-hidden shadow-md">
-              <Image
-                src="/images/hvac_maintenance_technician.jpg"
-                alt="Airtronics certified HVAC engineer inspecting rooftop AC unit in Dubai"
-                fill
-                sizes="(max-width: 1024px) 100vw, 42vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20 pointer-events-none" />
-
-              {/* Mobile Badges */}
-              <div className="absolute top-4 left-4 z-20 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-sm rounded-xl py-1.5 px-3 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0 border border-blue-100">
-                  <Calendar className="w-3.5 h-3.5" />
-                </div>
-                <div className="leading-tight">
-                  <span className="block font-bold text-[11px] text-[#111111]">Established</span>
-                  <span className="block text-[9px] text-[#005eb8] font-bold">2022 in Dubai</span>
-                </div>
-              </div>
-
-              <div className="absolute top-4 right-4 z-20 bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-sm rounded-xl py-1.5 px-3 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-emerald-50 text-[#008f4c] flex items-center justify-center shrink-0 border border-emerald-100">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                </div>
-                <div className="leading-tight">
-                  <span className="block font-bold text-[11px] text-[#111111]">Licensed</span>
-                  <span className="block text-[9px] text-gray-500 font-medium">Dubai Municipality</span>
-                </div>
-              </div>
-
-              <div className="absolute bottom-4 left-4 right-4 z-20 bg-slate-900/90 backdrop-blur-md border border-slate-700/80 rounded-xl p-3 text-white flex items-center justify-between shadow-lg">
-                <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-[#0070f3] text-white flex items-center justify-center shrink-0">
-                    <Building2 className="w-4 h-4 fill-white" />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="block font-bold text-xs text-white">HQ: Commercial Bank Building</span>
-                    <span className="block text-[10px] text-gray-300">Al Kabeesi, Deira / Dubai</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-bold text-emerald-400 border border-emerald-500/20">
-                  <CheckCircle2 className="w-3 h-3 text-emerald-400" />
-                  <span>Verified</span>
-                </div>
-              </div>
-            </div>
-
-            {/* 2. DESKTOP FLOATING SHOWCASE (Floats gracefully in the right space over the section's background image) */}
-            <div className="hidden lg:flex flex-col justify-between min-h-[380px] xl:min-h-[420px] p-4 relative pointer-events-none">
-              
-              {/* Top Row Badges floating in space */}
-              <div className="flex items-center justify-between gap-3 pointer-events-auto">
-                <motion.div 
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-xl py-2 px-3.5 flex items-center gap-2.5 cursor-pointer transition-shadow"
-                >
-                  <div className="w-7 h-7 rounded-full bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0 border border-blue-100">
-                    <Calendar className="w-4 h-4" />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="block font-bold text-xs text-[#111111]">Established</span>
-                    <span className="block text-[10px] text-[#005eb8] font-bold">2022 in Dubai</span>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ scale: 1.04, y: -2 }}
-                  className="bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-md rounded-xl py-2 px-3.5 flex items-center gap-2.5 cursor-pointer transition-shadow"
-                >
-                  <div className="w-7 h-7 rounded-full bg-emerald-50 text-[#008f4c] flex items-center justify-center shrink-0 border border-emerald-100">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="block font-bold text-xs text-[#111111]">Licensed</span>
-                    <span className="block text-[10px] text-gray-500 font-medium">Dubai Municipality</span>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Bottom Pinned HQ Badge over background photo */}
-              <motion.div 
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="bg-slate-900/92 backdrop-blur-md border border-slate-700/80 rounded-2xl p-4 text-white flex items-center justify-between shadow-xl pointer-events-auto cursor-pointer"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#0070f3] text-white flex items-center justify-center shrink-0 shadow-md">
-                    <Building2 className="w-4.5 h-4.5 fill-white" />
-                  </div>
-                  <div className="leading-tight">
-                    <span className="block font-bold text-sm text-white">HQ: Commercial Bank of Dubai Building</span>
-                    <span className="block text-xs text-gray-300">Office M-01, Al Kabeesi, Dubai, UAE</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-xs font-bold text-emerald-400 border border-emerald-500/30">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Verified Hub</span>
-                </div>
-              </motion.div>
-
-            </div>
-
-          </motion.div>
-
-        </div>
+          {/* Primary solid transition wave matching next section (CoreDifferentiators #fcfcfc) */}
+          <path
+            d="M 0,50 C 80,50 120,32 180,32 C 230,32 245,68 265,68 C 285,68 295,34 350,34 C 420,34 460,48 520,48 C 560,48 575,80 600,80 C 625,80 640,40 700,40 C 760,40 800,56 850,56 C 890,56 905,78 925,78 C 945,78 960,36 1020,36 C 1080,36 1120,54 1170,54 C 1210,54 1225,84 1250,84 C 1275,84 1290,44 1350,44 C 1395,44 1420,50 1440,50 L 1440,95 L 0,95 Z"
+            fill="#fcfcfc"
+          />
+        </svg>
       </div>
     </section>
   );

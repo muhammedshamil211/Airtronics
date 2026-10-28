@@ -29,7 +29,7 @@ export default function ContactSection() {
         if (formData.phone) text += `\nPhone: ${formData.phone}`;
         if (formData.address) text += `\nAddress: ${formData.address}`;
         if (formData.details) text += `\nNotes: ${formData.details}`;
-        
+
         // Airtronics company WhatsApp number
         const url = `https://wa.me/971586596321?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank');
@@ -50,13 +50,13 @@ export default function ContactSection() {
 
                         {/* Left Side */}
 
-                        <div className="bg-[#fafafa] p-10 border-r border-slate-200">
+                        <div className="bg-[#fafafa] p-6 sm:p-10 border-b lg:border-b-0 lg:border-r border-slate-200">
 
-                            <h2 className="text-3xl font-medium text-black">
+                            <h2 className="text-[28px] sm:text-3xl font-medium text-black">
                                 Get in Touch
                             </h2>
 
-                            <p className="mt-4 text-slate-600 leading-relaxed">
+                            <p className="mt-4 text-slate-600 text-[15px] sm:text-base leading-relaxed">
                                 Need HVAC installation, AC repair, AMC, duct cleaning,
                                 or commercial HVAC solutions? Contact our team today.
                             </p>
@@ -139,9 +139,9 @@ export default function ContactSection() {
 
                         {/* Right Side */}
 
-                        <div className="p-10 lg:p-12">
+                        <div className="p-6 sm:p-10 lg:p-12">
 
-                            <h2 className="text-3xl font-medium text-black" >
+                            <h2 className="text-[28px] sm:text-3xl font-medium text-black">
                                 Send Us a Message
                             </h2>
 
@@ -154,7 +154,7 @@ export default function ContactSection() {
                                         type="text"
                                         placeholder="Name *"
                                         value={formData.name}
-                                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
@@ -162,7 +162,7 @@ export default function ContactSection() {
                                         type="text"
                                         placeholder="Company Name"
                                         value={formData.company}
-                                        onChange={(e) => setFormData({...formData, company: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
@@ -175,7 +175,7 @@ export default function ContactSection() {
                                         type="email"
                                         placeholder="Email Address *"
                                         value={formData.email}
-                                        onChange={(e) => setFormData({...formData, email: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
@@ -184,7 +184,7 @@ export default function ContactSection() {
                                         type="tel"
                                         placeholder="Phone Number *"
                                         value={formData.phone}
-                                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                                         className="h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                     />
 
@@ -195,14 +195,14 @@ export default function ContactSection() {
                                     type="text"
                                     placeholder="Address *"
                                     value={formData.address}
-                                    onChange={(e) => setFormData({...formData, address: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                                     className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                 />
 
                                 <select
                                     required
                                     value={formData.service}
-                                    onChange={(e) => setFormData({...formData, service: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                                     className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
                                 >
                                     <option value="">Select Service *</option>
@@ -218,7 +218,7 @@ export default function ContactSection() {
                                     rows={6}
                                     placeholder="Tell us about your requirement..."
                                     value={formData.details}
-                                    onChange={(e) => setFormData({...formData, details: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                                     className="w-full rounded-xl border border-slate-200 p-4 outline-none focus:border-[#005eb8]"
                                 />
 

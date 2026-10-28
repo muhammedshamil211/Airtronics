@@ -8,15 +8,15 @@ export default function ContactHero() {
         {/* Top Label */}
         <div className="mb-6 flex items-center gap-2">
           <span className="text-[#005eb8] font-medium">/</span>
-          <span className="text-m font-medium text-slate-900">
+          <span className="text-xs sm:text-sm font-semibold tracking-wider uppercase text-slate-800">
             Contact Airtronics HVAC Experts
           </span>
         </div>
 
-        <div className="grid gap-16 lg:grid-cols-2">
+        <div className="grid gap-10 lg:gap-16 lg:grid-cols-2">
           {/* Left Content */}
           <div>
-            <h1 className="max-w-3xl text-[45px] leading-[0.95] font-normal tracking-tight text-black md:text-[55px] lg:text-[60px]">
+            <h1 className="max-w-3xl text-[34px] sm:text-[45px] leading-[1.05] font-normal tracking-tight text-black md:text-[55px] lg:text-[60px]">
               Let&apos;s Talk
               <br />
               About Your
@@ -27,7 +27,7 @@ export default function ContactHero() {
 
           {/* Right Content */}
           <div className="flex flex-col justify-center">
-            <p className="max-w-xl text-l leading-relaxed text-slate-600">
+            <p className="max-w-xl text-[15px] sm:text-base md:text-lg leading-relaxed text-slate-600">
               Need AC repair, HVAC maintenance, duct cleaning, or a new
               installation? Our certified technicians are ready to assist
               residential and commercial properties across Dubai.
@@ -36,7 +36,7 @@ export default function ContactHero() {
             <div className="mt-5 flex flex-wrap gap-4">
               <a
                 href="tel:+971555619369"
-                className="inline-flex items-center gap-3 rounded-full bg-[#005eb8] px-5 py-4 text-s md:text-m font-medium text-white transition hover:opacity-90"
+                className="inline-flex items-center gap-3 rounded-full bg-[#005eb8] px-6 py-3.5 text-sm sm:text-base font-semibold text-white transition hover:opacity-90"
               >
                 Call For Booking
                 <ArrowRight size={18} />
@@ -44,7 +44,7 @@ export default function ContactHero() {
 
               <Link
                 href="/services"
-                className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-5 py-4 text-s md:text-m font-medium text-slate-900 shadow-sm transition hover:border-[#005eb8]"
+                className="inline-flex items-center gap-3 rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm sm:text-base font-semibold text-slate-900 shadow-sm transition hover:border-[#005eb8]"
               >
                 View All Services
                 <ArrowRight size={18} />

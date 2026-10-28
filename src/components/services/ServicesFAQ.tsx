@@ -97,17 +97,15 @@ const FaqItem = memo(function FaqItem({
 
         <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
           <ChevronDown
-            className={`w-4 h-4 transition-transform duration-300 ${
-              isOpen ? 'rotate-180' : ''
-            }`}
+            className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+              }`}
           />
         </div>
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out ${
-          isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="px-5 md:px-6 pb-6 text-[#666666] text-[15px] leading-relaxed">
           {faq.answer}
@@ -151,7 +149,7 @@ export default function ServicesFAQ() {
       />
 
       <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
-        
+
         {/* Header matching Home FaqSection style */}
         <header className="text-center max-w-3xl mx-auto mb-12">
           <div className="flex items-center justify-center gap-2 mb-3">
@@ -164,12 +162,12 @@ export default function ServicesFAQ() {
 
           <h2
             id="services-faq-heading"
-            className="text-[32px] sm:text-[40px] md:text-[48px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-5"
+            className="text-[28px] sm:text-[40px] md:text-[48px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-5"
           >
             Frequently Asked Questions
           </h2>
 
-          <p className="text-[#666666] text-[15px] leading-relaxed">
+          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
             Find answers to the most common AC repair, maintenance,
             installation, and commercial HVAC service questions in Dubai.
           </p>

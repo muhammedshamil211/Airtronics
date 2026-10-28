@@ -79,8 +79,8 @@ export default function ServicesMatrix() {
             <button
               onClick={() => setActiveTab('all')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all ${activeTab === 'all'
-                  ? 'bg-[#005eb8] text-white shadow-md'
-                  : 'text-gray-600 hover:text-[#111111]'
+                ? 'bg-[#005eb8] text-white shadow-md'
+                : 'text-gray-600 hover:text-[#111111]'
                 }`}
             >
               All Systems
@@ -88,8 +88,8 @@ export default function ServicesMatrix() {
             <button
               onClick={() => setActiveTab('residential')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === 'residential'
-                  ? 'bg-[#005eb8] text-white shadow-md'
-                  : 'text-gray-600 hover:text-[#111111]'
+                ? 'bg-[#005eb8] text-white shadow-md'
+                : 'text-gray-600 hover:text-[#111111]'
                 }`}
             >
               <Home className="w-3.5 h-3.5" />
@@ -98,8 +98,8 @@ export default function ServicesMatrix() {
             <button
               onClick={() => setActiveTab('commercial')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 ${activeTab === 'commercial'
-                  ? 'bg-[#005eb8] text-white shadow-md'
-                  : 'text-gray-600 hover:text-[#111111]'
+                ? 'bg-[#005eb8] text-white shadow-md'
+                : 'text-gray-600 hover:text-[#111111]'
                 }`}
             >
               <Building2 className="w-3.5 h-3.5" />
@@ -156,50 +156,50 @@ export default function ServicesMatrix() {
         {/* Mobile / Responsive Cards view */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:hidden mb-12">
           {matrixData.map((item) => (
-              <div
-                key={item.id}
-                className="bg-[#fcfcfc] rounded-3xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="px-3 py-1 rounded-full bg-[#005eb8]/10 text-[#005eb8] text-xs font-bold">
-                      {item.badge}
-                    </span>
-                    <Layers className="w-5 h-5 text-gray-400" />
-                  </div>
-                  <h3 className="text-lg font-bold text-[#111111] mb-4">{item.category}</h3>
+            <div
+              key={item.id}
+              className="bg-[#fcfcfc] rounded-3xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="px-3 py-1 rounded-full bg-[#005eb8]/10 text-[#005eb8] text-xs font-bold">
+                    {item.badge}
+                  </span>
+                  <Layers className="w-5 h-5 text-gray-400" />
+                </div>
+                <h3 className="text-lg font-bold text-[#111111] mb-4">{item.category}</h3>
 
-                  {(activeTab === 'all' || activeTab === 'residential') && (
-                    <div className="mb-3 p-3.5 rounded-2xl bg-white border border-gray-100">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 mb-1">
-                        <Home className="w-3.5 h-3.5 text-[#005eb8]" />
-                        <span>Residential Scope:</span>
-                      </div>
-                      <p className="text-xs text-gray-600">{item.residential}</p>
+                {(activeTab === 'all' || activeTab === 'residential') && (
+                  <div className="mb-3 p-3.5 rounded-2xl bg-white border border-gray-100">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 mb-1">
+                      <Home className="w-3.5 h-3.5 text-[#005eb8]" />
+                      <span>Residential Scope:</span>
                     </div>
-                  )}
-
-                  {(activeTab === 'all' || activeTab === 'commercial') && (
-                    <div className="mb-3 p-3.5 rounded-2xl bg-white border border-gray-100">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 mb-1">
-                        <Building2 className="w-3.5 h-3.5 text-[#005eb8]" />
-                        <span>Commercial Scope:</span>
-                      </div>
-                      <p className="text-xs text-gray-600">{item.commercial}</p>
-                    </div>
-                  )}
-
-                  <div className="mt-4 pt-4 border-t border-gray-200/60">
-                    <span className="text-[11px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
-                      Engineering Deliverables
-                    </span>
-                    <p className="text-xs text-gray-700 leading-relaxed">
-                      {item.scope}
-                    </p>
+                    <p className="text-xs text-gray-600">{item.residential}</p>
                   </div>
+                )}
+
+                {(activeTab === 'all' || activeTab === 'commercial') && (
+                  <div className="mb-3 p-3.5 rounded-2xl bg-white border border-gray-100">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-gray-900 mb-1">
+                      <Building2 className="w-3.5 h-3.5 text-[#005eb8]" />
+                      <span>Commercial Scope:</span>
+                    </div>
+                    <p className="text-xs text-gray-600">{item.commercial}</p>
+                  </div>
+                )}
+
+                <div className="mt-4 pt-4 border-t border-gray-200/60">
+                  <span className="text-[11px] uppercase tracking-wider text-gray-400 font-bold block mb-1">
+                    Engineering Deliverables
+                  </span>
+                  <p className="text-xs text-gray-700 leading-relaxed">
+                    {item.scope}
+                  </p>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
 
         {/* Bottom Capabilities Banner */}

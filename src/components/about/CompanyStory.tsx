@@ -43,7 +43,7 @@ export default function CompanyStory() {
             <Cpu className="w-4 h-4" />
             <span>Corporate Journey & Vision Since 2022</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
+          <h2 className="text-[28px] sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
             Modern Diagnostic Engineering Built for the Demands of Dubai
           </h2>
         </div>
@@ -52,7 +52,7 @@ export default function CompanyStory() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16">
 
           {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-5 text-gray-600 leading-relaxed text-base">
+          <div className="lg:col-span-6 space-y-5 text-gray-600 leading-relaxed text-[15px] sm:text-base">
             <p>
               <strong className="text-[#111111] font-semibold">Airtronics Fixcare Technical Services LLC</strong> was founded in Dubai in 2022 to resolve systemic issues across the region&apos;s property maintenance sector, where clients frequently faced delayed service arrivals, inaccurate fault diagnoses, and unpredictable pricing. The company was built around an operational model prioritizing diagnostic precision, technician accountability, and modern engineering standards.
             </p>

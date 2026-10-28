@@ -4,16 +4,16 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
-import { 
-  ShieldCheck, 
-  Wrench, 
-  CheckCircle2, 
-  AlertCircle, 
-  MapPin, 
-  ChevronDown, 
-  Phone, 
-  CalendarCheck, 
-  FileText 
+import {
+  ShieldCheck,
+  Wrench,
+  CheckCircle2,
+  AlertCircle,
+  MapPin,
+  ChevronDown,
+  Phone,
+  CalendarCheck,
+  FileText
 } from 'lucide-react';
 import { ServiceDetail } from '@/data/servicesData';
 
@@ -54,7 +54,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
       />
 
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8 space-y-14 sm:space-y-18">
-        
+
         {/* ========================================================================= */}
         {/* 1. OVERVIEW & ENGINEERING CONTEXT (Standard Layout, No Cards)            */}
         {/* ========================================================================= */}
@@ -64,12 +64,12 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
               <span className="text-[#005eb8] font-black text-sm">/</span>
               <span>ENGINEERING STANDARDS</span>
             </div>
-            
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-4">
+
+            <h2 className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-4">
               Why Dubai Relies on Our {service.shortTitle}
             </h2>
-            
-            <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
+
+            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed mb-6 font-normal">
               {service.overview}
             </p>
 
@@ -123,7 +123,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
             <h3 className="text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-[#111111] leading-tight mb-2">
               Key Advantages &amp; Client Guarantees
             </h3>
-            <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
               Engineered specifically to withstand 50°C summer conditions and high humidity levels in the UAE.
             </p>
           </div>
@@ -151,7 +151,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
                     <h4 className="font-bold text-sm sm:text-base text-[#111111] mb-2 leading-snug">
                       {benefit.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed font-normal">
+                    <p className="text-sm text-gray-600 leading-relaxed font-normal">
                       {benefit.description}
                     </p>
                   </div>
@@ -177,7 +177,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
             </div>
             <ul className="space-y-3">
               {service.specifications.map((spec, sIdx) => (
-                <li key={sIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <li key={sIdx} className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
                   <CheckCircle2 className="w-4 h-4 text-[#005eb8] shrink-0 mt-0.5" />
                   <span>{spec}</span>
                 </li>
@@ -197,7 +197,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
             </div>
             <ul className="space-y-3">
               {service.commonIssuesSolved.map((issue, iIdx) => (
-                <li key={iIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-700 leading-relaxed">
+                <li key={iIdx} className="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-2" />
                   <span>{issue}</span>
                 </li>
@@ -217,15 +217,15 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
           <h3 className="text-lg sm:text-xl font-bold text-[#111111] mb-2 leading-snug">
             30–45 Minute Mobile Fleet Coverage Across Dubai
           </h3>
-          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-4 max-w-3xl">
+          <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed mb-4 max-w-3xl">
             Our certified mobile vans are stationed strategically near key highways (Sheikh Zayed Road, Al Khail Road, Sheikh Mohammed Bin Zayed Road) for rapid dispatch:
           </p>
 
           <div className="flex flex-wrap gap-2">
             {service.dubaiLocations.map((loc, lIdx) => (
-              <span 
+              <span
                 key={lIdx}
-                className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#005eb8] text-xs font-medium px-3 py-1.5 rounded-full transition-colors"
+                className="inline-flex items-center gap-1.5 bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-[#005eb8] text-sm font-medium px-3 py-1.5 rounded-full transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[#005eb8]" />
                 <span>{loc}</span>
@@ -272,17 +272,15 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
 
                     <div className="shrink-0 w-7 h-7 rounded-full bg-slate-100 flex items-center justify-center mt-0.5">
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-[#005eb8]' : 'text-gray-500'
-                        }`}
+                        className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180 text-[#005eb8]' : 'text-gray-500'
+                          }`}
                       />
                     </div>
                   </button>
 
                   <div
-                    className={`overflow-hidden transition-all duration-300 ease-out ${
-                      isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-                    }`}
+                    className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}
                   >
                     <div className="pb-5 text-gray-600 text-xs sm:text-sm leading-relaxed">
                       {faq.a}

@@ -4,19 +4,19 @@ import React, { memo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
-import { 
-  ShieldCheck, 
-  Receipt, 
-  Check, 
-  Clock, 
-  Zap, 
-  UserCheck, 
-  Wrench, 
-  ChevronRight, 
-  CheckCircle2, 
-  Leaf, 
-  Siren, 
-  Phone 
+import {
+  ShieldCheck,
+  Receipt,
+  Check,
+  Clock,
+  Zap,
+  UserCheck,
+  Wrench,
+  ChevronRight,
+  CheckCircle2,
+  Leaf,
+  Siren,
+  Phone
 } from 'lucide-react';
 
 const BRAND_NAME = 'Airtronics Fixcare Technical Services LLC';
@@ -25,7 +25,7 @@ const PRIMARY_LOCATION = 'Dubai, UAE';
 
 // Reusable Circular Action Arrow
 const ActionArrow = memo(() => (
-  <div 
+  <div
     aria-hidden="true"
     className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-xs border border-slate-100 flex items-center justify-center text-[#00AEEF] hover:scale-105 transition-transform shrink-0"
   >
@@ -92,7 +92,7 @@ const differentiatorsSchema = {
 
 export default function CoreDifferentiators() {
   return (
-    <section 
+    <section
       aria-labelledby="why-airtronics-heading"
       className="py-8 md:py-12 bg-[#fcfcfc] border-b border-gray-100"
     >
@@ -105,27 +105,27 @@ export default function CoreDifferentiators() {
       />
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-        
+
         {/* Section Header */}
         <div className="max-w-2xl mb-5 sm:mb-6">
-          <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] uppercase font-bold tracking-widest text-[#005eb8] mb-1">
+          <div className="inline-flex items-center gap-1.5 text-xs uppercase font-bold tracking-widest text-[#005eb8] mb-1.5">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>Why Airtronics Fixcare</span>
           </div>
-          <h2 
+          <h2
             id="why-airtronics-heading"
-            className="text-2xl sm:text-3xl font-medium tracking-tight text-[#111111] leading-tight"
+            className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight"
           >
             Engineering Standards Built for Dubai
           </h2>
-          <p className="text-gray-500 text-xs sm:text-sm mt-1 leading-relaxed">
+          <p className="text-gray-600 text-[15px] sm:text-base mt-2 leading-relaxed">
             Fast response, certified diagnostic precision, and transparent pricing across {PRIMARY_LOCATION}.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-2.5 sm:gap-3">
-          
+
           {/* Card 1 (7 Columns) - Certified Engineers & Mobile Fleet */}
           <div className="md:col-span-7 bg-white rounded-2xl border border-gray-200/70 shadow-xs hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 relative overflow-hidden flex flex-col justify-between group">
             {/* Full-Bleed Fleet Image Frame */}
@@ -145,9 +145,9 @@ export default function CoreDifferentiators() {
 
             {/* Left Content Area with Organic Curved Divider */}
             <div className="relative z-10 p-4 sm:p-4.5 bg-white sm:bg-white/95 max-w-full sm:max-w-[63%] lg:max-w-[65%] flex flex-col justify-between h-full">
-              <svg 
-                className="absolute -right-[36px] sm:-right-[44px] top-0 bottom-0 h-full w-[36px] sm:w-[44px] text-white fill-current pointer-events-none z-10 hidden sm:block" 
-                viewBox="0 0 45 240" 
+              <svg
+                className="absolute -right-[36px] sm:-right-[44px] top-0 bottom-0 h-full w-[36px] sm:w-[44px] text-white fill-current pointer-events-none z-10 hidden sm:block"
+                viewBox="0 0 45 240"
                 preserveAspectRatio="none"
               >
                 <path d="M 0,0 L 38,0 C 19,22 4,65 6,115 C 8,165 34,190 40,218 C 44,230 40,238 30,240 L 0,240 Z" />

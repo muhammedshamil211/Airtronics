@@ -217,12 +217,12 @@ export default function TeamSection() {
 
         <h2
           id="team-heading"
-          className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-4xl mx-auto leading-[1.1]"
+          className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-4xl mx-auto leading-[1.1]"
         >
           Meet Our AC Repair Specialists
         </h2>
 
-        <p className="mt-4 text-[#666666] text-[15px] leading-relaxed max-w-2xl mx-auto">
+        <p className="mt-4 text-[#666666] text-[15px] sm:text-base leading-relaxed max-w-2xl mx-auto">
           Meet the certified professionals behind Airtronics Fixcare. Every
           project is handled by experienced HVAC specialists committed to
           quality workmanship and customer satisfaction.

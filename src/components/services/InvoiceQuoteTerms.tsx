@@ -2,13 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { 
-  FileText, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Receipt, 
-  Clock, 
-  ArrowRight 
+import {
+  FileText,
+  ShieldCheck,
+  CheckCircle2,
+  Receipt,
+  Clock,
+  ArrowRight
 } from 'lucide-react';
 import { INVOICE_QUOTE_TERMS } from '@/data/servicesData';
 
@@ -18,7 +18,7 @@ export default function InvoiceQuoteTerms() {
   return (
     <section className="py-12 sm:py-16 bg-white border-b border-gray-100" aria-labelledby="terms-heading">
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        
+
         {/* Header */}
         <div className="max-w-3xl mb-10 sm:mb-12">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
@@ -26,11 +26,11 @@ export default function InvoiceQuoteTerms() {
             <span>TRANSPARENCY &amp; LEGAL STANDARDS</span>
           </div>
 
-          <h2 id="terms-heading" className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-3">
+          <h2 id="terms-heading" className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-3">
             {INVOICE_QUOTE_TERMS.title}
           </h2>
 
-          <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed">
+          <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
             {INVOICE_QUOTE_TERMS.subtitle} Our commitment to consumer transparency means you always know exact labor tariffs, warranty limits, and part pricing before any work starts.
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function InvoiceQuoteTerms() {
 
                 <ul className="space-y-2.5">
                   {sec.points.map((p, pIdx) => (
-                    <li key={pIdx} className="flex items-start gap-2 text-xs sm:text-[13px] text-gray-600 leading-relaxed">
+                    <li key={pIdx} className="flex items-start gap-2 text-sm text-gray-600 leading-relaxed">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#005eb8] shrink-0 mt-0.5" />
                       <span>{p}</span>
                     </li>

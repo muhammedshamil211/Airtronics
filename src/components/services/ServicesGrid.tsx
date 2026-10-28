@@ -3,13 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  CalendarCheck, 
-  Clock, 
-  MapPin, 
-  Phone 
+import {
+  ArrowRight,
+  CheckCircle2,
+  CalendarCheck,
+  Clock,
+  MapPin,
+  Phone
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { SERVICES_DATA } from '@/data/servicesData';
@@ -26,7 +26,7 @@ export default function ServicesGrid() {
   return (
     <section className="py-14 sm:py-18 lg:py-22 bg-[#fcfcfc] border-b border-gray-100" aria-labelledby="all-services-catalog">
       <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <div className="flex items-center justify-center gap-2 text-xs sm:text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">
@@ -34,11 +34,11 @@ export default function ServicesGrid() {
             <span>COMPREHENSIVE CLIMATE CATALOG</span>
           </div>
 
-          <h2 id="all-services-catalog" className="text-2xl sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-3">
+          <h2 id="all-services-catalog" className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight mb-3">
             Our Certified AC &amp; <span className="text-[#005eb8]">HVAC Service Capabilities</span>
           </h2>
 
-          <p className="text-gray-600 text-xs sm:text-sm md:text-base leading-relaxed">
+          <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
             Every service is executed by certified HVAC engineers using digital diagnostics, genuine OEM replacement parts, and fixed itemized quotations.
           </p>
         </div>
@@ -78,7 +78,7 @@ export default function ServicesGrid() {
                       <span>{service.id}</span>
                     </span>
 
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 font-medium text-[11px]">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 font-medium text-xs">
                       <Clock className="w-3 h-3 text-emerald-400" />
                       <span>{service.badge}</span>
                     </span>
@@ -93,14 +93,14 @@ export default function ServicesGrid() {
                 </Link>
 
                 {/* Tagline / Summary */}
-                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed mb-3.5">
+                <p className="text-gray-600 text-sm leading-relaxed mb-3.5">
                   {service.tagline}
                 </p>
 
                 {/* Key Highlights (Clean List, No Box Container) */}
                 <ul className="space-y-1.5 mb-3.5">
                   {service.heroHighlights.slice(0, 3).map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-xs text-gray-600">
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-600">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#005eb8] shrink-0 mt-0.5" />
                       <span className="leading-snug">{item}</span>
                     </li>
@@ -108,7 +108,7 @@ export default function ServicesGrid() {
                 </ul>
 
                 {/* Coverage Location */}
-                <div className="flex items-center gap-1.5 text-xs text-gray-500 mb-4">
+                <div className="flex items-center gap-1.5 text-sm text-gray-500 mb-4">
                   <MapPin className="w-3.5 h-3.5 text-[#005eb8] shrink-0" />
                   <span>Covering {service.dubaiLocations.slice(0, 3).join(', ')} &amp; more</span>
                 </div>

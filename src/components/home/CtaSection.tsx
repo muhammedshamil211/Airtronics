@@ -23,10 +23,10 @@ export default function CtaSection() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 id="cta-heading" className="text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-white mb-6 leading-[1.1]">
+          <h2 id="cta-heading" className="text-[28px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-white mb-6 leading-[1.1]">
             Ready to Restore Your Comfort?
           </h2>
-          <p className="text-[15px] leading-relaxed text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-[15px] sm:text-base leading-relaxed text-white/90 mb-10 max-w-2xl mx-auto">
             Don&apos;t let a faulty AC disrupt your day. Our certified HVAC experts are on standby across Downtown Dubai, Marina, Business Bay, and Jumeirah to provide rapid, reliable service.
           </p>
 

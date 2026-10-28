@@ -85,19 +85,17 @@ const FaqItem = memo(function FaqItem({
 
         <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
           <ChevronDown
-            className={`w-4 h-4 transition-transform duration-300 ${
-              isOpen ? 'rotate-180' : ''
-            }`}
+            className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+              }`}
           />
         </div>
       </button>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out ${
-          isOpen
+        className={`overflow-hidden transition-all duration-300 ease-out ${isOpen
             ? 'max-h-[500px] opacity-100'
             : 'max-h-0 opacity-0'
-        }`}
+          }`}
       >
         <div className="px-5 md:px-6 pb-6 text-[#666666] text-[15px] leading-relaxed">
           {faq.answer}
@@ -152,12 +150,12 @@ export default function FaqSection() {
 
           <h2
             id="faq-heading"
-            className="text-[32px] sm:text-[40px] md:text-[48px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-5"
+            className="text-[28px] sm:text-[36px] md:text-[48px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-5"
           >
             Frequently Asked Questions
           </h2>
 
-          <p className="text-[#666666] text-[15px] leading-relaxed">
+          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
             Find answers to the most common AC repair, maintenance,
             installation, and HVAC service questions in Dubai.
           </p>
