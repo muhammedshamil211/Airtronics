@@ -121,7 +121,7 @@ function TeamSlide({
             }}
             className="relative w-full max-w-xs sm:max-w-sm mx-auto lg:max-w-none"
           >
-            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl h-[30vh] min-h-[240px] max-h-[350px] md:h-auto md:max-h-none md:aspect-[4/5] lg:aspect-[4/4.5]">
+            <div className="relative overflow-hidden rounded-2xl md:rounded-3xl shadow-[0_20px_50px_-10px_rgba(0,0,0,0.18)] border border-slate-200/60 h-[30vh] min-h-[240px] max-h-[350px] md:h-auto md:max-h-none md:aspect-[4/5] lg:aspect-[4/4.5]">
               <Image
                 src={member.image}
                 alt={`${member.name} - ${member.role} in Dubai`}
@@ -203,13 +203,7 @@ export default function TeamSection() {
       {/* Header */}
       <div className="max-w-[1200px] mx-auto px-5 md:px-8 pt-16 md:pt-24 pb-10 text-center">
         <div className="flex items-center justify-center gap-2 mb-3">
-          <span
-            className="text-brand font-semibold"
-            aria-hidden="true"
-          >
-            /
-          </span>
-
+          <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
           <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
             Dubai Municipality Certified Experts
           </span>
@@ -217,7 +211,7 @@ export default function TeamSection() {
 
         <h2
           id="team-heading"
-          className="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-[#111111] max-w-4xl mx-auto leading-[1.1]"
+          className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
         >
           Meet Our AC Repair Specialists
         </h2>

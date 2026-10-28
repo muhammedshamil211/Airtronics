@@ -65,19 +65,37 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
     router.push(`/services/${service.slug}`);
   };
 
+  // Desktop grid position calculation (3 columns)
+  const col = index % 3;
+  const row = Math.floor(index / 3);
+  const isSecondRow = row > 0;
+
+  // Row 1 drops in from top (-75px).
+  // Row 2 begins overlapping directly behind the card above (-160px) and glides downward into its slot.
+  const initialY = isSecondRow ? -160 : -75;
+  const animationDelay = isSecondRow ? col * 0.16 + 0.48 : col * 0.16 + 0.1;
+  const animationDuration = isSecondRow ? 1.45 : 1.35;
+
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: initialY }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-20px' }}
-      transition={{ duration: 0.45, delay: index * 0.05, ease: 'easeOut' }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{
+        duration: animationDuration,
+        delay: animationDelay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
       onClick={handleCardClick}
-      className="relative rounded-xl sm:rounded-2xl overflow-hidden min-h-[350px] sm:min-h-[370px] flex flex-col justify-between p-7 sm:p-8 border transition-all duration-300 bg-white group cursor-pointer shadow-xs hover:shadow-lg"
+      className={`relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[360px] sm:min-h-[380px] flex flex-col justify-between p-7 sm:p-8 border border-slate-200 bg-white group cursor-pointer shadow-xs hover:border-[#005eb8] transition-colors duration-200 ${
+        isSecondRow ? 'z-10' : 'z-20'
+      }`}
       style={{
-        borderColor: isImageActive ? '#005eb8' : 'rgba(226, 232, 240, 0.95)',
+        borderColor: isImageActive ? '#005eb8' : undefined,
+        willChange: 'transform, opacity',
       }}
     >
       {/* ======================================================================= */}
@@ -134,31 +152,28 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
         {/* Service Icon in Brand Colors */}
         <div className="mb-6">
           <IconComponent
-            className={`w-11 h-11 transition-colors duration-300 ${
-              isImageActive ? 'text-[#00AEEF]' : 'text-[#005eb8]'
-            }`}
+            className={`w-11 h-11 transition-colors duration-300 ${isImageActive ? 'text-[#00AEEF]' : 'text-[#005eb8]'
+              }`}
             strokeWidth={1.75}
           />
         </div>
 
         {/* Service Title */}
         <h3
-          className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 leading-snug mb-3 ${
-            isImageActive
+          className={`text-xl sm:text-2xl font-bold tracking-tight transition-colors duration-300 leading-snug mb-3 ${isImageActive
               ? 'text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]'
               : 'text-[#111111] group-hover:text-[#005eb8]'
-          }`}
+            }`}
         >
           {serviceName}
         </h3>
 
         {/* Short Description */}
         <p
-          className={`text-sm sm:text-[15px] leading-relaxed transition-colors duration-300 ${
-            isImageActive
+          className={`text-sm sm:text-[15px] leading-relaxed transition-colors duration-300 ${isImageActive
               ? 'text-slate-200 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)]'
               : 'text-gray-500'
-          }`}
+            }`}
         >
           {serviceDesc}
         </p>
@@ -174,11 +189,10 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
-          className={`inline-flex items-center gap-2.5 text-sm sm:text-base font-semibold transition-colors duration-300 group/btn focus:outline-none ${
-            isImageActive
+          className={`inline-flex items-center gap-2.5 text-sm sm:text-base font-semibold transition-colors duration-300 group/btn focus:outline-none ${isImageActive
               ? 'text-[#00AEEF] hover:text-white'
               : 'text-[#111111] hover:text-[#005eb8]'
-          }`}
+            }`}
           aria-label={`Order ${serviceName} service on WhatsApp`}
         >
           <span>Order Service</span>
@@ -195,11 +209,10 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
         <Link
           href={`/services/${service.slug}`}
           onClick={(e) => e.stopPropagation()}
-          className={`inline-flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 shrink-0 ${
-            isImageActive
+          className={`inline-flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300 shrink-0 ${isImageActive
               ? 'bg-white/15 text-white border-white/20 hover:bg-[#005eb8] hover:border-[#005eb8]'
               : 'bg-gray-100 text-gray-700 border-gray-200 hover:bg-[#005eb8] hover:text-white hover:border-[#005eb8]'
-          }`}
+            }`}
           aria-label={`View full ${serviceName} details page`}
           title="Go to service page"
         >
@@ -266,7 +279,7 @@ export default function ServicesShowcase() {
     <section
       id="services"
       aria-labelledby="services-we-provide-heading"
-      className="relative bg-[#f8fbff] pt-14 sm:pt-20 pb-0 overflow-hidden"
+      className="relative bg-[#f8fbff] py-20 sm:py-24 lg:py-28 overflow-hidden border-b border-gray-100"
     >
       {/* Section Background: Top-Right Corner Gradient Cross-Grid Pattern */}
       <div className="absolute top-0 right-0 w-80 sm:w-96 h-80 sm:h-96 pointer-events-none z-0 overflow-hidden opacity-60">
@@ -308,29 +321,36 @@ export default function ServicesShowcase() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemas) }}
       />
 
-      <div className="relative z-10 max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        className="relative z-10 max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8"
+      >
 
         {/* ========================================================================= */}
         {/* SECTION HEADER: Eyebrow + Heading "Services We Provide" + Subtitle       */}
         {/* ========================================================================= */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#005eb8] mb-2.5">
-            <span className="w-5 sm:w-6 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
-            <span>Dubai Municipality Approved • 24/7 HVAC Solutions</span>
-            <span className="w-5 sm:w-6 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
+            <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
+              Services We Provide
+            </span>
           </div>
 
           {/* Heading - "Services We Provide" */}
           <h2
             id="services-we-provide-heading"
-            className="text-3xl sm:text-4xl md:text-[42px] font-bold tracking-tight text-[#111111] leading-tight mb-3"
+            className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
           >
-            Services We Provide
+            Comprehensive HVAC &amp; AC Solutions in Dubai
           </h2>
 
           {/* Subtitle with Dubai Local SEO keywords */}
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
             Professional AC repair, certified installations, and preventive maintenance across residential and commercial properties in Dubai Marina, Downtown, Palm Jumeirah, Business Bay, and all UAE districts.
           </p>
         </div>
@@ -344,7 +364,7 @@ export default function ServicesShowcase() {
           ))}
         </div>
 
-      </div>
+      </motion.div>
 
       {/* ========================================================================= */}
       {/* EXACT HERO BOTTOM-SIDE DIVIDER: Seamless Paint Drip Wave Transition       */}

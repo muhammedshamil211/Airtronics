@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { PhoneCall, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -31,23 +32,27 @@ export default function CtaSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
-            <Link
+            <Button
               href="/contact"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-[#005eb8] font-bold px-8 py-4 rounded-full hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto px-8 !py-4 rounded-xl border border-white/20"
               aria-label="Book AC Service Online"
+              iconLeft={<Calendar className="w-5 h-5" aria-hidden="true" />}
             >
-              <Calendar className="w-5 h-5" aria-hidden="true" />
-              Book Online Now
-            </Link>
+              <span>Book Online Now</span>
+            </Button>
 
-            <Link
+            <Button
               href="tel:+971586596321"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent text-white border-2 border-white font-bold px-8 py-4 rounded-full hover:bg-white hover:text-[#005eb8] hover:scale-105 transition-all duration-300"
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto px-8 !py-4 rounded-xl"
               aria-label="Call +971 58 659 6321 for Emergency AC Repair"
+              iconLeft={<PhoneCall className="w-5 h-5" aria-hidden="true" />}
             >
-              <PhoneCall className="w-5 h-5" aria-hidden="true" />
-              +971 58 659 6321
-            </Link>
+              <span>+971 58 659 6321</span>
+            </Button>
           </div>
 
           <p className="mt-8 text-white/70 text-sm  tracking-wide uppercase">

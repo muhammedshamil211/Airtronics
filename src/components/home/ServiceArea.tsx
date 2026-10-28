@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import Image from 'next/image';
 
 const serviceAreas = [
@@ -113,17 +114,20 @@ export default function ServiceAreasSection() {
         {/* View All Button */}
         {serviceAreas.length > 4 && (
           <div className="flex justify-center mt-6">
-            <button
+            <Button
               onClick={() => setShowAll(!showAll)}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#005eb8]/20 text-[#005eb8] text-sm sm:text-base font-medium hover:bg-[#005eb8] hover:text-white transition-all duration-300"
-            >
-              {showAll ? 'Show Less' : 'View All Service Areas'}
-
-              <ArrowRight
-                className={`w-4 h-4 transition-transform duration-300 ${showAll ? 'rotate-90' : ''
+              variant="primary"
+              size="pill"
+              iconRight={
+                <ArrowRight
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    showAll ? 'rotate-90' : ''
                   }`}
-              />
-            </button>
+                />
+              }
+            >
+              <span>{showAll ? 'Show Less' : 'View All Service Areas'}</span>
+            </Button>
           </div>
         )}
 
@@ -151,14 +155,17 @@ export default function ServiceAreasSection() {
                 emergency HVAC services.
               </p>
 
-              <Link
+              <Button
                 href="/contact#contact-form"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#005eb8] hover:bg-[#004892] text-white font-medium transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group"
+                variant="primary"
+                size="pill"
+                className="group"
+                iconRight={
+                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                }
               >
-                Check Availability
-
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <span>Check Availability</span>
+              </Button>
             </div>
           </div>
         </motion.div>

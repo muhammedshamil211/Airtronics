@@ -14,6 +14,7 @@ import {
   Languages,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Button from '@/components/ui/Button';
 import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/app/api/google-reviews/route';
 
 // Official Google 'G' Logo SVG
@@ -153,7 +154,7 @@ export default function GoogleReviewsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative bg-[#fcfcfc] py-16 sm:py-20 lg:py-24 border-b border-gray-100 overflow-hidden"
+      className="relative bg-[#fcfcfc] py-20 sm:py-24 lg:py-28 border-b border-gray-100 overflow-hidden"
     >
       {/* Schema.org Structured Data */}
       <Script
@@ -191,75 +192,84 @@ export default function GoogleReviewsSection() {
       <div className="absolute top-1/4 left-6 w-80 h-80 bg-cyan-100/30 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, x: 45 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* 2-COLUMN LAYOUT */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-        {/* 2-COLUMN LAYOUT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+            {/* ========================================================================= */}
+            {/* COLUMN 1: Testimonials Narrative & Official Google Profile Overview       */}
+            {/* ========================================================================= */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                {/* Eyebrow */}
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
+                  <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
+                    Testimonials
+                  </span>
+                </div>
 
-          {/* ========================================================================= */}
-          {/* COLUMN 1: Testimonials Narrative & Official Google Profile Overview       */}
-          {/* ========================================================================= */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              {/* Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-bold uppercase tracking-wider text-[#005eb8] mb-4">
-                <GoogleIcon className="w-3.5 h-3.5 shrink-0" />
-                <span>Testimonials</span>
-              </div>
+                {/* Main Headline */}
+                <h2
+                  id="testimonials-heading"
+                  className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
+                >
+                  What Our Clients Say
+                </h2>
 
-              {/* Main Headline */}
-              <h2
-                id="testimonials-heading"
-                className="text-3xl sm:text-4xl lg:text-[42px] font-bold tracking-tight text-[#111111] leading-[1.18] mb-4"
-              >
-                What Our Clients Say
-              </h2>
+                <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed mb-8">
+                  Read authentic feedback from property owners and residents across Dubai who trust Airtronics for professional AC repair, routine servicing, and prompt technical support.
+                </p>
 
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8">
-                Read authentic feedback from property owners and residents across Dubai who trust Airtronics for professional AC repair, routine servicing, and prompt technical support.
-              </p>
-
-              {/* Google Rating Overview Card */}
-              <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs mb-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-13 h-13 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
-                    <GoogleIcon className="w-7 h-7" />
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-2xl font-black text-[#111111]">5.0</span>
-                      <StarRating rating={5} />
+                {/* Google Rating Overview Card */}
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs mb-8">
+                  <div className="flex items-center gap-4">
+                    <div className="w-13 h-13 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
+                      <GoogleIcon className="w-7 h-7" />
                     </div>
-                    <span className="text-xs font-semibold text-gray-500 block">
-                      Overall Rating on Google Reviews
-                    </span>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-2xl font-black text-[#111111]">5.0</span>
+                        <StarRating rating={5} />
+                      </div>
+                      <span className="text-xs font-semibold text-gray-500 block">
+                        Overall Rating on Google Reviews
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
+                    <Button
+                      href={REVIEW_URL}
+                      target="_blank"
+                      variant="primary"
+                      size="sm"
+                      className="!px-4.5 !py-2.5"
+                      title="Write a Google Review"
+                      iconLeft={<MessageSquarePlus className="w-4 h-4" />}
+                    >
+                      <span>Review Us on Google</span>
+                    </Button>
+
+                    <Button
+                      href={PROFILE_URL}
+                      target="_blank"
+                      variant="white"
+                      size="sm"
+                      className="!px-3.5 !py-2.5 text-gray-700"
+                      title="View Profile on Google"
+                      iconRight={<ExternalLink className="w-3.5 h-3.5" />}
+                    >
+                      <span>View Profile</span>
+                    </Button>
                   </div>
                 </div>
-
-                <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
-                  <a
-                    href={REVIEW_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#005eb8] hover:bg-[#004a94] text-white text-xs sm:text-sm font-bold shadow-xs hover:shadow transition-all"
-                    title="Write a Google Review"
-                  >
-                    <MessageSquarePlus className="w-4 h-4" />
-                    <span>Review Us on Google</span>
-                  </a>
-
-                  <a
-                    href={PROFILE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 text-gray-700 hover:text-[#005eb8] text-xs sm:text-sm font-semibold transition-colors bg-slate-50/60"
-                    title="View Profile on Google"
-                  >
-                    <span>View Profile</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
-                </div>
               </div>
-            </div>
 
             {/* Slider Navigation & Review Counter */}
             <div className="flex items-center justify-between pt-2">
@@ -362,7 +372,7 @@ export default function GoogleReviewsSection() {
                     <div className="flex items-start justify-between gap-4 mb-5 relative z-10">
                       <div className="flex items-center gap-3.5">
                         {/* Avatar */}
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005eb8] to-[#00AEEF] text-white font-bold flex items-center justify-center text-base shadow-xs shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005eb8] to-[#00AEEF] text-white font-bold flex items-center justify-center text-base shadow-[0_4px_12px_rgba(0,94,184,0.3)] ring-2 ring-blue-100 shrink-0">
                           {activeReview.authorName.charAt(0)}
                         </div>
 
@@ -375,7 +385,7 @@ export default function GoogleReviewsSection() {
                               {reviewAges[activeReview.id] || '1 day ago'}
                             </span>
                             <span className="text-gray-300">•</span>
-                            <span className="text-xs font-medium text-[#005eb8] bg-blue-50/80 px-2 py-0.5 rounded-md">
+                            <span className="text-xs font-semibold text-[#005eb8] bg-blue-50/90 border border-blue-100/60 px-2 py-0.5 rounded-md shadow-2xs">
                               {activeReview.serviceTag}
                             </span>
                           </div>
@@ -390,7 +400,7 @@ export default function GoogleReviewsSection() {
                     {/* Stars Row */}
                     <div className="flex items-center gap-2 mb-5 relative z-10">
                       <StarRating rating={activeReview.rating} />
-                      <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md">
+                      <span className="text-xs font-bold text-amber-700 bg-amber-50/90 border border-amber-200/50 px-2.5 py-0.5 rounded-md shadow-2xs">
                         5.0 Star Rating
                       </span>
                     </div>
@@ -413,7 +423,7 @@ export default function GoogleReviewsSection() {
                       <button
                         type="button"
                         onClick={() => toggleLanguage(activeReview.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#005eb8] hover:text-[#004a94] bg-blue-50/60 hover:bg-blue-50 px-3 py-1.5 rounded-lg transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#005eb8] hover:text-[#004a94] bg-blue-50/80 hover:bg-blue-100/70 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shadow-2xs"
                       >
                         <Languages className="w-3.5 h-3.5" />
                         <span>
@@ -431,7 +441,7 @@ export default function GoogleReviewsSection() {
                         href={PROFILE_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:text-[#005eb8] hover:underline transition-colors"
+                        className="hover:text-[#005eb8] hover:underline transition-colors font-medium"
                       >
                         Google Maps
                       </a>
@@ -448,6 +458,7 @@ export default function GoogleReviewsSection() {
           </div>
 
         </div>
+        </motion.div>
 
       </div>
     </section>

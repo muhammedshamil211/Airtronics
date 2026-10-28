@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import Image from 'next/image';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 
@@ -48,20 +49,24 @@ export default function Navbar() {
 
       {/* Action Buttons & Mobile Toggle */}
       <div className="flex items-center space-x-2 md:space-x-3">
-        <Link
+        <Button
           href="/contact"
-          className="hidden sm:flex px-6 py-3 rounded-full bg-brand text-white text-sm font-semibold shadow-md shadow-brand/30 hover:shadow-lg hover:shadow-brand/40 hover:-translate-y-0.5 hover:bg-brand-hover transition-all"
+          variant="primary"
+          size="pill"
+          className="hidden sm:inline-flex text-xs sm:text-sm font-semibold tracking-wider"
           aria-label="Book a Service"
         >
-          BOOK A SERVICE
-        </Link>
-        <Link
+          <span>BOOK A SERVICE</span>
+        </Button>
+        <Button
           href="/contact"
-          className="hidden sm:flex w-11 h-11 rounded-full bg-[#111111] items-center justify-center text-white shadow-md hover:bg-black hover:-translate-y-0.5 transition-all"
+          variant="primary"
+          size="icon"
+          className="hidden sm:inline-flex"
           aria-label="Contact Us"
         >
           <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
-        </Link>
+        </Button>
 
         {/* Mobile Menu Button */}
         <button

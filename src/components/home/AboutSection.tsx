@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import Script from 'next/script';
 import {
   ShieldCheck,
@@ -149,28 +150,29 @@ export default function AboutSection() {
 
           <div className="relative z-10">
             {/* Eyebrow */}
-            <div className="flex items-center justify-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#005eb8] mb-2.5 text-center">
-              <span className="w-5 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
-              <span>ABOUT AIRTRONICS FIXCARE</span>
-              <span className="w-5 h-[1.5px] bg-[#005eb8] inline-block opacity-80" />
+            <div className="flex items-center justify-center gap-2 mb-3 text-center">
+              <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
+              <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
+                About Airtronics Fixcare
+              </span>
             </div>
 
-          {/* Headline - Primary & Secondary SEO Keywords */}
-          <h2
-            id="about-section-heading"
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-[36px] font-bold tracking-tight text-[#111111] leading-[1.18] mb-3 text-center max-w-3xl mx-auto"
-          >
-            Dubai&apos;s Trusted HVAC &amp; AC Specialists <span className="text-[#005eb8]">Since 2022</span>
-          </h2>
+            {/* Headline - Primary & Secondary SEO Keywords */}
+            <h2
+              id="about-section-heading"
+              className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4 text-center max-w-3xl mx-auto"
+            >
+              Dubai&apos;s Trusted HVAC &amp; AC Specialists <span className="text-[#005eb8]">Since 2022</span>
+            </h2>
 
-          {/* Narrative / Story */}
-          <p className="text-gray-600 text-xs sm:text-sm md:text-[15px] leading-relaxed mb-2.5 max-w-2xl mx-auto text-center">
-            Established in Dubai in 2022, <strong>Airtronics Fixcare Technical Services LLC</strong> is a premier climate control and air conditioning maintenance specialist. When summer temperatures surpass 45°C, reliable cooling is non-negotiable.
-          </p>
+            {/* Narrative / Story */}
+            <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed mb-2.5 max-w-2xl mx-auto text-center">
+              Established in Dubai in 2022, <strong>Airtronics Fixcare Technical Services LLC</strong> is a premier climate control and air conditioning maintenance specialist. When summer temperatures surpass 45°C, reliable cooling is non-negotiable.
+            </p>
 
-          <p className="text-gray-600 text-xs sm:text-sm md:text-[15px] leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto text-center">
-            Our certified engineers deploy precision digital manifold gauges, laser thermometers, and direct manufacturer OEM parts for Daikin, O General, Carrier, Gree, and York to guarantee optimal indoor comfort.
-          </p>
+            <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-2xl mx-auto text-center">
+              Our certified engineers deploy precision digital manifold gauges, laser thermometers, and direct manufacturer OEM parts for Daikin, O General, Carrier, Gree, and York to guarantee optimal indoor comfort.
+            </p>
 
           {/* Big Standalone Icons (4-Across Row, No Card Style, No Descriptions) */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 max-w-4xl mx-auto">
@@ -196,39 +198,46 @@ export default function AboutSection() {
 
           {/* Action Buttons Matching Reference Style (Order Service + All Services) */}
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-1">
-            {/* Primary Action Button (Green, Matching Reference Style) */}
-            <a
+            {/* Primary Action Button (Brand 3D Button) */}
+            <Button
               href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hello Airtronics! I would like to order AC repair & service in Dubai.')}`}
               target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-[#008f4c] hover:bg-[#007a3f] text-white text-xs sm:text-sm md:text-base font-bold px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg shadow-md shadow-[#008f4c]/20 hover:shadow-lg transition-all group"
+              variant="primary"
+              size="md"
+              className="px-6 sm:px-7 !py-2.5 sm:!py-3.5 text-xs sm:text-sm md:text-base group"
               aria-label="Order AC Service on WhatsApp"
+              iconRight={
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path d="M6 4l14 8-14 8V4z" />
+                </svg>
+              }
             >
               <span>Order Service</span>
-              <svg
-                viewBox="0 0 24 24"
-                className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              >
-                <path d="M6 4l14 8-14 8V4z" />
-              </svg>
-            </a>
+            </Button>
 
-            {/* Secondary Action Button (White with Border, Matching Reference Style) */}
-            <Link
+            {/* Secondary Action Button (White with Border) */}
+            <Button
               href="/services"
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-[#111111] border border-slate-300 hover:border-[#005eb8] text-xs sm:text-sm md:text-base font-bold px-6 sm:px-7 py-2.5 sm:py-3.5 rounded-lg transition-all shadow-2xs group"
+              variant="white"
+              size="md"
+              className="px-6 sm:px-7 !py-2.5 sm:!py-3.5 text-xs sm:text-sm md:text-base group"
               aria-label="View All HVAC Services"
+              iconRight={
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  <path d="M6 4l14 8-14 8V4z" />
+                </svg>
+              }
             >
               <span>All Services</span>
-              <svg
-                viewBox="0 0 24 24"
-                className="w-3.5 h-3.5 fill-current transition-transform group-hover:translate-x-1"
-                aria-hidden="true"
-              >
-                <path d="M6 4l14 8-14 8V4z" />
-              </svg>
-            </Link>
+            </Button>
           </div>
         </div>
       </motion.div>
