@@ -63,7 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "HVACBusiness",
     "name": "Airtronics Fixcare Technical Services LLC",
     "url": "https://airtronicsfixcare.com",
-    "image": "https://airtronicsfixcare.com/image/logo.png",
+    "image": "https://airtronicsfixcare.com/images/airtronics-logo.png",
     "description": "Professional HVAC and AC Repair services in Dubai. 24/7 emergency response, installation, and maintenance across all major districts.",
     "telephone": "+971-58-659-6321",
     "priceRange": "AED 150 - AED 1500",
@@ -71,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "paymentAccepted": "Cash, Credit Card, Bank Transfer",
     "address": {
       "@type": "PostalAddress",
+      "streetAddress": "Commercial Bank of Dubai Building, M-01, Al Khabaisi",
       "addressLocality": "Dubai",
       "addressRegion": "Dubai",
       "addressCountry": "AE"

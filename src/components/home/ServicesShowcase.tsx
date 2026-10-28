@@ -65,37 +65,15 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
     router.push(`/services/${service.slug}`);
   };
 
-  // Desktop grid position calculation (3 columns)
-  const col = index % 3;
-  const row = Math.floor(index / 3);
-  const isSecondRow = row > 0;
-
-  // Row 1 drops in from top (-75px).
-  // Row 2 begins overlapping directly behind the card above (-160px) and glides downward into its slot.
-  const initialY = isSecondRow ? -160 : -75;
-  const animationDelay = isSecondRow ? col * 0.16 + 0.48 : col * 0.16 + 0.1;
-  const animationDuration = isSecondRow ? 1.45 : 1.35;
-
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      initial={{ opacity: 0, y: initialY }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        duration: animationDuration,
-        delay: animationDelay,
-        ease: [0.16, 1, 0.3, 1],
-      }}
       onMouseEnter={() => !isTouchDevice && setIsHovered(true)}
       onMouseLeave={() => !isTouchDevice && setIsHovered(false)}
       onClick={handleCardClick}
-      className={`relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[360px] sm:min-h-[380px] flex flex-col justify-between p-7 sm:p-8 border border-slate-200 bg-white group cursor-pointer shadow-xs hover:border-[#005eb8] transition-colors duration-200 ${
-        isSecondRow ? 'z-10' : 'z-20'
-      }`}
+      className="relative rounded-2xl sm:rounded-3xl overflow-hidden min-h-[360px] sm:min-h-[380px] flex flex-col justify-between p-7 sm:p-8 border border-slate-200 bg-white group cursor-pointer shadow-xs hover:border-[#005eb8] transition-colors duration-200"
       style={{
         borderColor: isImageActive ? '#005eb8' : undefined,
-        willChange: 'transform, opacity',
       }}
     >
       {/* ======================================================================= */}
@@ -225,7 +203,7 @@ function ServiceCard({ service, index }: { service: ServiceDetail; index: number
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -255,7 +233,7 @@ export default function ServicesShowcase() {
           '@type': 'HVACBusiness',
           'name': 'Airtronics Fixcare Technical Services LLC',
           'telephone': '+971-58-659-6321',
-          'image': 'https://airtronicsfixcare.com/image/logo.png',
+          'image': 'https://airtronicsfixcare.com/images/airtronics-logo.png',
           'priceRange': 'AED 150 - AED 1500',
           'openingHours': 'Mo-Su 00:00-24:00',
           'address': {

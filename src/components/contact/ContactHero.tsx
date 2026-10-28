@@ -35,10 +35,10 @@ export default function ContactHero() {
 
             <div className="mt-5 flex flex-wrap gap-4">
               <a
-                href="tel:+971555619369"
+                href="tel:+971586596321"
                 className="inline-flex items-center gap-3 rounded-full bg-[#005eb8] px-6 py-3.5 text-sm sm:text-base font-semibold text-white transition hover:opacity-90"
               >
-                Call For Booking
+                Call: +971 58 659 6321
                 <ArrowRight size={18} />
               </a>
 

@@ -1,118 +1,76 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import {
-  PhoneCall,
-  MessageCircle,
-  Clock,
-  CreditCard,
-  ShieldCheck,
-  MapPin,
-  ChevronRight
-} from 'lucide-react';
-import WhatsAppBookingModal from '@/components/ui/WhatsAppBookingModal';
+import React from 'react';
+import Button from '@/components/ui/Button';
+import { PhoneCall, Calendar, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
-const TRUST_FEATURES = [
-  { icon: Clock, title: '30–45 Min Arrival', color: 'text-amber-500' },
-  { icon: CreditCard, title: 'Flexible Payment Options', color: 'text-emerald-500' },
-  { icon: ShieldCheck, title: '100% Genuine OEM Parts', color: 'text-[#005eb8]' },
-];
+const WHATSAPP_PHONE = '971586596321';
 
-interface AboutCTAProps {
-  badge?: string;
-  title?: string;
-  description?: string;
-  phone?: string;
-  defaultService?: string;
-}
-
-export default function AboutCTA({
-  badge = '24/7 Rapid Emergency Response Desk',
-  title = 'Schedule Professional AC Maintenance or Request Immediate Emergency Service',
-  description = 'System breakdowns, poor airflow, and sudden refrigerant leaks compromise indoor comfort. The engineering team at Airtronics Fixcare Technical Services LLC is on standby 24/7 to carry out preventative maintenance, restore air purity, and fix cooling breakdowns across Dubai.',
-  phone = '+971 58 659 6321',
-  defaultService = 'Emergency Breakdown (24/7)',
-}: AboutCTAProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const cleanPhone = phone.replace(/[^0-9]/g, '');
+export default function AboutCTA() {
+  const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(
+    'Hello Airtronics! I would like to book an AC repair / maintenance service in Dubai.'
+  )}`;
 
   return (
-    <section aria-label="Direct Emergency Booking CTA" className="bg-[#fcfcfc] py-4 sm:py-6 md:py-8">
-      <div className="max-w-[1200px] w-full mx-auto px-4 sm:px-6 md:px-8">
-
-        {/* Light Highlighted CTA Container - Horizontal Gradient Blending into White on Both Sides, Zero Border & Zero Shadow */}
-        <div className="relative overflow-hidden bg-gradient-to-r from-transparent via-[#ebf4ff] to-transparent p-6 sm:p-8 md:p-10 text-center rounded-2xl md:rounded-3xl">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-300/20 rounded-full blur-3xl pointer-events-none -z-0" />
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-cyan-200/15 rounded-full blur-3xl pointer-events-none -z-0" />
-
-          <div className="relative z-10">
-            {/* Urgent Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100/70 text-[#005eb8] text-xs font-bold uppercase tracking-wider mb-3">
-              <Clock className="w-3.5 h-3.5 text-[#005eb8] animate-pulse" />
-              <span>{badge}</span>
-            </div>
-
-            {/* Title & Copy */}
-            <h2 className="text-[28px] sm:text-3xl md:text-4xl font-medium tracking-tight text-[#111111] leading-tight max-w-3xl mx-auto mb-3">
-              {title}
-            </h2>
-            <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed max-w-2xl mx-auto mb-6 font-normal">
-              {description}
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-6">
-              <Link
-                href={`tel:+${cleanPhone}`}
-                className="inline-flex items-center gap-2 bg-[#005eb8] hover:bg-[#004a94] text-white text-sm font-semibold px-6 sm:px-7 py-3 rounded-full transition-colors group"
-              >
-                <PhoneCall className="w-4 h-4" />
-                <span>Call Hotline: {phone}</span>
-                <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
-
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebd5a] text-white text-xs sm:text-sm font-semibold px-6 sm:px-7 py-3 rounded-full transition-colors group"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>Instant WhatsApp Dispatch</span>
-              </button>
-            </div>
-
-            {/* Trust Features - Clean Inline Row (Zero Cards) */}
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-5 border-t border-slate-200/80 text-xs sm:text-sm text-gray-700 font-medium">
-              {TRUST_FEATURES.map(({ icon: Icon, title: itemTitle, color }, idx) => (
-                <div key={idx} className="flex items-center gap-2">
-                  <Icon className={`w-4 h-4 ${color}`} />
-                  <span>{itemTitle}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Address Footer Line */}
-            <div className="mt-6 pt-5 border-t border-slate-200/60 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[11px] sm:text-xs text-gray-500">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#005eb8]" />
-                Commercial Bank of Dubai Bldg, Dubai
-              </span>
-              <span>•</span>
-              <span>Technical Services LLC</span>
-              <span>•</span>
-              <span className="text-emerald-600 font-semibold">24/7 Rapid Dispatch</span>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-
-      <WhatsAppBookingModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        defaultService={defaultService}
+    <section className="py-20 relative overflow-hidden" aria-labelledby="about-cta-heading">
+      {/* Background Image & Overlay (Exact same style as Home Page CTA) */}
+      <div
+        className="absolute inset-0 bg-[url('/images/home-cta.png')] bg-cover bg-center bg-fixed"
+        aria-hidden="true"
       />
+      <div className="absolute inset-0 bg-[#005eb8]/90 mix-blend-multiply" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" aria-hidden="true" />
+
+      <div className="container mx-auto px-4 md:px-8 max-w-5xl relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2
+            id="about-cta-heading"
+            className="text-[28px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-white mb-6 leading-[1.1]"
+          >
+            Ready to Restore Your Comfort?
+          </h2>
+
+          <p className="text-[15px] sm:text-base leading-relaxed text-white/90 mb-10 max-w-2xl mx-auto">
+            Don&apos;t let a faulty AC disrupt your day. Our certified HVAC experts are on standby across Downtown Dubai, Marina, Business Bay, and Jumeirah to provide rapid, reliable service.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+            <Button
+              href={whatsappUrl}
+              target="_blank"
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto px-8 !py-4 rounded-xl border border-white/20"
+              aria-label="Book AC Service on WhatsApp"
+              iconLeft={<Calendar className="w-5 h-5" aria-hidden="true" />}
+              iconRight={<ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />}
+            >
+              <span>Book Online Now</span>
+            </Button>
+
+            <Button
+              href="tel:+971586596321"
+              variant="secondary"
+              size="lg"
+              className="w-full sm:w-auto px-8 !py-4 rounded-xl"
+              aria-label="Call +971 58 659 6321 for Emergency AC Repair"
+              iconLeft={<PhoneCall className="w-5 h-5" aria-hidden="true" />}
+            >
+              <span>+971 58 659 6321</span>
+            </Button>
+          </div>
+
+          <p className="mt-8 text-white/70 text-sm tracking-wide uppercase">
+            Available 24/7 for Emergency AC Repairs in Dubai
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 }

@@ -36,9 +36,23 @@ export const metadata = {
   },
 };
 
+const homeWebsiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://airtronicsfixcare.com/#website',
+  url: 'https://airtronicsfixcare.com',
+  name: 'Airtronics Fixcare Technical Services LLC',
+  description: '#1 AC Repair & 24/7 HVAC Maintenance Services in Dubai',
+  inLanguage: 'en-AE',
+};
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#c1121f] selection:text-white" aria-label="Main Content">
+    <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#005eb8] selection:text-white" aria-label="Main Content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeWebsiteSchema) }}
+      />
       <Hero />
       <QuickBookingBar />
       <ServicesShowcase />

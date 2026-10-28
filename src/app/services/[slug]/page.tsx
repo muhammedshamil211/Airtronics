@@ -38,10 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${service.metaTitle} | Airtronics Fixcare`,
     description: service.metaDescription,
     keywords: service.keywords.join(', '),
+    alternates: {
+      canonical: `https://airtronicsfixcare.com/services/${service.slug}`,
+    },
     openGraph: {
       title: `${service.title} | Airtronics Fixcare Dubai`,
       description: service.metaDescription,
-      url: `https://www.airtronicsfixcare.ae/services/${service.slug}`,
+      url: `https://airtronicsfixcare.com/services/${service.slug}`,
       siteName: 'Airtronics Fixcare Technical Services LLC',
       locale: 'en_AE',
       type: 'article',
@@ -54,8 +57,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
       ],
     },
-    alternates: {
-      canonical: `https://www.airtronicsfixcare.ae/services/${service.slug}`,
+    twitter: {
+      card: 'summary_large_image',
+      title: `${service.title} | Airtronics Fixcare Dubai`,
+      description: service.metaDescription,
+      images: [service.image],
     },
   };
 }
@@ -69,55 +75,101 @@ export default async function SingleServicePage({ params }: PageProps) {
     notFound();
   }
 
-  // Schema.org Structured Data for this specific service
-  const serviceSchema = {
+  // Schema.org Graph Structured Data for this specific service
+  const serviceSchemaGraph = {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': service.title,
-    'serviceType': 'HVAC and Air Conditioning Service',
-    'provider': {
-      '@type': 'HVACBusiness',
-      'name': 'Airtronics Fixcare Technical Services LLC',
-      'telephone': '+971 58 659 6321',
-      'address': {
-        '@type': 'PostalAddress',
-        'streetAddress': 'Commercial Bank of Dubai Building, M-01, Al Kabeesi',
-        'addressLocality': 'Dubai',
-        'addressCountry': 'AE',
+    '@graph': [
+      {
+        '@type': 'Service',
+        '@id': `https://airtronicsfixcare.com/services/${service.slug}#service`,
+        'name': service.title,
+        'alternateName': service.shortTitle,
+        'serviceType': 'HVAC and Air Conditioning Service',
+        'url': `https://airtronicsfixcare.com/services/${service.slug}`,
+        'image': `https://airtronicsfixcare.com${service.image}`,
+        'description': service.overview,
+        'termsOfService': '90-Day Written Warranty on Genuine OEM Parts & Labor',
+        'provider': {
+          '@type': 'HVACBusiness',
+          '@id': 'https://airtronicsfixcare.com/#business',
+          'name': 'Airtronics Fixcare Technical Services LLC',
+          'telephone': '+971-58-659-6321',
+          'address': {
+            '@type': 'PostalAddress',
+            'streetAddress': 'Commercial Bank of Dubai Building, M-01, Al Khabaisi',
+            'addressLocality': 'Dubai',
+            'addressCountry': 'AE',
+          },
+        },
+        'areaServed': service.dubaiLocations.map(loc => ({
+          '@type': 'AdministrativeArea',
+          'name': `${loc}, Dubai`,
+        })),
+        'offers': {
+          '@type': 'Offer',
+          'priceCurrency': 'AED',
+          'availability': 'https://schema.org/InStock',
+          'url': `https://airtronicsfixcare.com/services/${service.slug}`,
+        },
       },
-    },
-    'areaServed': service.dubaiLocations.map(loc => ({
-      '@type': 'AdministrativeArea',
-      'name': `${loc}, Dubai`,
-    })),
-    'description': service.overview,
-    'offers': {
-      '@type': 'Offer',
-      'priceCurrency': 'AED',
-      'availability': 'https://schema.org/InStock',
-      'url': `https://www.airtronicsfixcare.ae/services/${service.slug}`,
-    },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `https://airtronicsfixcare.com/services/${service.slug}#breadcrumb`,
+        'itemListElement': [
+          {
+            '@type': 'ListItem',
+            'position': 1,
+            'name': 'Home',
+            'item': 'https://airtronicsfixcare.com',
+          },
+          {
+            '@type': 'ListItem',
+            'position': 2,
+            'name': 'Services',
+            'item': 'https://airtronicsfixcare.com/services',
+          },
+          {
+            '@type': 'ListItem',
+            'position': 3,
+            'name': service.shortTitle,
+            'item': `https://airtronicsfixcare.com/services/${service.slug}`,
+          },
+        ],
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `https://airtronicsfixcare.com/services/${service.slug}#faq`,
+        'mainEntity': service.faqs.map(faq => ({
+          '@type': 'Question',
+          'name': faq.q,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': faq.a,
+          },
+        })),
+      },
+    ],
   };
 
   return (
     <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#005eb8] selection:text-white" aria-label={service.title}>
-      {/* Schema.org Structured Data */}
+      {/* Schema.org Graph Structured Data */}
       <Script
         id={`service-detail-schema-${service.slug}`}
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchemaGraph) }}
       />
 
-      {/* 1. Dedicated Service Hero Section with Breadcrumb, H1, Trust Badges & CTAs */}
+      {/* 1. Dedicated Service Hero Section with Top Image Banner, Main H1, Trust Badges & CTAs */}
       <ServiceDetailHero service={service} />
 
       {/* 2. Detailed Technical Scope, Benefits, Common Issues, Locations & FAQs */}
       <ServiceDetailContent service={service} />
 
-      {/* 4. Terms and Conditions for Invoices and Quotes */}
+      {/* 3. Terms and Conditions for Invoices and Quotes */}
       <InvoiceQuoteTerms />
 
-      {/* 5. Emergency Booking Callout Banner */}
+      {/* 4. Emergency Booking Callout Banner */}
       <AboutCTA />
     </main>
   );

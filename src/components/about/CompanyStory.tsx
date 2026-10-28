@@ -2,157 +2,132 @@
 
 import React from 'react';
 import Image from 'next/image';
-import {
-  CheckCircle2,
-  XCircle,
-  Cpu
-} from 'lucide-react';
+import { Gauge, Camera, Wind, Zap, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function CompanyStory() {
   const diagnosticTools = [
     {
-      image: '/images/digital-manifold-gauge-set.png',
+      icon: Gauge,
       title: 'Digital Manifold Gauges',
-      desc: 'Precision pressure measurement, superheat & subcooling analysis for exact refrigerant rebalancing.',
+      desc: 'Precision pressure measurement, subcooling, and superheat analysis for exact refrigerant charge balancing.',
     },
     {
-      image: '/images/thermal-leak-detection.png',
-      title: 'Thermal Leak Detection',
-      desc: 'Infrared cameras that pinpoint invisible duct leaks, electrical hotspots, and micro refrigerant leaks.',
+      icon: Camera,
+      title: 'Infrared Thermal Imaging',
+      desc: 'Pinpointing invisible duct leaks, insulation gaps, electrical hotspots, and micro refrigerant loss.',
     },
     {
-      image: '/images/airflow-digital-anemometer.png',
-      title: 'Airflow Anemometers',
-      desc: 'Digital CFM & static pressure measurement to eliminate hot spots and optimize airflow distribution.',
+      icon: Wind,
+      title: 'Digital CFM Anemometers',
+      desc: 'Static pressure and airflow volume measurement to eliminate uneven cooling and hot spots across rooms.',
     },
     {
-      image: '/images/meter-load-analysis.png',
-      title: 'Amperage Load Analyzers',
-      desc: 'Real-time motor running amperage checks to prevent compressor overheating and electrical tripouts.',
+      icon: Zap,
+      title: 'Motor Amperage Analyzers',
+      desc: 'Real-time running amperage checks to prevent compressor overheating and repetitive electrical tripouts.',
     },
   ];
 
   return (
-    <section aria-label="Airtronics Corporate Story" className="py-16 md:py-24 bg-white border-b border-gray-100">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8">
-
+    <section
+      aria-label="Airtronics Corporate Story"
+      className="py-20 sm:py-20 lg:py-20 bg-white border-b border-gray-100 overflow-hidden"
+    >
+      <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 text-xs uppercase font-bold tracking-widest text-[#005eb8] mb-3">
-            <Cpu className="w-4 h-4" />
-            <span>Corporate Journey & Vision Since 2022</span>
-          </div>
-          <h2 className="text-[28px] sm:text-4xl md:text-5xl font-medium tracking-tight text-[#111111] leading-tight">
-            Modern Diagnostic Engineering Built for the Demands of Dubai
-          </h2>
-        </div>
-
-        {/* Story Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-16">
-
-          {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-5 text-gray-600 leading-relaxed text-[15px] sm:text-base">
-            <p>
-              <strong className="text-[#111111] font-semibold">Airtronics Fixcare Technical Services LLC</strong> was founded in Dubai in 2022 to resolve systemic issues across the region&apos;s property maintenance sector, where clients frequently faced delayed service arrivals, inaccurate fault diagnoses, and unpredictable pricing. The company was built around an operational model prioritizing diagnostic precision, technician accountability, and modern engineering standards.
-            </p>
-            <p>
-              Rather than relying on outdated trial-and-error repairs, Airtronics Fixcare equips its field teams with modern digital manifold gauges, thermal imaging cameras, and airflow anemometers. This equipment allows technicians to analyze electrical balance, trace invisible refrigerant micro-leaks, and evaluate motor running amperages with exact precision.
-            </p>
-            <p>
-              The company has expanded its technical footprint to support luxury villas, residential towers, commercial offices, and retail complexes across Dubai. The founding philosophy remains unchanged: solve the mechanical root cause of every breakdown, restore original cooling performance, and treat every customer with professional transparency.
-            </p>
-          </div>
-
-          {/* Right Image & Highlight Container */}
-          <div className="lg:col-span-6">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 bg-slate-900 group">
-              {/* High-quality HVAC Image */}
-              <div className="relative h-[320px] sm:h-[400px] w-full">
-                <Image
-                  src="/images/hvac_service.png"
-                  alt="Modern Digital AC Maintenance Diagnostics by Airtronics Dubai"
-                  fill
-                  className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-              </div>
-
-              {/* Overlay Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white">
-                <p className="text-xs uppercase tracking-wider text-brand-accent font-bold mb-1">Dubai HVAC Standard</p>
-                <h3 className="text-lg font-bold">100% Root-Cause Resolution</h3>
-                <p className="text-xs text-gray-200 mt-1">
-                  We eliminate repeat breakdowns by solving underlying thermodynamic and electrical failures.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Advanced Technical Toolkit Grid */}
-        <div className="mt-10 p-6 md:p-10 ">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[#111111]">Advanced Technical Toolkit</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Factory-grade diagnostic equipment carried in every Airtronics mobile dispatch vehicle across Dubai.
-              </p>
-            </div>
-            <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[#005eb8]/10 text-[#005eb8] self-start md:self-auto">
-              Precision Engineering Standard
+        <div className="max-w-3xl mb-12 sm:mb-14">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
+            <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
+              Our Story &amp; Diagnostic Toolkit
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {diagnosticTools.map((tool, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -4 }}
-                className="p-5 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="relative h-44 w-full rounded-xl overflow-hidden mb-4 bg-gray-100 border border-gray-100">
-                    <Image
-                      src={tool.image}
-                      alt={`${tool.title} - Airtronics Dubai Technical Diagnostics`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    />
-                  </div>
-                  <h4 className="text-base font-bold text-[#111111] mb-1.5">{tool.title}</h4>
-                  <p className="text-xs text-gray-500 leading-relaxed font-normal">{tool.desc}</p>
-                </div>
-              </motion.div>
-            ))}
+          <h2 className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4">
+            Built to Conquer Dubai’s Extreme 45°C+ Summer Heatwaves
+          </h2>
+
+          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
+            Airtronics Fixcare Technical Services LLC was founded in Dubai in 2022 to eliminate common industry pain points: delayed emergency arrivals, inaccurate trial-and-error diagnoses, and unexpected invoices.
+          </p>
+        </div>
+
+        {/* Narrative & Visual Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16">
+          {/* Left Text Column */}
+          <div className="lg:col-span-6 space-y-5 text-[#555555] leading-relaxed text-[15px] sm:text-base">
+            <p>
+              Air conditioning in the UAE is not an amenity—it is vital infrastructure. When outdoor temperatures climb past 45°C, minor thermodynamic imbalances quickly cascade into total compressor shutdowns, ice buildup, and severe water damage to ceilings and furnishings.
+            </p>
+            <p>
+              Instead of relying on guesswork, our founders engineered a systematic protocol: every service call begins with digital diagnostics measuring running amperage, superheat calculations, and airflow velocity. This targets the root mechanical failure on the initial visit rather than treating surface symptoms.
+            </p>
+            <p>
+              Today, our certified technical fleet services residential villas, commercial towers, retail centers, and residential communities throughout Dubai with binding upfront quotations and guaranteed OEM components.
+            </p>
           </div>
 
-          {/* Comparison Bar */}
-          <div className="mt-10 pt-8 border-t border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-4 rounded-2xl bg-red-50/60 border border-red-100 flex items-start gap-3">
-              <XCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs uppercase font-bold text-red-700 tracking-wider">Traditional Handyman Approach</h4>
-                <p className="text-xs text-red-600 mt-0.5">
-                  Trial-and-error part swapping, guessing gas pressure by hand, ignoring coil airflow friction, temporary fixes causing recurring summer breakdowns.
-                </p>
+          {/* Right Image Container */}
+          <div className="lg:col-span-6">
+            <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/90 shadow-sm bg-slate-900 group">
+              <div className="relative h-[320px] sm:h-[380px] w-full">
+                <Image
+                  src="/images/hvac_service.png"
+                  alt="Certified Airtronics technician performing precision digital AC diagnostics in Dubai"
+                  fill
+                  quality={90}
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/30 to-transparent" />
               </div>
-            </div>
 
-            <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100 flex items-start gap-3">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="text-xs uppercase font-bold text-emerald-800 tracking-wider">The Airtronics Engineering Standard</h4>
-                <p className="text-xs text-emerald-700 mt-0.5">
-                  Digital diagnostics, exact pressure & subcooling readouts, infrared thermal audit, upfront binding quotes, and guaranteed OEM replacement parts.
+              {/* Bottom Badge */}
+              <div className="absolute bottom-5 left-5 right-5 p-4 sm:p-5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/15 text-white">
+                <div className="flex items-center gap-2 text-xs font-bold text-sky-400 uppercase tracking-wider mb-1">
+                  <CheckCircle2 className="w-4 h-4 text-sky-400" />
+                  <span>Engineering Standard</span>
+                </div>
+                <h3 className="text-base font-bold text-white leading-snug">
+                  100% Root-Cause Mechanical Resolution
+                </h3>
+                <p className="text-xs text-gray-300 mt-1">
+                  We eliminate repetitive breakdowns by solving underlying thermodynamic and electrical failures.
                 </p>
               </div>
             </div>
           </div>
         </div>
 
+        {/* Technical Toolkit Grid */}
+        <div className="bg-[#fcfcfc] border border-slate-200/90 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10">
+          <div className="max-w-2xl mb-8">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#111111] mb-2">
+              Factory-Grade Diagnostic Instrumentation
+            </h3>
+            <p className="text-sm text-gray-500 leading-relaxed">
+              Carried in every Airtronics mobile dispatch unit across Dubai to ensure laboratory-grade accuracy on site.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {diagnosticTools.map((tool) => (
+              <div
+                key={tool.title}
+                className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-xs hover:border-[#005eb8]/40 transition-colors"
+              >
+                <tool.icon className="w-7 h-7 text-[#005eb8] stroke-[1.75] mb-3" aria-hidden="true" />
+                <h4 className="text-base font-bold text-[#111111] mb-1.5">
+                  {tool.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
+                  {tool.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
