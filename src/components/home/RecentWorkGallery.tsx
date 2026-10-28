@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { MapPin, ArrowUpRight, CheckCircle2, X } from 'lucide-react';
+import { MapPin, ArrowUpRight, X } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 

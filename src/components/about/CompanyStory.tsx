@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { Gauge, Camera, Wind, Zap, CheckCircle2 } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function CompanyStory() {
   const diagnosticTools = [

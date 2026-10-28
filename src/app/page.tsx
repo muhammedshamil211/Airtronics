@@ -25,14 +25,21 @@ export const metadata = {
     siteName: 'Airtronics Fixcare Technical Services LLC',
     images: [
       {
-        url: '/images/home.jpeg',
+        url: 'https://airtronicsfixcare.com/images/home.jpeg',
         width: 1200,
         height: 630,
+        type: 'image/jpeg',
         alt: 'Airtronics certified HVAC technician performing AC repair in Dubai',
       },
     ],
     locale: 'en_AE',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+    description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival with 100% genuine parts.',
+    images: ['https://airtronicsfixcare.com/images/home.jpeg'],
   },
 };
 

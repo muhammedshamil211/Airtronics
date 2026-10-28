@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { Onest } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import MobileFloatingBar from "@/components/ui/MobileFloatingBar";
+
+const onest = Onest({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-onest",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://airtronicsfixcare.com'),
@@ -16,6 +23,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: ['/favicon.ico'],
+  },
   openGraph: {
     title: "Airtronics Fixcare | #1 AC Repair & 24/7 HVAC Services in Dubai",
     description: "24/7 emergency AC repair, HVAC maintenance, and duct cleaning across Dubai. Certified technicians arriving in 30–45 mins.",
@@ -23,9 +41,10 @@ export const metadata: Metadata = {
     siteName: "Airtronics Fixcare Technical Services LLC",
     images: [
       {
-        url: "/images/home.jpeg",
+        url: "https://airtronicsfixcare.com/images/home.jpeg",
         width: 1200,
         height: 630,
+        type: "image/jpeg",
         alt: "Airtronics Certified HVAC Technician servicing AC in Dubai",
       },
     ],
@@ -36,7 +55,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Airtronics Fixcare | #1 AC Repair & 24/7 HVAC Services in Dubai",
     description: "24/7 emergency AC repair, HVAC maintenance, and duct cleaning across Dubai. 30–45 min arrival.",
-    images: ["/images/home.jpeg"],
+    images: ["https://airtronicsfixcare.com/images/home.jpeg"],
   },
   robots: {
     index: true,
@@ -112,12 +131,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className="font-sans h-full antialiased"
+      className={`${onest.variable} font-sans h-full antialiased`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet" />
         <Script id="global-hvac-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }} />
       </head>
       <body className="min-h-full flex flex-col">

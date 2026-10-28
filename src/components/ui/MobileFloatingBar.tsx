@@ -1,11 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useSyncExternalStore } from 'react';
 import { Phone } from 'lucide-react';
 
 const HOTLINE_NUMBER = '+971586596321';
 const WHATSAPP_NUMBER = '971586596321';
 const WHATSAPP_PREFIX = 'Hello Airtronics Fixcare! I need help with AC repair / service in Dubai.';
+
+const emptySubscribe = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 const WhatsAppIcon = () => (
   <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
@@ -14,11 +18,7 @@ const WhatsAppIcon = () => (
 );
 
 export default function MobileFloatingBar() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(emptySubscribe, getClientSnapshot, getServerSnapshot);
 
   if (!mounted) {
     return null;

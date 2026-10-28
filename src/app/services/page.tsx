@@ -6,7 +6,6 @@ import ServicesHero from '@/components/services/ServicesHero';
 import ServicesGrid from '@/components/services/ServicesGrid';
 import ProcessSection from '@/components/home/ProcessSection';
 import InvoiceQuoteTerms from '@/components/services/InvoiceQuoteTerms';
-import BrandsSection from '@/components/about/BrandsSection';
 import AboutCTA from '@/components/about/AboutCTA';
 import ServicesFAQ from '@/components/services/ServicesFAQ';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 
-import { SERVICES_DATA, ServiceDetail } from '@/data/servicesData';
+import { SERVICES_DATA } from '@/data/servicesData';
 import ServiceDetailHero from '@/components/services/ServiceDetailHero';
 import ServiceDetailContent from '@/components/services/ServiceDetailContent';
 import InvoiceQuoteTerms from '@/components/services/InvoiceQuoteTerms';

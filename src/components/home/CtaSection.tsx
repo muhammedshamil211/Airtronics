@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { PhoneCall, Calendar } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -56,7 +55,7 @@ export default function CtaSection() {
           </div>
 
           <p className="mt-8 text-white/70 text-sm  tracking-wide uppercase">
-            Available 24/7 for Emergency AC Repairs in Dubai
+            Available for Emergency AC Repairs in Dubai
           </p>
         </motion.div>
       </div>

@@ -7,6 +7,7 @@ import {
     Mail,
     Building2,
 } from "lucide-react";
+import { SERVICES_DATA } from "@/data/servicesData";
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -16,14 +17,22 @@ export default function ContactSection() {
         phone: '',
         address: '',
         service: '',
+        subCategory: '',
         details: ''
     });
+
+    const selectedService = SERVICES_DATA.find(
+        (s) => s.shortTitle === formData.service || s.title === formData.service || s.slug === formData.service
+    );
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         // Format the message for WhatsApp
-        let text = `Hello, my name is ${formData.name}. I would like to book a service for: ${formData.service}.`;
+        const serviceText = formData.subCategory
+            ? `${formData.service} (${formData.subCategory})`
+            : formData.service;
+        let text = `Hello, my name is ${formData.name}. I would like to book a service for: ${serviceText}.`;
         if (formData.company) text += `\nCompany: ${formData.company}`;
         if (formData.email) text += `\nEmail: ${formData.email}`;
         if (formData.phone) text += `\nPhone: ${formData.phone}`;
@@ -36,7 +45,7 @@ export default function ContactSection() {
 
         // Reset form
         setFormData({
-            name: '', company: '', email: '', phone: '', address: '', service: '', details: ''
+            name: '', company: '', email: '', phone: '', address: '', service: '', subCategory: '', details: ''
         });
     };
 
@@ -202,17 +211,34 @@ export default function ContactSection() {
                                 <select
                                     required
                                     value={formData.service}
-                                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                                    className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8]"
+                                    onChange={(e) => setFormData({ ...formData, service: e.target.value, subCategory: '' })}
+                                    className="w-full h-14 rounded-xl border border-slate-200 px-4 outline-none focus:border-[#005eb8] text-[#111111]"
                                 >
-                                    <option value="">Select Service *</option>
-                                    <option value="AC Installation">AC Installation</option>
-                                    <option value="AC Repair">AC Repair</option>
-                                    <option value="HVAC Service">HVAC Service</option>
-                                    <option value="Duct Cleaning">Duct Cleaning</option>
-                                    <option value="Annual Maintenance Contract (AMC)">Annual Maintenance Contract (AMC)</option>
-                                    <option value="Commercial HVAC Solutions">Commercial HVAC Solutions</option>
+                                    <option value="" disabled>Select HVAC Service *</option>
+                                    {SERVICES_DATA.map((srv) => (
+                                        <option key={srv.slug} value={srv.shortTitle}>
+                                            {srv.shortTitle}
+                                        </option>
+                                    ))}
                                 </select>
+
+                                {/* Optional Sub-Category Field: Appears only when selected service has subcategories */}
+                                {selectedService?.subcategories && selectedService.subcategories.length > 0 && (
+                                    <div className="animate-in fade-in duration-200">
+                                        <select
+                                            value={formData.subCategory}
+                                            onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                                            className="w-full h-14 rounded-xl border border-blue-200 bg-blue-50/40 px-4 outline-none focus:border-[#005eb8] text-[#111111]"
+                                        >
+                                            <option value="">Choose Specific Sub-Category (Optional - General Inspection Included)</option>
+                                            {selectedService.subcategories.map((sub) => (
+                                                <option key={sub} value={sub}>
+                                                    {sub}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                )}
 
                                 <textarea
                                     rows={6}

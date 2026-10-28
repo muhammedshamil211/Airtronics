@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
+import CountUp from '@/components/ui/CountUp';
 
 const WHATSAPP_PHONE = '971586596321';
 
@@ -22,28 +23,33 @@ export default function AboutHero() {
     'Hello Airtronics! I would like to learn more about your services and book an HVAC inspection in Dubai.'
   )}`;
 
-  const trustMetrics = [
+  const trustMetrics: Array<{
+    icon: React.ElementType;
+    stat: React.ReactNode;
+    title: string;
+    desc: string;
+  }> = [
     {
       icon: Clock,
-      stat: '2022',
+      stat: <CountUp start={2000} end={2022} duration={1.2} />,
       title: 'Established in Dubai',
       desc: 'Engineered specifically for UAE climate & 45°C+ summer heatwaves.',
     },
     {
       icon: Zap,
-      stat: '30–45m',
+      stat: <><CountUp end={30} />–<CountUp end={45} suffix="m" /></>,
       title: 'Average Arrival',
       desc: '24/7 mobile fleet dispatch across all major Dubai communities.',
     },
     {
       icon: ShieldCheck,
-      stat: '100%',
+      stat: <CountUp end={100} suffix="%" />,
       title: 'Genuine OEM Parts',
       desc: 'Factory-certified replacement compressors, capacitors, and motors.',
     },
     {
       icon: Star,
-      stat: '5.0 ★',
+      stat: <><CountUp end={5} decimals={1} /> ★</>,
       title: 'Google Rating',
       desc: 'Top-rated authentic feedback from residential & commercial clients.',
     },

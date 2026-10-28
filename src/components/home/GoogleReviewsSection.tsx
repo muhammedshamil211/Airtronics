@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Script from 'next/script';
 import {
   Star,
@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/ui/Button';
+import CountUp from '@/components/ui/CountUp';
 import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/app/api/google-reviews/route';
 
 // Official Google 'G' Logo SVG
@@ -69,17 +70,16 @@ export default function GoogleReviewsSection() {
   const [isPaused, setIsPaused] = useState(false);
   const [showOriginal, setShowOriginal] = useState<Record<string, boolean>>({});
   const [direction, setDirection] = useState<1 | -1>(1);
-  const [reviewAges, setReviewAges] = useState<Record<string, string>>({});
 
   const totalReviews = AUTHENTIC_REVIEWS.length;
 
   // Calculate dynamic relative age day by day on client
-  useEffect(() => {
+  const reviewAges = useMemo(() => {
     const computed: Record<string, string> = {};
     AUTHENTIC_REVIEWS.forEach((rev) => {
       computed[rev.id] = getRelativeTime(rev.publishedDate);
     });
-    setReviewAges(computed);
+    return computed;
   }, []);
 
   // Auto-rotation timer with hover pause & clean reset on manual navigation
@@ -234,7 +234,7 @@ export default function GoogleReviewsSection() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-2xl font-black text-[#111111]">5.0</span>
+                        <CountUp end={5} decimals={1} duration={1.2} className="text-2xl font-black text-[#111111]" />
                         <StarRating rating={5} />
                       </div>
                       <span className="text-xs font-semibold text-gray-500 block">

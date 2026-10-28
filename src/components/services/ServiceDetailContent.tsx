@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import {
   ShieldCheck,
   Wrench,
@@ -193,6 +192,47 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
             ))}
           </div>
         </div>
+
+        {/* ========================================================================= */}
+        {/* 2.5 SPECIALIZED SUBCATEGORIES & DETAILED CAPABILITIES                     */}
+        {/* ========================================================================= */}
+        {service.subcategories && service.subcategories.length > 0 && (
+          <div className="relative overflow-hidden pt-10 border-t border-gray-200">
+            <div className="max-w-3xl mb-8">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#005eb8] mb-2">
+                <span className="w-4 h-[1.5px] bg-[#005eb8]" />
+                <span>SPECIALIZED SERVICES INCLUDED</span>
+              </div>
+              <h3 className="text-2xl sm:text-3xl font-medium tracking-tight text-[#111111] leading-tight mb-2">
+                Specialized Sub-Services &amp; Scope of Work
+              </h3>
+              <p className="text-gray-600 text-[15px] sm:text-base leading-relaxed">
+                Our certified technicians deliver complete end-to-end execution across every specialized service area within {service.shortTitle}.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {service.subcategories.map((sub, sIdx) => (
+                <div
+                  key={sIdx}
+                  className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl border border-slate-200/90 bg-white hover:border-[#005eb8] transition-colors group"
+                >
+                  <span className="w-6 h-6 rounded-full bg-blue-50 text-[#005eb8] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 group-hover:bg-[#005eb8] group-hover:text-white transition-colors">
+                    {sIdx + 1}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <span className="block text-sm font-semibold text-[#111111] group-hover:text-[#005eb8] transition-colors">
+                      {sub}
+                    </span>
+                    <span className="text-[11px] text-gray-500 block mt-0.5">
+                      Available across all Dubai communities
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* ========================================================================= */}
         {/* 3. TECHNICAL SPECIFICATIONS & COMMON ISSUES                               */}

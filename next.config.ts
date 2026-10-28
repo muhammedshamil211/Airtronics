@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  poweredByHeader: false,
+  compress: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
   images: {
+    formats: ["image/avif", "image/webp"],
     qualities: [70, 75, 95],
     remotePatterns: [
       {
@@ -15,6 +22,15 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/services/commercial-hvac',
+        destination: '/services/vrf-vrv-systems',
+        permanent: true,
+      },
+    ];
   },
 };
 

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import Script from 'next/script';
 import {
@@ -12,8 +11,6 @@ import {
   Clock
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-const WHATSAPP_PHONE = '971586596321';
 
 // Trust Pillars (Large standalone icons, no card wrapping, no descriptions)
 const ABOUT_PILLARS = [
@@ -200,12 +197,11 @@ export default function AboutSection() {
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-1">
             {/* Primary Action Button (Brand 3D Button) */}
             <Button
-              href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hello Airtronics! I would like to order AC repair & service in Dubai.')}`}
-              target="_blank"
+              href="/about"
               variant="primary"
               size="md"
               className="px-6 sm:px-7 !py-2.5 sm:!py-3.5 text-xs sm:text-sm md:text-base group"
-              aria-label="Order AC Service on WhatsApp"
+              aria-label="Read More About Airtronics"
               iconRight={
                 <svg
                   viewBox="0 0 24 24"
@@ -216,7 +212,7 @@ export default function AboutSection() {
                 </svg>
               }
             >
-              <span>Order Service</span>
+              <span>Read More</span>
             </Button>
 
             {/* Secondary Action Button (White with Border) */}

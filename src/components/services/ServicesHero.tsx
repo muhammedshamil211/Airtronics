@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
@@ -14,7 +14,8 @@ import {
   Building2,
   ChevronRight
 } from 'lucide-react';
-import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
+import CountUp from '@/components/ui/CountUp';
 
 // WhatsApp Configuration
 const WHATSAPP_PHONE = '971586596321';
@@ -24,11 +25,15 @@ const getWhatsAppDirectLink = (serviceName = 'AC Repair & HVAC Services') => {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 };
 
-// Reusable Static Configuration Data
-const STATS_DATA = [
-  { icon: Users, value: '1,000+', label: 'AC Units Serviced in Dubai' },
-  { icon: Clock, value: '30–45 Min', label: 'Rapid Emergency Arrival' },
-  { icon: ShieldCheck, value: '100%', label: 'Genuine Factory OEM Parts' },
+// Reusable Static Configuration Data with Smooth CountUp Animation
+const STATS_DATA: Array<{
+  icon: React.ElementType;
+  value: React.ReactNode;
+  label: string;
+}> = [
+  { icon: Users, value: <CountUp end={1000} suffix="+" />, label: 'AC Units Serviced in Dubai' },
+  { icon: Clock, value: <><CountUp end={30} />–<CountUp end={45} suffix=" Min" /></>, label: 'Rapid Emergency Arrival' },
+  { icon: ShieldCheck, value: <CountUp end={100} suffix="%" />, label: 'Genuine Factory OEM Parts' },
   { icon: Building2, value: 'Dubai-Wide', label: '24/7 Coverage Across All Communities' },
 ];
 
@@ -57,35 +62,18 @@ const itemVariants: Variants = {
 };
 
 export default function ServicesHero() {
-  const heroRef = useRef<HTMLElement>(null);
-
-  // Parallax Scroll Tracking for Immersive Atmospheric Depth
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ['start start', 'end start'],
-  });
-
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '16%']);
-  const orb1Parallax = useTransform(scrollYProgress, [0, 1], ['0%', '-25%']);
-  const orb2Parallax = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
-
   return (
     <section
-      ref={heroRef}
       className="relative w-full overflow-hidden bg-[#08152c]"
       aria-label="Certified AC Repair and HVAC Services Dubai Hero"
     >
       {/* ========================================================================= */}
-      {/* 1. FULL COVERED BACKGROUND WITH PARALLAX & ATMOSPHERIC DEPTH             */}
+      {/* 1. FULL COVERED BACKGROUND & ATMOSPHERIC DEPTH (No Parallax Lag)          */}
       {/* ========================================================================= */}
       <div className="relative min-h-[78vh] sm:min-h-[84vh] lg:min-h-[88vh] flex flex-col justify-between overflow-hidden">
 
-        {/* Parallax Background Image Container */}
-        <motion.div
-          style={{ y: bgY }}
-          className="absolute inset-0 -top-12 -bottom-12 w-full h-[120%] pointer-events-none z-0"
-        >
+        {/* Static Background Image Container */}
+        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
           <Image
             src="/images/hvac_maintenance_technician.jpg"
             alt="Airtronics certified HVAC technician performing AC repair and maintenance service in Dubai"
@@ -100,35 +88,25 @@ export default function ServicesHero() {
           <div className="absolute inset-0 bg-[#08152c]/50 sm:bg-[#08152c]/45" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#08152c]/85 via-[#08152c]/35 to-[#08152c]/90" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(8,21,44,0.45)_0%,_transparent_75%)]" />
-        </motion.div>
+        </div>
 
         {/* ======================================================================= */}
-        {/* PARALLAX DIVS (Floating Atmospheric Orbs & Depth Layers)                */}
+        {/* ATMOSPHERIC GLOW ORBS & DEPTH LAYERS                                    */}
         {/* ======================================================================= */}
 
         {/* Ambient Cooling Glow Orb 1 (Top Left) */}
-        <motion.div
-          style={{ y: orb1Parallax }}
-          className="absolute -left-20 top-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#005eb8]/20 blur-[120px] pointer-events-none z-10"
-        />
+        <div className="absolute -left-20 top-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#005eb8]/20 blur-[120px] pointer-events-none z-10" />
 
         {/* Ambient Cooling Glow Orb 2 (Bottom Right) */}
-        <motion.div
-          style={{ y: orb2Parallax }}
-          className="absolute -right-20 top-1/3 w-80 sm:w-[450px] h-80 sm:h-[450px] rounded-full bg-[#00AEEF]/15 blur-[130px] pointer-events-none z-10"
-        />
+        <div className="absolute -right-20 top-1/3 w-80 sm:w-[450px] h-80 sm:h-[450px] rounded-full bg-[#00AEEF]/15 blur-[130px] pointer-events-none z-10" />
 
         {/* Subtle Geometric Depth Ring */}
-        <motion.div
-          style={{ y: orb1Parallax }}
-          className="absolute left-1/2 -translate-x-1/2 top-10 w-[700px] h-[700px] rounded-full border border-sky-400/10 pointer-events-none z-0 hidden md:block"
-        />
+        <div className="absolute left-1/2 -translate-x-1/2 top-10 w-[700px] h-[700px] rounded-full border border-sky-400/10 pointer-events-none z-0 hidden md:block" />
 
         {/* ======================================================================= */}
         {/* 2. CENTERED FOREGROUND HERO CONTENT                                     */}
         {/* ======================================================================= */}
         <motion.div
-          style={{ y: contentY }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"

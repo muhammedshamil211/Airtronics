@@ -3,22 +3,13 @@
 import React, { useState } from 'react';
 import { ChevronDown, Check } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { SERVICES_DATA } from '@/data/servicesData';
 
 export interface QuickBookingBarProps {
   className?: string;
   defaultService?: string;
   showSectionWrapper?: boolean;
 }
-
-const HVAC_SERVICES = [
-  'AC Repair & Breakdown Fix',
-  'AC Installation & Replacement',
-  'AC Servicing & Preventive Maintenance (AMC)',
-  'Deep AC Duct Cleaning & Sanitization',
-  'Chilled Water FCU & Central AC Repair',
-  'Commercial HVAC & Facility Maintenance',
-  '24/7 Emergency AC Breakdown Dispatch',
-];
 
 const WHATSAPP_PHONE = '971586596321';
 
@@ -31,10 +22,15 @@ export default function QuickBookingBar({
     name: '',
     email: '',
     service: defaultService,
+    subCategory: '',
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const selectedService = SERVICES_DATA.find(
+    (s) => s.shortTitle === formData.service || s.title === formData.service || s.slug === formData.service
+  );
 
   const validate = () => {
     const newErrors: { [key: string]: string } = {};
@@ -74,7 +70,9 @@ export default function QuickBookingBar({
 
     const name = formData.name.trim();
     const email = formData.email.trim();
-    const service = formData.service;
+    const serviceName = formData.subCategory
+      ? `${formData.service} - ${formData.subCategory}`
+      : formData.service;
 
     // Compose concise, professional WhatsApp message
     let message = `Hello Airtronics Fixcare! I would like to book an AC service in Dubai.\n\n`;
@@ -82,7 +80,7 @@ export default function QuickBookingBar({
     if (email) {
       message += `✉️ Email: ${email}\n`;
     }
-    message += `🔧 Service: ${service}\n\n`;
+    message += `🔧 Service: ${serviceName}\n\n`;
     message += `Please confirm technician availability and arrival time.`;
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
@@ -171,7 +169,7 @@ export default function QuickBookingBar({
                 id="qb-service"
                 value={formData.service}
                 onChange={(e) => {
-                  setFormData({ ...formData, service: e.target.value });
+                  setFormData({ ...formData, service: e.target.value, subCategory: '' });
                   if (errors.service) setErrors({ ...errors, service: '' });
                 }}
                 aria-label="Select HVAC Service"
@@ -181,9 +179,9 @@ export default function QuickBookingBar({
                 required
               >
                 <option value="" disabled>Select HVAC Service *</option>
-                {HVAC_SERVICES.map((srv) => (
-                  <option key={srv} value={srv} className="text-[#111111] py-1">
-                    {srv}
+                {SERVICES_DATA.map((srv) => (
+                  <option key={srv.slug} value={srv.shortTitle}>
+                    {srv.shortTitle}
                   </option>
                 ))}
               </select>
@@ -193,6 +191,27 @@ export default function QuickBookingBar({
               <span className="text-[11px] text-red-500 font-medium px-1 mt-1 block truncate">
                 {errors.service}
               </span>
+            )}
+
+            {/* Optional Sub-Category Field: Appears only when a main service with subcategories is selected */}
+            {selectedService?.subcategories && selectedService.subcategories.length > 0 && (
+              <div className="relative mt-2 animate-in fade-in duration-200">
+                <select
+                  id="qb-subcategory"
+                  value={formData.subCategory}
+                  onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                  aria-label="Select Specific Sub-Category (Optional)"
+                  className="w-full h-10 sm:h-11 pl-3.5 pr-8 bg-blue-50/50 border border-blue-200 focus:border-[#005eb8] rounded-md text-xs sm:text-sm focus:outline-none focus:bg-white transition-colors appearance-none cursor-pointer text-[#111111] truncate"
+                >
+                  <option value="">Specific Sub-Scope (Optional - General Inspection Included)</option>
+                  {selectedService.subcategories.map((sub) => (
+                    <option key={sub} value={sub}>
+                      {sub}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-4 h-4 text-[#005eb8]/70 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              </div>
             )}
           </div>
 

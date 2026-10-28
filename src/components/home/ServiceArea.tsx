@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { MapPin, ArrowRight, Zap, ShieldCheck, TrendingDown, PhoneCall } from 'lucide-react';
+import { ArrowRight, Zap, ShieldCheck, TrendingDown, PhoneCall } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';

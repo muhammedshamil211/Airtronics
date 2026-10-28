@@ -1,7 +1,7 @@
 'use client';
 
 import React, { memo } from 'react';
-import { Award, ShieldCheck } from 'lucide-react';
+import { Award } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 interface Brand {
