@@ -345,15 +345,21 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
                       type="button"
                       aria-expanded={isOpen}
                       onClick={() => toggleFaq(fIdx)}
-                      className="w-full p-4 sm:p-5 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200"
+                      className="w-full p-4 sm:p-5 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200 group cursor-pointer"
                     >
-                      <span className="text-[15px] md:text-base font-medium text-[#111111] pr-4">
+                      <span className="text-[15px] md:text-base font-medium text-[#111111] pr-4 group-hover:text-[#005eb8] transition-colors">
                         {faq.q}
                       </span>
-                      <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                      <div
+                        className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          isOpen
+                            ? 'bg-[#005eb8] text-white shadow-xs'
+                            : 'bg-slate-100 text-slate-700 group-hover:bg-blue-50 group-hover:text-[#005eb8]'
+                        }`}
+                      >
                         <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-300 ${
-                            isOpen ? 'rotate-180 text-[#005eb8]' : 'text-gray-500'
+                          className={`w-4 h-4 stroke-[2.25] transition-transform duration-300 ${
+                            isOpen ? 'rotate-180' : ''
                           }`}
                         />
                       </div>
@@ -382,15 +388,21 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
                       type="button"
                       aria-expanded={isOpen}
                       onClick={() => toggleFaq(actualIdx)}
-                      className="w-full p-4 sm:p-5 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200"
+                      className="w-full p-4 sm:p-5 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200 group cursor-pointer"
                     >
-                      <span className="text-[15px] md:text-base font-medium text-[#111111] pr-4">
+                      <span className="text-[15px] md:text-base font-medium text-[#111111] pr-4 group-hover:text-[#005eb8] transition-colors">
                         {faq.q}
                       </span>
-                      <div className="shrink-0 w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center">
+                      <div
+                        className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          isOpen
+                            ? 'bg-[#005eb8] text-white shadow-xs'
+                            : 'bg-slate-100 text-slate-700 group-hover:bg-blue-50 group-hover:text-[#005eb8]'
+                        }`}
+                      >
                         <ChevronDown
-                          className={`w-4 h-4 transition-transform duration-300 ${
-                            isOpen ? 'rotate-180 text-[#005eb8]' : 'text-gray-500'
+                          className={`w-4 h-4 stroke-[2.25] transition-transform duration-300 ${
+                            isOpen ? 'rotate-180' : ''
                           }`}
                         />
                       </div>
