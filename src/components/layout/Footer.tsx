@@ -75,6 +75,7 @@ export default function Footer() {
                 alt="Airtronics Fixcare Technical Services LLC Dubai"
                 width={220}
                 height={60}
+                loading="lazy"
                 style={{ width: 'auto' }}
                 className="h-11 sm:h-12 w-auto object-contain"
               />

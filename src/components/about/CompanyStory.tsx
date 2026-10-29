@@ -76,6 +76,7 @@ export default function CompanyStory() {
                   alt="Certified Airtronics technician performing precision digital AC diagnostics in Dubai"
                   fill
                   quality={90}
+                  loading="lazy"
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />

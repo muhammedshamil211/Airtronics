@@ -87,6 +87,7 @@ function ServiceCard({ service }: { service: ServiceDetail }) {
           alt={`${serviceName} in Dubai - Airtronics Fixcare Technical Services`}
           fill
           quality={85}
+          loading="lazy"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
           className="object-cover object-center"
         />

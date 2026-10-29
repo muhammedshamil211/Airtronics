@@ -3,11 +3,13 @@ import React from 'react';
 
 import AboutSchema from '@/components/about/AboutSchema';
 import AboutHero from '@/components/about/AboutHero';
-import CompanyStory from '@/components/about/CompanyStory';
-import CoreDifferentiators from '@/components/about/CoreDifferentiators';
-import BrandsSection from '@/components/about/BrandsSection';
-import FAQSection from '@/components/about/FAQSection';
-import AboutCTA from '@/components/about/AboutCTA';
+import dynamic from 'next/dynamic';
+
+const CompanyStory = dynamic(() => import('@/components/about/CompanyStory'));
+const CoreDifferentiators = dynamic(() => import('@/components/about/CoreDifferentiators'));
+const BrandsSection = dynamic(() => import('@/components/about/BrandsSection'));
+const FAQSection = dynamic(() => import('@/components/about/FAQSection'));
+const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 export const metadata: Metadata = {
   title: 'About Us | Airtronics Fixcare HVAC & AC Repair Dubai',

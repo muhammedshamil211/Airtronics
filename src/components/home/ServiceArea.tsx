@@ -296,7 +296,7 @@ export default function ServiceAreasSection() {
                     src="/images/hvac-bill.png"
                     alt="High AC electricity bill and homeowner cooling savings"
                     fill
-                    priority={false}
+                    loading="lazy"
                     quality={75}
                     sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-contain"

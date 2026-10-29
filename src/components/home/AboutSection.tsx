@@ -94,7 +94,7 @@ export default function AboutSection() {
           alt="Airtronics certified HVAC technician performing AC maintenance and repair in Dubai"
           fill
           sizes="100vw"
-          priority={false}
+          loading="lazy"
           className="object-cover object-center"
         />
 

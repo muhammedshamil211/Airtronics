@@ -6,8 +6,11 @@ import Script from 'next/script';
 import { SERVICES_DATA } from '@/data/servicesData';
 import ServiceDetailHero from '@/components/services/ServiceDetailHero';
 import ServiceDetailContent from '@/components/services/ServiceDetailContent';
-import InvoiceQuoteTerms from '@/components/services/InvoiceQuoteTerms';
-import AboutCTA from '@/components/about/AboutCTA';
+import dynamic from 'next/dynamic';
+
+// Code-split below-the-fold sections
+const InvoiceQuoteTerms = dynamic(() => import('@/components/services/InvoiceQuoteTerms'));
+const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 interface PageProps {
   params: Promise<{

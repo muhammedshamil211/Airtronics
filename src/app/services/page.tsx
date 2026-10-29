@@ -1,13 +1,16 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 
 import ServicesHero from '@/components/services/ServicesHero';
 import ServicesGrid from '@/components/services/ServicesGrid';
-import ProcessSection from '@/components/home/ProcessSection';
-import InvoiceQuoteTerms from '@/components/services/InvoiceQuoteTerms';
-import AboutCTA from '@/components/about/AboutCTA';
-import ServicesFAQ from '@/components/services/ServicesFAQ';
+
+// Code-split below-the-fold sections for optimized initial bundle & performance
+const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
+const InvoiceQuoteTerms = dynamic(() => import('@/components/services/InvoiceQuoteTerms'));
+const ServicesFAQ = dynamic(() => import('@/components/services/ServicesFAQ'));
+const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 export const metadata: Metadata = {
   title: 'HVAC Services Dubai | AC Repair, Installation & AMC | Airtronics',

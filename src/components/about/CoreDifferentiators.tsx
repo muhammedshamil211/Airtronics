@@ -151,6 +151,7 @@ export default function CoreDifferentiators() {
                   alt="Airtronics Certified HVAC Technician performing AC diagnostics in Dubai"
                   fill
                   quality={80}
+                  loading="lazy"
                   className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 35vw"
                 />
@@ -239,6 +240,7 @@ export default function CoreDifferentiators() {
                     alt="Genuine OEM Spare Parts"
                     fill
                     quality={80}
+                    loading="lazy"
                     className="object-contain object-bottom-right drop-shadow-xs transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 50vw, 20vw"
                   />
@@ -296,6 +298,7 @@ export default function CoreDifferentiators() {
                     alt="Transparent Service Quote"
                     fill
                     quality={80}
+                    loading="lazy"
                     className="object-contain object-right-bottom drop-shadow-xs"
                     sizes="(max-width: 768px) 40vw, 15vw"
                   />
@@ -390,6 +393,7 @@ export default function CoreDifferentiators() {
                   alt="Airtronics Emergency AC Repair Technician"
                   fill
                   quality={75}
+                  loading="lazy"
                   className="object-cover object-center opacity-30 group-hover:opacity-45 transition-opacity duration-300"
                   sizes="(max-width: 768px) 45vw, 15vw"
                 />

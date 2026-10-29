@@ -1,15 +1,18 @@
+import dynamic from 'next/dynamic';
 import Hero from '@/components/home/Hero';
 import QuickBookingBar from '@/components/ui/QuickBookingBar';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
-import AboutSection from '@/components/home/AboutSection';
-import RecentWorkGallery from '@/components/home/RecentWorkGallery';
-import GoogleReviewsSection from '@/components/home/GoogleReviewsSection';
-import ProcessSection from '@/components/home/ProcessSection';
-import FaqSection from '@/components/home/FaqSection';
-import CtaSection from '@/components/home/CtaSection';
-import ServiceAreasSection from '@/components/home/ServiceArea';
-import CoreDifferentiators from '@/components/about/CoreDifferentiators';
-import BrandsSection from '@/components/about/BrandsSection';
+
+// Code-split below-the-fold sections for instant FCP & optimal bundle splitting
+const AboutSection = dynamic(() => import('@/components/home/AboutSection'));
+const RecentWorkGallery = dynamic(() => import('@/components/home/RecentWorkGallery'));
+const GoogleReviewsSection = dynamic(() => import('@/components/home/GoogleReviewsSection'));
+const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
+const FaqSection = dynamic(() => import('@/components/home/FaqSection'));
+const CtaSection = dynamic(() => import('@/components/home/CtaSection'));
+const ServiceAreasSection = dynamic(() => import('@/components/home/ServiceArea'));
+const CoreDifferentiators = dynamic(() => import('@/components/about/CoreDifferentiators'));
+const BrandsSection = dynamic(() => import('@/components/about/BrandsSection'));
 
 export const metadata = {
   title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',

@@ -4,7 +4,9 @@ import { Onest } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import MobileFloatingBar from "@/components/ui/MobileFloatingBar";
+import dynamic from "next/dynamic";
+
+const MobileFloatingBar = dynamic(() => import("@/components/ui/MobileFloatingBar"));
 
 const onest = Onest({
   subsets: ["latin"],
