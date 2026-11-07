@@ -18,20 +18,20 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const baseStyles =
-  'inline-flex items-center justify-center font-bold transition-colors duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005eb8] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none';
+  'inline-flex items-center justify-center font-semibold transition-all duration-150 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005eb8] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none';
 
 const variantStyles: Record<ButtonVariant, string> = {
-  // Brand 3D Button (Lighter top inset + Dark bottom shadow)
+  // Brand Solid Engineering Blue
   primary:
-    'bg-[#005eb8] hover:bg-[#004a94] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_3px_0_#003870,0_3px_6px_rgba(0,0,0,0.16)] active:translate-y-[2px] active:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_1px_0_#003870]',
+    'bg-[#005eb8] hover:bg-[#004b93] active:bg-[#004080] text-white shadow-xs hover:shadow-sm active:scale-[0.99]',
   
-  // Secondary White with Brand Border & 3D Shadow
+  // Secondary Crisp Surface with Subtle Border
   secondary:
-    'bg-white hover:bg-slate-50 text-[#111111] border-2 border-[#005eb8] shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_3px_0_#003870,0_3px_6px_rgba(0,0,0,0.1)] active:translate-y-[2px] active:shadow-[0_1px_0_#003870]',
+    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-300 hover:border-[#005eb8] shadow-2xs hover:shadow-xs active:scale-[0.99]',
 
-  // Clean White with subtle border & shadow
+  // Clean White Surface
   white:
-    'bg-white hover:bg-slate-50 text-[#111111] border border-slate-300 hover:border-[#005eb8] shadow-sm active:translate-y-[2px]',
+    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs active:scale-[0.99]',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {

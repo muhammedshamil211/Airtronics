@@ -72,47 +72,9 @@ export default function ProcessSection() {
   return (
     <section
       id="process"
-      className="py-20 sm:py-24 lg:py-28 relative overflow-hidden bg-[#fcfcfc] border-t border-gray-100"
+      className="py-16 sm:py-20 lg:py-24 relative bg-[#fcfcfc] border-b border-gray-100"
       aria-labelledby="process-heading"
     >
-      {/* Abstract Mesh Gradient - Top Right (Original Style Preserved) */}
-      <div
-        className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] z-0 pointer-events-none opacity-90"
-        aria-hidden="true"
-      >
-        <div
-          className="absolute top-[0%] right-[0%] w-[250px] h-[250px] bg-[#005eb8]/40 blur-[90px]"
-          style={{ clipPath: 'polygon(100% 0, 100% 100%, 80% 90%, 50% 100%, 20% 80%, 0 40%, 30% 10%)' }}
-        />
-        <div
-          className="absolute top-[20%] right-[15%] w-[200px] h-[200px] bg-[#ff7b00]/30 blur-[100px]"
-          style={{ clipPath: 'polygon(80% 10%, 100% 40%, 90% 80%, 50% 100%, 10% 70%, 0 30%, 40% 0)' }}
-        />
-        <div
-          className="absolute top-[40%] right-[5%] w-[180px] h-[180px] bg-[#c1121f]/40 blur-[90px]"
-          style={{ clipPath: 'polygon(100% 20%, 80% 100%, 20% 90%, 0 50%, 30% 0, 80% 0)' }}
-        />
-      </div>
-
-      {/* Abstract Mesh Gradient - Bottom Left (Original Style Preserved) */}
-      <div
-        className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[400px] md:h-[400px] z-0 pointer-events-none opacity-90"
-        aria-hidden="true"
-      >
-        <div
-          className="absolute bottom-[-10%] left-[-10%] w-[250px] h-[250px] bg-[#005eb8]/40 blur-[100px]"
-          style={{ clipPath: 'polygon(0 100%, 100% 100%, 90% 60%, 100% 20%, 50% 0, 10% 30%)' }}
-        />
-        <div
-          className="absolute bottom-[20%] left-[10%] w-[180px] h-[180px] bg-[#00d4ff]/30 blur-[90px]"
-          style={{ clipPath: 'polygon(50% 100%, 0 80%, 10% 20%, 60% 0, 100% 40%, 90% 90%)' }}
-        />
-        <div
-          className="absolute bottom-[30%] left-[-5%] w-[150px] h-[150px] bg-[#c1121f]/30 blur-[90px]"
-          style={{ clipPath: 'polygon(0 0, 100% 20%, 80% 100%, 20% 90%)' }}
-        />
-      </div>
-
       {/* JSON-LD HowTo Schema for Google Rich Snippets */}
       <Script
         id="how-it-works-schema"

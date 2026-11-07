@@ -259,42 +259,32 @@ export default function ServiceAreasSection() {
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Money CTA Styled Like An Advertisement (Compact Height) */}
+          {/* RIGHT COLUMN: Engineering Advisory (Energy & DEWA Efficiency) */}
           <div className="lg:col-span-5 flex flex-col">
-            <div className="relative overflow-hidden rounded-[1px] bg-gradient-to-br from-[#0c1a30] via-[#091527] to-[#050b14] border border-blue-500/25 p-5 sm:p-6 text-white shadow-xl flex flex-col justify-between">
-              
-              {/* Subtle ambient lighting */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
+            <div className="relative overflow-hidden rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-7 text-white shadow-sm flex flex-col justify-between">
               <div>
-                {/* Standardized Eyebrow (No rounded corners, same amber color) */}
-                <div className="flex items-center justify-between gap-2 mb-2.5 relative z-10">
-                  <div className="flex items-center gap-2">
-                    <span className="text-amber-400 font-semibold" aria-hidden="true">/</span>
-                    <span className="text-xs sm:text-sm font-semibold tracking-wide text-amber-300 uppercase">
-                      Special Advisory • DEWA Savings
-                    </span>
-                  </div>
-                  <span className="text-[10px] uppercase tracking-widest text-gray-400 font-bold border border-white/10 px-1.5 py-0.5 rounded">
-                    AD
+                {/* Standardized Eyebrow */}
+                <div className="flex items-center gap-2 mb-3 relative z-10">
+                  <span className="text-[#00AEEF] font-semibold" aria-hidden="true">/</span>
+                  <span className="text-xs sm:text-sm font-semibold tracking-wide text-sky-300 uppercase">
+                    Energy Advisory • DEWA Efficiency
                   </span>
                 </div>
 
-                {/* Ad Headline */}
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white mb-1.5 leading-snug relative z-10">
+                {/* Advisory Headline */}
+                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white mb-2 leading-snug relative z-10">
                   High AC Electricity Bills?
                 </h3>
                 
-                <p className="text-xs text-gray-300 leading-relaxed mb-3 relative z-10">
-                  Dirty cooling coils, failing capacitors, and refrigerant leaks cause your AC to consume up to <span className="text-amber-300 font-semibold">30% more power</span> during hot weather.
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4 relative z-10">
+                  Dirty cooling coils, failing capacitors, and low refrigerant force compressors to run continuously, consuming up to <span className="text-sky-300 font-semibold">30% more power</span> during hot weather.
                 </p>
 
-                {/* Compact Visual Ad Banner with Floating Metric */}
-                <div className="relative w-full h-32 sm:h-36 rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center p-2">
+                {/* Visual Metric Banner */}
+                <div className="relative w-full h-32 sm:h-36 rounded-xl overflow-hidden bg-slate-950/60 border border-slate-800 flex items-center justify-center p-2 mb-4">
                   <Image
                     src="/images/hvac-bill.png"
-                    alt="High AC electricity bill and homeowner cooling savings"
+                    alt="AC electricity consumption optimization and DEWA power savings"
                     fill
                     loading="lazy"
                     quality={75}
@@ -303,36 +293,36 @@ export default function ServiceAreasSection() {
                   />
 
                   {/* Floating Metric Badge */}
-                  <div className="absolute bottom-2 left-2 right-2 bg-[#0c1a30]/90 backdrop-blur-md border border-white/15 rounded-xl px-2.5 py-1.5 flex items-center justify-between shadow-lg">
+                  <div className="absolute bottom-2 left-2 right-2 bg-slate-900/95 backdrop-blur-md border border-slate-700/80 rounded-lg px-3 py-1.5 flex items-center justify-between shadow-xs">
                     <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                      <div className="w-6 h-6 rounded-md bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0">
                         <TrendingDown className="w-3.5 h-3.5 text-emerald-400" />
                       </div>
                       <div className="leading-tight">
-                        <span className="text-[11px] font-bold text-white block">Cut Monthly DEWA</span>
-                        <span className="text-[10px] text-gray-300 block">Save AED 250–600 / mo</span>
+                        <span className="text-[11px] font-bold text-white block">Cut Monthly DEWA Draw</span>
+                        <span className="text-[10px] text-slate-400 block">Est. AED 250–600 / mo</span>
                       </div>
                     </div>
-                    <span className="text-[11px] font-extrabold text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/30">
+                    <span className="text-[11px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/25">
                       -30%
                     </span>
                   </div>
                 </div>
 
-                {/* Key Ad Benefits */}
-                <div className="space-y-1.5 mt-3 mb-4 relative z-10 text-xs text-gray-300">
+                {/* Key Benefits */}
+                <div className="space-y-2 mb-5 relative z-10 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
-                    <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                    <span>Complete thermodynamic amp-draw &amp; coil inspection</span>
+                    <Zap className="w-3.5 h-3.5 text-sky-400 shrink-0" />
+                    <span>Digital running amperage &amp; thermal diagnostic check</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                    <span>Municipality-approved certified HVAC technicians</span>
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                    <span>Dubai Municipality approved HVAC technicians</span>
                   </div>
                 </div>
               </div>
 
-              {/* Ad Action Button */}
+              {/* Action Button */}
               <div className="relative z-10">
                 <Button
                   href={whatsappEnergyAdUrl}
@@ -340,17 +330,15 @@ export default function ServiceAreasSection() {
                   variant="primary"
                   size="md"
                   fullWidth
-                  className="shadow-md"
-                  aria-label="Claim AC Bill Inspection on WhatsApp"
+                  aria-label="Book AC Energy Efficiency Inspection on WhatsApp"
                   iconRight={<ArrowRight className="w-4 h-4 ml-1" aria-hidden="true" />}
                 >
-                  <span>Claim Bill Inspection Now</span>
+                  <span>Book Energy Efficiency Audit</span>
                 </Button>
-                <p className="text-[11px] text-gray-400 text-center mt-2">
-                  Available in all UAE cities • Zero hidden diagnostic charges
+                <p className="text-[11px] text-slate-400 text-center mt-2.5">
+                  Rapid dispatch across all UAE cities • Fixed transparent tariffs
                 </p>
               </div>
-
             </div>
           </div>
         </motion.div>

@@ -112,7 +112,7 @@ export default function RecentWorkGallery() {
           {RECENT_PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="group relative aspect-[4/3] overflow-hidden border border-slate-200/90 bg-slate-900 cursor-pointer rounded-none shadow-xs hover:border-[#005eb8]/60 transition-colors duration-200"
+              className="group relative aspect-[4/3] overflow-hidden border border-slate-200/90 bg-slate-900 cursor-pointer rounded-2xl shadow-xs hover:border-[#005eb8] transition-colors duration-200"
               onClick={() => setActivePhoto(project)}
             >
               {/* Pure Background Image (Full clarity, no text or overlay by default) */}
@@ -169,7 +169,7 @@ export default function RecentWorkGallery() {
           aria-label={activePhoto.title}
         >
           <div
-            className="relative max-w-4xl w-full bg-slate-900 rounded-none overflow-hidden shadow-2xl border border-white/15 flex flex-col"
+            className="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/15 flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative w-full h-[320px] sm:h-[480px]">
@@ -183,7 +183,7 @@ export default function RecentWorkGallery() {
               <button
                 type="button"
                 onClick={() => setActivePhoto(null)}
-                className="absolute top-3 right-3 w-9 h-9 rounded-none bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
+                className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors cursor-pointer border border-white/20"
                 aria-label="Close image modal"
               >
                 <X className="w-5 h-5" />
@@ -213,7 +213,7 @@ export default function RecentWorkGallery() {
                 <button
                   type="button"
                   onClick={() => setActivePhoto(null)}
-                  className="px-4 py-2.5 text-sm font-semibold rounded-none bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  className="px-4 py-2.5 text-sm font-semibold rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
                 >
                   Close
                 </button>

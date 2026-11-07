@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Button from '@/components/ui/Button';
 import Image from 'next/image';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Phone } from 'lucide-react';
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,8 +13,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
     { name: 'Services', href: '/services' },
+    { name: 'How It Works', href: '/#process' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -77,25 +77,16 @@ export default function Navbar() {
 
         {/* Action Button (Desktop Only) & Mobile Hamburger */}
         <div className="flex items-center space-x-2 md:space-x-3">
-          {/* Desktop Only "Book a Service" CTA */}
-          <div className="hidden lg:flex items-center space-x-2">
-            <Button
-              href="/contact"
-              variant="primary"
-              size="pill"
-              className="text-xs sm:text-sm font-semibold tracking-wider"
-              aria-label="Book a Service"
+          {/* Desktop Only CTA - Hotline Pill Button matching reference mockup */}
+          <div className="hidden lg:flex items-center">
+            <a
+              href="tel:+971586596321"
+              className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-[#0076FF] text-[#111827] font-bold text-sm hover:bg-blue-50/70 transition-all duration-200 shadow-xs group"
+              aria-label="Call +971 58 659 6321"
             >
-              <span>BOOK A SERVICE</span>
-            </Button>
-            <Button
-              href="/contact"
-              variant="primary"
-              size="icon"
-              aria-label="Contact Us"
-            >
-              <ArrowUpRight className="w-5 h-5" aria-hidden="true" />
-            </Button>
+              <Phone className="w-4 h-4 text-[#0076FF] fill-[#0076FF] transition-transform group-hover:scale-110" />
+              <span className="tracking-tight">+971 58 659 6321</span>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}

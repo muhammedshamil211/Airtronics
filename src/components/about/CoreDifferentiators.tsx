@@ -162,13 +162,7 @@ export default function CoreDifferentiators() {
 
               {/* Left Content Area with Organic Curved Divider */}
               <div className="relative z-10 p-5 sm:p-6 bg-white sm:bg-white/95 max-w-full sm:max-w-[63%] lg:max-w-[65%] flex flex-col justify-between h-full">
-                <svg
-                  className="absolute -right-[36px] sm:-right-[44px] top-0 bottom-0 h-full w-[36px] sm:w-[44px] text-white fill-current pointer-events-none z-10 hidden sm:block"
-                  viewBox="0 0 45 240"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M 0,0 L 38,0 C 19,22 4,65 6,115 C 8,165 34,190 40,218 C 44,230 40,238 30,240 L 0,240 Z" />
-                </svg>
+                
 
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-2">
@@ -292,7 +286,7 @@ export default function CoreDifferentiators() {
             >
               {/* Tilted Quote Document */}
               <div className="absolute -right-3 -bottom-5 top-4 w-[48%] h-full z-0 pointer-events-none flex items-center justify-end">
-                <div className="relative w-full h-full rotate-6 scale-105 opacity-95 group-hover:scale-110 transition-transform duration-500">
+                <div className="relative w-full h-full opacity-95 group-hover:scale-105 transition-transform duration-500">
                   <Image
                     src="/images/service_quote_doc.jpg"
                     alt="Transparent Service Quote"
@@ -337,20 +331,11 @@ export default function CoreDifferentiators() {
               transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
               className="md:col-span-4 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-[#005eb8] transition-colors duration-200 relative overflow-hidden flex flex-col justify-between group"
             >
-              {/* Chart & Leaf Illustration */}
-              <div className="absolute right-0 bottom-1 top-4 w-[42%] h-full z-0 pointer-events-none flex items-end justify-end pr-1 pb-7">
-                <div className="relative w-full h-24 flex items-end justify-end">
-                  <svg className="absolute right-0 top-0 w-18 h-18 text-sky-100/70" viewBox="0 0 100 100" fill="currentColor">
-                    <path d="M 10 90 C 10 90 20 40 60 20 C 80 10 90 10 90 10 C 90 10 90 20 80 40 C 60 80 10 90 10 90 Z" />
-                    <path d="M 10 90 Q 50 50 85 15" stroke="#BAE6FD" strokeWidth="3" fill="none" />
-                  </svg>
-                  <div className="relative z-10 flex items-end gap-1 pb-1 pr-0.5">
-                    <div className="w-2 h-7 rounded-t-xs bg-sky-100" />
-                    <div className="w-2 h-10 rounded-t-xs bg-sky-200" />
-                    <div className="w-2 h-13 rounded-t-xs bg-sky-300" />
-                    <div className="w-2 h-16 rounded-t-xs bg-sky-400" />
-                    <div className="w-2 h-20 rounded-t-xs bg-[#00AEEF]" />
-                  </div>
+              {/* Clean Metric Callout */}
+              <div className="absolute right-4 top-5 z-0 pointer-events-none">
+                <div className="bg-sky-50 border border-sky-100 rounded-xl px-2.5 py-1.5 text-center">
+                  <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wider block">DEWA Power</span>
+                  <span className="text-base font-extrabold text-[#005eb8] leading-tight block">-25%</span>
                 </div>
               </div>
 
@@ -384,7 +369,7 @@ export default function CoreDifferentiators() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-30px' }}
               transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-              className="md:col-span-4 bg-gradient-to-br from-[#081226] via-[#0d1f40] to-[#081226] border border-blue-900/50 text-white p-5 sm:p-6 rounded-2xl shadow-[0_8px_30px_-4px_rgba(0,128,255,0.22)] relative overflow-hidden flex flex-col justify-between group"
+              className="md:col-span-4 bg-slate-900 border border-slate-800 text-white p-5 sm:p-6 rounded-2xl shadow-sm relative overflow-hidden flex flex-col justify-between group"
             >
               {/* Technician Backdrop */}
               <div className="absolute right-0 top-0 bottom-0 w-[50%] h-full z-0 overflow-hidden pointer-events-none">

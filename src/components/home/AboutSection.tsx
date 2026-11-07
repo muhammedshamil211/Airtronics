@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
 import Script from 'next/script';
@@ -33,17 +33,6 @@ const ABOUT_PILLARS = [
 ];
 
 export default function AboutSection() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Rich Schema.org Structured Data for SEO Authority & E-E-A-T Signals
   const aboutSchema = {
     '@context': 'https://schema.org',
@@ -103,48 +92,16 @@ export default function AboutSection() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. CENTERED SHUTTER DIV: Flush at Top (No Gap), Both Sides Slanted        */}
-      {/* Slow-speed shutter down entrance animation on view                        */}
+      {/* 2. CENTERED EDITORIAL ABOUT CARD                                          */}
       {/* ========================================================================= */}
-      <div className="relative z-10 w-full max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8 flex justify-center pt-0">
+      <div className="relative z-10 w-full max-w-[1100px] mx-auto px-4 sm:px-6 md:px-8 py-14 sm:py-18 lg:py-22 flex justify-center">
         <motion.div
-          initial={{ y: '-100%', opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, margin: '-20px' }}
-          transition={{
-            duration: 1.5, // Slow, graceful shutter down motion
-            ease: [0.16, 1, 0.3, 1], // Smooth luxury ease-out
-            delay: 0.15,
-          }}
-          style={{
-            clipPath: isDesktop
-              ? 'polygon(0 0, 100% 0, calc(100% - 55px) 100%, 55px 100%)'
-              : 'none',
-          }}
-          className="w-full bg-white text-[#111111] pt-6 sm:pt-8 md:pt-10 pb-8 sm:pb-10 md:pb-12 px-6 sm:px-12 md:px-16 lg:px-20 shadow-2xl rounded-b-xl lg:rounded-none relative overflow-hidden"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="w-full bg-white text-slate-900 py-8 sm:py-12 md:py-14 px-6 sm:px-12 md:px-16 lg:px-20 shadow-lg rounded-2xl sm:rounded-3xl border border-slate-200/80 relative overflow-hidden"
         >
-          {/* ======================================================================= */}
-          {/* BOTTOM-CENTER WAVE-SHAPED GRID PATTERN (Covers Up to Center)            */}
-          {/* ======================================================================= */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[960px] h-[55%] pointer-events-none z-0 overflow-hidden">
-            {/* Soft cooling blur aura rising to center */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[650px] h-[80%] bg-gradient-to-t from-blue-100/60 via-sky-50/25 to-transparent rounded-full blur-2xl pointer-events-none" />
-
-            {/* Same Cross-Grid Pattern masked into a smooth wave curve covering up to center */}
-            <div
-              className="w-full h-full"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(0, 94, 184, 0.16) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 94, 184, 0.16) 1px, transparent 1px)
-                `,
-                backgroundSize: '16px 16px',
-                maskImage: 'radial-gradient(ellipse 75% 85% at 50% 100%, black 40%, transparent 95%)',
-                WebkitMaskImage: 'radial-gradient(ellipse 75% 85% at 50% 100%, black 40%, transparent 95%)',
-              }}
-            />
-          </div>
-
           <div className="relative z-10">
             {/* Eyebrow */}
             <div className="flex items-center justify-center gap-2 mb-3 text-center">

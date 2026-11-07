@@ -197,18 +197,20 @@ export default function InvoiceQuoteTerms() {
             {/* Right Column: Ultra-Realistic Paper Printed Slip with Responsive 3D Skew & Bottom-Left Fold */}
             <div className="lg:col-span-5 flex justify-center lg:justify-end w-full pt-4 lg:pt-0">
               <div
-                className="w-full max-w-[330px] xs:max-w-[350px] sm:max-w-[380px] mx-auto lg:mr-0 relative select-none transition-all duration-500 ease-out hover:rotate-0 hover:scale-[1.01] [transform:rotate(-0.5deg)] lg:[transform:perspective(1200px)_rotate(-1.5deg)_rotateY(-4deg)_rotateX(3.5deg)_skew(-0.8deg,0.5deg)]"
+                className="w-full max-w-[330px] xs:max-w-[350px] sm:max-w-[385px] mx-auto lg:mr-0 relative select-none transition-all duration-500 ease-out group cursor-default [transform:perspective(900px)_rotateX(4deg)_rotateY(-3.5deg)_rotateZ(-1.2deg)_skew(-0.6deg,0.3deg)] sm:[transform:perspective(950px)_rotateX(6deg)_rotateY(-5deg)_rotateZ(-1.8deg)_skew(-1deg,0.5deg)] hover:[transform:perspective(950px)_rotateX(1.5deg)_rotateY(-1.5deg)_rotateZ(0deg)_scale(1.015)]"
                 style={{
-                  transformOrigin: 'top center',
-                  filter: 'drop-shadow(0 16px 24px rgba(0,0,0,0.08)) drop-shadow(0 4px 8px rgba(0,0,0,0.04))',
+                  transformOrigin: '50% 15%',
+                  filter:
+                    'drop-shadow(0 3px 5px rgba(15, 23, 42, 0.04)) drop-shadow(0 12px 20px rgba(15, 23, 42, 0.08)) drop-shadow(0 26px 38px rgba(15, 23, 42, 0.07))',
                 }}
               >
                 
                 {/* Paper Body */}
                 <div
-                  className="border border-[#e5e3dc] border-b-0 p-4 sm:p-6 text-[#222222] font-mono text-xs relative"
+                  className="border border-[#e2ded4] border-b-0 p-4 sm:p-6 text-[#222222] font-mono text-xs relative"
                   style={{
-                    background: 'linear-gradient(150deg, #ffffff 0%, #fefdfa 45%, #f9f7f0 100%)',
+                    background: 'linear-gradient(155deg, #ffffff 0%, #faf8f2 45%, #f4f0e6 100%)',
+                    boxShadow: 'inset 1px 1px 0px rgba(255, 255, 255, 0.9), inset -1px 0px 0px rgba(0, 0, 0, 0.02)',
                   }}
                 >
                   {/* Paper Top Slot / Punch Hole */}
@@ -336,45 +338,75 @@ export default function InvoiceQuoteTerms() {
 
                 </div>
 
-                {/* Seamless Bottom Edge: Diagonal Fold Cut (Left) + Sawtooth Perforation (Right) - Built Inside Same SVG */}
+                {/* Seamless Full-Width Serrated Bottom Edge with Authentic Material Fill */}
                 <div className="relative -mt-[1px] leading-none overflow-visible">
                   <svg
-                    className="w-full h-5 sm:h-6 block overflow-visible"
-                    viewBox="0 0 100 12"
+                    className="w-full h-4 sm:h-5 block overflow-visible"
+                    viewBox="0 0 100 8"
                     preserveAspectRatio="none"
                     aria-hidden="true"
                   >
-                    <defs>
-                      <linearGradient id="paperFoldFlapGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#ded9cb" />
-                        <stop offset="45%" stopColor="#ebe6d8" />
-                        <stop offset="85%" stopColor="#f7f5ed" />
-                        <stop offset="100%" stopColor="#ffffff" />
-                      </linearGradient>
-                    </defs>
-
-                    {/* Seamless Paper Silhouette with Diagonal Cut at Bottom-Left */}
+                    {/* Continuous Full-Width Sawtooth Edge: Zero cuts, zero transparent gaps, 100% solid paper */}
                     <path
-                      d="M0,0 L8,10 L10,6 L12,10 L14,6 L16,10 L18,6 L20,10 L22,6 L24,10 L26,6 L28,10 L30,6 L32,10 L34,6 L36,10 L38,6 L40,10 L42,6 L44,10 L46,6 L48,10 L50,6 L52,10 L54,6 L56,10 L58,6 L60,10 L62,6 L64,10 L66,6 L68,10 L70,6 L72,10 L74,6 L76,10 L78,6 L80,10 L82,6 L84,10 L86,6 L88,10 L90,6 L92,10 L94,6 L96,10 L98,6 L100,10 L100,0 Z"
-                      fill="#f9f7f0"
-                      stroke="#e5e3dc"
-                      strokeWidth="0.6"
+                      d="M0,0 L0,7 L2,2.5 L4,7 L6,2.5 L8,7 L10,2.5 L12,7 L14,2.5 L16,7 L18,2.5 L20,7 L22,2.5 L24,7 L26,2.5 L28,7 L30,2.5 L32,7 L34,2.5 L36,7 L38,2.5 L40,7 L42,2.5 L44,7 L46,2.5 L48,7 L50,2.5 L52,7 L54,2.5 L56,7 L58,2.5 L60,7 L62,2.5 L64,7 L66,2.5 L68,7 L70,2.5 L72,7 L74,2.5 L76,7 L78,2.5 L80,7 L82,2.5 L84,7 L86,2.5 L88,7 L90,2.5 L92,7 L94,2.5 L96,7 L98,2.5 L100,7 L100,0 Z"
+                      fill="#f4f0e6"
+                      stroke="#e2ded4"
+                      strokeWidth="0.5"
                     />
-
-                    {/* Crease shadow line */}
-                    <line x1="0" y1="0" x2="8" y2="10" stroke="rgba(0,0,0,0.18)" strokeWidth="0.5" />
-
-                    {/* Folded paper triangle flap - perfectly synchronized within same SVG */}
-                    <polygon
-                      points="0,0 8,10 8,0"
-                      fill="url(#paperFoldFlapGrad)"
-                      stroke="#d5d0c2"
-                      strokeWidth="0.4"
-                    />
-
-                    {/* Crease inner specular highlight */}
-                    <line x1="0" y1="0" x2="8" y2="0" stroke="rgba(255,255,255,0.7)" strokeWidth="0.4" />
                   </svg>
+
+                  {/* Realistic Dog-Ear Corner Fold at Bottom-Left (No White Background) */}
+                  <div
+                    className="absolute -bottom-1 -left-[1px] w-8 h-8 sm:w-9 sm:h-9 pointer-events-none select-none z-10"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      viewBox="0 0 36 36"
+                      className="w-full h-full overflow-visible"
+                    >
+                      <defs>
+                        {/* Soft directional shadow cast by the folded flap onto the paper */}
+                        <filter id="dogEarShadow" x="-30%" y="-30%" width="160%" height="160%">
+                          <feDropShadow dx="1.5" dy="-1.5" stdDeviation="1.5" floodColor="#0f172a" floodOpacity="0.2" />
+                        </filter>
+                        {/* Realistic underside paper gradient for the flap */}
+                        <linearGradient id="flapTexture" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#d5cebe" />
+                          <stop offset="35%" stopColor="#e4ded0" />
+                          <stop offset="75%" stopColor="#f2ede2" />
+                          <stop offset="100%" stopColor="#faf7f0" />
+                        </linearGradient>
+                        {/* Shaded recess representing where the corner folded away (replaces the white box!) */}
+                        <linearGradient id="recessShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#dcd6c8" />
+                          <stop offset="100%" stopColor="#ece7dc" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Recessed shadow triangle (where paper folded away - completely removes white background!) */}
+                      <polygon
+                        points="0,6 0,36 30,36"
+                        fill="url(#recessShadow)"
+                        stroke="#d2cbba"
+                        strokeWidth="0.4"
+                      />
+
+                      {/* Folded paper triangle flap (dog ear) sitting on top of the paper */}
+                      <polygon
+                        points="0,6 30,6 30,36"
+                        fill="url(#flapTexture)"
+                        stroke="#d0c8b6"
+                        strokeWidth="0.5"
+                        filter="url(#dogEarShadow)"
+                      />
+
+                      {/* Crease shadow */}
+                      <line x1="0" y1="6" x2="30" y2="36" stroke="rgba(15,23,42,0.25)" strokeWidth="0.75" />
+
+                      {/* Crease fiber highlight */}
+                      <line x1="0.5" y1="5.5" x2="30.5" y2="35.5" stroke="rgba(255,255,255,0.75)" strokeWidth="0.4" />
+                    </svg>
+                  </div>
                 </div>
 
               </div>

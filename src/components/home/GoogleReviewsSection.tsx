@@ -16,7 +16,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import CountUp from '@/components/ui/CountUp';
-import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/app/api/google-reviews/route';
+import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/data/googleReviewsData';
 
 // Official Google 'G' Logo SVG
 function GoogleIcon({ className = 'w-5 h-5' }: { className?: string }) {
@@ -163,33 +163,7 @@ export default function GoogleReviewsSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }}
       />
 
-      {/* ======================================================================= */}
-      {/* BOTTOM-RIGHT CORNER GRID PATTERN (Covers 65% of Main Section)           */}
-      {/* ======================================================================= */}
-      <div
-        className="absolute bottom-0 right-0 w-[65%] h-[65%] pointer-events-none z-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {/* Soft atmospheric radial glow in bottom right corner */}
-        <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl from-blue-100/50 via-sky-50/20 to-transparent rounded-tl-[120px] blur-2xl" />
-
-        {/* Precision HVAC grid pattern covering 65% from bottom right */}
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(0, 94, 184, 0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0, 94, 184, 0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: '20px 20px',
-            maskImage: 'radial-gradient(ellipse 100% 100% at 100% 100%, black 55%, rgba(0,0,0,0.4) 80%, transparent 100%)',
-            WebkitMaskImage: 'radial-gradient(ellipse 100% 100% at 100% 100%, black 55%, rgba(0,0,0,0.4) 80%, transparent 100%)',
-          }}
-        />
-      </div>
-
-      {/* Subtle top-left cooling accent glow */}
-      <div className="absolute top-1/4 left-6 w-80 h-80 bg-cyan-100/30 rounded-full blur-3xl pointer-events-none" />
+      
 
       <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
         <motion.div

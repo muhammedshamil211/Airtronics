@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Onest } from "next/font/google";
+import { Onest, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -12,6 +12,13 @@ const onest = Onest({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-onest",
+});
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-bebas",
 });
 
 export const metadata: Metadata = {
@@ -133,7 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${onest.variable} font-sans h-full antialiased`}
+      className={`${onest.variable} ${bebasNeue.variable} font-sans h-full antialiased`}
     >
       <head>
         <Script id="global-hvac-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }} />

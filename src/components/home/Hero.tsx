@@ -3,15 +3,15 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
 import {
   ShieldCheck,
-  Clock,
-  Phone,
+  Timer,
+  Award,
   ArrowRight,
-  Check,
+  Calendar,
   Users,
-  Building2
+  Clock,
+  Building2,
 } from 'lucide-react';
 import { motion, type Variants } from 'framer-motion';
 import CountUp from '@/components/ui/CountUp';
@@ -20,9 +20,56 @@ import CountUp from '@/components/ui/CountUp';
 const WHATSAPP_PHONE = '971586596321';
 
 const getWhatsAppDirectLink = (serviceName = 'AC Repair & HVAC Services') => {
-  const message = `Hello Airtronics Fixcare! I would like to book ${serviceName} in Dubai. Please provide immediate technician availability and pricing.`;
+  const message = `Hello Airtronics Fixcare! I would like to get a free quote for ${serviceName} in Dubai. Please provide immediate technician availability and pricing.`;
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 };
+
+interface HvacUnitItem {
+  name: string;
+  image: string;
+  widthClass: string;
+  alt: string;
+  shadowWidth: string;
+}
+
+// 5 HVAC Equipment Units traveling along the single continuous arch trajectory
+const HVAC_UNITS: Array<HvacUnitItem> = [
+  {
+    name: 'Inverter Split AC',
+    image: '/images/White Inverter Split Air Conditioner.webp',
+    widthClass: 'w-28 xs:w-36 sm:w-46 md:w-56 lg:w-64 xl:w-72',
+    alt: 'White Inverter Split AC Wall Unit Dubai',
+    shadowWidth: 'w-[85%]',
+  },
+  {
+    name: 'Ceiling Cassette AC',
+    image: '/images/Ceiling Cassette Air Conditioner Unit.webp',
+    widthClass: 'w-24 xs:w-32 sm:w-40 md:w-50 lg:w-58 xl:w-64',
+    alt: 'Ceiling Cassette AC Unit Dubai',
+    shadowWidth: 'w-[80%]',
+  },
+  {
+    name: 'Industrial HVAC Chiller',
+    image: '/images/Industrial HVAC Chiller Unit (1).webp',
+    widthClass: 'w-32 xs:w-42 sm:w-54 md:w-66 lg:w-78 xl:w-86',
+    alt: 'Industrial Rooftop HVAC Chiller Unit Dubai',
+    shadowWidth: 'w-[90%]',
+  },
+  {
+    name: 'HVAC Vent Grille',
+    image: '/images/Angled White HVAC Vent Grille.webp',
+    widthClass: 'w-24 xs:w-32 sm:w-40 md:w-50 lg:w-58 xl:w-64',
+    alt: 'Angled White HVAC Vent Grille Linear Diffuser Dubai',
+    shadowWidth: 'w-[85%]',
+  },
+  {
+    name: 'Circular Ceiling Diffuser',
+    image: '/images/White Circular Ceiling Air Diffuser.webp',
+    widthClass: 'w-22 xs:w-30 sm:w-38 md:w-48 lg:w-56 xl:w-62',
+    alt: 'Circular Ceiling Air Diffuser Vent Dubai',
+    shadowWidth: 'w-[80%]',
+  },
+];
 
 // Reusable Static Configuration Data with Smooth CountUp Animation
 const STATS_DATA: Array<{
@@ -42,19 +89,19 @@ const containerVariants: Variants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.08,
+      delayChildren: 0.04,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 22 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.5,
       ease: 'easeOut',
     },
   },
@@ -64,199 +111,282 @@ export default function Hero() {
   return (
     <section
       aria-label="HVAC and AC Repair Services Hero"
-      className="relative bg-[#08152c] text-white overflow-hidden"
+      className="relative bg-white text-slate-900 overflow-hidden pt-8 sm:pt-12 md:pt-16 pb-8 sm:pb-12 lg:pb-14"
     >
       {/* ========================================================================= */}
-      {/* 1. FULL COVERED BACKGROUND & ATMOSPHERIC DEPTH (No Parallax Lag)          */}
+      {/* 1. TOP BACKGROUND WATERMARK (BEHIND HEADING & REACHING BEHIND ELEMENTS)    */}
       {/* ========================================================================= */}
-      <div className="relative min-h-[78vh] sm:min-h-[84vh] lg:min-h-[88vh] flex flex-col justify-between overflow-hidden">
-
-        {/* Static Background Image Container */}
-        <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          <Image
-            src="/images/home.jpeg"
-            alt="Airtronics certified HVAC technician performing emergency AC repair and maintenance in Dubai"
-            fill
-            priority
-            quality={75}
-            sizes="100vw"
-            className="object-cover object-[40%_25%] sm:object-[45%_25%] lg:object-center brightness-[0.92] contrast-[1.03]"
-          />
-
-          {/* Layered Atmospheric Overlays - Balanced for Vibrant Worker Visibility + Contrast */}
-          <div className="absolute inset-0 bg-[#08152c]/50 sm:bg-[#08152c]/45" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#08152c]/85 via-[#08152c]/30 to-[#08152c]/90" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(8,21,44,0.45)_0%,_transparent_75%)]" />
+      <div
+        className="absolute top-0 inset-x-0 h-[60%] sm:h-[64%] md:h-[68%] lg:h-[72%] pointer-events-none select-none overflow-hidden z-0"
+        aria-hidden="true"
+      >
+        {/* Giant Watermark Letters Positioned at Top Behind Heading */}
+        <div className="w-full h-full flex items-start justify-between px-2 sm:px-6 md:px-10 lg:px-14 pt-2 sm:pt-4 md:pt-6">
+          <span className="font-[family-name:var(--font-bebas)] text-[200px] xs:text-[260px] sm:text-[360px] md:text-[460px] lg:text-[540px] xl:text-[620px] font-normal text-slate-900/[0.04] leading-none">
+            H
+          </span>
+          <span className="font-[family-name:var(--font-bebas)] text-[200px] xs:text-[260px] sm:text-[360px] md:text-[460px] lg:text-[540px] xl:text-[620px] font-normal text-slate-900/[0.04] leading-none">
+            V
+          </span>
+          <span className="font-[family-name:var(--font-bebas)] text-[200px] xs:text-[260px] sm:text-[360px] md:text-[460px] lg:text-[540px] xl:text-[620px] font-normal text-slate-900/[0.04] leading-none">
+            A
+          </span>
+          <span className="font-[family-name:var(--font-bebas)] text-[200px] xs:text-[260px] sm:text-[360px] md:text-[460px] lg:text-[540px] xl:text-[620px] font-normal text-slate-900/[0.04] leading-none">
+            C
+          </span>
         </div>
 
-        {/* ======================================================================= */}
-        {/* ATMOSPHERIC GLOW ORBS & DEPTH LAYERS                                    */}
-        {/* ======================================================================= */}
+        {/* Smooth Bottom Blend Gradient Fading Gracefully Behind Elements */}
+        <div className="absolute inset-x-0 bottom-0 h-36 sm:h-52 md:h-64 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none z-[1]" />
+      </div>
 
-        {/* Ambient Cooling Glow Orb 1 (Top Left) */}
-        <div className="absolute -left-20 top-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#005eb8]/20 blur-[120px] pointer-events-none z-10" />
-
-        {/* Ambient Cooling Glow Orb 2 (Bottom Right) */}
-        <div className="absolute -right-20 top-1/3 w-80 sm:w-[450px] h-80 sm:h-[450px] rounded-full bg-[#00AEEF]/15 blur-[130px] pointer-events-none z-10" />
-
-        {/* Subtle Geometric Depth Ring */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-10 w-[700px] h-[700px] rounded-full border border-sky-400/10 pointer-events-none z-0 hidden md:block" />
-
-        {/* ======================================================================= */}
-        {/* 2. CENTERED FOREGROUND HERO CONTENT (Generous Breathing Space)          */}
-        {/* ======================================================================= */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-20 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 lg:pt-32 pb-14 sm:pb-20 flex-1 flex flex-col justify-center items-center text-center"
+          className="flex flex-col items-center text-center"
         >
-          {/* Cardless Editorial Eyebrow - Human, Refined Typography */}
+          {/* ======================================================================= */}
+          {/* 2. TOP TAGLINE / EYEBROW WITH BLUE ACCENT LINES                          */}
+          {/* ======================================================================= */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#00AEEF] mb-5 sm:mb-6 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]"
+            className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-5"
           >
-            <span className="w-5 sm:w-7 h-[1.5px] bg-[#00AEEF] inline-block opacity-85" />
-            <span>Dubai Municipality Approved • 24/7 HVAC Technicians</span>
-            <span className="w-5 sm:w-7 h-[1.5px] bg-[#00AEEF] inline-block opacity-85" />
+            <span className="w-8 sm:w-14 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
+            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] text-slate-800 uppercase text-center">
+              HVAC &amp; AC SERVICES IN DUBAI
+            </span>
+            <span className="w-8 sm:w-14 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
           </motion.div>
 
-          {/* Main Headline (H1) - Exact primary keyword first for maximum ranking weight */}
+          {/* ======================================================================= */}
+          {/* 3. MAIN HEADLINE - EXTRA TALL WITH REDUCED LETTER GAP                     */}
+          {/* ======================================================================= */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight text-white leading-[1.12] mb-6 sm:mb-7 max-w-4xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]"
+            className="font-[family-name:var(--font-bebas)] text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[96px] xl:text-[108px] font-normal tracking-[-0.02em] sm:tracking-[-0.025em] md:tracking-[-0.03em] leading-[0.92] sm:leading-[0.88] uppercase text-center mb-3 sm:mb-4 relative z-10"
           >
-            AC Repair Dubai &amp; 24/7 HVAC{' '}
-            <span className="text-[#00AEEF]">
-              Services in Dubai
+            <span className="block text-[#111827]">
+              AC REPAIR DUBAI &amp;
+            </span>
+            <span className="block text-[#0076FF]">
+              24/7 HVAC SERVICES IN DUBAI
             </span>
           </motion.h1>
 
-          {/* Subtitle - NLP & LSI Local Dubai Keywords, 30-45 Min SLA, OEM Parts */}
-          <motion.p
-            variants={itemVariants}
-            className="font-sans text-slate-100 text-base sm:text-lg md:text-xl leading-relaxed max-w-3xl mb-10 sm:mb-12 font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]"
-          >
-            Certified HVAC technicians for same-day AC repair, emergency maintenance, central chiller service, and deep duct cleaning across Downtown, Dubai Marina, Jumeirah, and Business Bay. 30–45 min arrival with 100% genuine OEM parts.
-          </motion.p>
-
-          {/* Direct WhatsApp Action & Emergency Callout - 50% width each, single row on mobile, sharpened borders */}
+          {/* ======================================================================= */}
+          {/* 4. TRUST BADGES ROW (DUBAI MUNICIPALITY • SAME-DAY • GENUINE OEM PARTS)  */}
+          {/* ======================================================================= */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-row items-stretch justify-center gap-2 xs:gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-10 w-full max-w-xl mx-auto px-1 sm:px-0"
+            className="flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-700 font-medium mb-1 sm:mb-2 relative z-10"
           >
-            {/* Primary Action: Direct WhatsApp (50% Width) - Reusable Brand 3D Button */}
-            <Button
-              href={getWhatsAppDirectLink('AC Repair & Emergency HVAC')}
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-[#0076FF] shrink-0" />
+              <span className="font-semibold text-slate-800">Dubai Municipality Approved</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">|</span>
+            <div className="flex items-center gap-2">
+              <Timer className="w-4 h-4 sm:w-5 sm:h-5 text-[#0076FF] shrink-0" />
+              <span className="font-semibold text-slate-800">Same-Day Service</span>
+            </div>
+            <span className="hidden sm:inline text-slate-300">|</span>
+            <div className="flex items-center gap-2">
+              <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#0076FF] shrink-0" />
+              <span className="font-semibold text-slate-800">Genuine OEM Parts</span>
+            </div>
+          </motion.div>
+
+          {/* ======================================================================= */}
+          {/* 5. SINGLE CONTINUOUS ARCH-SHAPED TRAJECTORY HORIZONTAL MOVEMENT          */}
+          {/* ======================================================================= */}
+          <div className="hvac-arch-container relative w-full overflow-hidden -mt-6 xs:-mt-8 sm:-mt-10 md:-mt-12 lg:-mt-14 z-20 h-[220px] xs:h-[260px] sm:h-[300px] md:h-[350px] lg:h-[380px] pointer-events-none select-none">
+            {/* Subtle Gradient Masks on Far Screen Edges for Seamless Entry & Exit */}
+            <div className="absolute left-0 inset-y-0 w-12 sm:w-24 md:w-32 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-30" />
+            <div className="absolute right-0 inset-y-0 w-12 sm:w-24 md:w-32 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-30" />
+
+            {/* 3D Perspective Ground Plane Text: AIRTRONICS Skewed Into Z-Axis */}
+            <div
+              className="absolute bottom-1 sm:bottom-3 md:bottom-5 inset-x-0 flex items-center justify-center pointer-events-none select-none z-0"
+              style={{
+                perspective: '750px',
+                perspectiveOrigin: '50% 100%',
+              }}
+              aria-hidden="true"
+            >
+              <span
+                className="font-[family-name:var(--font-bebas)] text-5xl xs:text-6xl sm:text-7xl md:text-8xl lg:text-[130px] xl:text-[160px] font-black tracking-[0.18em] sm:tracking-[0.24em] md:tracking-[0.28em] text-slate-900/[0.05] uppercase leading-none whitespace-nowrap"
+                style={{
+                  transform: 'rotateX(68deg) scaleY(1.35)',
+                  transformOrigin: 'center bottom',
+                  maskImage: 'linear-gradient(to top, rgba(0,0,0,0.85) 15%, rgba(0,0,0,0) 95%)',
+                  WebkitMaskImage: 'linear-gradient(to top, rgba(0,0,0,0.85) 15%, rgba(0,0,0,0) 95%)',
+                }}
+              >
+                AIRTRONICS
+              </span>
+            </div>
+
+            {/* All HVAC Elements Traveling Along the Single Continuous Arch Path */}
+            {HVAC_UNITS.map((unit, idx) => (
+              <div
+                key={idx}
+                className="hvac-arch-item absolute top-1/2 left-0 flex flex-col items-center justify-center will-change-transform"
+                style={{
+                  animation: 'hvacArchFlight 25s linear infinite',
+                  animationDelay: `${-idx * 5}s`,
+                }}
+              >
+                <div className={`relative ${unit.widthClass} aspect-square flex items-center justify-center`}>
+                  <Image
+                    src={unit.image}
+                    alt={unit.alt}
+                    fill
+                    sizes="(max-width: 640px) 160px, (max-width: 1024px) 260px, 340px"
+                    priority
+                    className="object-contain drop-shadow-sm select-none"
+                  />
+                </div>
+                {/* Synchronized Base Shadow Following the Element's Arch Flight */}
+                <div
+                  className={`${unit.shadowWidth} h-2 sm:h-3.5 mx-auto bg-black/15 rounded-[100%] blur-[5px] sm:blur-[7px] -mt-1 sm:-mt-2`}
+                />
+              </div>
+            ))}
+
+            {/* Seamless Arch Trajectory Keyframes with Natural Depth & Subtle Tilt */}
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+                  .hvac-arch-container {
+                    --arch-base: 36px;
+                    --arch-y15: 12px;
+                    --arch-y30: -14px;
+                    --arch-apex: -38px;
+                  }
+                  @media (min-width: 640px) {
+                    .hvac-arch-container {
+                      --arch-base: 52px;
+                      --arch-y15: 18px;
+                      --arch-y30: -22px;
+                      --arch-apex: -56px;
+                    }
+                  }
+                  @keyframes hvacArchFlight {
+                    0% {
+                      transform: translate3d(calc(-18vw - 50%), calc(var(--arch-base) - 50%), 0) scale(0.76) rotate(-3.5deg);
+                      opacity: 0;
+                    }
+                    4% {
+                      opacity: 1;
+                    }
+                    15% {
+                      transform: translate3d(calc(2.5vw - 50%), calc(var(--arch-y15) - 50%), 0) scale(0.90) rotate(-2.6deg);
+                    }
+                    30% {
+                      transform: translate3d(calc(23vw - 50%), calc(var(--arch-y30) - 50%), 0) scale(1.06) rotate(-1.5deg);
+                    }
+                    50% {
+                      transform: translate3d(calc(50vw - 50%), calc(var(--arch-apex) - 50%), 0) scale(1.16) rotate(0deg);
+                      opacity: 1;
+                    }
+                    70% {
+                      transform: translate3d(calc(77vw - 50%), calc(var(--arch-y30) - 50%), 0) scale(1.06) rotate(1.5deg);
+                    }
+                    85% {
+                      transform: translate3d(calc(97.5vw - 50%), calc(var(--arch-y15) - 50%), 0) scale(0.90) rotate(2.6deg);
+                    }
+                    96% {
+                      opacity: 1;
+                    }
+                    100% {
+                      transform: translate3d(calc(118vw - 50%), calc(var(--arch-base) - 50%), 0) scale(0.76) rotate(3.5deg);
+                      opacity: 0;
+                    }
+                  }
+                `,
+              }}
+            />
+          </div>
+
+          {/* ======================================================================= */}
+          {/* 6. DYNAMIC SLANTED CTA BUTTONS (SINGLE ROW & POSITIONED HIGHER UP)       */}
+          {/* ======================================================================= */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-row flex-nowrap items-center justify-center gap-2.5 xs:gap-4 sm:gap-5 -mt-4 xs:-mt-6 sm:-mt-8 md:-mt-10 mb-8 sm:mb-12 relative z-30 w-full px-2"
+          >
+            {/* Left Action: Get a Free Quote (Solid Blue Slanted Parallelogram) */}
+            <a
+              href={getWhatsAppDirectLink('AC Repair & HVAC Services')}
               target="_blank"
-              variant="primary"
-              size="lg"
-              className="w-1/2 !py-3 sm:!py-3.5 md:!py-4 text-xs xs:text-sm sm:text-base md:text-lg shrink-0 group"
-              aria-label="Book AC Service on WhatsApp directly"
-              iconLeft={
-                <svg viewBox="0 0 24 24" className="w-4 h-4 xs:w-5 xs:h-5 fill-current shrink-0" aria-hidden="true">
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center bg-[#0076FF] hover:bg-[#0066de] text-white text-xs xs:text-sm sm:text-base font-semibold px-4 xs:px-6 sm:px-8 md:px-9 py-2.5 sm:py-3.5 transition-all duration-200 [transform:skewX(-14deg)] hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.98] shrink-0"
+              aria-label="Get a Free Quote on WhatsApp"
+            >
+              <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 [transform:skewX(14deg)] whitespace-nowrap">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 fill-current shrink-0"
+                  aria-hidden="true"
+                >
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                 </svg>
-              }
-              iconRight={
-                <ArrowRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1 shrink-0 hidden xs:inline-block" />
-              }
+                <span>Get a Free Quote</span>
+                <ArrowRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 transition-transform group-hover:translate-x-1" />
+              </div>
+            </a>
+
+            {/* Right Action: Book a Service (Bordered Slanted Parallelogram) */}
+            <Link
+              href="/contact"
+              className="group relative inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 hover:border-[#0076FF] text-xs xs:text-sm sm:text-base font-semibold px-4 xs:px-6 sm:px-8 md:px-9 py-2.5 sm:py-3.5 transition-all duration-200 [transform:skewX(-14deg)] hover:shadow-xs active:scale-[0.98] shrink-0"
+              aria-label="Book an AC Service"
             >
-              <span className="truncate">GET FREE QUOTE</span>
-            </Button>
-
-            {/* Secondary Action: Direct Phone Call (50% Width) */}
-            <div className="w-1/2 flex shrink-0">
-              <Link
-                href="tel:+971586596321"
-                className="w-full flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-2.5 bg-white hover:bg-slate-50 text-[#111111] border-2 border-[#005eb8] rounded-xl px-2 xs:px-3 sm:px-5 py-2.5 sm:py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_3px_0_#003870,0_3px_6px_rgba(0,0,0,0.1)] active:translate-y-[2px] active:shadow-[0_1px_0_#003870] transition-colors group"
-                aria-label="Call Emergency Dispatch Team"
-              >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#005eb8] text-white flex items-center justify-center shrink-0 shadow-xs">
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
-                </div>
-                <div className="leading-tight text-left min-w-0">
-                  <span className="block text-[10px] xs:text-[11px] text-gray-500 font-medium truncate">Emergency 24/7</span>
-                  <span className="block text-xs xs:text-sm sm:text-base font-bold text-[#111111] truncate">+971 58 659 6321</span>
-                </div>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Centered Trust Guarantees */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium"
-          >
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <Check className="w-4 h-4 text-[#008f4c] stroke-[2.5]" />
-              <span>Zero Callout Fee with Repair</span>
-            </div>
-            <span className="hidden sm:inline text-white/30">•</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <Check className="w-4 h-4 text-[#008f4c] stroke-[2.5]" />
-              <span>Dubai Municipality Approved</span>
-            </div>
-            <span className="hidden sm:inline text-white/30">•</span>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <Check className="w-4 h-4 text-[#008f4c] stroke-[2.5]" />
-              <span>Fixed Transparent Rates</span>
-            </div>
+              <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 [transform:skewX(14deg)] whitespace-nowrap">
+                <Calendar className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 text-[#0076FF]" />
+                <span>Book a Service</span>
+              </div>
+            </Link>
           </motion.div>
         </motion.div>
-
-        {/* ======================================================================= */}
-        {/* PAINT / LIQUID FLOATING SHAPES DIVIDER (Bottom of Main Hero Div)        */}
-        {/* ======================================================================= */}
-        <div className="relative z-20 w-full leading-none pointer-events-none -mb-[1px] overflow-hidden">
-          <svg
-            viewBox="0 0 1440 95"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-14 md:h-16 lg:h-20 block scale-[1.01]"
-            preserveAspectRatio="none"
-          >
-            {/* Soft cyan liquid aura glow layer */}
-            <path
-              d="M 0,35 C 90,35 140,20 200,20 C 250,20 260,55 280,55 C 300,55 310,24 370,24 C 440,24 480,38 540,38 C 580,38 590,65 615,65 C 640,65 655,30 715,30 C 775,30 815,44 865,44 C 905,44 915,64 935,64 C 955,64 970,26 1020,26 C 1080,26 1120,44 1170,44 C 1220,44 1235,70 1260,70 C 1285,70 1300,34 1360,34 C 1405,34 1425,36 1440,36 L 1440,95 L 0,95 Z"
-              fill="rgba(0, 174, 239, 0.3)"
-            />
-
-            {/* Primary solid white paint drip wave - transitions seamlessly into white trust bar */}
-            <path
-              d="M 0,50 C 80,50 120,32 180,32 C 230,32 245,68 265,68 C 285,68 295,34 350,34 C 420,34 460,48 520,48 C 560,48 575,80 600,80 C 625,80 640,40 700,40 C 760,40 800,56 850,56 C 890,56 905,78 925,78 C 945,78 960,36 1020,36 C 1080,36 1120,54 1170,54 C 1210,54 1225,84 1250,84 C 1275,84 1290,44 1350,44 C 1395,44 1420,50 1440,50 L 1440,95 L 0,95 Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </div>
-
       </div>
 
       {/* ========================================================================= */}
-      {/* 3. TRUST PILLARS BAR (Below all hero content, matching site colors)      */}
+      {/* 7. STATS / TRUST PILLARS BAR (Brand Blue Slanted Parallelogram)            */}
       {/* ========================================================================= */}
-      <div className="relative z-20 w-full bg-white shadow-xs">
-        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-5 sm:py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            {STATS_DATA.map((st, idx) => (
-              <div
-                key={idx}
-                className={`flex items-center gap-3 sm:gap-3.5 ${idx !== 0 ? 'border-l-0 sm:border-l sm:border-slate-200/80 sm:pl-5' : ''
+      <div className="relative z-20 w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mt-2 sm:mt-4 mb-4 sm:mb-6">
+        {/* Slanted Parallelogram Outer Div in Brand Color (#0076FF) */}
+        <div className="bg-[#0076FF] hover:bg-[#006ee9] text-white border border-blue-400/30 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] shadow-lg shadow-blue-500/20 transition-all duration-300">
+          {/* Inner Counter-Skewed Grid to Keep Typography & Icons Straight */}
+          <div className="[transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-5 xs:px-6 sm:px-8 lg:px-12 py-4 sm:py-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              {STATS_DATA.map((st, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-center gap-3 sm:gap-4 group ${
+                    idx !== 0 ? 'lg:border-l lg:border-white/20 lg:pl-6' : ''
                   }`}
-              >
-                <div className="w-10 h-10 rounded-full bg-blue-50 text-[#005eb8] flex items-center justify-center shrink-0 border border-blue-100">
-                  <st.icon className="w-5 h-5" />
+                >
+                  {/* Slanted Parallelogram Icon Matching Button Motif */}
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/25 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] group-hover:bg-white group-hover:text-[#0076FF] transition-all duration-300 shadow-xs">
+                    <st.icon className="w-4 h-4 sm:w-5 sm:h-5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" />
+                  </div>
+
+                  {/* Typography Matching Hero Headline (Bebas Neue) & Eyebrow (Onest) */}
+                  <div className="leading-tight">
+                    <span className="font-[family-name:var(--font-bebas)] text-2xl xs:text-3xl sm:text-4xl text-white leading-none tracking-tight block">
+                      {st.value}
+                    </span>
+                    <span className="font-[family-name:var(--font-onest)] text-[11px] xs:text-xs sm:text-[13px] text-blue-100 font-medium uppercase tracking-[0.06em] sm:tracking-[0.08em] block mt-0.5">
+                      {st.label}
+                    </span>
+                  </div>
                 </div>
-                <div className="leading-tight">
-                  <span className="block text-xl sm:text-2xl font-bold tracking-tight text-[#111111]">
-                    {st.value}
-                  </span>
-                  <span className="block text-xs sm:text-sm text-gray-500 font-medium">
-                    {st.label}
-                  </span>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

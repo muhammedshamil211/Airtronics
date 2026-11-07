@@ -84,24 +84,10 @@ export default function ServicesHero() {
             className="object-cover object-[center_35%] brightness-[0.88] contrast-[1.04]"
           />
 
-          {/* Layered Atmospheric Overlays - Matching Home Page Hero Precision */}
-          <div className="absolute inset-0 bg-[#08152c]/50 sm:bg-[#08152c]/45" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#08152c]/85 via-[#08152c]/35 to-[#08152c]/90" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(8,21,44,0.45)_0%,_transparent_75%)]" />
+          {/* Natural Atmospheric Scrim for Clean Legibility */}
+          <div className="absolute inset-0 bg-[#08152c]/65 sm:bg-[#08152c]/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#08152c]/90 via-[#08152c]/40 to-[#08152c]/95" />
         </div>
-
-        {/* ======================================================================= */}
-        {/* ATMOSPHERIC GLOW ORBS & DEPTH LAYERS                                    */}
-        {/* ======================================================================= */}
-
-        {/* Ambient Cooling Glow Orb 1 (Top Left) */}
-        <div className="absolute -left-20 top-20 w-80 sm:w-96 h-80 sm:h-96 rounded-full bg-[#005eb8]/20 blur-[120px] pointer-events-none z-10" />
-
-        {/* Ambient Cooling Glow Orb 2 (Bottom Right) */}
-        <div className="absolute -right-20 top-1/3 w-80 sm:w-[450px] h-80 sm:h-[450px] rounded-full bg-[#00AEEF]/15 blur-[130px] pointer-events-none z-10" />
-
-        {/* Subtle Geometric Depth Ring */}
-        <div className="absolute left-1/2 -translate-x-1/2 top-10 w-[700px] h-[700px] rounded-full border border-sky-400/10 pointer-events-none z-0 hidden md:block" />
 
         {/* ======================================================================= */}
         {/* 2. CENTERED FOREGROUND HERO CONTENT                                     */}
@@ -130,20 +116,20 @@ export default function ServicesHero() {
           {/* Cardless Editorial Eyebrow */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-[#00AEEF] mb-5 sm:mb-6 drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]"
+            className="flex items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-sky-400 mb-5 sm:mb-6"
           >
-            <span className="w-5 sm:w-7 h-[1.5px] bg-[#00AEEF] inline-block opacity-85" />
+            <span className="w-5 sm:w-7 h-px bg-sky-400/80 inline-block" />
             <span>Certified Dubai HVAC Engineering • Residential &amp; Commercial</span>
-            <span className="w-5 sm:w-7 h-[1.5px] bg-[#00AEEF] inline-block opacity-85" />
+            <span className="w-5 sm:w-7 h-px bg-sky-400/80 inline-block" />
           </motion.div>
 
           {/* Main Headline (H1) - Unique high-intent HVAC Solutions target */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[68px] font-medium tracking-tight text-white leading-[1.12] mb-5 sm:mb-6 max-w-4xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[66px] font-medium tracking-tight text-white leading-[1.12] mb-5 sm:mb-6 max-w-4xl"
           >
             Complete Air Conditioning &amp;{' '}
-            <span className="text-[#00AEEF]">
+            <span className="text-sky-400">
               HVAC Solutions in Dubai
             </span>
           </motion.h1>
@@ -151,7 +137,7 @@ export default function ServicesHero() {
           {/* Small, Punchy Subtitle - High-impact, concise overview */}
           <motion.p
             variants={itemVariants}
-            className="font-sans text-slate-100 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10 font-normal drop-shadow-[0_1px_6px_rgba(0,0,0,0.8)]"
+            className="font-sans text-slate-200 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-10 font-normal"
           >
             Precision climate engineering for villas, apartments, and commercial facilities. From fast diagnostics and clean installations to sanitization and AMC contracts.
           </motion.p>
@@ -161,13 +147,13 @@ export default function ServicesHero() {
             variants={itemVariants}
             className="flex flex-row items-stretch justify-center gap-2 xs:gap-3 sm:gap-4 md:gap-5 mb-8 sm:mb-10 w-full max-w-xl mx-auto px-1 sm:px-0"
           >
-            {/* Primary Action: Direct WhatsApp (50% Width) - Brand 3D Button */}
+            {/* Primary Action: Direct WhatsApp (50% Width) */}
             <Button
               href={getWhatsAppDirectLink('AC Repair & HVAC Services')}
               target="_blank"
               variant="primary"
               size="lg"
-              className="w-1/2 !py-3 sm:!py-3.5 md:!py-4 text-xs xs:text-sm sm:text-base md:text-lg shrink-0 group"
+              className="w-1/2 !py-3 sm:!py-3.5 md:!py-4 text-xs xs:text-sm sm:text-base md:text-lg shrink-0 group rounded-xl"
               aria-label="Book AC Service on WhatsApp directly"
               iconLeft={
                 <svg viewBox="0 0 24 24" className="w-4 h-4 xs:w-5 xs:h-5 fill-current shrink-0" aria-hidden="true">
@@ -178,22 +164,22 @@ export default function ServicesHero() {
                 <ArrowRight className="w-3.5 h-3.5 xs:w-4 xs:h-4 sm:w-5 sm:h-5 transition-transform group-hover:translate-x-1 shrink-0 hidden xs:inline-block" />
               }
             >
-              <span className="truncate">BOOK SERVICE</span>
+              <span className="truncate">Book a service</span>
             </Button>
 
             {/* Secondary Action: Direct Phone Call (50% Width) */}
             <div className="w-1/2 flex shrink-0">
               <Link
                 href="tel:+971586596321"
-                className="w-full flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-2.5 bg-white hover:bg-slate-50 text-[#111111] border-2 border-[#005eb8] rounded-xl px-2 xs:px-3 sm:px-5 py-2.5 sm:py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.8),0_3px_0_#003870,0_3px_6px_rgba(0,0,0,0.1)] active:translate-y-[2px] active:shadow-[0_1px_0_#003870] transition-colors group"
+                className="w-full flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-xl px-2 xs:px-3 sm:px-5 py-2.5 sm:py-3 shadow-xs active:scale-[0.99] transition-all group"
                 aria-label="Call Emergency Dispatch Team"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#005eb8] text-white flex items-center justify-center shrink-0 shadow-xs">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#005eb8] text-white flex items-center justify-center shrink-0">
                   <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
                 </div>
                 <div className="leading-tight text-left min-w-0">
-                  <span className="block text-[10px] xs:text-[11px] text-gray-500 font-medium truncate">24/7 Dispatch</span>
-                  <span className="block text-xs xs:text-sm sm:text-base font-bold text-[#111111] truncate">+971 58 659 6321</span>
+                  <span className="block text-[10px] xs:text-[11px] text-slate-500 font-medium truncate">24/7 Dispatch</span>
+                  <span className="block text-xs xs:text-sm sm:text-base font-bold text-slate-900 truncate">+971 58 659 6321</span>
                 </div>
               </Link>
             </div>
@@ -221,37 +207,12 @@ export default function ServicesHero() {
           </motion.div>
         </motion.div>
 
-        {/* ======================================================================= */}
-        {/* PAINT / LIQUID FLOATING SHAPES DIVIDER                                  */}
-        {/* ======================================================================= */}
-        <div className="relative z-20 w-full leading-none pointer-events-none -mb-[1px] overflow-hidden">
-          <svg
-            viewBox="0 0 1440 95"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-10 sm:h-14 md:h-16 lg:h-20 block scale-[1.01]"
-            preserveAspectRatio="none"
-          >
-            {/* Soft cyan liquid aura glow layer */}
-            <path
-              d="M 0,35 C 90,35 140,20 200,20 C 250,20 260,55 280,55 C 300,55 310,24 370,24 C 440,24 480,38 540,38 C 580,38 590,65 615,65 C 640,65 655,30 715,30 C 775,30 815,44 865,44 C 905,44 915,64 935,64 C 955,64 970,26 1020,26 C 1080,26 1120,44 1170,44 C 1220,44 1235,70 1260,70 C 1285,70 1300,34 1360,34 C 1405,34 1425,36 1440,36 L 1440,95 L 0,95 Z"
-              fill="rgba(0, 174, 239, 0.3)"
-            />
-
-            {/* Primary solid white paint drip wave - transitions seamlessly into white trust bar */}
-            <path
-              d="M 0,50 C 80,50 120,32 180,32 C 230,32 245,68 265,68 C 285,68 295,34 350,34 C 420,34 460,48 520,48 C 560,48 575,80 600,80 C 625,80 640,40 700,40 C 760,40 800,56 850,56 C 890,56 905,78 925,78 C 945,78 960,36 1020,36 C 1080,36 1120,54 1170,54 C 1210,54 1225,84 1250,84 C 1275,84 1290,44 1350,44 C 1395,44 1420,50 1440,50 L 1440,95 L 0,95 Z"
-              fill="#ffffff"
-            />
-          </svg>
-        </div>
-
       </div>
 
       {/* ========================================================================= */}
-      {/* 3. TRUST PILLARS BAR (Below hero content, matching homepage styling)     */}
+      {/* 3. TRUST PILLARS BAR (Clean Architectural Transition)                    */}
       {/* ========================================================================= */}
-      <div className="relative z-20 w-full bg-white shadow-xs border-b border-gray-100">
+      <div className="relative z-20 w-full bg-white border-t border-slate-200/80 shadow-xs border-b border-gray-100">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 py-5 sm:py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {STATS_DATA.map((st, idx) => (

@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, Check } from 'lucide-react';
-import Button from '@/components/ui/Button';
+import Image from 'next/image';
+import { User, Phone, Settings, ChevronDown, Calendar, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { SERVICES_DATA } from '@/data/servicesData';
 
 export interface QuickBookingBarProps {
@@ -18,245 +19,199 @@ export default function QuickBookingBar({
   defaultService = '',
   showSectionWrapper = true,
 }: QuickBookingBarProps) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    service: defaultService,
-    subCategory: '',
-  });
-
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
-  const [isRedirecting, setIsRedirecting] = useState(false);
-
-  const selectedService = SERVICES_DATA.find(
-    (s) => s.shortTitle === formData.service || s.title === formData.service || s.slug === formData.service
-  );
-
-  const validate = () => {
-    const newErrors: { [key: string]: string } = {};
-
-    // 1. Name is required
-    if (!formData.name.trim()) {
-      newErrors.name = 'Please enter your name';
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Minimum 2 characters required';
-    }
-
-    // 2. Email is optional; only validate format if provided
-    if (formData.email.trim()) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(formData.email.trim())) {
-        newErrors.email = 'Please enter a valid email address';
-      }
-    }
-
-    // 3. Service is required
-    if (!formData.service) {
-      newErrors.service = 'Please select a service';
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [service, setService] = useState(defaultService);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validate()) {
+    if (!name.trim() || !phone.trim()) {
+      setErrorMessage('Please enter your name and mobile number.');
       return;
     }
 
-    setIsRedirecting(true);
+    setErrorMessage('');
+    setIsSubmitted(true);
 
-    const name = formData.name.trim();
-    const email = formData.email.trim();
-    const serviceName = formData.subCategory
-      ? `${formData.service} - ${formData.subCategory}`
-      : formData.service;
+    const selectedService = service || 'General AC Repair & HVAC Service';
+    const message = `Hello Airtronics Fixcare! I would like to book an AC service in Dubai:
+• Name: ${name.trim()}
+• Mobile Number: ${phone.trim()}
+• Requested Service: ${selectedService}
+Please confirm technician availability and arrival time.`;
 
-    // Compose concise, professional WhatsApp message
-    let message = `Hello Airtronics Fixcare! I would like to book an AC service in Dubai.\n\n`;
-    message += `👤 Name: ${name}\n`;
-    if (email) {
-      message += `✉️ Email: ${email}\n`;
-    }
-    message += `🔧 Service: ${serviceName}\n\n`;
-    message += `Please confirm technician availability and arrival time.`;
-
-    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
-
-    // Directly open WhatsApp
-    const opened = window.open(whatsappUrl, '_blank');
-    if (!opened || opened.closed || typeof opened.closed === 'undefined') {
-      window.location.href = whatsappUrl;
-    }
+    const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
 
     setTimeout(() => {
-      setIsRedirecting(false);
-    }, 2500);
+      const opened = window.open(waUrl, '_blank', 'noopener,noreferrer');
+      if (!opened || opened.closed || typeof opened.closed === 'undefined') {
+        window.location.href = waUrl;
+      }
+      setIsSubmitted(false);
+    }, 600);
   };
 
-  const formContent = (
-    <div className={`w-full max-w-[1200px] mx-auto ${className}`}>
-      {/* SEO-Friendly Semantic Heading & Context */}
-      <div className="text-center sm:text-left mb-4 sm:mb-5">
-        <h2 className="text-xl sm:text-2xl md:text-[26px] font-bold tracking-tight text-[#111111] leading-snug">
-          Fast AC Repair &amp; 24/7 HVAC Service Booking in Dubai
-        </h2>
-        <p className="text-xs sm:text-sm text-gray-500 mt-1 max-w-2xl font-normal">
-          Instant WhatsApp dispatch with certified technicians serving Downtown, Dubai Marina, Jumeirah, Business Bay, and all UAE districts.
-        </p>
+  const content = (
+    <div className={`relative w-full overflow-hidden ${className}`}>
+      
+      {/* 1. Background Watermark "HVAC" - Top Left */}
+      <div
+        className="absolute -top-2 xs:-top-4 sm:-top-6 md:-top-8 lg:-top-8 left-0 sm:left-1 pointer-events-none select-none z-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <span className="font-[family-name:var(--font-onest)] text-[90px] xs:text-[1100px] sm:text-[160px] md:text-[170px] lg:text-[190px] xl:text-[200px] font-black text-slate-900/[0.04] leading-none tracking-tight block">
+          Booking
+        </span>
       </div>
 
-      {/* Minimal, Increased-Height Single-Row Form (No Icons, No Labels, Placeholders Only) */}
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        aria-label="Direct WhatsApp HVAC Service Booking"
-        className="bg-white border border-slate-200/90 rounded-2xl shadow-sm hover:border-slate-300 transition-colors duration-200 p-3 sm:p-4"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row items-center gap-2.5 sm:gap-3">
-
-          {/* 1. Client Name (Required) */}
-          <div className="flex-1 min-w-0 w-full relative">
-            <input
-              id="qb-name"
-              type="text"
-              value={formData.name}
-              onChange={(e) => {
-                setFormData({ ...formData, name: e.target.value });
-                if (errors.name) setErrors({ ...errors, name: '' });
-              }}
-              placeholder="Your Name *"
-              aria-label="Your Name"
-              className={`w-full h-12 sm:h-14 px-4 bg-gray-50/70 border ${errors.name ? 'border-red-400 bg-red-50/20' : 'border-gray-200 focus:border-[#005eb8]'
-                } rounded-md text-sm sm:text-base text-[#111111] placeholder:text-gray-400 focus:outline-none focus:bg-white transition-colors`}
-              required
-            />
-            {errors.name && (
-              <span className="text-[11px] text-red-500 font-medium px-1 mt-1 block truncate">
-                {errors.name}
-              </span>
-            )}
+      {/* 2. Top Row: Heading Block on Left + 3D Diffuser in the Foreground on Right */}
+      <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-4 lg:gap-6 mb-2 sm:mb-2.5">
+        
+        {/* Left Side: Eyebrow, Heading & Description */}
+        <div className="flex-1 max-w-3xl">
+          {/* Eyebrow with Cyan Accent Line */}
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-6 sm:w-8 h-[2px] bg-[#0076FF] rounded-full inline-block" />
+            <span className="text-xs sm:text-sm font-bold tracking-[0.14em] text-[#0076FF] uppercase">
+              SERVICE BOOKING
+            </span>
           </div>
 
-          {/* 2. Email Address (Optional, validated only if provided) */}
-          <div className="flex-1 min-w-0 w-full relative">
-            <input
-              id="qb-email"
-              type="email"
-              value={formData.email}
-              onChange={(e) => {
-                setFormData({ ...formData, email: e.target.value });
-                if (errors.email) setErrors({ ...errors, email: '' });
-              }}
-              placeholder="Email Address (Optional)"
-              aria-label="Email Address (Optional)"
-              className={`w-full h-12 sm:h-14 px-4 bg-gray-50/70 border ${errors.email ? 'border-red-400 bg-red-50/20' : 'border-gray-200 focus:border-[#005eb8]'
-                } rounded-md text-sm sm:text-base text-[#111111] placeholder:text-gray-400 focus:outline-none focus:bg-white transition-colors`}
-            />
-            {errors.email && (
-              <span className="text-[11px] text-red-500 font-medium px-1 mt-1 block truncate">
-                {errors.email}
-              </span>
-            )}
-          </div>
+          {/* Main Section Headline - Tight Tracking & Same Clean Modern Font */}
+          <h2 className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] font-bold text-[#0f172a] tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.12] mb-1 sm:mb-1.5">
+            Fast AC Repair &amp; 24/7 HVAC Service Booking in Dubai
+          </h2>
 
-          {/* 3. Select HVAC Service (Required) */}
-          <div className="flex-[1.2] min-w-0 w-full relative">
-            <div className="relative">
-              <select
-                id="qb-service"
-                value={formData.service}
+          {/* Subtitle Description */}
+          <p className="font-[family-name:var(--font-onest)] text-xs sm:text-sm md:text-[15px] text-slate-600 font-normal leading-relaxed max-w-2xl tracking-normal">
+            Book professional AC repair, maintenance and HVAC services for homes, offices and commercial properties across Dubai.
+          </p>
+        </div>
+
+        {/* Right Side: 3D Circular Ceiling Air Diffuser in Foreground in the Heading Row */}
+        <div className="shrink-0 flex flex-col items-center justify-center relative">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="relative w-36 xs:w-44 sm:w-52 md:w-60 lg:w-68 xl:w-76 aspect-square flex items-center justify-center shrink-0"
+          >
+            <Image
+              src="/images/White Circular Ceiling Air Diffuser.webp"
+              alt="Circular Ceiling Air Diffuser HVAC Dubai"
+              fill
+              sizes="(max-width: 640px) 180px, (max-width: 1024px) 260px, 320px"
+              priority
+              className="object-contain drop-shadow-md select-none"
+            />
+          </motion.div>
+          {/* Soft Radial Contact Shadow */}
+          <div className="w-[80%] h-2.5 sm:h-3.5 mx-auto bg-black/15 rounded-[100%] blur-[5px] sm:blur-[6px] -mt-8 sm:-mt-7 pointer-events-none select-none" />
+        </div>
+
+      </div>
+
+      {/* 3. Bottom Row: 4-Column Booking Form (75% Width Aligned Left, Compact Fields & Snug Gaps) */}
+      <div className="relative z-10 w-full lg:w-[85%] xl:w-[85%] mr-auto">
+        <form onSubmit={handleSubmit} className="w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-1 md:gap-1.5 w-full">
+            
+            {/* Field 1: Your Name */}
+            <div className="relative flex items-center">
+              <User className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
                 onChange={(e) => {
-                  setFormData({ ...formData, service: e.target.value, subCategory: '' });
-                  if (errors.service) setErrors({ ...errors, service: '' });
+                  setName(e.target.value);
+                  if (errorMessage) setErrorMessage('');
                 }}
-                aria-label="Select HVAC Service"
-                className={`w-full h-12 sm:h-14 pl-4 pr-10 bg-gray-50/70 border ${errors.service ? 'border-red-400 bg-red-50/20' : 'border-gray-200 focus:border-[#005eb8]'
-                  } rounded-md text-sm sm:text-base focus:outline-none focus:bg-white transition-colors appearance-none cursor-pointer truncate ${!formData.service ? 'text-gray-400' : 'text-[#111111]'
-                  }`}
                 required
+                className="w-full pl-8.5 pr-2.5 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all shadow-xs"
+              />
+            </div>
+
+            {/* Field 2: Mobile Number */}
+            <div className="relative flex items-center">
+              <Phone className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
+              <input
+                type="tel"
+                placeholder="Mobile Number"
+                value={phone}
+                onChange={(e) => {
+                  setPhone(e.target.value);
+                  if (errorMessage) setErrorMessage('');
+                }}
+                required
+                className="w-full pl-8.5 pr-2.5 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all shadow-xs"
+              />
+            </div>
+
+            {/* Field 3: Select a Service */}
+            <div className="relative flex items-center">
+              <Settings className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
+              <select
+                value={service}
+                onChange={(e) => setService(e.target.value)}
+                className="w-full pl-8.5 pr-7 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all appearance-none cursor-pointer shadow-xs"
               >
-                <option value="" disabled>Select HVAC Service *</option>
+                <option value="">Select a Service</option>
                 {SERVICES_DATA.map((srv) => (
-                  <option key={srv.slug} value={srv.shortTitle}>
-                    {srv.shortTitle}
+                  <option key={srv.slug} value={srv.shortTitle || srv.title}>
+                    {srv.shortTitle || srv.title}
                   </option>
                 ))}
               </select>
-              <ChevronDown className="w-5 h-5 text-gray-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="absolute right-2.5 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
             </div>
-            {errors.service && (
-              <span className="text-[11px] text-red-500 font-medium px-1 mt-1 block truncate">
-                {errors.service}
-              </span>
-            )}
 
-            {/* Optional Sub-Category Field: Appears only when a main service with subcategories is selected */}
-            {selectedService?.subcategories && selectedService.subcategories.length > 0 && (
-              <div className="relative mt-2 animate-in fade-in duration-200">
-                <select
-                  id="qb-subcategory"
-                  value={formData.subCategory}
-                  onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                  aria-label="Select Specific Sub-Category (Optional)"
-                  className="w-full h-10 sm:h-11 pl-3.5 pr-8 bg-blue-50/50 border border-blue-200 focus:border-[#005eb8] rounded-md text-xs sm:text-sm focus:outline-none focus:bg-white transition-colors appearance-none cursor-pointer text-[#111111] truncate"
-                >
-                  <option value="">Specific Sub-Scope (Optional - General Inspection Included)</option>
-                  {selectedService.subcategories.map((sub) => (
-                    <option key={sub} value={sub}>
-                      {sub}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="w-4 h-4 text-[#005eb8]/70 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-            )}
-          </div>
-
-          {/* 4. Direct WhatsApp Submit Button */}
-          <div className="sm:col-span-2 lg:col-span-1 lg:flex-shrink-0 w-full lg:w-auto">
-            <Button
+            {/* Field 4: Submit Button */}
+            <button
               type="submit"
-              disabled={isRedirecting}
-              variant="primary"
-              size="lg"
-              className="w-full lg:w-auto min-w-[190px] !h-12 sm:!h-14"
-              iconLeft={
-                !isRedirecting && (
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current shrink-0" aria-hidden="true">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
-                  </svg>
-                )
-              }
+              disabled={isSubmitted}
+              className="w-full flex items-center justify-center gap-1.5 bg-[#0076FF] hover:bg-[#0066de] text-white text-xs sm:text-sm font-semibold py-2 sm:py-2.5 px-4 rounded-lg transition-all shadow-md shadow-blue-500/20 active:scale-[0.98] cursor-pointer disabled:opacity-75 whitespace-nowrap"
             >
-              {isRedirecting ? (
-                <span className="flex items-center gap-2">
-                  <Check className="w-5 h-5" />
-                  <span>Opening WhatsApp...</span>
-                </span>
+              {isSubmitted ? (
+                <>
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 animate-bounce" />
+                  <span>Connecting...</span>
+                </>
               ) : (
-                <span>Book on WhatsApp</span>
+                <>
+                  <Calendar className="w-3.5 h-3.5 shrink-0" />
+                  <span>Book Service Today</span>
+                </>
               )}
-            </Button>
+            </button>
           </div>
 
-        </div>
-      </form>
+          {errorMessage && (
+            <p className="text-xs text-red-500 font-medium mt-1.5 pl-1">
+              {errorMessage}
+            </p>
+          )}
+        </form>
+      </div>
+
     </div>
   );
 
   if (!showSectionWrapper) {
-    return formContent;
+    return content;
   }
 
   return (
     <section
-      aria-label="Direct WhatsApp HVAC Service Booking"
-      className="relative z-30 px-4 sm:px-6 md:px-8 py-5 sm:py-8"
+      aria-label="Service Booking"
+      className="relative z-30 w-full bg-white py-6 sm:py-8 md:py-10"
     >
-      {formContent}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {content}
+      </div>
     </section>
   );
 }

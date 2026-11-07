@@ -31,22 +31,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         {/* Grid Background: Bottom-Left (Size: 20px, Dimensions: w-80 h-80)         */}
         {/* ========================================================================= */}
         <div className="relative overflow-hidden pt-2 pb-6">
-          {/* Section Grid Background: Bottom-Left */}
-          <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-80 sm:h-80 pointer-events-none -z-10 overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-44 h-44 bg-gradient-to-tr from-blue-100/40 via-sky-50/20 to-transparent rounded-full blur-xl pointer-events-none" />
-            <div
-              className="w-full h-full opacity-65"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(0, 94, 184, 0.12) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 94, 184, 0.12) 1px, transparent 1px)
-                `,
-                backgroundSize: '20px 20px',
-                maskImage: 'radial-gradient(circle at bottom left, black 35%, transparent 75%)',
-                WebkitMaskImage: 'radial-gradient(circle at bottom left, black 35%, transparent 75%)',
-              }}
-            />
-          </div>
+          
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* Left Column: Narrative & Engineering Purpose */}
@@ -145,22 +130,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         {/* Grid Background: Top-Right (Size: 28px, Dimensions: w-96 h-96)            */}
         {/* ========================================================================= */}
         <div className="relative overflow-hidden pt-10 border-t border-gray-200">
-          {/* Section Grid Background: Top-Right */}
-          <div className="absolute top-0 right-0 w-80 h-80 sm:w-[420px] sm:h-[420px] pointer-events-none -z-10 overflow-hidden">
-            <div className="absolute top-0 right-0 w-52 h-52 bg-gradient-to-bl from-blue-100/40 via-sky-50/20 to-transparent rounded-full blur-xl pointer-events-none" />
-            <div
-              className="w-full h-full opacity-60"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(0, 94, 184, 0.12) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 94, 184, 0.12) 1px, transparent 1px)
-                `,
-                backgroundSize: '28px 28px',
-                maskImage: 'radial-gradient(circle at top right, black 40%, transparent 80%)',
-                WebkitMaskImage: 'radial-gradient(circle at top right, black 40%, transparent 80%)',
-              }}
-            />
-          </div>
+          
 
           <div className="max-w-2xl mb-10">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#005eb8] mb-2">
@@ -239,22 +209,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceDeta
         {/* Grid Background: Center-Left (Size: 16px, Dimensions: w-72 h-72)          */}
         {/* ========================================================================= */}
         <div className="relative overflow-hidden pt-10 border-t border-gray-200">
-          {/* Section Grid Background: Center-Left */}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 w-60 h-60 sm:w-72 sm:h-72 pointer-events-none -z-10 overflow-hidden">
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-40 h-40 bg-gradient-to-r from-blue-100/35 via-sky-50/15 to-transparent rounded-full blur-xl pointer-events-none" />
-            <div
-              className="w-full h-full opacity-65"
-              style={{
-                backgroundImage: `
-                  linear-gradient(to right, rgba(0, 94, 184, 0.12) 1px, transparent 1px),
-                  linear-gradient(to bottom, rgba(0, 94, 184, 0.12) 1px, transparent 1px)
-                `,
-                backgroundSize: '16px 16px',
-                maskImage: 'radial-gradient(circle at left center, black 35%, transparent 75%)',
-                WebkitMaskImage: 'radial-gradient(circle at left center, black 35%, transparent 75%)',
-              }}
-            />
-          </div>
+          
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Technical Specs */}

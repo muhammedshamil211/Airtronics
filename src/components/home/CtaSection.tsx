@@ -54,8 +54,8 @@ export default function CtaSection() {
             </Button>
           </div>
 
-          <p className="mt-8 text-white/70 text-sm  tracking-wide uppercase">
-            Available for Emergency AC Repairs in Dubai
+          <p className="mt-8 text-slate-300 text-sm font-medium">
+            Available 24/7 for emergency AC repairs across all Dubai communities
           </p>
         </motion.div>
       </div>
