@@ -95,20 +95,12 @@ export default function ServicesShowcase() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
             className="relative z-10"
           >
-            {/* Eyebrow with Cyan Accent Line */}
-            <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
-              <span className="w-7 sm:w-9 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#0076FF] uppercase">
-                OUR SERVICES
-              </span>
-            </div>
-
             {/* Heading */}
             <h2
               id="services-we-provide-heading"
               className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-3"
             >
-              Comprehensive HVAC &amp; AC Solutions in Dubai
+              AC Repair &amp; HVAC Services in Dubai
             </h2>
 
             {/* Subtitle */}
@@ -146,10 +138,12 @@ export default function ServicesShowcase() {
         >
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-[#0076FF] hover:bg-[#0066de] text-white font-semibold text-sm sm:text-base transition-all duration-200 shadow-sm hover:shadow-md group"
+            className="group relative inline-flex items-center justify-center [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none bg-[#0076FF] hover:bg-[#0066de] text-white font-semibold text-sm sm:text-base px-8 py-3.5 transition-all duration-200 active:scale-[0.98]"
           >
-            <span>Explore All 22 HVAC Services in Dubai</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <div className="flex items-center gap-2.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+              <span>Explore All 22 HVAC Services in Dubai</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </div>
           </Link>
           <span className="text-xs sm:text-sm text-gray-500">
             Split, ducted, VRF, chillers, ventilation, ductwork &amp; AMC plans

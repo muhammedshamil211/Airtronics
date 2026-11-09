@@ -182,21 +182,13 @@ export default function ProcessSection() {
 
             {/* Text Content (Positioned Up & Crystal Clear) */}
             <div className="relative z-30 max-w-xl">
-              {/* Eyebrow with Cyan Accent Bar */}
-              <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
-                <span className="w-6 sm:w-8 h-[2.5px] bg-[#00AEEF] rounded-full inline-block" />
-                <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#00AEEF] uppercase">
-                  OUR PROCESS
-                </span>
-              </div>
-
               {/* Main Headline in Tall Display Font (Bebas Neue) */}
               <h2
                 id="process-heading"
                 className="font-[family-name:var(--font-bebas)] text-4xl xs:text-5xl sm:text-6xl lg:text-[68px] xl:text-[76px] font-bold text-white tracking-[0.02em] uppercase leading-[0.95] mb-3 sm:mb-4"
               >
-                From Request to <br className="hidden sm:inline" />
-                Cool Comfort
+                How Our AC Service <br className="hidden sm:inline" />
+                Process Works
               </h2>
 
               {/* Subtitle */}
@@ -278,11 +270,11 @@ export default function ProcessSection() {
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
                   onClick={() => handleStepClick(step.id)}
-                  className="group relative flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 pr-5 sm:pr-6 rounded-2xl bg-[#091f3d]/85 hover:bg-[#0c274e]/95 border border-blue-400/20 hover:border-blue-300/40 backdrop-blur-md transition-colors duration-200 shadow-md shadow-black/20 cursor-pointer"
+                  className="group relative flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 pr-5 sm:pr-6 rounded-none bg-[#091f3d]/85 hover:bg-[#0c274e]/95 border border-blue-400/20 hover:border-blue-300/40 backdrop-blur-md transition-colors duration-200 cursor-pointer"
                   role="listitem"
                 >
-                  {/* Clean White Squircle Icon Badge */}
-                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm">
+                  {/* Clean White Square Icon Badge */}
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-none bg-white flex items-center justify-center shrink-0">
                     {step.icon}
                   </div>
 

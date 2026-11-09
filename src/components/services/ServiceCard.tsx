@@ -88,7 +88,7 @@ export default function ServiceCard({ service, className = '' }: ServiceCardProp
   return (
     <div
       onClick={handleCardClick}
-      className={`group relative bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-lg hover:border-blue-200 transition-all duration-300 flex flex-col cursor-pointer ${className}`}
+      className={`group relative bg-white rounded-none border border-slate-200/80 overflow-hidden hover:border-[#0076FF] transition-all duration-300 flex flex-col cursor-pointer ${className}`}
     >
       {/* 1. Top Image Container with Smooth Bottom White Blend & Compact Aspect Ratio */}
       <div className="relative w-full aspect-[16/8.5] bg-slate-50 overflow-hidden">
@@ -108,8 +108,8 @@ export default function ServiceCard({ service, className = '' }: ServiceCardProp
         <div>
           {/* Icon Badge: elevated so it reaches up into the image area */}
           <div className="-mt-5 sm:-mt-6 mb-2 relative z-20">
-            <div className="w-10 h-10 rounded-xl bg-white/95 backdrop-blur-xs text-[#0076FF] flex items-center justify-center border border-blue-100 shadow-sm group-hover:bg-[#0076FF] group-hover:text-white transition-all duration-300">
-              <IconComponent className="w-5 h-5" strokeWidth={2} />
+            <div className="w-10 h-10 rounded-none [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] bg-white/95 backdrop-blur-xs text-[#0076FF] flex items-center justify-center border border-blue-100 group-hover:bg-[#0076FF] group-hover:text-white transition-all duration-300">
+              <IconComponent className="w-5 h-5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" strokeWidth={2} />
             </div>
           </div>
 

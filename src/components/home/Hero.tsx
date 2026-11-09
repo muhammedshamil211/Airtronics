@@ -148,21 +148,7 @@ export default function Hero() {
           className="flex flex-col items-center text-center"
         >
           {/* ======================================================================= */}
-          {/* 2. TOP TAGLINE / EYEBROW WITH BLUE ACCENT LINES                          */}
-          {/* ======================================================================= */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center gap-3 sm:gap-4 mb-3 sm:mb-5"
-          >
-            <span className="w-8 sm:w-14 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-            <span className="text-xs sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] text-slate-800 uppercase text-center">
-              HVAC &amp; AC SERVICES IN DUBAI
-            </span>
-            <span className="w-8 sm:w-14 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-          </motion.div>
-
-          {/* ======================================================================= */}
-          {/* 3. MAIN HEADLINE - EXTRA TALL WITH REDUCED LETTER GAP                     */}
+          {/* MAIN HEADLINE - EXTRA TALL WITH REDUCED LETTER GAP                      */}
           {/* ======================================================================= */}
           <motion.h1
             variants={itemVariants}

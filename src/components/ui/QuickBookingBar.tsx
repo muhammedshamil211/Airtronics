@@ -77,14 +77,6 @@ Please confirm technician availability and arrival time.`;
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="flex-1 max-w-3xl"
         >
-          {/* Eyebrow with Cyan Accent Line */}
-          <div className="flex items-center gap-2 mb-1">
-            <span className="w-6 sm:w-8 h-[2px] bg-[#0076FF] rounded-full inline-block" />
-            <span className="text-xs sm:text-sm font-bold tracking-[0.14em] text-[#0076FF] uppercase">
-              SERVICE BOOKING
-            </span>
-          </div>
-
           {/* Main Section Headline - Tight Tracking & Same Clean Modern Font */}
           <h2 className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] font-bold text-[#0f172a] tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.12] mb-1 sm:mb-1.5">
             Fast AC Repair &amp; 24/7 HVAC Service Booking in Dubai
@@ -129,75 +121,83 @@ Please confirm technician availability and arrival time.`;
         className="relative z-10 w-full lg:w-[85%] xl:w-[85%] mr-auto"
       >
         <form onSubmit={handleSubmit} className="w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-1 md:gap-1.5 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-2 md:gap-2.5 w-full">
             
-            {/* Field 1: Your Name */}
-            <div className="relative flex items-center">
-              <User className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  if (errorMessage) setErrorMessage('');
-                }}
-                required
-                className="w-full pl-8.5 pr-2.5 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all shadow-xs"
-              />
+            {/* Field 1: Your Name (Slanted Parallelogram Motif) */}
+            <div className="relative flex items-center bg-white border border-slate-300 focus-within:border-[#0076FF] [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none transition-all">
+              <div className="flex items-center w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-3 py-1 sm:py-1.5">
+                <User className="w-4 h-4 text-slate-400 pointer-events-none shrink-0 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errorMessage) setErrorMessage('');
+                  }}
+                  required
+                  className="w-full py-1.5 sm:py-2 bg-transparent text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                />
+              </div>
             </div>
 
-            {/* Field 2: Mobile Number */}
-            <div className="relative flex items-center">
-              <Phone className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
-              <input
-                type="tel"
-                placeholder="Mobile Number"
-                value={phone}
-                onChange={(e) => {
-                  setPhone(e.target.value);
-                  if (errorMessage) setErrorMessage('');
-                }}
-                required
-                className="w-full pl-8.5 pr-2.5 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all shadow-xs"
-              />
+            {/* Field 2: Mobile Number (Slanted Parallelogram Motif) */}
+            <div className="relative flex items-center bg-white border border-slate-300 focus-within:border-[#0076FF] [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none transition-all">
+              <div className="flex items-center w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-3 py-1 sm:py-1.5">
+                <Phone className="w-4 h-4 text-slate-400 pointer-events-none shrink-0 mr-2" />
+                <input
+                  type="tel"
+                  placeholder="Mobile Number"
+                  value={phone}
+                  onChange={(e) => {
+                    setPhone(e.target.value);
+                    if (errorMessage) setErrorMessage('');
+                  }}
+                  required
+                  className="w-full py-1.5 sm:py-2 bg-transparent text-xs sm:text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none"
+                />
+              </div>
             </div>
 
-            {/* Field 3: Select a Service */}
-            <div className="relative flex items-center">
-              <Settings className="absolute left-3 w-5 h-5 text-slate-400 pointer-events-none" />
-              <select
-                value={service}
-                onChange={(e) => setService(e.target.value)}
-                className="w-full pl-8.5 pr-7 py-3 sm:py-3.5 bg-white border border-slate-200 rounded-lg text-xs sm:text-sm text-slate-700 focus:outline-none focus:border-[#0076FF] focus:ring-2 focus:ring-[#0076FF]/15 transition-all appearance-none cursor-pointer shadow-xs"
-              >
-                <option value="">Select a Service</option>
-                {SERVICES_DATA.map((srv) => (
-                  <option key={srv.slug} value={srv.shortTitle || srv.title}>
-                    {srv.shortTitle || srv.title}
-                  </option>
-                ))}
-              </select>
-              <ChevronDown className="absolute right-2.5 w-3.5 h-3.5 text-slate-400 pointer-events-none" />
+            {/* Field 3: Select a Service (Slanted Parallelogram Motif) */}
+            <div className="relative flex items-center bg-white border border-slate-300 focus-within:border-[#0076FF] [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none transition-all">
+              <div className="flex items-center w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-3 py-1 sm:py-1.5">
+                <Settings className="w-4 h-4 text-slate-400 pointer-events-none shrink-0 mr-2" />
+                <select
+                  value={service}
+                  onChange={(e) => setService(e.target.value)}
+                  className="w-full py-1.5 sm:py-2 bg-transparent text-xs sm:text-sm text-slate-700 focus:outline-none appearance-none cursor-pointer pr-3"
+                >
+                  <option value="">Select a Service</option>
+                  {SERVICES_DATA.map((srv) => (
+                    <option key={srv.slug} value={srv.shortTitle || srv.title}>
+                      {srv.shortTitle || srv.title}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400 pointer-events-none shrink-0" />
+              </div>
             </div>
 
-            {/* Field 4: Submit Button */}
+            {/* Field 4: Submit Button (Slanted Parallelogram Motif) */}
             <button
               type="submit"
               disabled={isSubmitted}
-              className="w-full flex items-center justify-center gap-1.5 bg-[#0076FF] hover:bg-[#0066de] text-white text-xs sm:text-sm font-semibold py-2 sm:py-2.5 px-4 rounded-lg transition-all shadow-md shadow-blue-500/20 active:scale-[0.98] cursor-pointer disabled:opacity-75 whitespace-nowrap"
+              className="w-full flex items-center justify-center bg-[#0076FF] hover:bg-[#0066de] text-white py-2.5 sm:py-3 px-4 rounded-none [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] transition-all active:scale-[0.98] cursor-pointer disabled:opacity-75 whitespace-nowrap"
             >
-              {isSubmitted ? (
-                <>
-                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0 animate-bounce" />
-                  <span>Connecting...</span>
-                </>
-              ) : (
-                <>
-                  <Calendar className="w-3.5 h-3.5 shrink-0" />
-                  <span>Book Service Today</span>
-                </>
-              )}
+              <div className="flex items-center justify-center gap-1.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] text-xs sm:text-sm font-semibold">
+                {isSubmitted ? (
+                  <>
+                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0 animate-bounce" />
+                    <span>Connecting...</span>
+                  </>
+                ) : (
+                  <>
+                    <Calendar className="w-3.5 h-3.5 shrink-0" />
+                    <span>Book Service Today</span>
+                  </>
+                )}
+              </div>
             </button>
           </div>
 

@@ -18,28 +18,28 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const baseStyles =
-  'inline-flex items-center justify-center font-semibold transition-all duration-150 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#005eb8] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none';
+  'inline-flex items-center justify-center font-semibold transition-all duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0076FF] focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none';
 
 const variantStyles: Record<ButtonVariant, string> = {
   // Brand Solid Engineering Blue
   primary:
-    'bg-[#005eb8] hover:bg-[#004b93] active:bg-[#004080] text-white shadow-xs hover:shadow-sm active:scale-[0.99]',
+    'bg-[#0076FF] hover:bg-[#0066de] active:bg-[#0055b8] text-white active:scale-[0.98]',
   
   // Secondary Crisp Surface with Subtle Border
   secondary:
-    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-300 hover:border-[#005eb8] shadow-2xs hover:shadow-xs active:scale-[0.99]',
+    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-300 hover:border-[#0076FF] active:scale-[0.98]',
 
   // Clean White Surface
   white:
-    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-200 hover:border-slate-300 shadow-2xs active:scale-[0.99]',
+    'bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-900 border border-slate-200 hover:border-[#0076FF] active:scale-[0.98]',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-xs sm:text-sm rounded-lg gap-1.5',
-  md: 'px-6 py-3 text-sm sm:text-base rounded-xl gap-2',
-  lg: 'px-7 py-3.5 sm:px-8 sm:py-4 text-base md:text-lg rounded-xl gap-2.5',
-  pill: 'px-6 py-3 text-sm sm:text-base rounded-full gap-2',
-  icon: 'w-10 h-10 sm:w-11 sm:h-11 rounded-full p-0 shrink-0 gap-0',
+  sm: 'px-4 py-2 text-xs sm:text-sm',
+  md: 'px-6 py-3 text-sm sm:text-base',
+  lg: 'px-7 py-3.5 sm:px-8 sm:py-4 text-base md:text-lg',
+  pill: 'px-6 py-3 text-sm sm:text-base',
+  icon: 'w-10 h-10 sm:w-11 sm:h-11 p-0 shrink-0',
 };
 
 export default function Button({
@@ -57,14 +57,14 @@ export default function Button({
 }: ButtonProps) {
   const combinedClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${
     fullWidth ? 'w-full' : ''
-  } ${className}`.trim();
+  } ${className} rounded-none`.trim();
 
   const content = (
-    <>
+    <span className="inline-flex items-center justify-center gap-2 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] w-full whitespace-nowrap">
       {iconLeft && <span className="shrink-0">{iconLeft}</span>}
       {children}
       {iconRight && <span className="shrink-0">{iconRight}</span>}
-    </>
+    </span>
   );
 
   // If href is provided, render either Next.js Link or native anchor

@@ -11,7 +11,7 @@ const FaqSection = dynamic(() => import('@/components/home/FaqSection'));
 const CtaSection = dynamic(() => import('@/components/home/CtaSection'));
 const ServiceAreasSection = dynamic(() => import('@/components/home/ServiceArea'));
 const CoreDifferentiators = dynamic(() => import('@/components/about/CoreDifferentiators'));
-const BrandsSection = dynamic(() => import('@/components/about/BrandsSection'));
+
 
 export const metadata = {
   title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
@@ -69,7 +69,7 @@ export default function Home() {
       <GoogleReviewsSection />
       <RecentWorkGallery />
       {/* <CoreDifferentiators /> */}
-      <BrandsSection />
+      {/* <BrandsSection /> */}
       <ServiceAreasSection />
       <FaqSection />
       <CtaSection />

@@ -101,14 +101,6 @@ export default function AboutHero() {
       {/* 2. HERO SECTION FOREGROUND CONTENT                                        */}
       {/* ========================================================================= */}
       <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-10 sm:pt-14 relative z-10">
-        {/* Standardized Eyebrow */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
-          <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-            About Airtronics Fixcare
-          </span>
-        </div>
-
         {/* Hero Heading & Narrative */}
         <div className="max-w-3xl mb-8">
           <h1 className="text-[32px] sm:text-[44px] md:text-[54px] font-medium tracking-tight leading-[1.08] text-[#111111] mb-5">

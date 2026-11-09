@@ -125,53 +125,59 @@ export default function WhatsAppBookingModal({
               {/* Name Input */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5 text-[#005eb8]" />
+                  <User className="w-3.5 h-3.5 text-[#0076FF]" />
                   Your Good Name <span className="text-red-500">*</span>
                 </label>
-                <input
-                  required
-                  type="text"
-                  placeholder="e.g., Mohammed / Sarah"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-gray-50 border border-gray-200 text-[#111111] text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8] transition-all"
-                />
+                <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF] transition-all">
+                  <input
+                    required
+                    type="text"
+                    placeholder="e.g., Mohammed / Sarah"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-[#111111] text-sm px-4 py-2.5 focus:outline-none"
+                  />
+                </div>
               </div>
 
               {/* Phone Input */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
-                  <Phone className="w-3.5 h-3.5 text-[#005eb8]" />
+                  <Phone className="w-3.5 h-3.5 text-[#0076FF]" />
                   Mobile Number / WhatsApp <span className="text-red-500">*</span>
                 </label>
-                <input
-                  required
-                  type="tel"
-                  placeholder="+971 50 XXX XXXX"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-gray-50 border border-gray-200 text-[#111111] text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8] transition-all"
-                />
+                <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF] transition-all">
+                  <input
+                    required
+                    type="tel"
+                    placeholder="+971 50 XXX XXXX"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-[#111111] text-sm px-4 py-2.5 focus:outline-none"
+                  />
+                </div>
               </div>
 
               {/* Service Selection */}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-1.5 flex items-center gap-1.5">
-                  <Wrench className="w-3.5 h-3.5 text-[#005eb8]" />
+                  <Wrench className="w-3.5 h-3.5 text-[#0076FF]" />
                   Service Required
                 </label>
-                <select
-                  value={formData.service}
-                  onChange={(e) => setFormData({ ...formData, service: e.target.value, subCategory: '' })}
-                  className="w-full bg-gray-50 border border-gray-200 text-[#111111] text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8] transition-all appearance-none cursor-pointer"
-                >
-                  <option value="" disabled>Select HVAC Service *</option>
-                  {SERVICES_DATA.map((srv) => (
-                    <option key={srv.slug} value={srv.shortTitle}>
-                      {srv.shortTitle}
-                    </option>
-                  ))}
-                </select>
+                <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF] transition-all relative">
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value, subCategory: '' })}
+                    className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-[#111111] text-sm px-4 py-2.5 focus:outline-none appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>Select HVAC Service *</option>
+                    {SERVICES_DATA.map((srv) => (
+                      <option key={srv.slug} value={srv.shortTitle}>
+                        {srv.shortTitle}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               {/* Optional Sub-Category Field: Appears only when selected service has subcategories */}
@@ -179,20 +185,22 @@ export default function WhatsAppBookingModal({
                 <div className="animate-in fade-in duration-200">
                   <label className="block text-xs font-semibold text-gray-600 mb-1 flex items-center justify-between">
                     <span>Choose Sub-Category (Optional)</span>
-                    <span className="text-[11px] font-normal text-[#005eb8]">Optional</span>
+                    <span className="text-[11px] font-normal text-[#0076FF]">Optional</span>
                   </label>
-                  <select
-                    value={formData.subCategory}
-                    onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                    className="w-full bg-blue-50/40 border border-blue-200 text-[#111111] text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8] transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="">General Scope (All Included)</option>
-                    {selectedService.subcategories.map((sub) => (
-                      <option key={sub} value={sub}>
-                        {sub}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-blue-200 bg-blue-50/40 focus-within:border-[#0076FF] transition-all">
+                    <select
+                      value={formData.subCategory}
+                      onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                      className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-[#111111] text-sm px-4 py-2.5 focus:outline-none appearance-none cursor-pointer"
+                    >
+                      <option value="">General Scope (All Included)</option>
+                      {selectedService.subcategories.map((sub) => (
+                        <option key={sub} value={sub}>
+                          {sub}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               )}
 
@@ -201,7 +209,7 @@ export default function WhatsAppBookingModal({
                 <button
                   type="button"
                   onClick={() => setShowMoreDetails(!showMoreDetails)}
-                  className="text-sm text-[#005eb8] font-semibold hover:underline focus:outline-none inline-flex items-center gap-1"
+                  className="text-sm text-[#0076FF] font-semibold hover:underline focus:outline-none inline-flex items-center gap-1"
                 >
                   {showMoreDetails ? '- Hide optional details' : '+ Add location, date or notes (optional)'}
                 </button>
@@ -222,13 +230,15 @@ export default function WhatsAppBookingModal({
                           <MapPin className="w-3 h-3 text-gray-500" />
                           Community / Area
                         </label>
-                        <input
-                          type="text"
-                          placeholder="e.g., Dubai Marina, JVC"
-                          value={formData.location}
-                          onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                          className="w-full bg-gray-50 border border-gray-200 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8]"
-                        />
+                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF]">
+                          <input
+                            type="text"
+                            placeholder="e.g., Dubai Marina, JVC"
+                            value={formData.location}
+                            onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                            className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-sm px-3.5 py-2.5 focus:outline-none"
+                          />
+                        </div>
                       </div>
 
                       <div className="sm:w-[45%]">
@@ -236,12 +246,14 @@ export default function WhatsAppBookingModal({
                           <Calendar className="w-3 h-3 text-gray-500" />
                           Preferred Date
                         </label>
-                        <input
-                          type="date"
-                          value={formData.date}
-                          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                          className="w-full bg-gray-50 border border-gray-200 text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8]"
-                        />
+                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF]">
+                          <input
+                            type="date"
+                            value={formData.date}
+                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                            className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-sm px-3 py-2.5 focus:outline-none"
+                          />
+                        </div>
                       </div>
                     </div>
 
@@ -249,13 +261,15 @@ export default function WhatsAppBookingModal({
                       <label className="block text-xs font-semibold text-gray-600 mb-1">
                         Issue Description / Special Instructions
                       </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. AC leaking water, no cold air in master bedroom..."
-                        value={formData.details}
-                        onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                        className="w-full bg-gray-50 border border-gray-200 text-sm rounded-xl px-3.5 py-2.5 focus:outline-none focus:ring-2 focus:ring-[#005eb8]/30 focus:border-[#005eb8]"
-                      />
+                      <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-gray-300 bg-white focus-within:border-[#0076FF]">
+                        <input
+                          type="text"
+                          placeholder="e.g. AC leaking water, no cold air in master bedroom..."
+                          value={formData.details}
+                          onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                          className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent text-sm px-3.5 py-2.5 focus:outline-none"
+                        />
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -265,11 +279,13 @@ export default function WhatsAppBookingModal({
               <div className="pt-3">
                 <button
                   type="submit"
-                  className="flex items-center justify-center w-full bg-[#25D366] text-white font-bold text-sm sm:text-base py-3.5 rounded-2xl hover:bg-[#1ebd5a] transition-all shadow-lg shadow-[#25D366]/25 group"
+                  className="flex items-center justify-center w-full [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none bg-[#25D366] hover:bg-[#1ebd5a] text-white font-bold text-sm sm:text-base py-3.5 transition-all group cursor-pointer"
                 >
-                  <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
-                  <span>Continue to WhatsApp Dispatch</span>
-                  <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                  <div className="flex items-center justify-center [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+                    <MessageCircle className="w-5 h-5 mr-2 shrink-0" />
+                    <span>Continue to WhatsApp Dispatch</span>
+                    <ChevronRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </button>
                 <p className="text-center text-xs text-gray-400 mt-2.5">
                   Direct redirection to Airtronics 24/7 WhatsApp dispatch desk.

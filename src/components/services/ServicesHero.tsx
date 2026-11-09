@@ -113,16 +113,6 @@ export default function ServicesHero() {
             </span>
           </motion.nav>
 
-          {/* Cardless Editorial Eyebrow */}
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center justify-center gap-2.5 sm:gap-3 text-xs sm:text-sm font-semibold tracking-wider uppercase text-sky-400 mb-5 sm:mb-6"
-          >
-            <span className="w-5 sm:w-7 h-px bg-sky-400/80 inline-block" />
-            <span>Certified Dubai HVAC Engineering • Residential &amp; Commercial</span>
-            <span className="w-5 sm:w-7 h-px bg-sky-400/80 inline-block" />
-          </motion.div>
-
           {/* Main Headline (H1) - Unique high-intent HVAC Solutions target */}
           <motion.h1
             variants={itemVariants}
@@ -153,7 +143,7 @@ export default function ServicesHero() {
               target="_blank"
               variant="primary"
               size="lg"
-              className="w-1/2 !py-3 sm:!py-3.5 md:!py-4 text-xs xs:text-sm sm:text-base md:text-lg shrink-0 group rounded-xl"
+              className="w-1/2 !py-3 sm:!py-3.5 md:!py-4 text-xs xs:text-sm sm:text-base md:text-lg shrink-0 group"
               aria-label="Book AC Service on WhatsApp directly"
               iconLeft={
                 <svg viewBox="0 0 24 24" className="w-4 h-4 xs:w-5 xs:h-5 fill-current shrink-0" aria-hidden="true">
@@ -171,15 +161,17 @@ export default function ServicesHero() {
             <div className="w-1/2 flex shrink-0">
               <Link
                 href="tel:+971586596321"
-                className="w-full flex items-center justify-center gap-1.5 xs:gap-2 sm:gap-2.5 bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 rounded-xl px-2 xs:px-3 sm:px-5 py-2.5 sm:py-3 shadow-xs active:scale-[0.99] transition-all group"
+                className="w-full flex items-center justify-center [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 px-2 xs:px-3 sm:px-5 py-2.5 sm:py-3 active:scale-[0.99] transition-all group"
                 aria-label="Call Emergency Dispatch Team"
               >
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#005eb8] text-white flex items-center justify-center shrink-0">
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white" />
-                </div>
-                <div className="leading-tight text-left min-w-0">
-                  <span className="block text-[10px] xs:text-[11px] text-slate-500 font-medium truncate">24/7 Dispatch</span>
-                  <span className="block text-xs xs:text-sm sm:text-base font-bold text-slate-900 truncate">+971 58 659 6321</span>
+                <div className="flex items-center gap-1.5 xs:gap-2 sm:gap-2.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] bg-[#0076FF] text-white flex items-center justify-center shrink-0">
+                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" />
+                  </div>
+                  <div className="leading-tight text-left min-w-0">
+                    <span className="block text-[10px] xs:text-[11px] text-slate-500 font-medium truncate">24/7 Dispatch</span>
+                    <span className="block text-xs xs:text-sm sm:text-base font-bold text-slate-900 truncate">+971 58 659 6321</span>
+                  </div>
                 </div>
               </Link>
             </div>

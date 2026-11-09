@@ -112,20 +112,13 @@ export default function CoreDifferentiators() {
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
-          {/* Section Header with ProcessSection eyebrow & heading style */}
+          {/* Section Header */}
           <div className="max-w-2xl mb-8 sm:mb-12">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
-              <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-                Why Airtronics Fixcare
-              </span>
-            </div>
-
             <h2
               id="why-airtronics-heading"
               className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
             >
-              Engineering Standards Built for Dubai
+              Why Airtronics Fixcare – Engineering Standards Built for Dubai
             </h2>
 
             <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">

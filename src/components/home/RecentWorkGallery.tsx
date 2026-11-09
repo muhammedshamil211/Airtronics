@@ -59,7 +59,7 @@ export default function RecentWorkGallery() {
       {/* ========================================================================= */}
       {/* MAIN CONTAINER: Maximum 1400px Width Constraint                            */}
       {/* ========================================================================= */}
-      <div className="relative max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-[1250px] w-full mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Faint Giant Background Watermark "PORTFOLIO" */}
         <div
@@ -81,20 +81,12 @@ export default function RecentWorkGallery() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
           className="relative z-10 max-w-3xl mb-8 sm:mb-12"
         >
-          {/* Eyebrow with Blue Accent Line */}
-          <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
-            <span className="w-7 sm:w-9 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-            <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#0076FF] uppercase">
-              FIELDWORK &amp; PORTFOLIO
-            </span>
-          </div>
-
           {/* Main Headline */}
           <h2
             id="recent-work-heading"
             className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-3"
           >
-            Recent Projects &amp; Fieldwork Across Dubai
+            Our Recent AC Projects Across Dubai
           </h2>
 
           <p className="font-[family-name:var(--font-onest)] text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
@@ -115,7 +107,7 @@ export default function RecentWorkGallery() {
               transition={{ duration: 0.45, delay: idx * 0.05, ease: 'easeOut' }}
               className="break-inside-avoid mb-2 sm:mb-3 lg:mb-3.5"
             >
-              <div className="relative w-full rounded-md sm:rounded-lg overflow-hidden shadow-2xs hover:shadow-md transition-all duration-300 group">
+              <div className="relative w-full rounded-none overflow-hidden transition-all duration-300 group">
                 <Image
                   src={img.src}
                   alt={img.alt}

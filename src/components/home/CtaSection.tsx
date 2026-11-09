@@ -35,7 +35,7 @@ export default function CtaSection() {
               href="/contact"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto px-8 !py-4 rounded-xl border border-white/20"
+              className="w-full sm:w-auto px-8 !py-4 border border-white/20"
               aria-label="Book AC Service Online"
               iconLeft={<Calendar className="w-5 h-5" aria-hidden="true" />}
             >
@@ -46,7 +46,7 @@ export default function CtaSection() {
               href="tel:+971586596321"
               variant="secondary"
               size="lg"
-              className="w-full sm:w-auto px-8 !py-4 rounded-xl"
+              className="w-full sm:w-auto px-8 !py-4"
               aria-label="Call +971 58 659 6321 for Emergency AC Repair"
               iconLeft={<PhoneCall className="w-5 h-5" aria-hidden="true" />}
             >

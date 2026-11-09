@@ -126,7 +126,7 @@ export default function GoogleReviewsSection() {
       {/* ========================================================================= */}
       {/* MAIN CONTAINER: Maximum 1400px Width Constraint                            */}
       {/* ========================================================================= */}
-      <div className="relative max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-[1250px] w-full mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Faint Giant Background Watermark "REVIEWS" */}
         <div
@@ -149,14 +149,6 @@ export default function GoogleReviewsSection() {
           className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12"
         >
           <div className="max-w-2xl">
-            {/* Eyebrow with Blue Accent Line */}
-            <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
-              <span className="w-7 sm:w-9 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-              <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#0076FF] uppercase">
-                CLIENT REVIEWS
-              </span>
-            </div>
-
             {/* Main Headline Matching Services & Booking Typography */}
             <h2
               id="testimonials-heading"
@@ -174,7 +166,7 @@ export default function GoogleReviewsSection() {
           <div className="flex flex-col gap-3.5 shrink-0">
             {/* ROW 1: Big Google Icon + 5 Stars + Small Review Rating Text */}
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0 shadow-2xs">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-none bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0">
                 <GoogleIcon className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
               <div>
@@ -197,7 +189,7 @@ export default function GoogleReviewsSection() {
                 target="_blank"
                 variant="primary"
                 size="sm"
-                className="!px-4.5 !py-2.5 font-semibold shadow-md shadow-blue-500/15 text-xs sm:text-sm"
+                className="!px-4.5 !py-2.5 font-semibold text-xs sm:text-sm"
                 title="Write a Google Review"
                 iconLeft={<MessageSquarePlus className="w-4 h-4" />}
               >
@@ -232,10 +224,10 @@ export default function GoogleReviewsSection() {
             {marqueeReviews.map((rev, index) => (
               <div
                 key={`${rev.id}-${index}`}
-                className="relative w-[310px] xs:w-[350px] sm:w-[390px] md:w-[430px] shrink-0 bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 hover:border-blue-300/80 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between group cursor-default overflow-hidden"
+                className="relative w-[310px] xs:w-[350px] sm:w-[390px] md:w-[430px] shrink-0 bg-white rounded-none border border-slate-200/80 hover:border-[#0076FF] p-6 sm:p-7 transition-all duration-300 flex flex-col justify-between group cursor-default overflow-hidden"
               >
                 {/* Top Subtle Cyan-to-Blue Brand Accent Indicator */}
-                <div className="absolute top-0 inset-x-7 h-[2.5px] bg-gradient-to-r from-[#0076FF] via-[#00AEEF] to-transparent rounded-full group-hover:h-[3px] transition-all" />
+                <div className="absolute top-0 inset-x-7 h-[2.5px] bg-gradient-to-r from-[#0076FF] via-[#00AEEF] to-transparent rounded-none group-hover:h-[3px] transition-all" />
 
                 {/* Subtle Decorative Background Quotation Watermark */}
                 <Quote
@@ -247,13 +239,13 @@ export default function GoogleReviewsSection() {
                   {/* Top Bar: Slanted Parallelogram Service Pill + Google 'G' Badge */}
                   <div className="flex items-center justify-between gap-3 mb-4">
                     {/* Parallelogram Service Tag Matching Hero Button DNA */}
-                    <div className="[transform:skewX(-10deg)] bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-sm shadow-2xs">
+                    <div className="[transform:skewX(-10deg)] bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-none">
                       <span className="[transform:skewX(10deg)] block text-[10px] sm:text-[11px] font-bold text-[#0076FF] uppercase tracking-wider">
                         {rev.serviceTag}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-slate-50 border border-slate-100/90 shadow-2xs shrink-0">
+                    <div className="flex items-center gap-1.5 py-1 px-2.5 rounded-none bg-slate-50 border border-slate-100/90 shrink-0">
                       <GoogleIcon className="w-3.5 h-3.5" />
                       <span className="text-[11px] font-semibold text-slate-500">Google Verified</span>
                     </div>
@@ -262,7 +254,7 @@ export default function GoogleReviewsSection() {
                   {/* Star Rating Row */}
                   <div className="flex items-center gap-2 mb-3.5">
                     <StarRating rating={rev.rating} />
-                    <span className="text-xs font-bold text-amber-700 bg-amber-50/90 border border-amber-200/50 px-2 py-0.5 rounded-md">
+                    <span className="text-xs font-bold text-amber-700 bg-amber-50/90 border border-amber-200/50 px-2 py-0.5 rounded-none">
                       5.0
                     </span>
                   </div>
@@ -276,8 +268,8 @@ export default function GoogleReviewsSection() {
                 {/* Card Bottom: Author Profile & Location Verification */}
                 <div className="relative z-10 pt-4 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3 min-w-0">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#0076FF] to-[#00AEEF] text-white font-[family-name:var(--font-onest)] font-bold flex items-center justify-center text-xs sm:text-sm shadow-xs ring-2 ring-blue-100 shrink-0">
-                      {rev.authorName.charAt(0)}
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-none [transform:skewX(-10deg)] bg-[#0076FF] text-white font-[family-name:var(--font-onest)] font-bold flex items-center justify-center text-xs sm:text-sm shrink-0">
+                      <span className="[transform:skewX(10deg)]">{rev.authorName.charAt(0)}</span>
                     </div>
                     <div className="min-w-0">
                       <h3 className="font-[family-name:var(--font-onest)] font-bold text-xs sm:text-sm text-[#0f172a] truncate group-hover:text-[#0076FF] transition-colors">

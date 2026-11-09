@@ -272,15 +272,17 @@ export default function ContactSection() {
                                         >
                                             Full Name <span className="text-rose-600 font-bold">*</span>
                                         </label>
-                                        <input
-                                            id="contact-name"
-                                            required
-                                            type="text"
-                                            placeholder="e.g., Mohammed Al Rashid"
-                                            value={formData.name}
-                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15"
-                                        />
+                                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors">
+                                            <input
+                                                id="contact-name"
+                                                required
+                                                type="text"
+                                                placeholder="e.g., Mohammed Al Rashid"
+                                                value={formData.name}
+                                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                                className="w-full h-12 sm:h-13 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent px-4 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none"
+                                            />
+                                        </div>
                                     </div>
 
                                     <div>
@@ -290,14 +292,16 @@ export default function ContactSection() {
                                         >
                                             Company / Building Name <span className="text-slate-400 font-normal lowercase">(optional)</span>
                                         </label>
-                                        <input
-                                            id="contact-company"
-                                            type="text"
-                                            placeholder="e.g., Al Wasl Tower / Villa 24"
-                                            value={formData.company}
-                                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                                            className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15"
-                                        />
+                                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors">
+                                            <input
+                                                id="contact-company"
+                                                type="text"
+                                                placeholder="e.g., Al Wasl Tower / Villa 24"
+                                                value={formData.company}
+                                                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                                                className="w-full h-12 sm:h-13 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent px-4 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -310,15 +314,17 @@ export default function ContactSection() {
                                         >
                                             Phone Number <span className="text-rose-600 font-bold">*</span>
                                         </label>
-                                        <input
-                                            id="contact-phone"
-                                            required
-                                            type="tel"
-                                            placeholder="+971 50 123 4567"
-                                            value={formData.phone}
-                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                            className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15 font-sans"
-                                        />
+                                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors">
+                                            <input
+                                                id="contact-phone"
+                                                required
+                                                type="tel"
+                                                placeholder="+971 50 123 4567"
+                                                value={formData.phone}
+                                                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                                className="w-full h-12 sm:h-13 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent px-4 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none font-sans"
+                                            />
+                                        </div>
                                     </div>
 
                                     <div>
@@ -328,15 +334,17 @@ export default function ContactSection() {
                                         >
                                             Email Address <span className="text-rose-600 font-bold">*</span>
                                         </label>
-                                        <input
-                                            id="contact-email"
-                                            required
-                                            type="email"
-                                            placeholder="name@example.com"
-                                            value={formData.email}
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15"
-                                        />
+                                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors">
+                                            <input
+                                                id="contact-email"
+                                                required
+                                                type="email"
+                                                placeholder="name@example.com"
+                                                value={formData.email}
+                                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                                className="w-full h-12 sm:h-13 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent px-4 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
 
@@ -348,15 +356,17 @@ export default function ContactSection() {
                                     >
                                         Location / Area in Dubai <span className="text-rose-600 font-bold">*</span>
                                     </label>
-                                    <input
-                                        id="contact-address"
-                                        required
-                                        type="text"
-                                        placeholder="e.g., Downtown Dubai, Burj Vista Tower 1, Apt 1402"
-                                        value={formData.address}
-                                        onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                                        className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15"
-                                    />
+                                    <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors">
+                                        <input
+                                            id="contact-address"
+                                            required
+                                            type="text"
+                                            placeholder="e.g., Downtown Dubai, Burj Vista Tower 1, Apt 1402"
+                                            value={formData.address}
+                                            onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                                            className="w-full h-12 sm:h-13 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent px-4 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Row 4: HVAC Service Select */}
@@ -367,25 +377,25 @@ export default function ContactSection() {
                                     >
                                         Required HVAC Service <span className="text-rose-600 font-bold">*</span>
                                     </label>
-                                    <div className="relative">
-                                        <select
-                                            id="contact-service"
-                                            required
-                                            value={formData.service}
-                                            onChange={(e) => setFormData({ ...formData, service: e.target.value, subCategory: '' })}
-                                            className="w-full h-12 sm:h-13 rounded-xl border border-slate-300 bg-white px-3.5 pr-10 text-[16px] text-slate-900 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15 appearance-none cursor-pointer"
-                                        >
-                                            <option value="" disabled className="text-slate-400">
-                                                Select HVAC Service Category...
-                                            </option>
-                                            {SERVICES_DATA.map((srv) => (
-                                                <option key={srv.slug} value={srv.shortTitle} className="text-slate-900 py-1">
-                                                    {srv.shortTitle} — {srv.title}
+                                    <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors relative">
+                                        <div className="[transform:skewX(10deg)] sm:[transform:skewX(14deg)] flex items-center pr-3">
+                                            <select
+                                                id="contact-service"
+                                                required
+                                                value={formData.service}
+                                                onChange={(e) => setFormData({ ...formData, service: e.target.value, subCategory: '' })}
+                                                className="w-full h-12 sm:h-13 bg-transparent px-4 text-[16px] text-slate-900 outline-none appearance-none cursor-pointer"
+                                            >
+                                                <option value="" disabled className="text-slate-400">
+                                                    Select HVAC Service Category...
                                                 </option>
-                                            ))}
-                                        </select>
-                                        <div className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-500">
-                                            <ChevronDown className="w-4 h-4 stroke-[2.25]" />
+                                                {SERVICES_DATA.map((srv) => (
+                                                    <option key={srv.slug} value={srv.shortTitle} className="text-slate-900 py-1">
+                                                        {srv.shortTitle} — {srv.title}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                            <ChevronDown className="w-4 h-4 text-slate-500 pointer-events-none shrink-0" />
                                         </div>
                                     </div>
                                 </div>
@@ -399,24 +409,24 @@ export default function ContactSection() {
                                         >
                                             Specific Sub-Category <span className="text-slate-400 font-normal lowercase">(optional - general diagnostic included)</span>
                                         </label>
-                                        <div className="relative">
-                                            <select
-                                                id="contact-subcategory"
-                                                value={formData.subCategory}
-                                                onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
-                                                className="w-full h-12 sm:h-13 rounded-xl border border-blue-200 bg-blue-50/50 px-3.5 pr-10 text-[16px] text-slate-900 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15 appearance-none cursor-pointer"
-                                            >
-                                                <option value="" className="text-slate-600">
-                                                    General Inspection &amp; Diagnosis
-                                                </option>
-                                                {selectedService.subcategories.map((sub) => (
-                                                    <option key={sub} value={sub} className="text-slate-900 py-1">
-                                                        {sub}
+                                        <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-blue-200 bg-blue-50/50 focus-within:border-[#0076FF] transition-colors relative">
+                                            <div className="[transform:skewX(10deg)] sm:[transform:skewX(14deg)] flex items-center pr-3">
+                                                <select
+                                                    id="contact-subcategory"
+                                                    value={formData.subCategory}
+                                                    onChange={(e) => setFormData({ ...formData, subCategory: e.target.value })}
+                                                    className="w-full h-12 sm:h-13 bg-transparent px-4 text-[16px] text-slate-900 outline-none appearance-none cursor-pointer"
+                                                >
+                                                    <option value="" className="text-slate-600">
+                                                        General Inspection &amp; Diagnosis
                                                     </option>
-                                                ))}
-                                            </select>
-                                            <div className="pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-600">
-                                                <ChevronDown className="w-4 h-4 stroke-[2.25]" />
+                                                    {selectedService.subcategories.map((sub) => (
+                                                        <option key={sub} value={sub} className="text-slate-900 py-1">
+                                                            {sub}
+                                                        </option>
+                                                    ))}
+                                                </select>
+                                                <ChevronDown className="w-4 h-4 text-slate-600 pointer-events-none shrink-0" />
                                             </div>
                                         </div>
                                     </div>
@@ -435,25 +445,29 @@ export default function ContactSection() {
                                             AC not cooling, water leak, unusual noise, etc.
                                         </span>
                                     </div>
-                                    <textarea
-                                        id="contact-details"
-                                        rows={4}
-                                        placeholder="Describe the issue (e.g., AC blowing warm air in living room, error code E4 on thermostat, annual villa AC servicing)..."
-                                        value={formData.details}
-                                        onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                                        className="w-full rounded-xl border border-slate-300 bg-white p-3.5 text-[16px] text-slate-900 placeholder:text-slate-500 shadow-2xs transition-colors duration-150 outline-none focus:border-[#005eb8] focus:ring-3 focus:ring-[#005eb8]/15 resize-y min-h-[105px]"
-                                    />
+                                    <div className="[transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none border border-slate-300 bg-white focus-within:border-[#0076FF] transition-colors p-1">
+                                        <textarea
+                                            id="contact-details"
+                                            rows={4}
+                                            placeholder="Describe the issue (e.g., AC blowing warm air in living room, error code E4 on thermostat, annual villa AC servicing)..."
+                                            value={formData.details}
+                                            onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                                            className="w-full [transform:skewX(10deg)] sm:[transform:skewX(14deg)] bg-transparent p-3 text-[16px] text-slate-900 placeholder:text-slate-500 outline-none resize-y min-h-[105px]"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Form Actions & Micro-Copy */}
                                 <div className="pt-2">
                                     <button
                                         type="submit"
-                                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 sm:py-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.99] text-white font-semibold text-sm sm:text-base shadow-sm transition-all duration-150 cursor-pointer"
+                                        className="w-full sm:w-auto inline-flex items-center justify-center [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none bg-[#25D366] hover:bg-[#20ba59] active:scale-[0.99] text-white font-semibold text-sm sm:text-base px-8 py-3.5 sm:py-4 transition-all duration-150 cursor-pointer"
                                     >
-                                        <WhatsAppIcon className="w-5 h-5 shrink-0" />
-                                        <span>Connect with Technician (WhatsApp)</span>
-                                        <Send className="w-4 h-4 shrink-0 ml-1" />
+                                        <div className="flex items-center justify-center gap-2.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+                                            <WhatsAppIcon className="w-5 h-5 shrink-0" />
+                                            <span>Connect with Technician (WhatsApp)</span>
+                                            <Send className="w-4 h-4 shrink-0 ml-1" />
+                                        </div>
                                     </button>
 
                                     <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-3 text-xs text-slate-500">

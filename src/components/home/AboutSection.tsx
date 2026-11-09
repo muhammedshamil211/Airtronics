@@ -74,12 +74,14 @@ export default function AboutSection() {
       {/* ========================================================================= */}
       {/* CENTERED ABOUT DIV (Placed in Process Section, Centered, Not Full Width)   */}
       {/* ========================================================================= */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1240px]">
-        <div
-          id="about"
-          aria-labelledby="about-section-heading"
-          className="relative bg-white text-slate-900 rounded-3xl sm:rounded-[32px] p-6 sm:p-10 lg:p-14 border border-slate-200/80 shadow-2xl shadow-black/25 overflow-hidden"
-        >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1040px]">
+        {/* Liquid Glass Outer Frame (Borderless) */}
+        <div className="p-2 sm:p-2.5 md:p-3 bg-white/[0.12] backdrop-blur-xl shadow-2xl shadow-black/30 rounded-[3px]">
+          <div
+            id="about"
+            aria-labelledby="about-section-heading"
+            className="relative bg-white text-slate-900 rounded-none p-5 sm:p-7 lg:p-9 border border-slate-200/80 overflow-hidden"
+          >
           {/* Background Watermark "ABOUT" (Matches ServicesShowcase & Booking style) */}
           <div
             className="absolute -top-6 xs:-top-8 sm:-top-12 md:-top-16 left-0 sm:left-4 pointer-events-none select-none z-0 overflow-hidden"
@@ -90,32 +92,24 @@ export default function AboutSection() {
             </span>
           </div>
 
-          {/* Section Header: Eyebrow + Heading + Simple English Story */}
-          <div className="relative z-10 max-w-3xl mb-8 sm:mb-10">
+          {/* Section Header: Heading + Simple English Story */}
+          <div className="relative z-10 max-w-2xl mb-6 sm:mb-7">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             >
-              {/* Eyebrow with Blue Accent Line */}
-              <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
-                <span className="w-7 sm:w-9 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
-                <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#0076FF] uppercase">
-                  ABOUT AIRTRONICS
-                </span>
-              </div>
-
               {/* Section Heading */}
               <h2
                 id="about-section-heading"
-                className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-4"
+                className="font-[family-name:var(--font-onest)] text-xl xs:text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#0f172a] tracking-tight leading-[1.18] mb-3"
               >
-                Dubai&apos;s Friendly &amp; Trusted AC Repair Team Since 2022
+                About Airtronics – Dubai&apos;s Trusted AC Repair Team
               </h2>
 
               {/* Plain English, Simple & Honest Story */}
-              <div className="space-y-3.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+              <div className="space-y-2.5 text-xs sm:text-sm text-slate-600 font-normal leading-relaxed">
                 <p>
                   We are <strong>Airtronics Fixcare</strong> — a licensed air conditioning service team based right here in Dubai. Since 2022, our goal has been simple: help families, homeowners, and local businesses stay cool, comfortable, and worry-free in the Dubai heat.
                 </p>
@@ -135,17 +129,17 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-30px' }}
             transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-            className="relative z-10 pt-6 sm:pt-8 border-t border-slate-100"
+            className="relative z-10 pt-5 sm:pt-6 border-t border-slate-100"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
               {TRUST_PILLARS.map((pillar, idx) => {
                 const IconComponent = pillar.icon;
                 return (
-                  <div key={idx} className="flex items-center gap-3 group">
-                    <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-blue-50 text-[#0076FF] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-200">
-                      <IconComponent className="w-5 h-5 sm:w-5.5 sm:h-5.5" strokeWidth={2} />
+                  <div key={idx} className="flex items-center gap-2.5 group">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-none [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] bg-blue-50 text-[#0076FF] flex items-center justify-center shrink-0 transition-transform duration-200">
+                      <IconComponent className="w-4.5 h-4.5 sm:w-5 sm:h-5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" strokeWidth={2} />
                     </div>
-                    <h3 className="font-[family-name:var(--font-onest)] text-xs sm:text-sm font-bold text-[#0f172a] leading-snug">
+                    <h3 className="font-[family-name:var(--font-onest)] text-xs sm:text-[13px] font-bold text-[#0f172a] leading-snug">
                       {pillar.title}
                     </h3>
                   </div>
@@ -160,13 +154,13 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-30px' }}
             transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
-            className="relative z-10 flex flex-wrap items-center gap-3.5 pt-8 sm:pt-10"
+            className="relative z-10 flex flex-wrap items-center gap-3 pt-5 sm:pt-6"
           >
             <Button
               href="tel:+971586596321"
               variant="primary"
               size="md"
-              className="px-6 sm:px-7 !py-2.5 sm:!py-3 text-xs sm:text-sm font-semibold group shadow-md shadow-blue-500/15"
+              className="px-5 sm:px-6 !py-2 text-xs sm:text-sm font-semibold group"
               aria-label="Call Airtronics Fixcare"
               iconLeft={<PhoneCall className="w-4 h-4" />}
             >
@@ -177,7 +171,7 @@ export default function AboutSection() {
               href="/services"
               variant="white"
               size="md"
-              className="px-6 sm:px-7 !py-2.5 sm:!py-3 text-xs sm:text-sm font-semibold group"
+              className="px-5 sm:px-6 !py-2 text-xs sm:text-sm font-semibold group"
               aria-label="View All Services"
               iconRight={
                 <ArrowRight
@@ -191,6 +185,7 @@ export default function AboutSection() {
           </motion.div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
