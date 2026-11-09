@@ -68,7 +68,7 @@ export default function Home() {
       <ProcessSection />
       <GoogleReviewsSection />
       <RecentWorkGallery />
-      <CoreDifferentiators />
+      {/* <CoreDifferentiators /> */}
       <BrandsSection />
       <ServiceAreasSection />
       <FaqSection />
