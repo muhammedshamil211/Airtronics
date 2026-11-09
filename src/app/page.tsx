@@ -4,7 +4,6 @@ import QuickBookingBar from '@/components/ui/QuickBookingBar';
 import ServicesShowcase from '@/components/home/ServicesShowcase';
 
 // Code-split below-the-fold sections for instant FCP & optimal bundle splitting
-const AboutSection = dynamic(() => import('@/components/home/AboutSection'));
 const RecentWorkGallery = dynamic(() => import('@/components/home/RecentWorkGallery'));
 const GoogleReviewsSection = dynamic(() => import('@/components/home/GoogleReviewsSection'));
 const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
@@ -67,9 +66,8 @@ export default function Home() {
       <QuickBookingBar />
       <ServicesShowcase />
       <ProcessSection />
-      <AboutSection />
-      <RecentWorkGallery />
       <GoogleReviewsSection />
+      <RecentWorkGallery />
       <CoreDifferentiators />
       <BrandsSection />
       <ServiceAreasSection />

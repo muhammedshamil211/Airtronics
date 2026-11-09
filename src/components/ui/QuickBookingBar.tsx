@@ -70,7 +70,13 @@ Please confirm technician availability and arrival time.`;
       <div className="relative z-10 flex flex-col lg:flex-row items-center lg:items-center justify-between gap-4 lg:gap-6 mb-2 sm:mb-2.5">
         
         {/* Left Side: Eyebrow, Heading & Description */}
-        <div className="flex-1 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex-1 max-w-3xl"
+        >
           {/* Eyebrow with Cyan Accent Line */}
           <div className="flex items-center gap-2 mb-1">
             <span className="w-6 sm:w-8 h-[2px] bg-[#0076FF] rounded-full inline-block" />
@@ -88,7 +94,7 @@ Please confirm technician availability and arrival time.`;
           <p className="font-[family-name:var(--font-onest)] text-xs sm:text-sm md:text-[15px] text-slate-600 font-normal leading-relaxed max-w-2xl tracking-normal">
             Book professional AC repair, maintenance and HVAC services for homes, offices and commercial properties across Dubai.
           </p>
-        </div>
+        </motion.div>
 
         {/* Right Side: 3D Circular Ceiling Air Diffuser in Foreground in the Heading Row */}
         <div className="shrink-0 flex flex-col items-center justify-center relative">
@@ -115,7 +121,13 @@ Please confirm technician availability and arrival time.`;
       </div>
 
       {/* 3. Bottom Row: 4-Column Booking Form (75% Width Aligned Left, Compact Fields & Snug Gaps) */}
-      <div className="relative z-10 w-full lg:w-[85%] xl:w-[85%] mr-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+        className="relative z-10 w-full lg:w-[85%] xl:w-[85%] mr-auto"
+      >
         <form onSubmit={handleSubmit} className="w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-1 md:gap-1.5 w-full">
             
@@ -195,7 +207,7 @@ Please confirm technician availability and arrival time.`;
             </p>
           )}
         </form>
-      </div>
+      </motion.div>
 
     </div>
   );

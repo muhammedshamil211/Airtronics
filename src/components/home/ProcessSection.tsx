@@ -1,48 +1,73 @@
 'use client';
 
 import React from 'react';
-import { PhoneCall, Search, FileText, CheckCircle, ArrowRight, Wrench } from 'lucide-react';
+import { Search, FileText, Settings, ShieldCheck, ChevronRight, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Button from '@/components/ui/Button';
 import Script from 'next/script';
+import AnimatedShaderBackground from '@/components/ui/AnimatedShaderBackground';
+import AboutSection from './AboutSection';
 
 const WHATSAPP_PHONE = '971586596321';
 
-const processSteps = [
+// Custom WhatsApp Icon matching the reference image's clean rounded speech bubble with handset
+function WhatsAppIcon({ className = 'w-6 h-6' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      <path d="M9.5 9.5c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1l-.5.5c.3.6.8 1.1 1.4 1.4l.5-.5c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1-.4.4-1 .6-1.5.5-1.5-.2-2.9-1-3.9-2s-1.8-2.4-2-3.9c-.1-.5.1-1.1.5-1.5z" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+interface StepItem {
+  id: string;
+  stepNumber: number;
+  title: string;
+  description: string;
+  badge?: string;
+  icon: React.ReactNode;
+}
+
+const processSteps: StepItem[] = [
   {
     id: '01',
     stepNumber: 1,
-    icon: <PhoneCall className="w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]" aria-hidden="true" />,
     title: 'Book AC Service',
-    description: 'Contact us via phone or WhatsApp. We schedule a convenient time for rapid AC repair or maintenance anywhere in Dubai.',
+    description: 'Contact us via phone or WhatsApp to schedule a time.',
+    badge: 'Instant Dispatch',
+    icon: <WhatsAppIcon className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" />,
   },
   {
     id: '02',
     stepNumber: 2,
-    icon: <Search className="w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]" aria-hidden="true" />,
-    title: 'Expert AC Inspection',
-    description: 'Our licensed technicians arrive on time equipped with digital manifold gauges to accurately diagnose cooling issues.',
+    title: 'Expert Inspection',
+    description: 'Our licensed technicians diagnose the issue accurately.',
+    badge: 'Digital Diagnostics',
+    icon: <Search className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" strokeWidth={2.2} />,
   },
   {
     id: '03',
     stepNumber: 3,
-    icon: <FileText className="w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]" aria-hidden="true" />,
     title: 'Upfront Pricing',
-    description: 'We provide a transparent, itemized quote before any AC repair begins. Zero hidden callout or unexpected labor fees.',
+    description: 'Receive a clear, itemized quote with no hidden charges.',
+    badge: 'Fixed Itemized Rate',
+    icon: <FileText className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" strokeWidth={2.2} />,
   },
   {
     id: '04',
     stepNumber: 4,
-    icon: <CheckCircle className="w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]" aria-hidden="true" />,
     title: 'Same-Day Repair',
-    description: 'We restore your cooling using genuine factory OEM parts, clean up the work area, and verify optimal airflow.',
+    description: 'We fix the issue using genuine parts and restore cooling.',
+    badge: '100% Genuine OEM',
+    icon: <Settings className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" strokeWidth={2.2} />,
   },
   {
     id: '05',
     stepNumber: 5,
-    icon: <Wrench className="w-6 h-6 lg:w-7 lg:h-7 text-[#005eb8]" aria-hidden="true" />,
     title: 'Follow-up & Support',
-    description: 'We follow up after service with a written 90-day parts-and-labor warranty to guarantee long-term peace of mind.',
+    description: 'After-service support with warranty for peace of mind.',
+    badge: '90-Day Warranty',
+    icon: <ShieldCheck className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" strokeWidth={2.2} />,
   },
 ];
 
@@ -69,11 +94,23 @@ export default function ProcessSection() {
     })),
   };
 
+  const handleStepClick = (stepId: string) => {
+    if (stepId === '01') {
+      window.open(
+        `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(
+          'Hello Airtronics Fixcare! I would like to book an AC service in Dubai.'
+        )}`,
+        '_blank',
+        'noopener,noreferrer'
+      );
+    }
+  };
+
   return (
     <section
       id="process"
-      className="py-16 sm:py-20 lg:py-24 relative bg-[#fcfcfc] border-b border-gray-100"
       aria-labelledby="process-heading"
+      className="relative overflow-hidden pt-16 sm:pt-20 lg:pt-24 pb-0 bg-[#03132b] text-white"
     >
       {/* JSON-LD HowTo Schema for Google Rich Snippets */}
       <Script
@@ -82,169 +119,201 @@ export default function ProcessSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
-      <motion.div
-        initial={{ opacity: 0, x: -45 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, margin: '-50px' }}
-        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className="container mx-auto px-4 md:px-8 max-w-[1200px] relative z-10"
-      >
+      {/* ========================================================================= */}
+      {/* 1. ANIMATED SHADER BACKGROUND (Framer Animated-Shader-2.0 Abyss Engine)   */}
+      {/* ========================================================================= */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Real-time WebGL Animated Fluid Shader in Brand Electric Blue & Cyan (High Speed) */}
+        <AnimatedShaderBackground
+          patternStyle={3}
+          speed={0.75}
+          scale={1.0}
+          distortion={2.5}
+          brightness={1.5}
+          refraction={1.0}
+          colors={{
+            base: '#000614',
+            mid: '#004aa6',
+            high: '#11444fff',
+          }}
+        />
 
-        {/* Header (Original Section Heading Style Preserved) */}
-        <header className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
-            <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-              How It Works
-            </span>
-          </div>
-          <h2
-            id="process-heading"
-            className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
-          >
-            Our 5-Step AC Repair &amp; HVAC Service Process
-          </h2>
-          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
-            We value your time and comfort. Our streamlined 5-step approach ensures your AC repair and maintenance needs are resolved quickly and professionally by our Dubai Municipality approved experts.
-          </p>
-        </header>
+        {/* Soft atmospheric depth allowing the smooth flowing liquid waves to shine through */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/30 pointer-events-none" />
 
-        {/* ========================================================================= */}
-        {/* MOBILE VIEW (< lg): Fluid Step-by-Step Flow (NO CARD BOX DESIGN)          */}
-        {/* ========================================================================= */}
-        <div className="lg:hidden relative pl-5 sm:pl-7 space-y-7 sm:space-y-8" role="list">
-          {/* Vertical Connecting Guide Line */}
-          <div
-            className="absolute left-[26px] sm:left-[34px] top-6 bottom-6 w-[2px] bg-gray-200"
-            aria-hidden="true"
-          />
-
-          {processSteps.map((step, index) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, x: -16 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 0.4, delay: index * 0.08 }}
-              className="relative flex items-start gap-4 sm:gap-5 bg-transparent border-0 shadow-none p-0"
-              role="listitem"
-            >
-              {/* Step Circle with ID (Not a card box) */}
-              <div className="relative shrink-0 z-10">
-                <div className="w-13 h-13 sm:w-15 sm:h-15 rounded-full bg-white shadow-md flex items-center justify-center border-4 border-[#fcfcfc] text-[#005eb8]">
-                  {React.cloneElement(step.icon, { className: 'w-6 h-6 text-[#005eb8]' })}
-                </div>
-                <div
-                  className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-[10px] shadow-xs"
-                  aria-hidden="true"
-                >
-                  {step.id}
-                </div>
-              </div>
-
-              {/* Step Text Details */}
-              <div className="pt-1 min-w-0 flex-1">
-                <h3 className="text-base sm:text-lg font-medium tracking-tight text-[#111111] mb-1.5 leading-snug">
-                  {step.title}
-                </h3>
-                <p className="text-[#666666] text-xs sm:text-sm leading-relaxed">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* ========================================================================= */}
-        {/* DESKTOP VIEW (lg:+): Original 5 Columns with Animated Connecting Line     */}
-        {/* ========================================================================= */}
+        {/* Top-left cyan radiant glow */}
         <div
-          className="hidden lg:grid grid-cols-5 gap-3 relative"
-          role="list"
-        >
-          {/* Connecting Line (Desktop Only) */}
-          <div
-            className="absolute top-[2.5rem] left-[8%] right-[8%] h-[2px] bg-gray-200 -z-10"
-            aria-hidden="true"
-          >
-            <motion.div
-              className="h-full bg-[#005eb8]"
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 1.5, ease: 'easeInOut', delay: 0.2 }}
-              style={{ originX: 0 }}
-            />
-          </div>
+          className="absolute -top-24 -left-24 w-[500px] h-[500px] rounded-full blur-[120px] opacity-25 pointer-events-none"
+          style={{ background: 'radial-gradient(circle, #00D4FF 0%, #004aa6 45%, transparent 70%)' }}
+        />
 
-          {processSteps.map((step, index) => (
-            <motion.article
-              key={step.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="relative flex flex-col items-center text-center group bg-transparent p-0"
-              role="listitem"
+        {/* Middle-right ambient glow */}
+        <div
+          className="absolute top-1/3 -right-24 w-[500px] h-[500px] rounded-full blur-[130px] opacity-20 pointer-events-none"
+          style={{ background: 'radial-gradient(circle, #0076FF 0%, transparent 70%)' }}
+        />
+
+        {/* Bottom-left ambient glow */}
+        <div
+          className="absolute bottom-20 -left-20 w-[450px] h-[450px] rounded-full blur-[110px] opacity-20 pointer-events-none"
+          style={{ background: 'radial-gradient(circle, #00AEEF 0%, transparent 70%)' }}
+        />
+      </div>
+
+      <AboutSection />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-[1240px] relative z-20 pb-25">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-12 items-start lg:items-center">
+
+          {/* ======================================================================= */}
+          {/* 2. LEFT COLUMN: Eyebrow + Tall Bebas Heading + Subtitle + Watermark     */}
+          {/* ======================================================================= */}
+          <div className="lg:col-span-6 flex flex-col justify-start pt-0 sm:pt-2 lg:pt-4 relative min-h-0 lg:min-h-[460px] pb-0">
+
+            {/* Faint Giant Background Watermark "PROCESS" */}
+            <div
+              className="absolute -top-6 xs:-top-8 sm:-top-12 md:-top-24 left-16 sm:left-24 md:left-4 pointer-events-none select-none z-0 overflow-hidden"
+              aria-hidden="true"
             >
-              {/* Scaled Icon Container */}
-              <div className="w-18 h-18 md:w-20 md:h-20 lg:w-20 lg:h-20 rounded-full bg-white shadow-md lg:shadow-lg flex items-center justify-center mb-5 relative border-4 border-[#fcfcfc] group-hover:border-[#005eb8]/20 transition-all duration-300">
-                <div
-                  className="absolute -top-1 -right-1 w-6 h-6 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-xs"
-                  aria-hidden="true"
-                >
-                  {step.id}
-                </div>
-                <div className="group-hover:scale-110 transition-transform duration-300">
-                  {step.icon}
-                </div>
+              <span className="font-[family-name:var(--font-bebas)] text-8xl xs:text-9xl sm:text-[160px] md:text-[200px] lg:text-[240px] font-bold text-white/[0.045] leading-none tracking-wider uppercase block">
+                PROCESS
+              </span>
+            </div>
+
+            {/* Text Content (Positioned Up & Crystal Clear) */}
+            <div className="relative z-30 max-w-xl">
+              {/* Eyebrow with Cyan Accent Bar */}
+              <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+                <span className="w-6 sm:w-8 h-[2.5px] bg-[#00AEEF] rounded-full inline-block" />
+                <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#00AEEF] uppercase">
+                  OUR PROCESS
+                </span>
               </div>
 
-              {/* Text */}
-              <h3 className="text-base sm:text-lg font-medium tracking-tight text-[#111111] mb-2 group-hover:text-[#005eb8] transition-colors leading-snug">
-                {step.title}
-              </h3>
-              <p className="text-[#666666] text-sm leading-relaxed max-w-[220px]">
-                {step.description}
+              {/* Main Headline in Tall Display Font (Bebas Neue) */}
+              <h2
+                id="process-heading"
+                className="font-[family-name:var(--font-bebas)] text-4xl xs:text-5xl sm:text-6xl lg:text-[68px] xl:text-[76px] font-bold text-white tracking-[0.02em] uppercase leading-[0.95] mb-3 sm:mb-4"
+              >
+                From Request to <br className="hidden sm:inline" />
+                Cool Comfort
+              </h2>
+
+              {/* Subtitle */}
+              <p className="font-[family-name:var(--font-onest)] text-xs sm:text-sm md:text-base text-slate-300 font-normal leading-relaxed max-w-md">
+                A simple, fast and hassle-free process for all your AC and HVAC service needs.
               </p>
-            </motion.article>
-          ))}
-        </div>
+            </div>
 
-        {/* ========================================================================= */}
-        {/* CTA ACTION BUTTON: Hero-Style Shape (Rounded-lg, Bold, Shadow-md)         */}
-        {/* ========================================================================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 sm:mt-14 text-center"
-        >
-          <Button
-            href={`https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent('Hello Airtronics! I would like to book AC repair & service in Dubai.')}`}
-            target="_blank"
-            variant="primary"
-            size="lg"
-            className="px-8 sm:px-9 !py-4 sm:!py-4.5 group"
-            aria-label="Book Your AC Repair on WhatsApp"
-            iconLeft={
-              <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current shrink-0" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+          </div>
+
+          {/* ======================================================================= */}
+          {/* 3. RIGHT COLUMN: Connecting Cyan Arc with Glowing Dots + 5 Process Cards*/}
+          {/* ======================================================================= */}
+          <div className="lg:col-span-6 relative flex items-center">
+
+            {/* Decorative Curved Cyan Connecting Arc with 5 Glowing Dots (Desktop lg:+) */}
+            <div className="hidden lg:block absolute -left-8 xl:-left-10 top-0 bottom-0 w-12 pointer-events-none z-10">
+              <svg
+                viewBox="0 0 50 480"
+                fill="none"
+                className="w-full h-full overflow-visible"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  {/* Cyan glowing filter */}
+                  <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <linearGradient id="arcGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#00AEEF" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#0076FF" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#00AEEF" stopOpacity="0.8" />
+                  </linearGradient>
+                </defs>
+
+                {/* Curved Arc Path */}
+                <path
+                  d="M 40 40 Q 5 240 40 440"
+                  stroke="url(#arcGradient)"
+                  strokeWidth="2"
+                  strokeDasharray="4 3"
+                  className="opacity-75"
+                />
+
+                {/* 5 Glowing Connection Nodes Aligned with each card */}
+                {/* Node 1 */}
+                <circle cx="37" cy="48" r="4.5" fill="#00AEEF" filter="url(#cyanGlow)" />
+                <circle cx="37" cy="48" r="2" fill="#ffffff" />
+
+                {/* Node 2 */}
+                <circle cx="21" cy="144" r="4.5" fill="#00AEEF" filter="url(#cyanGlow)" />
+                <circle cx="21" cy="144" r="2" fill="#ffffff" />
+
+                {/* Node 3 */}
+                <circle cx="15" cy="240" r="5" fill="#00AEEF" filter="url(#cyanGlow)" />
+                <circle cx="15" cy="240" r="2.5" fill="#ffffff" />
+
+                {/* Node 4 */}
+                <circle cx="21" cy="336" r="4.5" fill="#00AEEF" filter="url(#cyanGlow)" />
+                <circle cx="21" cy="336" r="2" fill="#ffffff" />
+
+                {/* Node 5 */}
+                <circle cx="37" cy="432" r="4.5" fill="#00AEEF" filter="url(#cyanGlow)" />
+                <circle cx="37" cy="432" r="2" fill="#ffffff" />
               </svg>
-            }
-            iconRight={
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-            }
-          >
-            <span>Book Your AC Repair Now</span>
-          </Button>
-          <p className="mt-3 text-sm text-[#666666]">
-            Available 24/7 for emergency HVAC services across Dubai.
-          </p>
-        </motion.div>
+            </div>
 
-      </motion.div>
+            {/* 5 Clean Process Step Cards (No Glow / Clean Natural State) */}
+            <div className="w-full space-y-3 sm:space-y-3.5 relative z-10" role="list">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.id}
+                  initial={{ opacity: 0, x: 25 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: '-40px' }}
+                  transition={{ duration: 0.45, delay: index * 0.08, ease: 'easeOut' }}
+                  onClick={() => handleStepClick(step.id)}
+                  className="group relative flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 pr-5 sm:pr-6 rounded-2xl bg-[#091f3d]/85 hover:bg-[#0c274e]/95 border border-blue-400/20 hover:border-blue-300/40 backdrop-blur-md transition-colors duration-200 shadow-md shadow-black/20 cursor-pointer"
+                  role="listitem"
+                >
+                  {/* Clean White Squircle Icon Badge */}
+                  <div className="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-sm">
+                    {step.icon}
+                  </div>
+
+                  {/* Step Content: Step Number -> Title -> Description */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <span className="text-[11px] sm:text-xs font-bold text-[#00AEEF] tracking-wider uppercase">
+                        Step {step.id}
+                      </span>
+                      {step.badge && (
+                        <span className="text-[11px] text-blue-200/70 font-medium hidden sm:inline">
+                          • {step.badge}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="font-[family-name:var(--font-onest)] text-base sm:text-lg font-bold text-white tracking-tight leading-snug group-hover:text-[#00AEEF] transition-colors duration-200">
+                      {step.title}
+                    </h3>
+                    <p className="font-[family-name:var(--font-onest)] text-xs sm:text-[13px] text-slate-300 leading-snug mt-0.5 line-clamp-2">
+                      {step.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      
     </section>
   );
 }

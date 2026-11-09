@@ -71,17 +71,6 @@ const BASE_REVIEW_DATE = '2026-10-27T12:00:00.000Z';
 // Authentic real reviews from Airtronics Fixcare Technical Services L.L.C Google Business Profile
 export const AUTHENTIC_REVIEWS: GoogleReview[] = [
   {
-    id: 'rev-1',
-    authorName: 'MUHAMMED SHAMIL',
-    authorPhoto: '',
-    rating: 5,
-    publishedDate: BASE_REVIEW_DATE,
-    serviceTag: 'AC Maintenance & Repair',
-    locationTag: 'Dubai',
-    text: 'I had my room AC serviced by Airtronics Fixcare, and I am very happy with their service. The team was professional, friendly, and did an excellent job. They thoroughly inspected the AC and ensured everything was running properly. The service was smooth, and I am completely satisfied with the experience. Highly recommend Airtronics Fixcare to anyone looking for reliable AC maintenance and repair services.',
-    originalText: 'لقد قمت بصيانة مكيف غرفتي لدى شركة Airtronics Fixcare، وأنا سعيد جدًا بخدمتهم. كان الفريق محترفًا وودودًا، وقاموا بعمل ممتاز. قاموا بفحص المكيف بدقة وتأكدوا من أن كل شيء يعمل بشكل سليم. كانت الخدمة سلسة، وأنا راضٍ تمامًا عن التجربة. أوصي بشدة بشركة Airtronics Fixcare لأي شخص يبحث عن خدمات صيانة وإصلاح مكيفات موثوقة.',
-  },
-  {
     id: 'rev-2',
     authorName: 'Suneer Rajan',
     authorPhoto: '',

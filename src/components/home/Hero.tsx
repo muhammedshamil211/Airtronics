@@ -377,7 +377,7 @@ export default function Hero() {
 
                   {/* Typography Matching Hero Headline (Bebas Neue) & Eyebrow (Onest) */}
                   <div className="leading-tight">
-                    <span className="font-[family-name:var(--font-bebas)] text-2xl xs:text-3xl sm:text-4xl text-white leading-none tracking-tight block">
+                    <span className="font-[family-name:var(--font-bebas)] text-2xl xs:text-3xl sm:text-4xl text-white leading-none tracking-tight block drop-shadow-sm">
                       {st.value}
                     </span>
                     <span className="font-[family-name:var(--font-onest)] text-[11px] xs:text-xs sm:text-[13px] text-blue-100 font-medium uppercase tracking-[0.06em] sm:tracking-[0.08em] block mt-0.5">

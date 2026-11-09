@@ -1,19 +1,15 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import Script from 'next/script';
 import {
   Star,
-  ChevronLeft,
-  ChevronRight,
   ExternalLink,
   MessageSquarePlus,
   Quote,
-  Pause,
-  Play,
-  Languages,
+  CheckCircle2,
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 import CountUp from '@/components/ui/CountUp';
 import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/data/googleReviewsData';
@@ -63,14 +59,8 @@ function StarRating({ rating = 5 }: { rating?: number }) {
 
 const REVIEW_URL = 'https://g.page/r/CUM30MF90SldECE/review';
 const PROFILE_URL = 'https://share.google/TfwhuvdbJE34DoOM2';
-const ROTATION_INTERVAL = 5500; // 5.5 seconds per review
 
 export default function GoogleReviewsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [showOriginal, setShowOriginal] = useState<Record<string, boolean>>({});
-  const [direction, setDirection] = useState<1 | -1>(1);
-
   const totalReviews = AUTHENTIC_REVIEWS.length;
 
   // Calculate dynamic relative age day by day on client
@@ -82,40 +72,10 @@ export default function GoogleReviewsSection() {
     return computed;
   }, []);
 
-  // Auto-rotation timer with hover pause & clean reset on manual navigation
-  useEffect(() => {
-    if (isPaused) return;
-
-    const timer = setInterval(() => {
-      setDirection(1);
-      setActiveIndex((prev) => (prev + 1) % totalReviews);
-    }, ROTATION_INTERVAL);
-
-    return () => clearInterval(timer);
-  }, [activeIndex, isPaused, totalReviews]);
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setActiveIndex((prev) => (prev === 0 ? totalReviews - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % totalReviews);
-  };
-
-  const handleSelect = (idx: number) => {
-    setDirection(idx > activeIndex ? 1 : -1);
-    setActiveIndex(idx);
-  };
-
-  const toggleLanguage = (id: string) => {
-    setShowOriginal((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
-
-  const activeReview = AUTHENTIC_REVIEWS[activeIndex];
-  const isOriginalActive = showOriginal[activeReview.id] && activeReview.originalText;
-  const currentText = isOriginalActive ? activeReview.originalText : activeReview.text;
+  // Duplicate reviews for seamless infinite cinematic marquee
+  const marqueeReviews = useMemo(() => {
+    return [...AUTHENTIC_REVIEWS, ...AUTHENTIC_REVIEWS];
+  }, []);
 
   // Schema.org Structured Data with dynamic publication dates
   const reviewsSchema = {
@@ -154,7 +114,7 @@ export default function GoogleReviewsSection() {
     <section
       id="testimonials"
       aria-labelledby="testimonials-heading"
-      className="relative bg-[#fcfcfc] py-20 sm:py-20 lg:py-20 border-b border-gray-100 overflow-hidden"
+      className="relative bg-white py-14 sm:py-20 lg:py-24 border-b border-slate-100 overflow-hidden"
     >
       {/* Schema.org Structured Data */}
       <Script
@@ -163,280 +123,205 @@ export default function GoogleReviewsSection() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }}
       />
 
-      
+      {/* ========================================================================= */}
+      {/* MAIN CONTAINER: Maximum 1400px Width Constraint                            */}
+      {/* ========================================================================= */}
+      <div className="relative max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Faint Giant Background Watermark "REVIEWS" */}
+        <div
+          className="absolute -top-6 xs:-top-8 sm:-top-12 md:-top-18 left-4 pointer-events-none select-none z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <span className="font-[family-name:var(--font-onest)] text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[170px] font-black text-slate-900/[0.035] leading-none tracking-tight block">
+            REVIEWS
+          </span>
+        </div>
 
-      <div className="relative z-10 max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8">
+        {/* ======================================================================= */}
+        {/* SECTION HEADER & GOOGLE TRUST BADGE                                     */}
+        {/* ======================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10 sm:mb-12"
         >
-          {/* 2-COLUMN LAYOUT */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-
-            {/* ========================================================================= */}
-            {/* COLUMN 1: Testimonials Narrative & Official Google Profile Overview       */}
-            {/* ========================================================================= */}
-            <div className="lg:col-span-5 flex flex-col justify-between">
-              <div>
-                {/* Eyebrow */}
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-[#005eb8] font-semibold" aria-hidden="true">/</span>
-                  <span className="text-sm md:text-base font-semibold tracking-wide text-gray-800 uppercase">
-                    Testimonials
-                  </span>
-                </div>
-
-                {/* Main Headline */}
-                <h2
-                  id="testimonials-heading"
-                  className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
-                >
-                  What Our Clients Say
-                </h2>
-
-                <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed mb-8">
-                  Read authentic feedback from property owners and residents across Dubai who trust Airtronics for professional AC repair, routine servicing, and prompt technical support.
-                </p>
-
-                {/* Google Rating Overview Card */}
-                <div className="bg-white rounded-2xl border border-slate-200/90 p-5 shadow-xs mb-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-13 h-13 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0">
-                      <GoogleIcon className="w-7 h-7" />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1">
-                        <CountUp end={5} decimals={1} duration={1.2} className="text-2xl font-black text-[#111111]" />
-                        <StarRating rating={5} />
-                      </div>
-                      <span className="text-xs font-semibold text-gray-500 block">
-                        Overall Rating on Google Reviews
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex flex-wrap items-center gap-3">
-                    <Button
-                      href={REVIEW_URL}
-                      target="_blank"
-                      variant="primary"
-                      size="sm"
-                      className="!px-4.5 !py-2.5"
-                      title="Write a Google Review"
-                      iconLeft={<MessageSquarePlus className="w-4 h-4" />}
-                    >
-                      <span>Review Us on Google</span>
-                    </Button>
-
-                    <Button
-                      href={PROFILE_URL}
-                      target="_blank"
-                      variant="white"
-                      size="sm"
-                      className="!px-3.5 !py-2.5 text-gray-700"
-                      title="View Profile on Google"
-                      iconRight={<ExternalLink className="w-3.5 h-3.5" />}
-                    >
-                      <span>View Profile</span>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-
-            {/* Slider Navigation & Review Counter */}
-            <div className="flex items-center justify-between pt-2">
-              <div className="flex items-center gap-2">
-                {AUTHENTIC_REVIEWS.map((_, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => handleSelect(idx)}
-                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                      idx === activeIndex
-                        ? 'w-7 bg-[#005eb8]'
-                        : 'w-2 bg-slate-200 hover:bg-slate-300'
-                    }`}
-                    aria-label={`Jump to review ${idx + 1}`}
-                  />
-                ))}
-              </div>
-
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-gray-400 mr-2">
-                  0{activeIndex + 1} <span className="font-normal text-gray-300">/ 0{totalReviews}</span>
-                </span>
-
-                <button
-                  type="button"
-                  onClick={handlePrev}
-                  className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-gray-700 hover:text-[#005eb8] hover:border-[#005eb8] transition-colors cursor-pointer shadow-2xs"
-                  aria-label="Previous review"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleNext}
-                  className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-gray-700 hover:text-[#005eb8] hover:border-[#005eb8] transition-colors cursor-pointer shadow-2xs"
-                  aria-label="Next review"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setIsPaused((prev) => !prev)}
-                  className="w-9 h-9 rounded-full bg-white border border-slate-200 flex items-center justify-center text-gray-500 hover:text-[#005eb8] transition-colors cursor-pointer shadow-2xs ml-1"
-                  aria-label={isPaused ? 'Resume auto-play' : 'Pause auto-play'}
-                  title={isPaused ? 'Resume rotation' : 'Pause rotation'}
-                >
-                  {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* ========================================================================= */}
-          {/* COLUMN 2: Automatic One-by-One Review Card with Smooth Animation          */}
-          {/* ========================================================================= */}
-          <div
-            className="lg:col-span-7 relative"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            {/* Auto-Rotation Progress Bar */}
-            <div className="w-full bg-slate-100 h-1 rounded-full overflow-hidden mb-3">
-              <motion.div
-                key={activeIndex}
-                initial={{ width: '0%' }}
-                animate={{ width: isPaused ? undefined : '100%' }}
-                transition={{
-                  duration: isPaused ? 0 : ROTATION_INTERVAL / 1000,
-                  ease: 'linear',
-                }}
-                className="h-full bg-gradient-to-r from-[#005eb8] to-[#00AEEF]"
-              />
+          <div className="max-w-2xl">
+            {/* Eyebrow with Blue Accent Line */}
+            <div className="flex items-center gap-2.5 mb-2.5 sm:mb-3">
+              <span className="w-7 sm:w-9 h-[2.5px] bg-[#0076FF] rounded-full inline-block" />
+              <span className="text-xs sm:text-sm font-bold tracking-[0.16em] text-[#0076FF] uppercase">
+                CLIENT REVIEWS
+              </span>
             </div>
 
-            {/* Interactive Card Container */}
-            <div className="relative min-h-[380px] sm:min-h-[340px] w-full overflow-hidden">
-              <AnimatePresence initial={false} custom={direction} mode="popLayout">
-                <motion.article
-                  key={activeReview.id}
-                  custom={direction}
-                  initial={{ opacity: 0, x: direction > 0 ? 32 : -32 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction > 0 ? -32 : 32 }}
-                  transition={{
-                    duration: 0.32,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  style={{ willChange: 'transform, opacity' }}
-                  className="w-full bg-white rounded-3xl border border-slate-200/90 p-7 sm:p-9 shadow-sm flex flex-col justify-between relative"
-                  role="region"
-                  aria-label={`Review by ${activeReview.authorName}`}
-                >
-                  {/* Decorative background quotation mark */}
-                  <Quote
-                    className="absolute -top-3 -right-3 w-28 h-28 text-slate-100 pointer-events-none -rotate-12"
-                    aria-hidden="true"
-                  />
+            {/* Main Headline Matching Services & Booking Typography */}
+            <h2
+              id="testimonials-heading"
+              className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-3"
+            >
+              What Our Clients Say About Airtronics
+            </h2>
 
-                  <div>
-                    {/* Top Row: Reviewer Info + Service Tag + Google Badge */}
-                    <div className="flex items-start justify-between gap-4 mb-5 relative z-10">
-                      <div className="flex items-center gap-3.5">
-                        {/* Avatar */}
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#005eb8] to-[#00AEEF] text-white font-bold flex items-center justify-center text-base shadow-[0_4px_12px_rgba(0,94,184,0.3)] ring-2 ring-blue-100 shrink-0">
-                          {activeReview.authorName.charAt(0)}
-                        </div>
-
-                        <div>
-                          <h3 className="font-bold text-base sm:text-lg text-[#111111] leading-tight">
-                            {activeReview.authorName}
-                          </h3>
-                          <div className="flex items-center gap-2 mt-1">
-                            <span className="text-xs text-gray-400">
-                              {reviewAges[activeReview.id] || '1 day ago'}
-                            </span>
-                            <span className="text-gray-300">•</span>
-                            <span className="text-xs font-semibold text-[#005eb8] bg-blue-50/90 border border-blue-100/60 px-2 py-0.5 rounded-md shadow-2xs">
-                              {activeReview.serviceTag}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 shadow-2xs">
-                        <GoogleIcon className="w-5 h-5" />
-                      </div>
-                    </div>
-
-                    {/* Stars Row */}
-                    <div className="flex items-center gap-2 mb-5 relative z-10">
-                      <StarRating rating={activeReview.rating} />
-                      <span className="text-xs font-bold text-amber-700 bg-amber-50/90 border border-amber-200/50 px-2.5 py-0.5 rounded-md shadow-2xs">
-                        5.0 Star Rating
-                      </span>
-                    </div>
-
-                    {/* Review Body */}
-                    <blockquote
-                      className={`text-slate-700 text-sm sm:text-base md:text-[17px] leading-relaxed mb-5 relative z-10 font-normal ${
-                        isOriginalActive ? 'font-arabic text-right dir-rtl leading-[1.8]' : ''
-                      }`}
-                      dir={isOriginalActive ? 'rtl' : 'ltr'}
-                    >
-                      &ldquo;{currentText}&rdquo;
-                    </blockquote>
-                  </div>
-
-                  {/* Card Footer: Language Switcher & Location */}
-                  <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3 relative z-10">
-                    {/* Bilingual toggle if original Arabic is present */}
-                    {activeReview.originalText ? (
-                      <button
-                        type="button"
-                        onClick={() => toggleLanguage(activeReview.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#005eb8] hover:text-[#004a94] bg-blue-50/80 hover:bg-blue-100/70 border border-blue-100 px-3 py-1.5 rounded-lg transition-colors cursor-pointer shadow-2xs"
-                      >
-                        <Languages className="w-3.5 h-3.5" />
-                        <span>
-                          {isOriginalActive ? 'View English Translation' : 'عرض النص الأصلي (Arabic)'}
-                        </span>
-                      </button>
-                    ) : (
-                      <span className="text-xs text-gray-400">Verified Google Customer Review</span>
-                    )}
-
-                    <div className="flex items-center gap-3 text-xs text-gray-400">
-                      <span>{activeReview.locationTag || 'Dubai'}</span>
-                      <span>•</span>
-                      <a
-                        href={PROFILE_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-[#005eb8] hover:underline transition-colors font-medium"
-                      >
-                        Google Maps
-                      </a>
-                    </div>
-                  </div>
-                </motion.article>
-              </AnimatePresence>
-            </div>
-
-            {/* Hover guidance caption */}
-            <p className="text-[11px] text-gray-400 text-center mt-3">
-              {isPaused ? 'Auto-rotation paused' : 'Hover over review to pause'}
+            <p className="font-[family-name:var(--font-onest)] text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+              Read authentic 5-star feedback from property owners and residents across Dubai who trust Airtronics for certified AC repairs, maintenance, and prompt cooling support.
             </p>
           </div>
 
-        </div>
+          {/* Two-Row Google Rating Score & Actions Block */}
+          <div className="flex flex-col gap-3.5 shrink-0">
+            {/* ROW 1: Big Google Icon + 5 Stars + Small Review Rating Text */}
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-center justify-center shrink-0 shadow-2xs">
+                <GoogleIcon className="w-6 h-6 sm:w-7 sm:h-7" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="font-[family-name:var(--font-onest)] text-xl sm:text-2xl font-black text-[#0f172a] leading-none">
+                    5.0
+                  </span>
+                  <StarRating rating={5} />
+                </div>
+                <span className="text-xs font-semibold text-slate-500 block mt-1">
+                  Based on Verified Google Reviews
+                </span>
+              </div>
+            </div>
+
+            {/* ROW 2: Two Review Action Buttons */}
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <Button
+                href={REVIEW_URL}
+                target="_blank"
+                variant="primary"
+                size="sm"
+                className="!px-4.5 !py-2.5 font-semibold shadow-md shadow-blue-500/15 text-xs sm:text-sm"
+                title="Write a Google Review"
+                iconLeft={<MessageSquarePlus className="w-4 h-4" />}
+              >
+                <span>Review Us</span>
+              </Button>
+
+              <Button
+                href={PROFILE_URL}
+                target="_blank"
+                variant="white"
+                size="sm"
+                className="!px-4 !py-2.5 text-slate-700 font-semibold text-xs sm:text-sm"
+                title="View Profile on Google"
+                iconRight={<ExternalLink className="w-3.5 h-3.5" />}
+              >
+                <span>All Reviews</span>
+              </Button>
+            </div>
+          </div>
         </motion.div>
+
+        {/* ======================================================================= */}
+        {/* CINEMATIC FLOW TRACK (Contained in Max 1400px Div with Soft Edge Masks) */}
+        {/* ======================================================================= */}
+        <div className="relative w-full overflow-hidden py-3">
+          {/* Left & Right Cinematic Edge Gradient Masks */}
+          <div className="absolute left-0 inset-y-0 w-12 sm:w-20 md:w-28 bg-gradient-to-r from-white via-white/85 to-transparent pointer-events-none z-20" />
+          <div className="absolute right-0 inset-y-0 w-12 sm:w-20 md:w-28 bg-gradient-to-l from-white via-white/85 to-transparent pointer-events-none z-20" />
+
+          {/* Continuous Gliding Track (Auto-Pauses on Hover for Seamless Reading) */}
+          <div className="cinematic-reviews-track flex gap-5 sm:gap-6 will-change-transform">
+            {marqueeReviews.map((rev, index) => (
+              <div
+                key={`${rev.id}-${index}`}
+                className="relative w-[310px] xs:w-[350px] sm:w-[390px] md:w-[430px] shrink-0 bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 hover:border-blue-300/80 p-6 sm:p-7 shadow-xs hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 flex flex-col justify-between group cursor-default overflow-hidden"
+              >
+                {/* Top Subtle Cyan-to-Blue Brand Accent Indicator */}
+                <div className="absolute top-0 inset-x-7 h-[2.5px] bg-gradient-to-r from-[#0076FF] via-[#00AEEF] to-transparent rounded-full group-hover:h-[3px] transition-all" />
+
+                {/* Subtle Decorative Background Quotation Watermark */}
+                <Quote
+                  className="absolute -top-1 -right-1 w-20 h-20 text-blue-500/[0.04] pointer-events-none -rotate-12 group-hover:text-blue-500/[0.07] transition-colors"
+                  aria-hidden="true"
+                />
+
+                <div className="relative z-10">
+                  {/* Top Bar: Slanted Parallelogram Service Pill + Google 'G' Badge */}
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    {/* Parallelogram Service Tag Matching Hero Button DNA */}
+                    <div className="[transform:skewX(-10deg)] bg-blue-50 border border-blue-200/60 px-3 py-1 rounded-sm shadow-2xs">
+                      <span className="[transform:skewX(10deg)] block text-[10px] sm:text-[11px] font-bold text-[#0076FF] uppercase tracking-wider">
+                        {rev.serviceTag}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-slate-50 border border-slate-100/90 shadow-2xs shrink-0">
+                      <GoogleIcon className="w-3.5 h-3.5" />
+                      <span className="text-[11px] font-semibold text-slate-500">Google Verified</span>
+                    </div>
+                  </div>
+
+                  {/* Star Rating Row */}
+                  <div className="flex items-center gap-2 mb-3.5">
+                    <StarRating rating={rev.rating} />
+                    <span className="text-xs font-bold text-amber-700 bg-amber-50/90 border border-amber-200/50 px-2 py-0.5 rounded-md">
+                      5.0
+                    </span>
+                  </div>
+
+                  {/* Customer Feedback Body */}
+                  <p className="font-[family-name:var(--font-onest)] text-sm sm:text-[15px] text-slate-700 leading-relaxed font-normal line-clamp-4">
+                    &ldquo;{rev.text}&rdquo;
+                  </p>
+                </div>
+
+                {/* Card Bottom: Author Profile & Location Verification */}
+                <div className="relative z-10 pt-4 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr from-[#0076FF] to-[#00AEEF] text-white font-[family-name:var(--font-onest)] font-bold flex items-center justify-center text-xs sm:text-sm shadow-xs ring-2 ring-blue-100 shrink-0">
+                      {rev.authorName.charAt(0)}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-[family-name:var(--font-onest)] font-bold text-xs sm:text-sm text-[#0f172a] truncate group-hover:text-[#0076FF] transition-colors">
+                        {rev.authorName}
+                      </h3>
+                      <p className="text-[11px] text-slate-400 truncate">
+                        {rev.locationTag || 'Dubai'} • {reviewAges[rev.id] || 'Recent Client'}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-[11px] text-emerald-600 font-semibold shrink-0">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">Verified</span>
+                  </div>
+                </div>
+
+              </div>
+            ))}
+          </div>
+
+          {/* Scoped CSS for Infinite Gliding Animation & Interactive Hover Pause */}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                @keyframes cinematicMarquee {
+                  0% {
+                    transform: translate3d(0, 0, 0);
+                  }
+                  100% {
+                    transform: translate3d(-50%, 0, 0);
+                  }
+                }
+                .cinematic-reviews-track {
+                  width: max-content;
+                  animation: cinematicMarquee 45s linear infinite;
+                }
+                .cinematic-reviews-track:hover {
+                  animation-play-state: paused;
+                }
+              `,
+            }}
+          />
+        </div>
 
       </div>
     </section>
