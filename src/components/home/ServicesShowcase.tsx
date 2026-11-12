@@ -39,7 +39,7 @@ export default function ServicesShowcase() {
           'openingHours': 'Mo-Su 00:00-24:00',
           'address': {
             '@type': 'PostalAddress',
-            'streetAddress': 'Office M-01, Commercial Bank of Dubai Building, Al Kabeesi',
+            'streetAddress': 'Commercial Bank of Dubai Building, M-01, Al Khabaisi',
             'addressLocality': 'Dubai',
             'addressCountry': 'AE',
           },

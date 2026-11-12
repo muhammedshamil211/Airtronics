@@ -13,14 +13,14 @@ const ServiceAreasSection = dynamic(() => import('@/components/home/ServiceArea'
 
 
 export const metadata = {
-  title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+  title: '#1 AC Repair & 24/7 HVAC Maintenance Dubai | Airtronics',
   description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival in Downtown, Marina, Jumeirah & Business Bay. 100% OEM parts. Call 24/7.',
   keywords: 'AC Repair Dubai, Emergency AC Repair Dubai, HVAC Maintenance Dubai, AC Cleaning Dubai, Chiller Repair Dubai, 24/7 AC Service Dubai, Airtronics Fixcare',
   alternates: {
     canonical: 'https://airtronicsfixcare.com',
   },
   openGraph: {
-    title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+    title: '#1 AC Repair & 24/7 HVAC Maintenance Dubai | Airtronics',
     description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival with 100% genuine parts.',
     url: 'https://airtronicsfixcare.com',
     siteName: 'Airtronics Fixcare Technical Services LLC',
@@ -38,7 +38,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '#1 AC Repair Dubai & 24/7 HVAC Maintenance Services | Airtronics',
+    title: '#1 AC Repair & 24/7 HVAC Maintenance Dubai | Airtronics',
     description: 'Certified AC repair and emergency HVAC maintenance across Dubai. 30–45 min arrival with 100% genuine parts.',
     images: ['https://airtronicsfixcare.com/images/home.jpeg'],
   },

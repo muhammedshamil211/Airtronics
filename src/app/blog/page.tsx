@@ -29,8 +29,23 @@ export const metadata: Metadata = {
       'Practical Dubai AC guides: warm air troubleshooting, DEWA electricity savings, water leaks, duct cleaning, and Empower FCU tips.',
     url: 'https://airtronicsfixcare.com/blog',
     siteName: 'Airtronics Fixcare Technical Services LLC',
+    images: [
+      {
+        url: 'https://airtronicsfixcare.com/images/hvac_maintenance_technician.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Airtronics Fixcare Dubai AC & HVAC Blog Guides',
+      },
+    ],
     locale: 'en_AE',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AC & HVAC Blog Dubai | Airtronics Fixcare',
+    description:
+      'Practical Dubai AC guides: warm air troubleshooting, DEWA electricity savings, water leaks, duct cleaning, and Empower FCU tips.',
+    images: ['https://airtronicsfixcare.com/images/hvac_maintenance_technician.jpg'],
   },
 };
 

@@ -31,8 +31,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
+  const fullTitle = post.metaTitle.includes('Airtronics')
+    ? post.metaTitle
+    : `${post.metaTitle} | Airtronics Fixcare`;
+  const imageUrl = post.image.startsWith('http')
+    ? post.image
+    : `https://airtronicsfixcare.com${post.image}`;
+
   return {
-    title: `${post.metaTitle} | Airtronics Fixcare`,
+    title: fullTitle,
     description: post.metaDescription,
     keywords: post.keywords.join(', '),
     alternates: {
@@ -48,12 +55,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.publishedAt,
       images: [
         {
-          url: post.image,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: post.title,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description: post.metaDescription,
+      images: [imageUrl],
     },
   };
 }

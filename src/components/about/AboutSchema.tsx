@@ -33,7 +33,7 @@ export default function AboutSchema() {
         'foundingDate': '2022',
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': 'Al Qusais Industrial Area',
+          'streetAddress': 'Commercial Bank of Dubai Building, M-01, Al Khabaisi',
           'addressLocality': 'Dubai',
           'addressRegion': 'Dubai',
           'postalCode': '00000',

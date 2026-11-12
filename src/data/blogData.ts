@@ -191,7 +191,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'how-to-lower-dewa-ac-electricity-bill-dubai',
     title: 'How to Lower Your DEWA AC Electricity Bill in Dubai Without Sweating',
     metaTitle: 'Lower DEWA AC Bill Dubai | Proven Tips',
-    metaDescription: 'AC makes up to 70% of summer DEWA bills in Dubai. Discover simple thermostat settings, coil cleaning habits, and sealing fixes that cut electricity costs by 20–30%.',
+    metaDescription: 'AC drives up to 70% of Dubai summer DEWA bills. Learn thermostat settings, coil cleaning habits, and sealing fixes that cut electricity costs by 20–30%.',
     category: 'DEWA Savings',
     readTime: '5 min read',
     publishedAt: '2026-11-08',
