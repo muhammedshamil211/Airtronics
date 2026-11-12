@@ -32,9 +32,11 @@ export default function ContactSection() {
     const text = [
       `*NEW AC REQUEST - AIRTRONICS FIXCARE*`,
       `• Name: ${name.trim()}`,
-      `• Phone: ${phone.trim()}`,
+      phone.trim() ? `• Phone: ${phone.trim()}` : null,
       `• Message: ${message.trim() || 'Need AC assistance in Dubai'}`,
-    ].join('\n');
+    ]
+      .filter(Boolean)
+      .join('\n');
 
     const url = `https://wa.me/971586596321?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -255,12 +257,11 @@ export default function ContactSection() {
                         htmlFor="contact-phone"
                         className="font-[family-name:var(--font-onest)] block text-xs font-bold text-slate-700 mb-1.5"
                       >
-                        Phone / WhatsApp *
+                        Phone / WhatsApp (Optional)
                       </label>
                       <input
                         id="contact-phone"
                         type="tel"
-                        required
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="e.g. 050 123 4567"
