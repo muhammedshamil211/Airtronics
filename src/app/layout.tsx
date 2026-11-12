@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import dynamic from "next/dynamic";
 
 const MobileFloatingBar = dynamic(() => import("@/components/ui/MobileFloatingBar"));
+const OfflineNotice = dynamic(() => import("@/components/ui/OfflineNotice"));
 
 const onest = Onest({
   subsets: ["latin"],
@@ -159,6 +160,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
         <Footer />
         <MobileFloatingBar />
+        <OfflineNotice />
       </body>
     </html>
   );
