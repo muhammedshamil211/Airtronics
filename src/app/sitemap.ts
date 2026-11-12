@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { SERVICES_DATA } from '@/data/servicesData';
+import { BLOG_POSTS } from '@/data/blogData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://airtronicsfixcare.com';
@@ -22,6 +23,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/about`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
@@ -57,5 +64,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  return [...coreRoutes, ...serviceRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map(post => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.publishedAt,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }));
+
+  return [...coreRoutes, ...serviceRoutes, ...blogRoutes];
 }
