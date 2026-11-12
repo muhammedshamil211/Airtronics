@@ -88,7 +88,7 @@ export default function ServicesHero() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 flex flex-col items-start text-left"
+            className="lg:col-span-7 order-2 lg:order-1 flex flex-col items-start text-left"
           >
             {/* Clean Inline Breadcrumb (No Pill) */}
             <motion.nav
@@ -186,12 +186,12 @@ export default function ServicesHero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Borderless Airtronics Service Visual */}
+          {/* Right Column: Borderless Airtronics Service Visual (First on Mobile) */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
+            className="lg:col-span-5 order-1 lg:order-2 relative flex items-center justify-center lg:justify-end"
           >
             <div className="relative w-full max-w-[460px] lg:max-w-none overflow-hidden">
               <Image
@@ -216,7 +216,12 @@ export default function ServicesHero() {
       </div>
 
       {/* 3. Brand Blue Slanted Parallelogram Stats Ribbon (Matches Home Motif) */}
-      <div className="relative z-20 w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mt-2 sm:mt-4">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
+        className="relative z-20 w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mt-2 sm:mt-4"
+      >
         <div className="bg-[#0076FF] hover:bg-[#006ee9] text-white border border-blue-400/30 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] shadow-lg shadow-blue-500/20 transition-all duration-300 rounded-none">
           <div className="[transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-5 xs:px-6 sm:px-8 lg:px-12 py-4 sm:py-5">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
@@ -244,7 +249,7 @@ export default function ServicesHero() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

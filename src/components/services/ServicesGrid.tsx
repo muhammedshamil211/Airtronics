@@ -192,8 +192,17 @@ export default function ServicesGrid() {
         {/* Services Showcase Grid */}
         {filteredServices.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-            {filteredServices.map((service) => (
-              <ServiceCard key={service.slug} service={service} className="w-full" />
+            {filteredServices.map((service, idx) => (
+              <motion.div
+                key={service.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.4, delay: (idx % 3) * 0.06, ease: 'easeOut' }}
+                className="flex w-full"
+              >
+                <ServiceCard service={service} className="w-full" />
+              </motion.div>
             ))}
           </div>
         ) : (
@@ -220,7 +229,13 @@ export default function ServicesGrid() {
         )}
 
         {/* Sharp Architectural Fast-Action Bar (Zero Rounded Divs, Slanted Buttons) */}
-        <div className="mt-14 sm:mt-16 bg-slate-50 border border-slate-200 rounded-none p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          className="mt-14 sm:mt-16 bg-slate-50 border border-slate-200 rounded-none p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+        >
           <div>
             <h3 className="font-[family-name:var(--font-onest)] text-lg sm:text-xl font-bold text-[#0f172a] mb-1">
               Need Immediate AC or HVAC Assistance in Dubai?
@@ -257,7 +272,7 @@ export default function ServicesGrid() {
               </span>
             </a>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

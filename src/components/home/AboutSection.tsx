@@ -168,11 +168,11 @@ export default function AboutSection() {
             </Button>
 
             <Button
-              href="/services"
+              href="/about"
               variant="white"
               size="md"
               className="px-5 sm:px-6 !py-2 text-xs sm:text-sm font-semibold group"
-              aria-label="View All Services"
+              aria-label="Read More About Us"
               iconRight={
                 <ArrowRight
                   className="w-4 h-4 transition-transform group-hover:translate-x-1"
@@ -180,7 +180,7 @@ export default function AboutSection() {
                 />
               }
             >
-              <span>Explore All Services</span>
+              <span>Read More About Us</span>
             </Button>
           </motion.div>
         </div>

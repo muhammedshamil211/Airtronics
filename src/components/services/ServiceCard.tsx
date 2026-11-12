@@ -88,7 +88,7 @@ export default function ServiceCard({ service, className = '' }: ServiceCardProp
   return (
     <div
       onClick={handleCardClick}
-      className={`group relative bg-white rounded-none border border-slate-200/80 overflow-hidden hover:border-[#0076FF] transition-all duration-300 flex flex-col cursor-pointer ${className}`}
+      className={`group relative bg-white rounded-none border border-slate-200/80 overflow-hidden hover:border-[#0076FF] hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 flex flex-col cursor-pointer ${className}`}
     >
       {/* 1. Top Image Container with Smooth Bottom White Blend & Compact Aspect Ratio */}
       <div className="relative w-full aspect-[16/8.5] bg-slate-50 overflow-hidden">
