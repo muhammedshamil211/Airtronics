@@ -1,98 +1,111 @@
 import { ServiceDetail } from './types';
 
 export const ahuFahuFcuService: ServiceDetail = {
-    slug: 'ahu-fahu-fcu',
-    id: '11',
-    title: 'AHU, FAHU & FCU Services in Dubai',
-    shortTitle: 'AHU, FAHU & FCU Services',
-    tagline: 'Certified district cooling maintenance, chilled-water coil chemical washing, modulating actuator valve replacement, and belt/bearing overhauls.',
-    badge: 'District Cooling Certified (Empower/Emicool)',
-    image: '/images/services/ahu-fahu-fcu.jpg',
-    subcategories: [
+  slug: 'ahu-fahu-fcu',
+  id: '11',
+  title: 'AHU, FAHU & FCU Services in Dubai',
+  shortTitle: 'AHU, FAHU & FCU Services',
+  tagline: 'Specialist repair and servicing for chilled-water Fan Coil Units (FCUs), AHUs, and Fresh Air units in Empower, Emicool, and Tabreed buildings.',
+  badge: 'District Cooling Certified (Empower/Emicool)',
+  image: '/images/services/ahu-fahu-fcu.jpg',
+  subcategories: [
+    'Fan Coil Unit (FCU) Repair & Servicing',
     'Air Handling Unit (AHU) Mechanical Overhaul',
-    'Fresh Air Handling Unit (FAHU) Heat Wheel Servicing',
-    'Fan Coil Unit (FCU) High-Rise Tower Maintenance',
-    '2-Way & 3-Way Modulating Actuator Valve Replacement',
-    'Pocket, Bag & HEPA Primary Filter Replacement',
-    'Chilled-Water Coil Chemical Pressure Wash',
+    'Fresh Air Handling Unit (FAHU) Servicing',
+    '2-Way & 3-Way Actuator Valve Replacement',
+    'Air Filter, Bag Filter & HEPA Replacement',
+    'Chilled-Water Coil Chemical Wash',
     'V-Belt Tensioning & Pulley Alignment',
-    'AHU / FCU Bearing Lubrication & Dynamic Balancing'
+    'Blower Bearing Replacement & Fan Balancing'
   ],
-    metaTitle: 'AHU & FCU Maintenance Dubai | Chilled Water Fan Coil & FAHU Repair',
-    metaDescription: 'Specialist AHU, FAHU & FCU maintenance in Dubai. District cooling valve actuator replacement (Belimo), chilled water coil cleaning, fan belt alignment & balancing.',
-    keywords: [
-      'FCU maintenance Dubai',
-      'AHU servicing Dubai',
-      'FAHU maintenance Dubai',
-      'fan coil unit repair Dubai',
-      'chilled water FCU Dubai',
-      'FCU actuator valve replacement Dubai',
-      'Empower FCU repair Dubai'
-    ],
-    overview: 'High-rise residential towers, hotels, and commercial buildings across Dubai rely on chilled-water Fan Coil Units (FCUs) and Fresh Air Handling Units (FAHUs) connected to district cooling providers like Empower, Emicool, and Tabreed. Airtronics Fixcare delivers specialized chilled-water HVAC engineering—rebuilding blower fans, replacing failed Belimo/Honeywell modulating 2-way actuators, and chemically descaling chilled water coils to eliminate delta-T penalty fees.',
-    heroHighlights: [
-      'Certified technicians experienced in Empower, Emicool, and Tabreed district cooling interfaces',
-      'Genuine 2-way and 3-way modulating actuator valve replacements (Belimo, Danfoss, Honeywell)',
-      'High-pressure chemical descaling of chilled-water coils to restore thermal heat transfer',
-      'Dynamic blower fan wheel balancing and heavy-duty pillow block bearing replacements'
-    ],
-    keyBenefits: [
-      {
-        title: 'Eliminates District Cooling Surcharges',
-        description: 'Calibrates chilled water flow and return temperatures to maintain a healthy delta-T (ΔT), preventing costly low-delta-T penalty billing.'
-      },
-      {
-        title: 'Whisper-Quiet Bedroom Cooling',
-        description: 'Replaces screeching blower bearings, re-tensions AHU drive belts, and installs acoustic flex duct connectors to silence noise.'
-      },
-      {
-        title: 'Rapid Temperature Drop',
-        description: 'Replaces jammed or seized 2-way motorized valves that block chilled water from entering the coil when the thermostat calls for cool.'
-      },
-      {
-        title: 'Fresh Air & Humidity Control',
-        description: 'Services FAHU heat recovery wheels, pre-coolers, and MERV 13 filtration to deliver tempered, odor-free outdoor fresh air.'
-      }
-    ],
-    specifications: [
-      'Ultrasonic chilled-water flow rate and GPM flow meter testing',
-      '2-way and 3-way pressure-independent control valve (PICV) calibration',
-      'Belimo and Honeywell 0–10V / 24V modulating actuator replacements',
-      'Chilled water coil chemical descaling and fin comb straightening',
-      'Centrifugal blower dynamically balanced to ISO 1940 G2.5 standards',
-      'Differential air pressure switch and static pressure duct measurement'
-    ],
-    commonIssuesSolved: [
-      'FCU blowing warm air despite thermostat being set to 19°C',
-      'Water leaking from ceiling vents due to blocked chilled-water drain pans',
-      'Loud screeching, rumbling, or rattling noises from ceiling FCU blowers',
-      'High monthly district cooling capacity charges with low delta-T warnings',
-      'Excessive indoor humidity and condensation dripping from linear slot diffusers'
-    ],
-    dubaiLocations: [
-      'Downtown Dubai (Burj Khalifa District)',
-      'Business Bay',
-      'Dubai Marina',
-      'Jumeirah Lake Towers (JLT)',
-      'DIFC',
-      'City Walk',
-      'Palm Jumeirah (Golden Mile & Shoreline)',
-      'Dubai Creek Harbour',
-      'Dubai Silicon Oasis',
-      'Motor City'
-    ],
-    faqs: [
-      {
-        q: 'Why is my high-rise FCU blowing warm air even though the fan is running?',
-        a: 'In 90% of chilled water FCUs, the issue is a jammed motorized 2-way actuator valve (e.g. Belimo) or a blocked chilled-water strainer preventing cold water from entering the coil.'
-      },
-      {
-        q: 'Do you work on district cooling systems from Empower and Emicool?',
-        a: 'Yes, our certified technicians specialize in building FCUs, BTU energy meters, and pressure-independent control valves connected to district cooling plants.'
-      },
-      {
-        q: 'How often should fresh air handling units (FAHU) be serviced in Dubai?',
-        a: 'Due to severe outdoor humidity and dust, FAHUs require monthly filter inspection and quarterly coil washing to prevent mold from being pumped into the building.'
-      }
-    ]
-  };
+  metaTitle: 'AHU, FAHU & FCU Repair in Dubai',
+  metaDescription: 'Chilled water FCU, AHU & FAHU repair in Dubai. We fix jammed actuator valves, noisy blower fans, coil blocks & Empower/Emicool cooling issues fast.',
+  keywords: [
+    'FCU maintenance Dubai',
+    'FCU repair Dubai',
+    'AHU servicing Dubai',
+    'FAHU maintenance Dubai',
+    'chilled water AC repair Dubai',
+    'FCU actuator valve replacement Dubai',
+    'Empower FCU repair Dubai',
+    'Emicool AC repair Dubai'
+  ],
+  overview: 'Apartments, high-rise towers, hotels, and offices across Dubai use chilled-water Fan Coil Units (FCUs) and Fresh Air Handling Units (FAHUs) connected to district cooling providers like Empower, Emicool, and Tabreed. Unlike gas split ACs, these systems rely on cold water valves, strainers, and motorized actuators. Airtronics Fixcare repairs jammed Belimo/Honeywell actuator valves, replaces noisy blower bearings, and cleans chilled-water coils so your rooms cool fast without high district cooling bills.',
+  heroHighlights: [
+    'Specialists in Empower, Emicool, and Tabreed district cooling systems',
+    'Genuine 2-way & 3-way actuator valves (Belimo, Danfoss, Honeywell)',
+    'Deep chemical cleaning of chilled-water coils for stronger cooling',
+    'Blower fan balancing and bearing replacement to stop ceiling noise'
+  ],
+  keyBenefits: [
+    {
+      title: 'Stops Warm Air & Slow Cooling',
+      description: 'We replace stuck 2-way motorized actuator valves and clear clogged Y-strainers that stop cold district water from entering your FCU coil.'
+    },
+    {
+      title: 'Quieter Ceiling Units',
+      description: 'We replace worn, screeching blower bearings, align AHU fan belts, and balance blower wheels so bedrooms and offices stay quiet.'
+    },
+    {
+      title: 'Helps Prevent High District Cooling Bills',
+      description: 'Clean coils and balanced water flow keep your supply-to-return water temperature gap (Delta-T) healthy, avoiding extra cooling charges.'
+    },
+    {
+      title: 'Cleaner Fresh Air Supply',
+      description: 'We service FAHU heat recovery wheels and replace clogged MERV/bag filters so fresh outdoor air enters clean, cool, and odor-free.'
+    }
+  ],
+  specifications: [
+    'Chilled-water flow rate and inlet/outlet temperature (Delta-T) testing',
+    '2-way and 3-way control valve (PICV) and Y-strainer cleaning',
+    'Belimo and Honeywell 24V / 0–10V modulating actuator replacement',
+    'Chilled-water coil chemical descaling and bent-fin straightening',
+    'Blower wheel cleaning, shaft balancing, and bearing replacement',
+    'Thermostat communication and 3-speed fan motor wiring check'
+  ],
+  commonIssuesSolved: [
+    'Apartment FCU blowing warm air even when the thermostat is set to 18°C',
+    'Water dripping from ceiling vents due to overflowed FCU drain trays',
+    'Loud humming, screeching, or rattling from the ceiling AC unit',
+    'High Empower or Emicool bills with poor cooling performance',
+    'Damp indoor humidity and water condensation on ceiling diffusers'
+  ],
+  dubaiLocations: [
+    'Downtown Dubai (Burj Khalifa District)',
+    'Business Bay',
+    'Dubai Marina',
+    'Jumeirah Lake Towers (JLT)',
+    'DIFC',
+    'City Walk',
+    'Palm Jumeirah (Golden Mile & Shoreline)',
+    'Dubai Creek Harbour',
+    'Dubai Silicon Oasis',
+    'Motor City'
+  ],
+  faqs: [
+    {
+      q: 'Why is my apartment AC blowing warm air in an Empower or Emicool building?',
+      a: 'In most chilled-water Fan Coil Units (FCUs), warm air happens because the 2-way motorized actuator valve is stuck closed, the water strainer is blocked with rust/sludge, or the wall thermostat is not sending a signal.'
+    },
+    {
+      q: 'Do you repair Empower, Emicool, and Tabreed district cooling units?',
+      a: 'Yes. We service and repair building-side FCUs, AHUs, FAHUs, actuator valves, strainers, and thermostats across all district-cooled towers in Dubai.'
+    },
+    {
+      q: 'Why is my ceiling FCU making a loud rattling or screeching noise?',
+      a: 'A screeching or humming noise usually means worn blower motor bearings, a loose fan wheel, or a failing capacitor. Replacing the bearings or motor restores quiet operation.'
+    },
+    {
+      q: 'How long does it take to replace an FCU actuator valve?',
+      a: 'Replacing a faulty 2-way Belimo or Honeywell actuator valve typically takes 45 to 90 minutes, including testing water flow and thermostat response.'
+    },
+    {
+      q: 'How often should FCU and FAHU units be serviced in Dubai?',
+      a: 'Apartment FCUs should be serviced every 4 to 6 months (coil wash, filter clean, drain flush), while building FAHUs need monthly filter checks and quarterly coil cleaning.'
+    },
+    {
+      q: 'Can you fix water leaking from my ceiling AC diffuser?',
+      a: 'Yes. Chilled-water FCUs create heavy condensation in Dubai’s humidity. We unclog blocked drain lines, clean slimy drain pans, and insulate sweating pipes to stop ceiling leaks.'
+    }
+  ]
+};

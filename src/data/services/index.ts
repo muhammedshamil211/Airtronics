@@ -4,7 +4,6 @@ import { acInstallationService } from './acInstallation';
 import { hvacMaintenanceService } from './hvacMaintenance';
 import { ductCleaningService } from './ductCleaning';
 import { amcService } from './amc';
-import { acServicingService } from './acServicing';
 import { refrigerantGasService } from './refrigerantGas';
 import { waterLeakageService } from './waterLeakage';
 import { partsReplacementService } from './partsReplacement';
@@ -28,7 +27,6 @@ export const SERVICES_DATA: import('./types').ServiceDetail[] = [
   hvacMaintenanceService,
   ductCleaningService,
   amcService,
-  acServicingService,
   refrigerantGasService,
   waterLeakageService,
   partsReplacementService,

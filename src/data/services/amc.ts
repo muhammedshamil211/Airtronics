@@ -1,94 +1,106 @@
 import { ServiceDetail } from './types';
 
 export const amcService: ServiceDetail = {
-    slug: 'amc',
-    id: '05',
-    title: 'Annual Maintenance Contracts (AMC) for Dubai Properties',
-    shortTitle: 'Annual Maintenance Contracts (AMC)',
-    tagline: 'Year-round cooling peace of mind with scheduled quarterly servicing, unlimited 24/7 emergency breakdown callouts, and zero labor fees.',
-    badge: 'Priority 24/7 Protection',
-    image: '/images/amc_plan_checklist.jpg',
-    subcategories: [
-    'Residential Villa & Townhouse Annual AMC Contracts',
-    'Luxury Apartment & High-Rise Residence AMC Plans',
-    'Commercial Office, Retail & Restaurant HVAC Contracts',
-    'Quarterly Scheduled 24-Point Comprehensive Preventive Visits',
+  slug: 'amc',
+  id: '05',
+  title: 'Annual Maintenance Contracts (AMC) for Dubai Properties',
+  shortTitle: 'Annual Maintenance Contracts (AMC)',
+  tagline: 'Year-round AC protection with scheduled seasonal servicing, unlimited 24/7 emergency breakdown callouts, and zero labor charges.',
+  badge: 'Priority 24/7 Protection',
+  image: '/images/amc_plan_checklist.jpg',
+  subcategories: [
+    'Residential Villa & Townhouse AC AMC Plans',
+    'Apartment & High-Rise FCU AMC Contracts',
+    'Office, Retail & Restaurant HVAC Contracts',
+    'Quarterly Scheduled 24-Point Preventive Visits'
   ],
-    metaTitle: 'AC AMC Dubai | Annual Maintenance Contract for Homes & Offices',
-    metaDescription: 'Affordable AC AMC contracts in Dubai. Scheduled quarterly deep servicing, unlimited emergency breakdown callouts & zero labor charges 24/7 across UAE.',
-    keywords: [
-      'AC AMC Dubai',
-      'annual maintenance contract Dubai',
-      'villa AC AMC Dubai',
-      'office AC maintenance contract Dubai',
-      'commercial HVAC AMC Dubai',
-      'residential AMC Dubai',
-      'unlimited AC emergency callouts'
-    ],
-    overview: 'Emergency AC repairs in the heat of Dubai summer are stressful and expensive. An Airtronics Fixcare Annual Maintenance Contract (AMC) gives homeowners, landlords, and facility managers guaranteed priority service year-round. Our AMC plans include scheduled quarterly maintenance, unlimited emergency breakdown visits, and zero labor charges.',
-    heroHighlights: [
-      '3 to 4 scheduled comprehensive seasonal maintenance visits per year',
-      'Unlimited 24/7 emergency breakdown visits with guaranteed priority dispatch',
-      'Zero labor fees on all mechanical and electrical troubleshooting',
-      'Dedicated key account manager and direct WhatsApp engineering hotline'
-    ],
-    keyBenefits: [
-      {
-        title: 'Zero Unexpected Emergency Repair Costs',
-        description: 'Never worry about paying emergency call-out fees or inflated summer labor charges. All service calls are covered 100% under your contract.'
-      },
-      {
-        title: 'Priority 30-Minute Dispatch Guarantee',
-        description: 'During peak 50°C summer heatwaves when technicians are booked out across Dubai, AMC contract holders receive top-priority emergency response.'
-      },
-      {
-        title: 'Protects Real Estate Asset Value',
-        description: 'Documented quarterly service logs keep equipment warranties active and provide essential maintenance records when selling or leasing villas.'
-      },
-      {
-        title: 'Custom Packages for Villas & Businesses',
-        description: 'Flexible tiered packages customized for townhouses, luxury villas, boutique offices, retail stores, and commercial warehouses.'
-      }
-    ],
-    specifications: [
-      'Comprehensive asset tagging and serial number tracking',
-      'Full quarterly 24-point preventative mechanical servicing',
-      'Unlimited emergency breakdown callouts 365 days a year',
-      'Digital service logs with technician sign-off sent to your email',
-      '15% discount on all OEM replacement compressors, fan motors, and boards',
-      'Annual electrical panel and isolator thermal scan'
-    ],
-    commonIssuesSolved: [
-      'Paying high emergency callout fees every time an AC breaks down',
-      'Waiting days for a technician during peak July and August summer rush',
-      'Tenants complaining about persistent AC issues in rental properties',
-      'Uncertainty about the mechanical health and safety of your home HVAC',
-      'Premature system failure caused by neglected quarterly filter and coil maintenance'
-    ],
-    dubaiLocations: [
-      'All Residential Communities in Dubai',
-      'Commercial Free Zones & Business Parks',
-      'Arabian Ranches',
-      'Dubai Hills Estate',
-      'Jumeirah Islands',
-      'JVC',
-      'Business Bay',
-      'Downtown Dubai',
-      'Dubai South',
-      'Meydan'
-    ],
-    faqs: [
-      {
-        q: 'What is included in an Airtronics AC AMC package?',
-        a: 'Our standard AMC includes 3 or 4 scheduled deep preventative maintenance visits per year, unlimited emergency breakdown callouts, zero labor charges on repairs, and discounted OEM parts.'
-      },
-      {
-        q: 'Do you offer AMC packages for landlords with multiple properties?',
-        a: 'Yes, we manage commercial and residential portfolios across Dubai with consolidated billing, dedicated account managers, and automatic quarterly dispatch.'
-      },
-      {
-        q: 'Are replacement spare parts included in the AMC?',
-        a: 'Consumable preventative chemicals and labor are included. If replacement components like compressors or fan motors are required, AMC holders receive wholesale discounted OEM pricing.'
-      }
-    ]
-  };
+  metaTitle: 'AC AMC Contracts Dubai | Annual Plans',
+  metaDescription: 'Affordable AC Annual Maintenance Contracts (AMC) in Dubai. Scheduled servicing, 24/7 priority breakdown visits & zero labor fees for homes & offices.',
+  keywords: [
+    'AC AMC Dubai',
+    'annual maintenance contract Dubai',
+    'villa AC AMC Dubai',
+    'apartment AC maintenance contract Dubai',
+    'office AC AMC Dubai',
+    'commercial HVAC AMC Dubai',
+    '24/7 AC AMC Dubai'
+  ],
+  overview: 'Unexpected AC breakdowns in the middle of Dubai summer are stressful and costly. An Airtronics Fixcare Annual Maintenance Contract (AMC) keeps your cooling running smoothly all year with scheduled deep servicing, priority 24/7 emergency callouts, and zero labor fees. Whether you own a villa, rent an apartment, or manage an office, our AMC plans stop small issues before they turn into expensive summer failures.',
+  heroHighlights: [
+    '3 to 4 scheduled deep AC maintenance visits every year',
+    'Unlimited 24/7 emergency breakdown callouts with priority dispatch',
+    'Zero labor charges for electrical and mechanical fault troubleshooting',
+    'Dedicated account coordinator and direct WhatsApp support line'
+  ],
+  keyBenefits: [
+    {
+      title: 'No Surprise Callout or Labor Fees',
+      description: 'Stop paying emergency visit fees every time an AC stops cooling. All troubleshooting and repair labor is covered under your annual plan.'
+    },
+    {
+      title: 'Priority Dispatch in Peak Summer',
+      description: 'During July and August heatwaves when repair teams are busy across Dubai, AMC customers always get priority same-day dispatch.'
+    },
+    {
+      title: 'Lower DEWA Bills & Longer AC Life',
+      description: 'Regular coil washing, drain flushing, and electrical checks keep your units efficient and help prevent costly compressor burnouts.'
+    },
+    {
+      title: 'Plans for Villas, Flats & Businesses',
+      description: 'Flexible packages tailored to townhouses, luxury villas, apartments, landlords, offices, clinics, shops, and restaurants.'
+    }
+  ],
+  specifications: [
+    'Full unit inventory tagging and equipment health record',
+    'Scheduled 24-point preventive AC servicing (3–4 times/year)',
+    'Unlimited 24/7 emergency breakdown visits 365 days a year',
+    'Digital service reports emailed after every maintenance visit',
+    '15% discount on genuine OEM spare parts (motors, capacitors, boards)',
+    'Annual electrical isolator and breaker thermal safety check'
+  ],
+  commonIssuesSolved: [
+    'Paying repeated emergency callout fees every summer',
+    'Waiting days for an available technician during peak heatwaves',
+    'Tenant complaints about leaking or warm ACs in rental properties',
+    'Sudden water leaks damaging false ceilings and wooden floors',
+    'Preventable compressor failures caused by skipped seasonal servicing'
+  ],
+  dubaiLocations: [
+    'All Residential Communities in Dubai',
+    'Commercial Free Zones & Business Parks',
+    'Arabian Ranches',
+    'Dubai Hills Estate',
+    'Jumeirah Islands',
+    'JVC',
+    'Business Bay',
+    'Downtown Dubai',
+    'Dubai South',
+    'Meydan'
+  ],
+  faqs: [
+    {
+      q: 'What is included in an Airtronics AC AMC contract?',
+      a: 'Our AMC plans include 3 to 4 scheduled deep servicing visits per year, unlimited 24/7 emergency breakdown callouts, zero labor charges on repairs, and a 15% discount on any needed spare parts.'
+    },
+    {
+      q: 'Is an AC AMC worth it for a Dubai villa or apartment?',
+      a: 'Yes. Just one or two emergency summer callouts plus seasonal servicing usually cost more than an annual AMC—and an AMC gives you priority response and lowers monthly DEWA bills.'
+    },
+    {
+      q: 'Are spare parts and AC gas included in the AMC?',
+      a: 'Cleaning chemicals, drain tablets, and all technician labor are included. If a mechanical part like a capacitor, fan motor, or compressor needs replacement, AMC members get discounted OEM parts pricing.'
+    },
+    {
+      q: 'Do you offer AMC contracts for landlords with multiple properties?',
+      a: 'Yes. We manage multi-unit residential and commercial portfolios across Dubai with one consolidated invoice, scheduled reminders, and digital reports for every visit.'
+    },
+    {
+      q: 'How quickly do you respond to an emergency under an AMC?',
+      a: 'AMC holders receive priority dispatch, with average emergency arrival times of 30 to 45 minutes across major Dubai areas.'
+    },
+    {
+      q: 'Can I sign up for an AMC if my AC currently has a fault?',
+      a: 'Yes. We first inspect your system, fix any existing breakdown at a clear upfront quote, and then activate your full Annual Maintenance Contract.'
+    }
+  ]
+};

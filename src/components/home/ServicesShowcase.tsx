@@ -29,7 +29,7 @@ export default function ServicesShowcase() {
         'description': srv.metaDescription || srv.tagline,
         'url': `https://airtronicsfixcare.com/services/${srv.slug}`,
         'image': `https://airtronicsfixcare.com${srv.image}`,
-        'termsOfService': '90-Day Written Warranty on Genuine OEM Parts & Labor',
+        'termsOfService': 'Clear Upfront Pricing & 100% Genuine OEM Parts',
         'provider': {
           '@type': 'HVACBusiness',
           'name': 'Airtronics Fixcare Technical Services LLC',
@@ -141,7 +141,7 @@ export default function ServicesShowcase() {
             className="group relative inline-flex items-center justify-center [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none bg-[#0076FF] hover:bg-[#0066de] text-white font-semibold text-sm sm:text-base px-8 py-3.5 transition-all duration-200 active:scale-[0.98]"
           >
             <div className="flex items-center gap-2.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
-              <span>Explore All 22 HVAC Services in Dubai</span>
+              <span>Explore All {SERVICES_DATA.length} HVAC Services in Dubai</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>
           </Link>

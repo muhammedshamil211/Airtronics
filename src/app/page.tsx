@@ -10,7 +10,6 @@ const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'))
 const FaqSection = dynamic(() => import('@/components/home/FaqSection'));
 const CtaSection = dynamic(() => import('@/components/home/CtaSection'));
 const ServiceAreasSection = dynamic(() => import('@/components/home/ServiceArea'));
-const CoreDifferentiators = dynamic(() => import('@/components/about/CoreDifferentiators'));
 
 
 export const metadata = {

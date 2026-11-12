@@ -2,7 +2,9 @@
 
 import React, { useState, memo } from 'react';
 import Script from 'next/script';
+import Image from 'next/image';
 import { ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const PHONE_NUMBER = '+971 58 659 6321';
 
@@ -27,9 +29,9 @@ const servicesFaqs = [
   },
   {
     id: 'services-faq-4',
-    question: 'What warranty is provided on your AC repair and installation services?',
+    question: 'Do you provide after-service support and manufacturer warranties?',
     answer:
-      'Every repair performed by Airtronics Fixcare comes with a comprehensive 90-day written guarantee covering both the replacement parts and our engineering labor. New AC installations carry a 1-year workmanship warranty plus the full original manufacturer compressor warranty.',
+      'Yes. We stand behind our workmanship with dedicated after-service customer support, and new AC installations include the full original manufacturer compressor warranty as specified by the brand.',
   },
   {
     id: 'services-faq-5',
@@ -75,48 +77,67 @@ const rightFaqs = servicesFaqs.slice(middle);
 
 const FaqItem = memo(function FaqItem({
   faq,
+  index,
   isOpen,
   onToggle,
 }: {
   faq: (typeof servicesFaqs)[0];
+  index: number;
   isOpen: boolean;
   onToggle: (id: string) => void;
 }) {
+  const numLabel = index + 1 < 10 ? `0${index + 1}` : `${index + 1}`;
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-slate-200/80 transition-colors">
       <button
         type="button"
         aria-expanded={isOpen}
         onClick={() => onToggle(faq.id)}
-        className="w-full p-5 md:p-6 flex items-start justify-between text-left hover:bg-slate-50 transition-colors duration-200 group cursor-pointer"
+        className="w-full py-5 px-1 flex items-start justify-between text-left transition-colors duration-200 group cursor-pointer"
       >
-        <span className="text-[15px] md:text-base font-medium text-[#111111] pr-5 group-hover:text-[#005eb8] transition-colors">
-          {faq.question}
-        </span>
+        <div className="flex items-start gap-3 sm:gap-4 pr-4">
+          <span className="font-[family-name:var(--font-onest)] text-xs sm:text-sm font-bold text-slate-400 group-hover:text-[#0076FF] transition-colors shrink-0 pt-0.5">
+            {numLabel}
+          </span>
+          <span
+            className={`font-[family-name:var(--font-onest)] text-base sm:text-[17px] font-bold leading-snug transition-colors ${
+              isOpen ? 'text-[#0076FF]' : 'text-slate-900 group-hover:text-[#0076FF]'
+            }`}
+          >
+            {faq.question}
+          </span>
+        </div>
 
         <div
-          className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+          className={`shrink-0 w-8 h-8 rounded-none [transform:skewX(-10deg)] flex items-center justify-center transition-all duration-300 mt-0.5 ${
             isOpen
-              ? 'bg-[#005eb8] text-white shadow-xs'
-              : 'bg-slate-100 text-slate-700 group-hover:bg-blue-50 group-hover:text-[#005eb8]'
+              ? 'bg-[#0076FF] text-white'
+              : 'bg-slate-100 text-slate-700 group-hover:bg-[#0076FF]/10 group-hover:text-[#0076FF]'
           }`}
         >
           <ChevronDown
-            className={`w-4 h-4 stroke-[2.25] transition-transform duration-300 ${
+            className={`w-4 h-4 stroke-[2.25] [transform:skewX(10deg)] transition-transform duration-300 ${
               isOpen ? 'rotate-180' : ''
             }`}
           />
         </div>
       </button>
 
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-out ${isOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
-      >
-        <div className="px-5 md:px-6 pb-6 text-[#666666] text-[15px] leading-relaxed">
-          {faq.answer}
-        </div>
-      </div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="overflow-hidden"
+          >
+            <div className="pl-7 sm:pl-9 pr-4 pb-5 font-[family-name:var(--font-onest)] text-sm sm:text-[15px] text-slate-600 leading-relaxed">
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 });
@@ -143,7 +164,7 @@ export default function ServicesFAQ() {
 
   return (
     <section
-      className="py-16 md:py-20 relative bg-slate-50/30"
+      className="relative bg-white py-14 sm:py-20 lg:py-24 border-b border-slate-100 overflow-hidden"
       aria-labelledby="services-faq-heading"
     >
       <Script
@@ -154,38 +175,45 @@ export default function ServicesFAQ() {
         }}
       />
 
-      <div className="container mx-auto px-4 md:px-8 max-w-[1200px]">
+      <div className="relative max-w-[1250px] w-full mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header matching Home FaqSection style */}
-        <header className="text-center max-w-3xl mx-auto mb-12">
-          <div className="flex items-center justify-center gap-2 mb-3">
-            <span className="text-[#005eb8] font-semibold">/</span>
+        {/* Faint Giant Background Watermark */}
+        <div
+          className="absolute -top-6 xs:-top-8 sm:-top-12 md:-top-16 left-4 pointer-events-none select-none z-0 overflow-hidden"
+          aria-hidden="true"
+        >
+          <span className="font-[family-name:var(--font-onest)] text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[170px] font-black text-slate-900/[0.035] leading-none tracking-tight block">
+            FAQS
+          </span>
+        </div>
 
-            <span className="text-xs md:text-sm font-semibold tracking-wide uppercase text-gray-800">
-              Got Questions? We Have Answers
-            </span>
-          </div>
-
+        {/* Clean Single-Heading Header (No Eyebrow) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+          className="relative z-10 max-w-3xl mb-10 sm:mb-12"
+        >
           <h2
             id="services-faq-heading"
-            className="text-[28px] sm:text-[40px] md:text-[48px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-5"
+            className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-3.5"
           >
-            Frequently Asked Questions
+            Common Questions About Our HVAC Services
           </h2>
-
-          <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
-            Find answers to the most common AC repair, maintenance,
-            installation, and commercial HVAC service questions in Dubai.
+          <p className="font-[family-name:var(--font-onest)] text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            Find clear answers about emergency dispatch arrival times, diagnostic fee waivers, genuine OEM parts, and AMC coverage across Dubai.
           </p>
-        </header>
+        </motion.div>
 
-        {/* 2-Column Border-b Accordion Layout matching Home FaqSection */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-10 max-w-6xl mx-auto">
+        {/* 2-Column Accordion Grid */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-y-0 lg:gap-x-12 items-start">
           <div>
-            {leftFaqs.map((faq) => (
+            {leftFaqs.map((faq, idx) => (
               <FaqItem
                 key={faq.id}
                 faq={faq}
+                index={idx}
                 isOpen={openId === faq.id}
                 onToggle={toggleFaq}
               />
@@ -193,16 +221,31 @@ export default function ServicesFAQ() {
           </div>
 
           <div>
-            {rightFaqs.map((faq) => (
+            {rightFaqs.map((faq, idx) => (
               <FaqItem
                 key={faq.id}
                 faq={faq}
+                index={idx + middle}
                 isOpen={openId === faq.id}
                 onToggle={toggleFaq}
               />
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Subtle Bottom-Right Equipment Accent */}
+      <div
+        className="hidden md:block pointer-events-none select-none absolute -bottom-10 -right-8 lg:-bottom-12 lg:right-2 z-0 opacity-35 lg:opacity-55"
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/Angled White HVAC Vent Grille.webp"
+          alt="Linear HVAC Vent Grille"
+          width={320}
+          height={220}
+          className="w-56 lg:w-72 h-auto object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,0.1)]"
+        />
       </div>
     </section>
   );

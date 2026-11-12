@@ -5,7 +5,7 @@ import ContactHero from '@/components/contact/ContactHero';
 import ContactSection from '@/components/contact/ContactSection';
 
 export const metadata: Metadata = {
-  title: 'Contact Airtronics Fixcare | 24/7 AC Repair & HVAC Support Dubai',
+  title: 'Contact Airtronics Fixcare | 24/7 AC Repair Dubai',
   description: 'Contact Airtronics Fixcare in Dubai for emergency AC repair, HVAC maintenance, duct cleaning, and quotes. Call +971 58 659 6321 for 30–45 min on-site arrival.',
   keywords: [
     'Contact Airtronics',
@@ -98,7 +98,7 @@ const contactPageSchema = {
 
 export default function ContactPage() {
   return (
-    <main>
+    <main className="min-h-screen bg-white selection:bg-[#0076FF] selection:text-white">
       <Script
         id="contact-page-schema"
         type="application/ld+json"

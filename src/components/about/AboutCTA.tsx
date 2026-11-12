@@ -19,8 +19,8 @@ export default function AboutCTA() {
         className="absolute inset-0 bg-[url('/images/home-cta.png')] bg-cover bg-center bg-fixed"
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-[#005eb8]/90 mix-blend-multiply" aria-hidden="true" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/80 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-0 bg-[#03132b]/85" aria-hidden="true" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#03132b] via-[#0076FF]/20 to-transparent" aria-hidden="true" />
 
       <div className="container mx-auto px-4 md:px-8 max-w-5xl relative z-10 text-center">
         <motion.div
@@ -31,7 +31,7 @@ export default function AboutCTA() {
         >
           <h2
             id="about-cta-heading"
-            className="text-[28px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-medium tracking-tight text-white mb-6 leading-[1.1]"
+            className="font-[family-name:var(--font-bebas)] text-4xl xs:text-5xl sm:text-6xl md:text-[64px] font-normal tracking-[-0.02em] text-white mb-4 leading-[0.95] uppercase"
           >
             Ready to Restore Your Comfort?
           </h2>
@@ -66,8 +66,8 @@ export default function AboutCTA() {
             </Button>
           </div>
 
-          <p className="mt-8 text-white/70 text-sm tracking-wide uppercase">
-            Available 24/7 for Emergency AC Repairs in Dubai
+          <p className="mt-8 text-slate-300 text-sm font-medium">
+            Available 24/7 for emergency AC repairs across all Dubai communities
           </p>
         </motion.div>
       </div>

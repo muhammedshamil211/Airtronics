@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Search, FileText, Settings, ShieldCheck, ChevronRight, ArrowRight } from 'lucide-react';
+import { Search, FileText, Settings, ShieldCheck } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Script from 'next/script';
 import AnimatedShaderBackground from '@/components/ui/AnimatedShaderBackground';
@@ -65,8 +65,8 @@ const processSteps: StepItem[] = [
     id: '05',
     stepNumber: 5,
     title: 'Follow-up & Support',
-    description: 'After-service support with warranty for peace of mind.',
-    badge: '90-Day Warranty',
+    description: 'After-service support and care for complete peace of mind.',
+    badge: '24/7 Care Support',
     icon: <ShieldCheck className="w-5.5 h-5.5 sm:w-6 sm:h-6 text-[#0076FF]" strokeWidth={2.2} />,
   },
 ];
@@ -78,7 +78,7 @@ export default function ProcessSection() {
     '@type': 'HowTo',
     '@id': 'https://airtronicsfixcare.com/#process',
     'name': 'Our 5-Step AC Repair & HVAC Service Process in Dubai',
-    'description': 'Certified step-by-step air conditioning repair and HVAC maintenance workflow in Dubai by Airtronics Fixcare: emergency booking, precision digital diagnostics, upfront written quotes, same-day OEM repairs, and a 90-day warranty.',
+    'description': 'Certified step-by-step air conditioning repair and HVAC maintenance workflow in Dubai by Airtronics Fixcare: emergency booking, precision digital diagnostics, upfront written quotes, same-day OEM repairs, and ongoing customer support.',
     'totalTime': 'PT45M',
     'estimatedCost': {
       '@type': 'MonetaryAmount',

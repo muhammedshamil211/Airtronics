@@ -1,178 +1,262 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
-  ChevronRight,
   ShieldCheck,
   Clock,
-  Zap,
-  Star,
-  PhoneCall,
+  Phone,
   ArrowRight,
+  Check,
+  Star,
+  Calendar,
+  ChevronRight,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
-import Button from '@/components/ui/Button';
+import { motion, type Variants } from 'framer-motion';
 import CountUp from '@/components/ui/CountUp';
 
 const WHATSAPP_PHONE = '971586596321';
 
+const getWhatsAppDirectLink = () => {
+  const message =
+    'Hello Airtronics Fixcare! I would like to know more about your AC services in Dubai.';
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+};
+
+const STATS_DATA: Array<{
+  icon: React.ElementType;
+  value: React.ReactNode;
+  label: string;
+}> = [
+  { icon: Calendar, value: <CountUp start={2000} end={2022} duration={1.2} />, label: 'Serving Dubai Since' },
+  {
+    icon: Clock,
+    value: (
+      <>
+        <CountUp end={30} />–<CountUp end={45} suffix=" Min" />
+      </>
+    ),
+    label: 'Average Arrival Time',
+  },
+  { icon: ShieldCheck, value: <CountUp end={100} suffix="%" />, label: 'Original Spare Parts' },
+  { icon: Star, value: <><CountUp end={5} decimals={1} /> ★</>, label: 'Google Rating' },
+];
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
 export default function AboutHero() {
-  const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(
-    'Hello Airtronics! I would like to learn more about your services and book an HVAC inspection in Dubai.'
-  )}`;
-
-  const trustMetrics: Array<{
-    icon: React.ElementType;
-    stat: React.ReactNode;
-    title: string;
-    desc: string;
-  }> = [
-    {
-      icon: Clock,
-      stat: <CountUp start={2000} end={2022} duration={1.2} />,
-      title: 'Established in Dubai',
-      desc: 'Engineered specifically for UAE climate & 45°C+ summer heatwaves.',
-    },
-    {
-      icon: Zap,
-      stat: <><CountUp end={30} />–<CountUp end={45} suffix="m" /></>,
-      title: 'Average Arrival',
-      desc: '24/7 mobile fleet dispatch across all major Dubai communities.',
-    },
-    {
-      icon: ShieldCheck,
-      stat: <CountUp end={100} suffix="%" />,
-      title: 'Genuine OEM Parts',
-      desc: 'Factory-certified replacement compressors, capacitors, and motors.',
-    },
-    {
-      icon: Star,
-      stat: <><CountUp end={5} decimals={1} /> ★</>,
-      title: 'Google Rating',
-      desc: 'Top-rated authentic feedback from residential & commercial clients.',
-    },
-  ];
-
   return (
     <section
+      className="relative bg-white text-slate-900 overflow-hidden pt-6 sm:pt-10 md:pt-12 pb-8 sm:pb-12 lg:pb-14 border-b border-slate-100"
       aria-label="About Airtronics Fixcare Hero"
-      className="relative overflow-hidden bg-[#fcfcfc] border-b border-gray-100 pb-16 sm:pb-20"
     >
-      {/* ========================================================================= */}
-      {/* 1. TOP TEAM MEMBERS GROUP PHOTO BANNER (With "Home > About" Breadcrumb)   */}
-      {/* ========================================================================= */}
-      <div className="relative w-full h-[240px] sm:h-[300px] md:h-[360px] bg-[#08152c] overflow-hidden flex items-center justify-center">
-        {/* TEAM MEMBERS GROUP PHOTO: Replace the src with your team photo (e.g. /images/team.jpg) */}
-        <Image
-          src="/images/hero_technician_dubai.jpg"
-          alt="Airtronics Fixcare Technical Team Dubai"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_28%] brightness-[0.82] contrast-[1.05]"
-        />
-
-        {/* Ambient Dark & Brand Navy Overlays for maximum text contrast */}
-        <div className="absolute inset-0 bg-[#08152c]/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#08152c]/95 via-transparent to-[#08152c]/40" />
-
-        {/* Banner Content inside Image */}
-        <div className="relative z-10 text-center px-4 max-w-3xl mx-auto flex flex-col items-center">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight mb-3.5">
-            About Us
-          </h2>
-
-          {/* Breadcrumb Navigation: Home > About */}
-          <nav aria-label="Breadcrumb" className="inline-flex items-center space-x-2 text-xs sm:text-sm text-gray-200 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
-            <Link href="/" className="hover:text-white transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-white/70" />
-            <span className="text-white font-medium" aria-current="page">
-              About
-            </span>
-          </nav>
+      {/* Subtle Top Background Watermark */}
+      <div
+        className="absolute top-0 inset-x-0 h-[70%] pointer-events-none select-none overflow-hidden z-0"
+        aria-hidden="true"
+      >
+        <div className="max-w-[1360px] mx-auto px-4 sm:px-8 pt-2 sm:pt-4">
+          <span className="font-[family-name:var(--font-bebas)] text-[140px] xs:text-[180px] sm:text-[240px] md:text-[310px] lg:text-[380px] font-normal text-slate-900/[0.035] leading-none tracking-tight block">
+            ABOUT US
+          </span>
         </div>
+        <div className="absolute inset-x-0 bottom-0 h-32 sm:h-44 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
       </div>
 
-      {/* ========================================================================= */}
-      {/* 2. HERO SECTION FOREGROUND CONTENT                                        */}
-      {/* ========================================================================= */}
-      <div className="max-w-[1240px] w-full mx-auto px-4 sm:px-6 md:px-8 pt-10 sm:pt-14 relative z-10">
-        {/* Hero Heading & Narrative */}
-        <div className="max-w-3xl mb-8">
-          <h1 className="text-[32px] sm:text-[44px] md:text-[54px] font-medium tracking-tight leading-[1.08] text-[#111111] mb-5">
-            Dubai’s Trusted HVAC &amp; AC Maintenance Engineering Partner
-          </h1>
-
-          <p className="text-[#666666] text-base md:text-lg leading-relaxed mb-4">
-            Established in 2022, Airtronics Fixcare Technical Services LLC delivers rapid-response air conditioning repairs, precision thermodynamic diagnostics, and preventative maintenance across residential and commercial properties in Dubai.
-          </p>
-
-          <p className="text-[#777777] text-sm md:text-base leading-relaxed">
-            Where summer temperatures consistently exceed 45°C, cooling reliability is essential. Our certified technicians resolve persistent cooling failures, eliminate water leaks, sanitize ductwork, and optimize compressor efficiency to lower monthly DEWA power consumption.
-          </p>
-        </div>
-
-        {/* Direct Action Buttons */}
-        <div className="flex flex-wrap items-center gap-3.5 mb-14">
-          <Button
-            href={whatsappUrl}
-            target="_blank"
-            variant="primary"
-            size="lg"
-            aria-label="Book Field Inspection on WhatsApp"
-            iconRight={<ArrowRight className="w-4 h-4 ml-1" />}
+      {/* Main Split Architectural Hero Grid */}
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center pb-8 sm:pb-12">
+          {/* Left Column */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="lg:col-span-7 flex flex-col items-start text-left"
           >
-            <span>Book Field Inspection</span>
-          </Button>
-
-          <Button
-            href="tel:+971586596321"
-            variant="secondary"
-            size="lg"
-            aria-label="Call Airtronics Dispatch Hotline"
-            iconLeft={<PhoneCall className="w-4 h-4 mr-1 text-[#005eb8]" />}
-          >
-            <span>+971 58 659 6321</span>
-          </Button>
-        </div>
-
-        {/* Trust Metrics Cards Grid (Big standalone icons, clean borders) */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
-        >
-          {trustMetrics.map((item) => (
-            <div
-              key={item.title}
-              className="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-6 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.03)] hover:border-[#005eb8]/40 transition-colors duration-200 flex flex-col justify-between"
+            <motion.nav
+              variants={itemVariants}
+              aria-label="Breadcrumb"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 mb-4"
             >
-              <div>
-                {/* Big Standalone Icon */}
-                <item.icon className="w-7 h-7 text-[#005eb8] stroke-[1.75] mb-4" aria-hidden="true" />
+              <Link href="/" className="hover:text-[#0076FF] transition-colors">
+                Home
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+              <span className="text-[#0076FF] font-semibold" aria-current="page">
+                About Us
+              </span>
+            </motion.nav>
 
-                <span className="text-2xl sm:text-3xl font-bold tracking-tight text-[#111111] block mb-1">
-                  {item.stat}
-                </span>
+            <motion.h1
+              variants={itemVariants}
+              className="font-[family-name:var(--font-bebas)] text-5xl xs:text-6xl sm:text-7xl md:text-[78px] lg:text-[84px] xl:text-[92px] font-normal tracking-[-0.02em] leading-[0.92] uppercase mb-4 sm:mb-5"
+            >
+              <span className="block text-[#111827]">DUBAI&apos;S TRUSTED</span>
+              <span className="block text-[#0076FF]">AC CARE TEAM</span>
+            </motion.h1>
 
-                <h3 className="text-sm sm:text-base font-semibold text-gray-800 mb-2">
-                  {item.title}
-                </h3>
+            <motion.p
+              variants={itemVariants}
+              className="font-[family-name:var(--font-onest)] text-slate-600 text-sm sm:text-base md:text-[17px] leading-relaxed max-w-2xl mb-7 sm:mb-8"
+            >
+              Started in Dubai in 2022, Airtronics Fixcare Technical Services LLC helps families, homeowners, and businesses stay cool all year round. Whether your AC stops cooling in the middle of the night or needs a seasonal clean, our friendly team arrives fast with honest prices and zero stress.
+            </motion.p>
+
+            {/* Slanted Action Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-row flex-wrap sm:flex-nowrap items-stretch gap-3 sm:gap-4 mb-6 sm:mb-7 w-full sm:w-auto"
+            >
+              <a
+                href={getWhatsAppDirectLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center bg-[#0076FF] hover:bg-[#0066de] text-white text-xs xs:text-sm sm:text-base font-semibold px-5 sm:px-8 py-3.5 transition-all duration-200 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none active:scale-[0.98] flex-1 sm:flex-initial"
+                aria-label="Chat with us on WhatsApp"
+              >
+                <div className="flex items-center gap-2 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] whitespace-nowrap">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 sm:w-5 sm:h-5 fill-current shrink-0" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                  </svg>
+                  <span>Chat With Us</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </a>
+
+              <Link
+                href="tel:+971586596321"
+                className="group relative inline-flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 border border-slate-300 hover:border-[#0076FF] px-4 sm:px-6 py-2.5 transition-all duration-200 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none active:scale-[0.98] flex-1 sm:flex-initial"
+                aria-label="Call our 24/7 team"
+              >
+                <div className="flex items-center gap-2.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)] whitespace-nowrap">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] bg-[#0076FF] text-white flex items-center justify-center shrink-0">
+                    <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-white [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" />
+                  </div>
+                  <div className="leading-tight text-left">
+                    <span className="block text-[10px] sm:text-[11px] text-slate-500 font-medium">24/7 Support</span>
+                    <span className="block text-xs sm:text-sm font-bold text-slate-900">+971 58 659 6321</span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+
+            {/* Clean Trust Guarantees Row */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-700 font-medium"
+            >
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <Check className="w-4 h-4 text-[#0076FF] stroke-[2.5]" />
+                <span className="font-semibold text-slate-800">Honest Upfront Quotes</span>
               </div>
+              <span className="hidden sm:inline text-slate-300">|</span>
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <Check className="w-4 h-4 text-[#0076FF] stroke-[2.5]" />
+                <span className="font-semibold text-slate-800">Trained Dubai Technicians</span>
+              </div>
+              <span className="hidden sm:inline text-slate-300">|</span>
+              <div className="flex items-center gap-1.5 whitespace-nowrap">
+                <Check className="w-4 h-4 text-[#0076FF] stroke-[2.5]" />
+                <span className="font-semibold text-slate-800">Licensed &amp; Insured</span>
+              </div>
+            </motion.div>
+          </motion.div>
 
-              <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
-                {item.desc}
-              </p>
+          {/* Right Column */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="lg:col-span-5 relative flex items-center justify-center lg:justify-end"
+          >
+            <div className="relative w-full max-w-[460px] lg:max-w-none">
+              <div
+                className="hidden sm:block absolute -bottom-3 -right-3 w-full h-full bg-[#0076FF]/12 border border-[#0076FF]/25 rounded-none z-0"
+                aria-hidden="true"
+              />
+
+              <div className="relative z-10 aspect-[4/3] w-full overflow-hidden border border-slate-200 bg-slate-100 rounded-none">
+                <Image
+                  src="/images/hero_technician_dubai.jpg"
+                  alt="Airtronics Fixcare Technical Team Dubai"
+                  fill
+                  priority
+                  quality={80}
+                  sizes="(max-width: 1024px) 100vw, 480px"
+                  className="object-cover object-[center_28%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950/65 to-transparent pointer-events-none" />
+                <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
+                  <span className="font-[family-name:var(--font-onest)] text-xs sm:text-sm font-semibold tracking-tight">
+                    Airtronics Fixcare Technical Services LLC
+                  </span>
+                  <span className="font-[family-name:var(--font-bebas)] text-base sm:text-lg tracking-wider bg-[#0076FF] px-2.5 py-0.5 leading-none">
+                    SINCE 2022
+                  </span>
+                </div>
+              </div>
             </div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
+
+      {/* Brand Blue Slanted Parallelogram Stats Ribbon */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, delay: 0.15, ease: 'easeOut' }}
+        className="relative z-20 w-full max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 mt-2 sm:mt-4"
+      >
+        <div className="bg-[#0076FF] hover:bg-[#006ee9] text-white border border-blue-400/30 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] shadow-lg shadow-blue-500/20 transition-all duration-300 rounded-none">
+          <div className="[transform:skewX(10deg)] sm:[transform:skewX(14deg)] px-5 xs:px-6 sm:px-8 lg:px-12 py-4 sm:py-5">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+              {STATS_DATA.map((st, idx) => (
+                <div
+                  key={idx}
+                  className={`flex items-center gap-3 sm:gap-4 group ${
+                    idx !== 0 ? 'lg:border-l lg:border-white/20 lg:pl-6' : ''
+                  }`}
+                >
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-white/15 text-white flex items-center justify-center shrink-0 border border-white/25 [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] group-hover:bg-white group-hover:text-[#0076FF] transition-all duration-300 rounded-none">
+                    <st.icon className="w-4 h-4 sm:w-5 sm:h-5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]" />
+                  </div>
+
+                  <div className="leading-tight">
+                    <span className="font-[family-name:var(--font-bebas)] text-2xl xs:text-3xl sm:text-4xl text-white leading-none tracking-tight block drop-shadow-sm">
+                      {st.value}
+                    </span>
+                    <span className="font-[family-name:var(--font-onest)] text-[11px] xs:text-xs sm:text-[13px] text-blue-100 font-medium uppercase tracking-[0.06em] block mt-0.5">
+                      {st.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

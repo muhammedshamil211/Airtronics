@@ -12,8 +12,8 @@ const FAQSection = dynamic(() => import('@/components/about/FAQSection'));
 const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 export const metadata: Metadata = {
-  title: 'About Us | Airtronics Fixcare HVAC & AC Repair Dubai',
-  description: 'Learn about Airtronics Fixcare Technical Services LLC. Dubai-certified HVAC engineers providing 24/7 AC repair, diagnostic maintenance, and OEM parts since 2022.',
+  title: 'About Airtronics Fixcare | AC Repair Dubai',
+  description: 'Learn about Airtronics Fixcare Technical Services LLC in Dubai. Certified 24/7 AC repair, preventive maintenance, duct cleaning & OEM parts since 2022.',
   keywords: [
     'About Airtronics Fixcare',
     'AC repair company Dubai',
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main
-      className="min-h-screen bg-[#fcfcfc] selection:bg-[#005eb8] selection:text-white"
+      className="min-h-screen bg-white selection:bg-[#0076FF] selection:text-white"
       aria-label="About Airtronics Fixcare Technical Services LLC"
     >
       {/* 1. Local SEO & AboutPage JSON-LD Structured Data */}

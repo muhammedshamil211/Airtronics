@@ -5,25 +5,28 @@ import dynamic from 'next/dynamic';
 
 import ServicesHero from '@/components/services/ServicesHero';
 import ServicesGrid from '@/components/services/ServicesGrid';
+import { SERVICES_DATA } from '@/data/servicesData';
 
 // Code-split below-the-fold sections for optimized initial bundle & performance
 const ProcessSection = dynamic(() => import('@/components/home/ProcessSection'));
-const InvoiceQuoteTerms = dynamic(() => import('@/components/services/InvoiceQuoteTerms'));
+const ServiceQualitySection = dynamic(() => import('@/components/services/ServiceQualitySection'));
 const ServicesFAQ = dynamic(() => import('@/components/services/ServicesFAQ'));
 const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 export const metadata: Metadata = {
-  title: 'HVAC Services Dubai | AC Repair, Installation & AMC | Airtronics',
-  description: 'Professional air conditioning and HVAC solutions in Dubai. Precision diagnostics, turnkey installations, duct cleaning, and AMC contracts with OEM parts.',
+  title: {
+    absolute: 'All AC & HVAC Services in Dubai | Airtronics Fixcare',
+  },
+  description: 'Fast 24/7 AC repair, installation, duct cleaning, and yearly maintenance in Dubai. 30–45 min arrival for homes, villas, and offices. Clear upfront prices.',
   keywords: [
+    'AC services Dubai',
     'HVAC services Dubai',
-    'AC solutions Dubai',
     'AC repair Dubai',
     'AC installation Dubai',
-    'HVAC maintenance Dubai',
+    'AC cleaning Dubai',
     'AC duct cleaning Dubai',
     'AC AMC Dubai',
-    'commercial HVAC Dubai',
+    'HVAC maintenance Dubai',
     'emergency AC repair Dubai',
     'Airtronics Fixcare Technical Services LLC'
   ].join(', '),
@@ -31,8 +34,8 @@ export const metadata: Metadata = {
     canonical: 'https://airtronicsfixcare.com/services',
   },
   openGraph: {
-    title: 'HVAC Solutions Dubai | AC Repair & Installation | Airtronics Fixcare',
-    description: 'Professional air conditioning and HVAC engineering solutions in Dubai. Certified technicians, OEM genuine parts, and transparent itemized pricing.',
+    title: 'All AC & HVAC Services in Dubai | Airtronics Fixcare',
+    description: 'Fast 24/7 AC repair, new unit installation, duct cleaning, and yearly maintenance across Dubai. Clear prices and original parts.',
     url: 'https://airtronicsfixcare.com/services',
     siteName: 'Airtronics Fixcare Technical Services LLC',
     images: [
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
         url: '/images/hvac_maintenance_technician.jpg',
         width: 1200,
         height: 630,
-        alt: 'Airtronics Certified HVAC Technician servicing AC in Dubai',
+        alt: 'Airtronics trained AC technician servicing an air conditioner in Dubai',
       },
     ],
     locale: 'en_AE',
@@ -48,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AC & HVAC Services Dubai | Airtronics Fixcare',
-    description: 'Certified HVAC engineers for 24/7 emergency AC repair, turnkey installations, and AMC contracts in Dubai.',
+    title: 'All AC & HVAC Services in Dubai | Airtronics Fixcare',
+    description: 'Fast 24/7 AC repair, installation, duct cleaning, and yearly maintenance in Dubai with clear prices.',
     images: ['/images/hvac_maintenance_technician.jpg'],
   },
 };
@@ -129,71 +132,24 @@ const servicesHubSchema = {
       ],
       'hasOfferCatalog': {
         '@type': 'OfferCatalog',
-        'name': 'Airtronics HVAC Services Catalog',
-        'itemListElement': [
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'AC Repair & Diagnostics Dubai',
-              'description': 'Rapid 30-45 minute emergency AC troubleshooting, compressor diagnosis, refrigerant leak detection, and electrical repair.',
-              'url': 'https://airtronicsfixcare.com/services/ac-repair'
-            }
+        'name': 'Airtronics AC & HVAC Services Catalog Dubai',
+        'itemListElement': SERVICES_DATA.map((service) => ({
+          '@type': 'Offer',
+          'itemOffered': {
+            '@type': 'Service',
+            'name': service.title,
+            'description': service.tagline,
+            'url': `https://airtronicsfixcare.com/services/${service.slug}`,
           },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'AC Installation & Replacement Dubai',
-              'description': 'Turnkey installation for split, ducted, package, and VRF/VRV air conditioning units with factory warranty.',
-              'url': 'https://airtronicsfixcare.com/services/ac-installation'
-            }
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'HVAC Maintenance & Tuning Dubai',
-              'description': '24-point preventive maintenance, chemical coil flushing, motor lubrication, and DEWA energy optimization.',
-              'url': 'https://airtronicsfixcare.com/services/hvac-maintenance'
-            }
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'AC Duct Cleaning & Sanitization Dubai',
-              'description': 'Rotary brush duct cleaning, indoor air quality filtration, microbial mold removal, and HEPA vacuum sanitization.',
-              'url': 'https://airtronicsfixcare.com/services/duct-cleaning'
-            }
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Annual Maintenance Contracts (AMC) Dubai',
-              'description': 'Quarterly scheduled visits, unlimited emergency breakdown visits, 24/7 priority dispatch, and zero labor fees.',
-              'url': 'https://airtronicsfixcare.com/services/amc'
-            }
-          },
-          {
-            '@type': 'Offer',
-            'itemOffered': {
-              '@type': 'Service',
-              'name': 'Commercial & Industrial HVAC Solutions Dubai',
-              'description': 'Large-scale chillers, AHU/FAHU systems, warehouse ventilation, and commercial HVAC maintenance across Dubai.',
-              'url': 'https://airtronicsfixcare.com/services/commercial-hvac'
-            }
-          }
-        ]
-      }
+        })),
+      },
     }
   ]
 };
 
 export default function ServicesPage() {
   return (
-    <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#005eb8] selection:text-white" aria-label="Airtronics HVAC Services Hub">
+    <main className="min-h-screen bg-white selection:bg-[#0076FF] selection:text-white" aria-label="Airtronics HVAC Services Hub">
       {/* Schema.org Structured Data */}
       <Script
         id="services-hub-schema"
@@ -201,25 +157,22 @@ export default function ServicesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesHubSchema) }}
       />
 
-      {/* 1. Services Hero Section with Home-Matching Parallax, Atmospheric Lighting & 3D Buttons */}
+      {/* 1. Services Split Architectural Hero with Home-Matching Palette, Watermark & Slanted Controls */}
       <ServicesHero />
 
-      {/* 2. All 6 Services Showcase Grid with Interactive Hover Image Reveal Cards */}
+      {/* 2. Interactive 22-Service HVAC Catalog Grid with Category Tabs & Filter Search */}
       <ServicesGrid />
 
-      {/* 3. Reused 5-Step Process Section from Home Page */}
+      {/* 3. Reused 5-Step Process & Liquid-Glass About Section */}
       <ProcessSection />
 
-      {/* 4. Terms and Conditions for Invoices and Quotes */}
-      <InvoiceQuoteTerms />
+      {/* 4. Plain-English Service Quality & Customer Expectations Section */}
+      <ServiceQualitySection />
 
-      {/* 5. Multi-Brand Authority Carousel */}
-      {/* <BrandsSection /> */}
-
-      {/* 6. Dedicated Services Frequently Asked Questions */}
+      {/* 5. Dedicated Services Frequently Asked Questions */}
       <ServicesFAQ />
 
-      {/* 7. Emergency Booking & Direct Dispatch CTA Banner */}
+      {/* 6. Emergency Booking & Direct Dispatch CTA Banner */}
       <AboutCTA />
     </main>
   );

@@ -1,41 +1,26 @@
 'use client';
 
-import React, { memo } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 import {
   ShieldCheck,
   Receipt,
-  Check,
   Clock,
-  Zap,
   UserCheck,
-  Wrench,
-  ChevronRight,
-  CheckCircle2,
-  Leaf,
-  Siren,
-  Phone
+  Sparkles,
+  PhoneCall,
+  ArrowRight,
+  Phone,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
-import Button from '@/components/ui/Button';
 
 const BRAND_NAME = 'Airtronics Fixcare Technical Services LLC';
 const PHONE_NUMBER = '+971 58 659 6321';
-const PRIMARY_LOCATION = 'Dubai, UAE';
+const WHATSAPP_URL = `https://wa.me/971586596321?text=${encodeURIComponent(
+  'Hello Airtronics! I would like to book an AC visit in Dubai.'
+)}`;
 
-// Reusable Circular Action Arrow
-const ActionArrow = memo(() => (
-  <div
-    aria-hidden="true"
-    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white shadow-xs border border-slate-100 flex items-center justify-center text-[#00AEEF] hover:scale-105 transition-transform shrink-0"
-  >
-    <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
-  </div>
-));
-ActionArrow.displayName = 'ActionArrow';
-
-// Static JSON-LD Schema
 const differentiatorsSchema = {
   '@context': 'https://schema.org',
   '@type': 'HVACBusiness',
@@ -49,53 +34,84 @@ const differentiatorsSchema = {
     'Arabian Ranches',
     'Jumeirah Village Circle (JVC)',
     'Dubai Hills Estate',
-    'Al Barsha'
+    'Al Barsha',
   ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    name: 'HVAC Engineering Standards',
+    name: 'Airtronics Fixcare Customer Standards',
     itemListElement: [
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Certified HVAC Diagnostics',
-          description: '30 to 45 minute rapid dispatch across Dubai with digital manifold gauges and thermal cameras.'
-        }
+          name: 'Fast 30–45 Minute Arrival',
+          description: '24/7 AC repair and maintenance teams stationed across Dubai.',
+        },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: '100% Genuine OEM Replacement Parts',
-          description: 'Original manufacturer HVAC components with 90-day warranty.'
-        }
+          name: '100% Genuine Spare Parts',
+          description: 'Original brand parts built to handle Dubai summer heat.',
+        },
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Upfront Fixed Binding Quotes',
-          description: 'Zero hidden fees with transparent written itemized estimates.'
-        }
+          name: 'Clear Upfront Pricing',
+          description: 'Written quotes approved before any repair starts.',
+        },
       },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'DEWA Energy Optimization',
-          description: 'Thermodynamic tuning to lower monthly AC electricity consumption by up to 25%.'
-        }
-      }
-    ]
-  }
+    ],
+  },
 };
+
+const values = [
+  {
+    num: '01',
+    icon: Receipt,
+    title: 'Clear Price Before We Start',
+    desc: 'We inspect the issue first and give you an exact written price. We never start paid work without your approval.',
+  },
+  {
+    num: '02',
+    icon: Clock,
+    title: 'On-Time Arrival (30–45 Mins)',
+    desc: 'Our vans are positioned across Dubai so a technician reaches your home or office quickly when you need help.',
+  },
+  {
+    num: '03',
+    icon: UserCheck,
+    title: 'Friendly, Skilled Technicians',
+    desc: 'Our team is trained, polite, and experienced with all major home and office AC brands used in the UAE.',
+  },
+  {
+    num: '04',
+    icon: ShieldCheck,
+    title: 'Real Original Spare Parts',
+    desc: 'We only use genuine parts from trusted brands so your AC runs safely and stays cool through peak summer.',
+  },
+  {
+    num: '05',
+    icon: Sparkles,
+    title: 'Clean & Respectful Service',
+    desc: 'We wear shoe covers, protect your furniture and floors, and clean up neatly before we leave.',
+  },
+  {
+    num: '06',
+    icon: PhoneCall,
+    title: '24/7 Help — Every Day of the Year',
+    desc: 'Late nights, weekends, and public holidays—our team is always ready to take your call or WhatsApp message.',
+  },
+];
 
 export default function CoreDifferentiators() {
   return (
     <section
       aria-labelledby="why-airtronics-heading"
-      className="py-20 sm:py-24 lg:py-28 bg-[#fcfcfc] border-b border-gray-100 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 bg-white border-b border-slate-100 overflow-hidden"
     >
       <Script
         id="differentiators-schema"
@@ -105,319 +121,138 @@ export default function CoreDifferentiators() {
         }}
       />
 
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      <div className="relative max-w-[1250px] w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Faint Giant Background Watermark */}
+        <div
+          className="absolute -top-6 xs:-top-8 sm:-top-12 md:-top-16 left-4 pointer-events-none select-none z-0 overflow-hidden"
+          aria-hidden="true"
         >
-          {/* Section Header */}
-          <div className="max-w-2xl mb-8 sm:mb-12">
-            <h2
-              id="why-airtronics-heading"
-              className="text-[28px] sm:text-[36px] md:text-[44px] font-medium tracking-tight text-[#111111] leading-[1.1] mb-4"
-            >
-              Why Airtronics Fixcare – Engineering Standards Built for Dubai
-            </h2>
+          <span className="font-[family-name:var(--font-bebas)] text-7xl xs:text-8xl sm:text-9xl md:text-[140px] lg:text-[170px] font-normal text-slate-900/[0.035] leading-none tracking-tight block">
+            VALUES
+          </span>
+        </div>
 
-            <p className="text-[#666666] text-[15px] sm:text-base leading-relaxed">
-              Fast response, certified diagnostic precision, and transparent pricing across {PRIMARY_LOCATION}.
-            </p>
-          </div>
-
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
-
-            {/* Card 1 (7 Columns) - Certified HVAC Engineers */}
-            <motion.div
-              initial={{ opacity: 0, x: -25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-              className="md:col-span-7 bg-white rounded-2xl border border-slate-200 shadow-sm hover:border-[#005eb8] transition-colors duration-200 relative overflow-hidden flex flex-col justify-between group"
-            >
-              {/* Technician Diagnostic Photo */}
-              <div className="absolute right-0 top-0 bottom-0 w-full sm:w-[43%] lg:w-[39%] h-full z-0 overflow-hidden">
-                <Image
-                  src="/images/hvac_maintenance_technician.jpg"
-                  alt="Airtronics Certified HVAC Technician performing AC diagnostics in Dubai"
-                  fill
-                  quality={80}
-                  loading="lazy"
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 35vw"
-                />
-                <div className="absolute bottom-2.5 right-2.5 z-20">
-                  <ActionArrow />
-                </div>
-              </div>
-
-              {/* Left Content Area with Organic Curved Divider */}
-              <div className="relative z-10 p-5 sm:p-6 bg-white sm:bg-white/95 max-w-full sm:max-w-[63%] lg:max-w-[65%] flex flex-col justify-between h-full">
-                
-
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-2.5">
-                      <UserCheck className="w-6 h-6 text-[#005eb8] shrink-0" />
-                      <div>
-                        <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block leading-tight">
-                          Continuous Training
-                        </span>
-                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-[#111111] leading-tight">
-                          Certified HVAC Engineers
-                        </h3>
-                      </div>
-                    </div>
-
-                    <div className="hidden lg:inline-flex items-center gap-1.5 text-xs font-bold text-[#005eb8] shrink-0">
-                      <Clock className="w-4 h-4 text-[#005eb8]" />
-                      <span>30–45 Min</span>
-                    </div>
-                  </div>
-
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-2">
-                    Certified technicians dispatched across Dubai Marina, Palm Jumeirah, Downtown, Arabian Ranches &amp; JVC with digital diagnostic tools.
-                  </p>
-                </div>
-
-                {/* Highlights Row (Big Icons & Simple Texts) */}
-                <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-[#005eb8] shrink-0 stroke-[1.8]" />
-                    <div className="leading-tight">
-                      <span className="text-xs sm:text-sm font-bold text-[#111111] block">30–45m</span>
-                      <span className="text-[11px] text-gray-500">Arrival</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Wrench className="w-5 h-5 text-[#005eb8] shrink-0 stroke-[1.8]" />
-                    <div className="leading-tight">
-                      <span className="text-xs sm:text-sm font-bold text-[#111111] block">100%</span>
-                      <span className="text-[11px] text-gray-500">Root-Fix</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <Check className="w-5 h-5 text-[#008f4c] shrink-0 stroke-[2.5]" />
-                    <div className="leading-tight">
-                      <span className="text-xs sm:text-sm font-bold text-[#111111] block">Licensed</span>
-                      <span className="text-[11px] text-gray-500">Compliant</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 2 (5 Columns) - 100% Genuine OEM Parts */}
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="md:col-span-5 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-[#005eb8] transition-colors duration-200 relative overflow-hidden flex flex-col justify-between group"
-            >
-              {/* Right OEM Parts Image */}
-              <div className="absolute right-0 bottom-1 top-4 w-[43%] h-[80%] z-0 pointer-events-none flex items-end justify-end">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/images/hvac_oem_parts1.png"
-                    alt="Genuine OEM Spare Parts"
-                    fill
-                    quality={80}
-                    loading="lazy"
-                    className="object-contain object-bottom-right drop-shadow-xs transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                  />
-                </div>
-              </div>
-
-              {/* Content Left */}
-              <div className="relative z-10">
-                <div className="flex items-center justify-between gap-1 mb-2">
-                  <ShieldCheck className="w-6 h-6 text-[#005eb8] shrink-0" />
-                  <div className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#008f4c]">
-                    <Check className="w-5 h-5 text-[#008f4c] stroke-[2.5]" />
-                    <span>100% Factory OEM</span>
-                  </div>
-                </div>
-
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5 mt-1">
-                  Component Integrity
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-[#111111] leading-tight mb-1">
-                  Genuine OEM Spare Parts
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[210px] sm:max-w-[250px]">
-                  We only install original compressors, motors, capacitors, and PCB boards with 90-day warranty.
-                </p>
-              </div>
-
-              {/* Bottom Meta */}
-              <div className="relative z-10 mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#059669]">
-                  <ShieldCheck className="w-4 h-4 text-[#059669] stroke-[2.5]" />
-                  <span>Zero Counterfeits</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs sm:text-sm text-slate-500 font-medium">90-Day Warranty</span>
-                  <ActionArrow />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Card 3 (4 Columns) - Upfront Fixed Quotes */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-              className="md:col-span-4 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-[#005eb8] transition-colors duration-200 relative overflow-hidden flex flex-col justify-between group"
-            >
-              {/* Tilted Quote Document */}
-              <div className="absolute -right-3 -bottom-5 top-4 w-[48%] h-full z-0 pointer-events-none flex items-center justify-end">
-                <div className="relative w-full h-full opacity-95 group-hover:scale-105 transition-transform duration-500">
-                  <Image
-                    src="/images/service_quote_doc.jpg"
-                    alt="Transparent Service Quote"
-                    fill
-                    quality={80}
-                    loading="lazy"
-                    className="object-contain object-right-bottom drop-shadow-xs"
-                    sizes="(max-width: 768px) 40vw, 15vw"
-                  />
-                </div>
-              </div>
-
-              <div className="relative z-10">
-                <Receipt className="w-6 h-6 text-[#005eb8] mb-2" />
-
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
-                  Zero Hidden Charges
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-[#111111] mb-1 leading-tight">
-                  Upfront Fixed Quotes
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
-                  Itemized quotes provided before work starts with fixed labor and OEM part pricing.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#00AEEF]">
-                  <CheckCircle2 className="w-4 h-4 fill-[#00AEEF] text-white" />
-                  <span>Verified Standard</span>
-                </div>
-                <ActionArrow />
-              </div>
-            </motion.div>
-
-            {/* Card 4 (4 Columns) - DEWA Energy Savings */}
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
-              className="md:col-span-4 bg-white p-5 sm:p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-[#005eb8] transition-colors duration-200 relative overflow-hidden flex flex-col justify-between group"
-            >
-              {/* Clean Metric Callout */}
-              <div className="absolute right-4 top-5 z-0 pointer-events-none">
-                <div className="bg-sky-50 border border-sky-100 rounded-xl px-2.5 py-1.5 text-center">
-                  <span className="text-[10px] font-bold text-sky-700 uppercase tracking-wider block">DEWA Power</span>
-                  <span className="text-base font-extrabold text-[#005eb8] leading-tight block">-25%</span>
-                </div>
-              </div>
-
-              <div className="relative z-10">
-                <Leaf className="w-6 h-6 text-[#005eb8] mb-2" />
-
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
-                  Lower Monthly Power Costs
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-[#111111] mb-1 leading-tight">
-                  DEWA Energy Savings
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
-                  Coil chemical flushes and digital gas tuning lower compressor draw, cutting bills up to 25%.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-1 text-xs sm:text-sm font-bold text-[#00AEEF]">
-                  <Zap className="w-4 h-4 text-[#00AEEF] stroke-[2.5]" />
-                  <span>Up to 25% Savings</span>
-                </div>
-                <ActionArrow />
-              </div>
-            </motion.div>
-
-            {/* Card 5 (4 Columns) - 24/7 Emergency Dispatch Callout */}
-            <motion.div
-              initial={{ opacity: 0, x: 25 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-30px' }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-              className="md:col-span-4 bg-slate-900 border border-slate-800 text-white p-5 sm:p-6 rounded-2xl shadow-sm relative overflow-hidden flex flex-col justify-between group"
-            >
-              {/* Technician Backdrop */}
-              <div className="absolute right-0 top-0 bottom-0 w-[50%] h-full z-0 overflow-hidden pointer-events-none">
-                <Image
-                  src="/images/technician_dark_hvac.jpg"
-                  alt="Airtronics Emergency AC Repair Technician"
-                  fill
-                  quality={75}
-                  loading="lazy"
-                  className="object-cover object-center opacity-30 group-hover:opacity-45 transition-opacity duration-300"
-                  sizes="(max-width: 768px) 45vw, 15vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#081226] via-[#081226]/85 to-transparent" />
-              </div>
-
-              <div className="relative z-10">
-                <Siren className="w-6 h-6 text-[#00AEEF] mb-2" />
-
-                <span className="text-xs font-bold uppercase tracking-widest text-amber-400 block mb-0.5">
-                  24/7 Dubai Hotline
-                </span>
-                <h3 className="text-base sm:text-lg font-bold text-white mb-1 leading-tight">
-                  Urgent AC Breakdown?
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal max-w-[185px] sm:max-w-[210px]">
-                  Emergency HVAC technicians on standby across Dubai for immediate on-site diagnostic repair.
-                </p>
-              </div>
-
-              <div className="relative z-10 mt-4">
-                <Button
-                  href={`tel:${PHONE_NUMBER.replace(/\s+/g, '')}`}
-                  variant="primary"
-                  size="md"
-                  fullWidth
-                  className="!py-2.5 !px-3.5 text-xs sm:text-sm group/btn justify-between"
-                  iconLeft={
-                    <div className="flex items-center gap-1.5">
-                      <Phone className="w-3.5 h-3.5" />
-                      <span>Call {PHONE_NUMBER}</span>
-                    </div>
-                  }
-                  iconRight={
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-white group-hover/btn:scale-105 transition-transform">
-                      <ChevronRight className="w-3 h-3 stroke-[2.5]" />
-                    </div>
-                  }
-                />
-              </div>
-            </motion.div>
-
-          </div>
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="relative z-10 max-w-3xl mb-10 sm:mb-12"
+        >
+          <h2
+            id="why-airtronics-heading"
+            className="font-[family-name:var(--font-onest)] text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#0f172a] tracking-tight leading-[1.14] mb-3.5"
+          >
+            Why Customers Trust Airtronics Fixcare
+          </h2>
+          <p className="font-[family-name:var(--font-onest)] text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+            Six simple commitments we keep on every home and office visit in Dubai.
+          </p>
         </motion.div>
 
+        {/* Architectural Split Layout */}
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left 6-Point Ledger */}
+          <div className="lg:col-span-7 divide-y divide-slate-200/80 border-t border-b border-slate-200/80">
+            {values.map((item, idx) => (
+              <motion.div
+                key={item.num}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-30px' }}
+                transition={{ duration: 0.45, delay: idx * 0.05, ease: 'easeOut' }}
+                className="py-5 sm:py-6 flex items-start gap-4 sm:gap-5 group"
+              >
+                <div className="shrink-0 w-10 h-10 bg-slate-100 group-hover:bg-[#0076FF] text-[#0f172a] group-hover:text-white transition-colors flex items-center justify-center [transform:skewX(-10deg)] rounded-none mt-0.5">
+                  <span className="font-[family-name:var(--font-bebas)] text-lg tracking-wider [transform:skewX(10deg)]">
+                    {item.num}
+                  </span>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <item.icon className="w-4 h-4 text-[#0076FF] shrink-0" aria-hidden="true" />
+                    <h3 className="font-[family-name:var(--font-onest)] text-base sm:text-lg font-bold text-[#0f172a]">
+                      {item.title}
+                    </h3>
+                  </div>
+                  <p className="font-[family-name:var(--font-onest)] text-slate-600 text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Photo + Direct Contact Box */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.55, delay: 0.1, ease: 'easeOut' }}
+            className="lg:col-span-5 space-y-5"
+          >
+            <div className="relative">
+              <div
+                className="hidden sm:block absolute -bottom-2.5 -right-2.5 w-full h-full bg-[#0076FF]/10 border border-[#0076FF]/20 rounded-none z-0"
+                aria-hidden="true"
+              />
+              <div className="relative z-10 h-[280px] sm:h-[340px] w-full bg-slate-900 border border-slate-200 rounded-none overflow-hidden">
+                <Image
+                  src="/images/hvac_maintenance_technician.jpg"
+                  alt="Airtronics Fixcare technician servicing an AC in Dubai"
+                  fill
+                  quality={85}
+                  loading="lazy"
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#03132b]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <p className="font-[family-name:var(--font-onest)] text-sm font-bold">
+                    Clean, Respectful Home &amp; Office Visits
+                  </p>
+                  <p className="font-[family-name:var(--font-onest)] text-xs text-slate-200 mt-0.5">
+                    Shoe covers, drop cloths, and tidy cleanup after every job.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-50 border border-slate-200 p-6 rounded-none">
+              <h3 className="font-[family-name:var(--font-onest)] text-lg font-bold text-[#0f172a] mb-2">
+                Need an AC Visit Today?
+              </h3>
+              <p className="font-[family-name:var(--font-onest)] text-sm text-slate-600 leading-relaxed mb-5">
+                Message us on WhatsApp or call our 24/7 team for fast help and a clear quote.
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center bg-[#0076FF] hover:bg-[#0066de] text-white font-semibold px-5 py-3 text-sm transition-colors [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none"
+                >
+                  <span className="inline-flex items-center gap-1.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+                    <span>WhatsApp Now</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </a>
+
+                <a
+                  href="tel:+971586596321"
+                  className="inline-flex items-center justify-center bg-white hover:bg-slate-100 text-[#0f172a] border border-slate-300 font-semibold px-5 py-3 text-sm transition-colors [transform:skewX(-10deg)] sm:[transform:skewX(-14deg)] rounded-none"
+                >
+                  <span className="inline-flex items-center gap-1.5 [transform:skewX(10deg)] sm:[transform:skewX(14deg)]">
+                    <Phone className="w-3.5 h-3.5 text-[#0076FF]" />
+                    <span>Call Us</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

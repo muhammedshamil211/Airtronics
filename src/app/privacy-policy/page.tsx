@@ -16,7 +16,7 @@ const TOC_ITEMS = [
   { id: 'collection', label: '1. Information We Collect' },
   { id: 'usage', label: '2. Use of WhatsApp & Contact Data' },
   { id: 'sharing', label: '3. Zero Data Sharing & Telemarketing' },
-  { id: 'retention', label: '4. Service Logs & 90-Day Warranty' },
+  { id: 'retention', label: '4. Service Logs & Tax Records' },
   { id: 'rights', label: '5. UAE Data Protection & Deletion' },
   { id: 'corporate', label: '6. Privacy Office & Contact' },
 ];
@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
                   <li>Scheduling confirmed technician arrival windows and sending real-time ETA updates.</li>
                   <li>Delivering transparent, written quotations and diagnostic findings for client approval.</li>
                   <li>Sharing digital before-and-after inspection images and thermal camera readings.</li>
-                  <li>Issuing electronic VAT-compliant tax invoices and activating your official 90-day parts and labor warranty.</li>
+                  <li>Issuing electronic VAT-compliant tax invoices and maintaining your service completion records.</li>
                 </ul>
               </div>
             </section>
@@ -155,14 +155,14 @@ export default function PrivacyPolicyPage() {
             {/* Section 4 */}
             <section id="retention" className="py-10 scroll-mt-28">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111] mb-4">
-                4. Service Logs, Tax Accounting &amp; 90-Day Warranty Protection
+                4. Service Logs &amp; Tax Accounting Records
               </h2>
               <div className="space-y-3.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
                 <p>
                   We securely archive service records, invoices, and diagnostic sheets for statutory record-keeping periods:
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5">
-                  <li>To honor and enforce your 90-day comprehensive parts and workmanship warranty.</li>
+                  <li>To maintain accurate service history and after-service support records.</li>
                   <li>To reference past refrigerant levels, motor replacements, and filter maintenance history during follow-up visits.</li>
                   <li>To comply with UAE Federal Tax Authority (FTA) financial and accounting auditing mandates.</li>
                 </ul>

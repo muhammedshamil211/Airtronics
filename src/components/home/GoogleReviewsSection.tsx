@@ -11,7 +11,6 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
-import CountUp from '@/components/ui/CountUp';
 import { AUTHENTIC_REVIEWS, getRelativeTime } from '@/data/googleReviewsData';
 
 // Official Google 'G' Logo SVG

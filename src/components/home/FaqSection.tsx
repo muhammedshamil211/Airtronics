@@ -7,7 +7,6 @@ import { ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const BRAND_NAME = 'Airtronics Fixcare';
-const PHONE_NUMBER = '+971 58 659 6321';
 
 interface FaqItemData {
   id: string;

@@ -1,100 +1,111 @@
 import { ServiceDetail } from './types';
 
 export const acInstallationService: ServiceDetail = {
-    slug: 'ac-installation',
-    id: '02',
-    title: 'AC Installation & Replacement in Dubai',
-    shortTitle: 'AC Installation & Replacement',
-    tagline: 'Certified split, ducted, VRF, and multi-split AC installations with precision BTU heat-load engineering and 1-year warranty.',
-    badge: 'Turnkey Installation & Testing',
-    image: '/images/services/ac-installation.jpg',
-    subcategories: [
-    'Split AC Installation',
-    'Ducted AC Installation',
+  slug: 'ac-installation',
+  id: '02',
+  title: 'AC Installation & Replacement in Dubai',
+  shortTitle: 'AC Installation & Replacement',
+  tagline: 'Neat, reliable installation of split, ducted, VRF, and multi-split AC systems in Dubai—sized properly for your room so it cools fast and saves power.',
+  badge: 'Turnkey Installation & Testing',
+  image: '/images/services/ac-installation.jpg',
+  subcategories: [
+    'Split AC Installation & Replacement',
+    'Ducted Split AC Installation',
     'Concealed Fan Coil Unit (FCU) Installation',
     'Multi-Split AC System Installation',
-    'Old AC Unit Replacement & Upgrades',
+    'Old AC Removal & Upgrade',
     'AC Relocation & Reinstallation',
-    'Copper Piping & Condensate Drainage Installation',
-    'Eco-Friendly AC Removal & Disposal',
-    'Commissioning, Delta-T & Performance Testing'
+    'Insulated Copper Piping & Drain Line Setup',
+    'Full Airflow & Cooling Performance Testing'
   ],
-    metaTitle: 'AC Installation Dubai | New Split, Ducted & Multi-Split AC Replacement',
-    metaDescription: 'Expert AC installation & replacement in Dubai for villas, apartments & commercial buildings. ASHRAE load calculations, copper piping, and turnkey commissioning with 1-year warranty.',
-    keywords: [
-      'AC installation Dubai',
-      'split AC installation Dubai',
-      'ducted AC installation Dubai',
-      'multi-split AC installation Dubai',
-      'AC replacement Dubai',
-      'AC relocation Dubai',
-      'AC piping and drainage Dubai',
-      'AC commissioning Dubai'
-    ],
-    overview: 'Air conditioning installation in Dubai demands engineering rigor to withstand 50°C summer ambients. Airtronics Fixcare Technical Services LLC executes turnkey residential and commercial installations adhering to DEWA electrical standards, ASHRAE heat load sizing, and manufacturer specifications. We install thick-gauge insulated copper tubing, nitrogen-brazed joints, and vibration-isolated mounts to guarantee whisper-quiet performance and maximum SEER energy efficiency.',
-    heroHighlights: [
-      'ASHRAE Manual J thermodynamic heat-load & cubic CFM airflow calculations',
-      'Certified installation partner for Daikin, O General, Carrier, York, Gree & LG',
-      'DEWA-compliant electrical isolation switch, circuit breakers & earth bonding',
-      '1-year complete installation workmanship warranty plus manufacturer compressor coverage'
-    ],
-    keyBenefits: [
-      {
-        title: 'Precision Sizing for Maximum Efficiency',
-        description: 'Eliminates short-cycling, high interior humidity, and excessive DEWA energy bills through computerized cooling load engineering.'
-      },
-      {
-        title: 'Heavy-Gauge Nitrogen-Brazed Piping',
-        description: 'Class-0 Armaflex insulated seamless copper tubing and nitrogen purging prevent interior refrigerant oxidation and water sweating.'
-      },
-      {
-        title: 'Turnkey Decommissioning & Disposal',
-        description: 'Safe eco-friendly refrigerant recovery, removal of aging units, ceiling hatch protection, and zero damage to existing interior decor.'
-      },
-      {
-        title: 'Digital Vacuum Dehydration',
-        description: 'Every system is evacuated to 500 microns vacuum before refrigerant release, guaranteeing dry, acid-free refrigeration circuits.'
-      }
-    ],
-    specifications: [
-      'Manual J / ASHRAE thermodynamic BTU heat load calculations',
-      'Heavy-gauge ASTM B280 seamless refrigeration copper tubing',
-      'Nitrogen-purged silver alloy brazing on all pipe connections',
-      'Class-O nitrile elastomeric insulation (Armaflex) with UV protection',
-      'High-grade UPVC condensate drain pipe with minimum 1:50 gravity pitch',
-      '500-micron deep vacuum gauge holding test prior to refrigerant release'
-    ],
-    commonIssuesSolved: [
-      'Legacy AC units breaking down repeatedly during peak Dubai summer',
-      'High monthly DEWA electricity bills caused by obsolete low-efficiency compressors',
-      'Inadequate cooling capacity following home renovations or villa room extensions',
-      'Noisy vibration and compressor rattling disturbing bedroom sleep',
-      'Refrigerant gas leaks in aging, corroded wall piping'
-    ],
-    dubaiLocations: [
-      'Arabian Ranches',
-      'Dubai Hills Estate',
-      'Palm Jumeirah',
-      'Jumeirah Golf Estates',
-      'Damac Hills',
-      'Downtown Dubai',
-      'Dubai Marina',
-      'Business Bay',
-      'JVC',
-      'Al Barsha'
-    ],
-    faqs: [
-      {
-        q: 'Which AC brand is best suited for Dubai villas and apartments?',
-        a: 'For heavy UAE desert heat, O General, Daikin, Carrier, and York are market leaders because their T3 tropicalized compressors are engineered specifically for 52°C ambient temperatures.'
-      },
-      {
-        q: 'How long does a split or ducted AC replacement take?',
-        a: 'A standard split AC replacement requires 3 to 5 hours. A complete central ducted villa replacement typically takes 1 to 2 working days including commissioning and balancing.'
-      },
-      {
-        q: 'Do you handle the removal and eco-friendly disposal of old AC units?',
-        a: 'Yes, our turnkey replacement service includes safe refrigerant recovery, decommissioning, and eco-friendly municipality-approved disposal.'
-      }
-    ]
-  };
+  metaTitle: 'AC Installation & Replacement Dubai',
+  metaDescription: 'Professional AC installation & replacement in Dubai for villas, flats & offices. Split, ducted & VRF units sized accurately with neat copper piping.',
+  keywords: [
+    'AC installation Dubai',
+    'split AC installation Dubai',
+    'ducted AC installation Dubai',
+    'AC replacement Dubai',
+    'multi-split AC installation Dubai',
+    'AC relocation Dubai',
+    'AC copper piping Dubai',
+    'new AC unit Dubai'
+  ],
+  overview: 'Installing a new AC in Dubai requires proper sizing and clean workmanship so the unit handles 50°C summer heat without straining or leaking. Airtronics Fixcare installs split, ducted, and multi-split AC units for villas, apartments, and offices following DEWA electrical safety rules and manufacturer standards. From sizing the right BTU/tonnage to vacuum-testing copper pipes and testing final cooling temperatures, we handle everything cleanly.',
+  heroHighlights: [
+    'Accurate room heat-load calculation (BTU/tonnage) so your AC is never undersized',
+    'Experienced installers for O General, Daikin, Carrier, York, Gree & LG',
+    'DEWA-safe electrical isolators, breakers, and heavy-gauge copper piping',
+    '1-year installation workmanship warranty plus manufacturer compressor cover'
+  ],
+  keyBenefits: [
+    {
+      title: 'Right AC Size for Every Room',
+      description: 'We calculate room size, ceiling height, and sun exposure so your AC cools quickly, removes humidity, and avoids high DEWA bills.'
+    },
+    {
+      title: 'Leak-Free Insulated Copper Piping',
+      description: 'We use thick seamless copper pipes with Armaflex foam insulation and nitrogen-purged brazing to stop gas leaks and pipe condensation.'
+    },
+    {
+      title: 'Clean Old Unit Removal',
+      description: 'We safely recover old refrigerant gas, remove your old AC without damaging walls or ceilings, and dispose of it responsibly.'
+    },
+    {
+      title: 'Deep Vacuum & Cooling Test',
+      description: 'Before switching on the new AC, we vacuum-dry the pipes to remove air and moisture, then measure supply air temperature (Delta-T).'
+    }
+  ],
+  specifications: [
+    'Heat-load sizing (BTU / tonnage & CFM airflow check)',
+    'Heavy-gauge ASTM B280 seamless refrigeration copper tubing',
+    'Nitrogen-purged brazing on all copper pipe joints',
+    'Class-O Armaflex foam insulation with UV outdoor protection',
+    'Sloped UPVC condensate drain piping to prevent water backups',
+    '500-micron deep vacuum test before releasing refrigerant gas'
+  ],
+  commonIssuesSolved: [
+    'Old AC units breaking down repeatedly every summer',
+    'Sky-high DEWA electricity bills from outdated low-efficiency ACs',
+    'Warm rooms after villa extensions, renovations, or office partitioning',
+    'Noisy outdoor compressors vibrating against bedroom walls',
+    'Hidden gas leaks inside aging, corroded copper wall pipes'
+  ],
+  dubaiLocations: [
+    'Arabian Ranches',
+    'Dubai Hills Estate',
+    'Palm Jumeirah',
+    'Jumeirah Golf Estates',
+    'Damac Hills',
+    'Downtown Dubai',
+    'Dubai Marina',
+    'Business Bay',
+    'JVC',
+    'Al Barsha'
+  ],
+  faqs: [
+    {
+      q: 'What size AC (tonnage or BTU) do I need for my room in Dubai?',
+      a: 'Because of Dubai’s high summer heat, most standard bedrooms need 1.5 to 2 tons (18,000–24,000 BTU), while sunlit living rooms often need 2.5 to 3+ tons. We measure your exact room size, window glass, and ceiling height for free before quoting.'
+    },
+    {
+      q: 'Which AC brand is best for Dubai weather?',
+      a: 'O General, Daikin, Carrier, and York are top choices in the UAE because they offer T3 tropicalized compressors built to keep cooling even when outdoor temperatures exceed 50°C.'
+    },
+    {
+      q: 'How long does AC installation or replacement take?',
+      a: 'A standard wall-mounted split AC installation takes 3 to 5 hours. Replacing a full concealed ducted system in an apartment or villa usually takes 1 to 2 days including testing.'
+    },
+    {
+      q: 'Can you reuse my existing copper pipes when replacing an old AC?',
+      a: 'We inspect and pressure-test your existing pipes first. If they are clean, thick enough, and free of leaks, we flush them with nitrogen and reuse them; otherwise, we recommend fresh copper piping.'
+    },
+    {
+      q: 'Do you remove and dispose of my old AC unit?',
+      a: 'Yes. Our turnkey replacement service includes recovering any remaining gas, safely uninstalling the old indoor and outdoor units, and disposing of them cleanly.'
+    },
+    {
+      q: 'Does your AC installation include a warranty?',
+      a: 'Yes, we provide a 1-year workmanship warranty covering piping, drainage, and electrical connections, alongside the official manufacturer warranty on the new AC unit.'
+    }
+  ]
+};

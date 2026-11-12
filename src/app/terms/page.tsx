@@ -7,7 +7,7 @@ import { PolicyHeaderTabs, PolicyCrossLinks } from '@/components/legal/PolicyNav
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Airtronics Fixcare Technical Services LLC Dubai',
-  description: 'Terms and conditions for air conditioning and HVAC services provided by Airtronics Fixcare Technical Services LLC in Dubai. Upfront quotes, 90-day warranty & UAE VAT compliance.',
+  description: 'Terms and conditions for air conditioning and HVAC services provided by Airtronics Fixcare Technical Services LLC in Dubai. Upfront quotes, genuine OEM parts & UAE VAT compliance.',
   alternates: {
     canonical: 'https://airtronicsfixcare.com/terms',
   },
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const TOC_ITEMS = [
   { id: 'scope', label: '1. Scope of Services' },
   { id: 'quotations', label: '2. Upfront Quotes & Fee Waiver' },
-  { id: 'warranty', label: '3. 90-Day Parts & Labor Warranty' },
+  { id: 'warranty', label: '3. OEM Parts & Service Standards' },
   { id: 'payment', label: '4. Payment & UAE VAT Compliance' },
   { id: 'rescheduling', label: '5. Access & Cancellation Policy' },
   { id: 'governing-law', label: '6. Governing Law & Jurisdiction' },
@@ -143,16 +143,16 @@ export default function TermsPage() {
             {/* Section 3 */}
             <section id="warranty" className="py-10 scroll-mt-28">
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#111111] mb-4">
-                3. 90-Day Comprehensive Workmanship &amp; OEM Parts Warranty
+                3. Genuine OEM Parts &amp; Workmanship Standards
               </h2>
               <div className="space-y-3.5 text-xs sm:text-sm text-gray-600 leading-relaxed">
                 <p>
-                  All completed repairs and replaced spare parts are backed by a minimum 90-day comprehensive warranty from the date of service completion, as documented on your official tax invoice.
+                  All completed repairs and replaced spare parts are executed using genuine components and documented on your official tax invoice.
                 </p>
                 <ul className="list-disc pl-5 space-y-1.5 text-xs sm:text-sm text-gray-600">
                   <li>Only factory-sealed, 100% genuine OEM components (compressors, fan motors, capacitors, thermostats, sensors, expansion valves) are utilized.</li>
-                  <li>Should the identical failure or component malfunction re-occur within the 90-day warranty window, Airtronics will dispatch a senior engineering team to inspect and correct the issue with zero additional labor or part charges.</li>
-                  <li>Warranty does not cover pre-existing unrelated component failures, unauthorized third-party tampering, power voltage fluctuations, or intentional misuse.</li>
+                  <li>New equipment installations carry the original manufacturer&apos;s warranty in accordance with the brand&apos;s official UAE terms.</li>
+                  <li>Coverage does not extend to pre-existing unrelated component failures, unauthorized third-party tampering, power voltage fluctuations, or intentional misuse.</li>
                 </ul>
               </div>
             </section>

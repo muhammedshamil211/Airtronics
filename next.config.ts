@@ -32,6 +32,11 @@ const nextConfig: NextConfig = {
         destination: '/services/vrf-vrv-systems',
         permanent: true,
       },
+      {
+        source: '/services/ac-servicing',
+        destination: '/services/hvac-maintenance',
+        permanent: true,
+      },
     ];
   },
 };

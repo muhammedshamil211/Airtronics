@@ -29,7 +29,7 @@ const TRUST_PILLARS = [
   },
   {
     icon: CheckCircle2,
-    title: '90-Day Written Warranty',
+    title: 'Clear Upfront Pricing',
   },
 ];
 
@@ -117,7 +117,7 @@ export default function AboutSection() {
                   When your AC suddenly stops cooling, leaks water onto your floor, or starts making strange noises, you don&apos;t need complicated technical talk — you just need it fixed quickly and honestly. Our technicians arrive at your doorstep in 30 to 45 minutes, check the unit, explain what is wrong in plain English, and provide a clear upfront price before touching a tool.
                 </p>
                 <p>
-                  No hidden fees, no unnecessary sales pressure, and no cheap fixes. We only install 100% genuine factory parts and back every repair with our 90-day written warranty. We are always just a call or WhatsApp away.
+                  No hidden fees, no unnecessary sales pressure, and no cheap fixes. We only install 100% genuine factory parts and make sure your AC cools properly before we leave. We are always just a call or WhatsApp away.
                 </p>
               </div>
             </motion.div>

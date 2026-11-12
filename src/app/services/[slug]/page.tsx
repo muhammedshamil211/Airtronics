@@ -9,7 +9,6 @@ import ServiceDetailContent from '@/components/services/ServiceDetailContent';
 import dynamic from 'next/dynamic';
 
 // Code-split below-the-fold sections
-const InvoiceQuoteTerms = dynamic(() => import('@/components/services/InvoiceQuoteTerms'));
 const AboutCTA = dynamic(() => import('@/components/about/AboutCTA'));
 
 interface PageProps {
@@ -91,7 +90,7 @@ export default async function SingleServicePage({ params }: PageProps) {
         'url': `https://airtronicsfixcare.com/services/${service.slug}`,
         'image': `https://airtronicsfixcare.com${service.image}`,
         'description': service.overview,
-        'termsOfService': '90-Day Written Warranty on Genuine OEM Parts & Labor',
+        'termsOfService': 'Clear Upfront Pricing & 100% Genuine OEM Parts',
         'provider': {
           '@type': 'HVACBusiness',
           '@id': 'https://airtronicsfixcare.com/#business',
@@ -155,7 +154,7 @@ export default async function SingleServicePage({ params }: PageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-[#fcfcfc] selection:bg-[#005eb8] selection:text-white" aria-label={service.title}>
+    <main className="min-h-screen bg-white selection:bg-[#0076FF] selection:text-white" aria-label={service.title}>
       {/* Schema.org Graph Structured Data */}
       <Script
         id={`service-detail-schema-${service.slug}`}
@@ -169,10 +168,7 @@ export default async function SingleServicePage({ params }: PageProps) {
       {/* 2. Detailed Technical Scope, Benefits, Common Issues, Locations & FAQs */}
       <ServiceDetailContent service={service} />
 
-      {/* 3. Terms and Conditions for Invoices and Quotes */}
-      <InvoiceQuoteTerms />
-
-      {/* 4. Emergency Booking Callout Banner */}
+      {/* 3. Emergency Booking Callout Banner */}
       <AboutCTA />
     </main>
   );

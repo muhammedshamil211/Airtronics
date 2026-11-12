@@ -62,11 +62,11 @@ export const INVOICE_QUOTE_TERMS: InvoiceQuoteTermsData = {
       ]
     },
     {
-      heading: '2. Warranty Protection & OEM Authenticity',
+      heading: '2. Genuine OEM Parts & Workmanship Standards',
       points: [
         'All replacement components, compressors, motors, fan capacitors, and electronic PCB boards supplied by Airtronics Fixcare are 100% genuine factory OEM parts.',
-        'Repairs are covered by a comprehensive ninety (90) day warranty on both installed parts and workmanship, effective from the completion date specified on the tax invoice.',
-        'Warranty does not cover pre-existing defects in unserviced components, external electrical power surges from municipal supply, or unauthorized third-party tampering.'
+        'New equipment installations carry the original manufacturer warranty in accordance with the brand terms.',
+        'Coverage does not extend to pre-existing defects in unserviced components, external electrical power surges from municipal supply, or unauthorized third-party tampering.'
       ]
     },
     {
@@ -179,13 +179,13 @@ export const INVOICE_QUOTE_TERMS: InvoiceQuoteTermsData = {
     },
     {
       id: 'warranty',
-      tabLabel: '3. Warranty Protection',
-      tabSublabel: '90-Day Parts & Workmanship',
+      tabLabel: '3. OEM Parts & Standards',
+      tabSublabel: 'Genuine Factory Components',
       stageNumber: '03',
-      heading: 'Warranty Protection & 100% OEM Authenticity',
-      badge: 'Post-Service Coverage',
-      summary: 'We back every repair with our comprehensive 90-day warranty covering both parts and technician labor. We use only authentic factory parts from verified regional distributors.',
-      proTip: 'Warranty Record: Your 90-day warranty is tied to your unique Tax Invoice number. No paper receipts to lose—our system tracks your warranty automatically.',
+      heading: '100% Genuine OEM Authenticity & Standards',
+      badge: 'Component Standards',
+      summary: 'We use only authentic factory parts from verified regional distributors to ensure safe, reliable cooling performance in Dubai.',
+      proTip: 'Service Record: Every part installed and service performed is documented on your unique Tax Invoice number for easy future reference.',
       items: [
         {
           title: '100% Genuine Factory OEM Parts',
@@ -193,33 +193,32 @@ export const INVOICE_QUOTE_TERMS: InvoiceQuoteTermsData = {
           highlight: 'Direct OEM Certified'
         },
         {
-          title: '90-Day Comprehensive Warranty',
-          description: 'Both installed components and workmanship are protected for ninety (90) calendar days from the service completion date indicated on your invoice.',
-          highlight: '90 Days Parts + Labor'
+          title: 'Manufacturer Equipment Terms',
+          description: 'New unit installations follow official manufacturer warranty guidelines as specified by each brand.',
+          highlight: 'Brand Authorized'
         },
         {
-          title: 'Transparent Warranty Limits',
-          description: 'Warranty covers defective parts and workmanship. It does not cover pre-existing faults in unserviced equipment, external municipal electrical surges, or third-party interference.',
+          title: 'Transparent Policy Limits',
+          description: 'Service responsibility does not extend to pre-existing faults in unserviced equipment, external municipal electrical surges, or third-party interference.',
           highlight: 'Clear & Fair Policy'
         }
       ],
       specimen: {
         type: 'warranty',
-        title: '90-Day Comprehensive Warranty Certificate',
-        refNumber: 'WR-2026-DXB-90D',
-        statusText: 'ACTIVE COVERAGE (90 DAYS)',
+        title: 'OEM Parts & Service Record',
+        refNumber: 'WR-2026-DXB-OEM',
+        statusText: 'VERIFIED OEM PARTS',
         statusVariant: 'blue',
-        metaLabel: 'Warranty Scope',
-        metaValue: 'Parts & Workmanship Guaranteed',
+        metaLabel: 'Parts Standard',
+        metaValue: '100% Genuine Factory Components',
         lines: [
           { label: 'Replacement Parts Installed', value: '100% Genuine OEM' },
-          { label: 'Labor & Technical Workmanship', value: 'Covered for 90 Days' },
-          { label: 'Warranty Re-Inspection Callout', value: 'AED 0.00 (Covered)', isDiscount: true },
+          { label: 'Testing & Airflow Check', value: 'Completed & Verified' },
           { label: 'Component Serial Tracking', value: 'Registered in ERP' },
-          { label: 'Post-Service Protection Level', value: 'Comprehensive Guarantee', isAccent: true }
+          { label: 'Quality Standard', value: 'Factory OEM Spec', isAccent: true }
         ],
-        stampText: 'GENUINE OEM & LABOR BACKED',
-        footerNote: 'Valid across Dubai for 90 days from the invoice date. Covers repair workmanship and OEM components.'
+        stampText: 'GENUINE OEM CERTIFIED',
+        footerNote: 'Official service record across Dubai documenting genuine factory OEM components.'
       }
     },
     {
